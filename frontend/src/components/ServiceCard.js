@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import { getServiceIcon } from "@/components/serviceIcons";
 
 const serif = { fontFamily: "'Cormorant Garamond', ui-serif, Georgia, serif" };
@@ -30,10 +29,6 @@ export const ServiceCard = ({ service, variant = "teaser" }) => {
           {service.claim}
         </p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/75">{service.teaser}</p>
-        <span data-testid="service-card-cta" className="link-underline mt-5 text-sm">
-          {service.title} entdecken
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-        </span>
       </Link>
     );
   }

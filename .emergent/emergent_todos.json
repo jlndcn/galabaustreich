@@ -1,22 +1,26 @@
 [
   {
-    "content": "Phase 1: Foundation — design tokens, central data, Seo hook, Reveal hook, index.html head",
+    "content": "Home: delete hero eyebrow, delete 'Erreichbar unter' line, delete 'Unsere Schwerpunkte' eyebrow, reformulate h2, update imports",
     "status": "completed"
   },
   {
-    "content": "Phase 1: Reusable components — Logo, Header, Footer, Layout, BrandSurface, ContactActions/ContactCTA, ServiceCard, ScrollToTop",
+    "content": "Home: redesign region/trust strip (modern 2026 split panel)",
     "status": "completed"
   },
   {
-    "content": "Phase 2: Pages — Startseite, Leistungen (10 services), Über uns, Team, Impressum, Datenschutz, AGB + routing + JSON-LD",
+    "content": "ServiceCard: delete 'entdecken' CTA span + clean unused import",
     "status": "completed"
   },
   {
-    "content": "Phase 3: Technical SEO — robots.txt, sitemap.xml, manifest, self-hosted fonts, canonical/OG/JSON-LD verified",
+    "content": "ContactCTA: fix readability/contrast (redesign for legibility)",
     "status": "completed"
   },
   {
-    "content": "Phase 3: End-to-end testing via testing_agent_v3 — 100% pass, no issues",
+    "content": "Footer: complete modern 2026 redesign",
+    "status": "completed"
+  },
+  {
+    "content": "Verify build + visual check",
     "status": "completed"
   }
 ]

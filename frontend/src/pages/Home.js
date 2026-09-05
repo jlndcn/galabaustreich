@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Phone, Sprout, Users } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -27,13 +27,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:py-20">
           <div className="lg:col-span-6">
             <Reveal>
-              <span className="eyebrow inline-flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[color:var(--brand-leaf)]" strokeWidth={1.8} aria-hidden="true" />
-                Scharbeutz · Lübeck · Ostholstein
-              </span>
-            </Reveal>
-            <Reveal delay={80}>
-              <h1 className="mt-4 text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+              <h1 className="text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
                 Garten- und Landschaftspflege in und um Lübeck
               </h1>
             </Reveal>
@@ -64,14 +58,6 @@ export default function Home() {
                 </Link>
               </div>
             </Reveal>
-            <Reveal delay={260}>
-              <p className="mt-6 text-sm text-foreground/60">
-                Erreichbar unter{" "}
-                <a href={site.phone.href} className="font-semibold text-[color:var(--brand-forest)] hover:text-[color:var(--brand-accent-strong)]">
-                  {site.phone.display}
-                </a>
-              </p>
-            </Reveal>
           </div>
 
           <div className="lg:col-span-6">
@@ -99,9 +85,8 @@ export default function Home() {
         className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
       >
         <Reveal className="max-w-2xl">
-          <span className="eyebrow">Unsere Schwerpunkte</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl">
-            Womit wir am häufigsten gerufen werden
+          <h2 className="text-3xl sm:text-4xl">
+            Unsere gefragtesten Leistungen
           </h2>
           <p className="mt-4 text-foreground/75">
             Drei Leistungen, für die uns Privatkunden, Unternehmen und
@@ -142,27 +127,45 @@ export default function Home() {
 
       {/* Region / trust strip */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <Reveal className="surface-organic grain overflow-hidden rounded-3xl border border-border p-8 sm:p-12">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
-            <div>
+        <Reveal className="overflow-hidden rounded-3xl border border-border bg-white shadow-[0_1px_0_rgba(15,46,20,0.04)]">
+          <div className="grid grid-cols-1 lg:grid-cols-5">
+            <div className="relative p-8 sm:p-12 lg:col-span-3">
               <span className="eyebrow">Mit Wurzeln in der Region</span>
-              <p style={serif} className="mt-4 text-2xl leading-snug text-[color:var(--brand-forest)] sm:text-3xl">
+              <p style={serif} className="mt-5 text-3xl leading-tight text-[color:var(--brand-forest)] sm:text-4xl">
                 „Von der ersten Pflanze bis zum gewachsenen Garten.“
               </p>
-              <p className="mt-4 max-w-lg text-foreground/75">
+              <p className="mt-5 max-w-lg leading-relaxed text-foreground/70">
                 Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck
                 und Ostholstein für Sie im Einsatz – persönlich, zuverlässig und
                 mit einem Blick für das Schöne.
               </p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-              <Link to="/ueber-uns" className="link-underline text-sm">
-                Mehr über Streich erfahren
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <div className="flex flex-col justify-center gap-3 border-t border-border bg-[color:var(--brand-cream)] p-6 sm:p-8 lg:col-span-2 lg:border-l lg:border-t-0">
+              <Link
+                to="/ueber-uns"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-white px-5 py-4 transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(15,46,20,0.10)]"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[color:var(--accent)]">
+                  <Sprout className="h-5 w-5 text-[color:var(--brand-forest)]" strokeWidth={1.7} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-semibold text-[color:var(--brand-forest)]">Über Streich</span>
+                  <span className="block text-xs text-foreground/60">Wer hinter Streich steht</span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-[color:var(--brand-leaf)] transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </Link>
-              <Link to="/team" className="link-underline text-sm">
-                Unser Team kennenlernen
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <Link
+                to="/team"
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-white px-5 py-4 transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(15,46,20,0.10)]"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[color:var(--accent)]">
+                  <Users className="h-5 w-5 text-[color:var(--brand-forest)]" strokeWidth={1.7} aria-hidden="true" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block font-semibold text-[color:var(--brand-forest)]">Unser Team</span>
+                  <span className="block text-xs text-foreground/60">Familiär &amp; fachlich versiert</span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-[color:var(--brand-leaf)] transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </Link>
             </div>
           </div>
