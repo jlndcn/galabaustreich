@@ -125,15 +125,20 @@
 - `public/index.html` includes Emergent/PostHog scripts; this may conflict with statements like “kein Tracking”.
   - Before production: either **remove** tracking scripts or **update** the Datenschutzerklärung to accurately describe them.
 
+### Phase 6: E-Mail-Benachrichtigung, Google-Profil, Tracking-frei, Saisonhinweise — COMPLETED (tested: iteration_3, 25/25)
+- **E-Mail (SMTP, user choice)**: `backend/mailer.py` (stdlib smtplib, async via to_thread, STARTTLS/SSL/none). `POST /api/contact` triggers a BackgroundTask: notification to `MAIL_TO` (Reply-To = customer e-mail) + confirmation to the customer if e-mail given (user chose "Ja"). Flags `notification_sent` / `confirmation_sent` stored on the record. Graceful degradation when SMTP env is empty. Env placeholders appended to `backend/.env`: `SMTP_HOST, SMTP_PORT=587, SMTP_USER, SMTP_PASSWORD, SMTP_SECURITY=starttls, MAIL_FROM, MAIL_TO=info@garten-streich.de`. Protected `GET /api/contact/mail-status` (X-Admin-Token). **Open: user must supply real SMTP credentials; then `sudo supervisorctl restart backend`.**
+- **Google-Profil**: user-provided Knowledge-Panel URL stored in `site.google.profileUrl` (stripped `authuser`); used for all Google links + `hasMap` + `sameAs` in JSON-LD.
+- **Tracking-frei**: `public/index.html` rewritten – PostHog removed entirely; `emergent-main.js` only injected on `*.emergentagent.com` / `*.emergent.sh` / localhost hosts. Note: preview proxy additionally injects a Cloudflare Insights beacon (not part of our HTML).
+- **Saisonhinweise**: `src/data/seasons.js` (month -> service ids + note, based on general horticultural practice and § 39 BNatSchG cutting season) + `SeasonHint` component in Home contact section.
+- Datenschutz §5 updated (e-mail notification + Eingangsbestätigung).
+
 ---
 
 ## 3) Next Actions
 - Run a **full regression test** (frontend routes + mobile nav + SEO tags + inquiry form flow + backend contact endpoints).
-- Decide on **tracking posture**:
-  1) remove Emergent/PostHog scripts for a strict “no tracking” stance, or
-  2) document tracking accurately in Datenschutzerklärung.
+- Enter real SMTP credentials into `backend/.env` and restart backend; verify via `GET /api/contact/mail-status` and a test inquiry.
 - Client inputs:
-  1. Provide the real **Google Business Profile URL** (`site.google.profileUrl`) to replace the Maps-search fallback.
+  1. (done) Google Business Profile URL configured.
   2. Confirm final production domain (or update `site.domain`) and regenerate sitemap/robots if domain changes.
   3. Optional: provide final vector logo and real photos (if desired).
 

@@ -128,11 +128,15 @@ export default function Datenschutz() {
           <p>
             Die Daten werden verschlüsselt übertragen und in einer
             zugangsgeschützten Datenbank gespeichert, damit wir Ihre Anfrage
-            bearbeiten und uns bei Ihnen melden können. Ihre IP-Adresse wird
-            nicht zusammen mit Ihrer Anfrage gespeichert. Zur Abwehr
-            automatisierter Missbrauchsversuche wird die Anzahl der Absendungen
-            je Verbindung lediglich kurzzeitig und ohne dauerhafte Speicherung
-            technisch begrenzt.
+            bearbeiten und uns bei Ihnen melden können. Zusätzlich werden wir
+            über jede neue Anfrage per E-Mail an unser Postfach benachrichtigt;
+            haben Sie eine E-Mail-Adresse angegeben, erhalten Sie eine
+            automatische Eingangsbestätigung mit Ihren Angaben. Der Versand
+            erfolgt über den E-Mail-Server unseres E-Mail-Anbieters. Ihre
+            IP-Adresse wird nicht zusammen mit Ihrer Anfrage gespeichert. Zur
+            Abwehr automatisierter Missbrauchsversuche wird die Anzahl der
+            Absendungen je Verbindung lediglich kurzzeitig und ohne dauerhafte
+            Speicherung technisch begrenzt.
           </p>
           <p>
             Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung
@@ -204,7 +208,8 @@ export default function Datenschutz() {
             Unsere Website setzt keine eigenen Cookies ein und verwendet keine
             Analyse-, Tracking- oder Marketing-Werkzeuge. Es werden keine
             Nutzungsprofile erstellt und keine Daten zu Werbezwecken an Dritte
-            weitergegeben.
+            weitergegeben. Beim Absenden des Anfrageformulars wird lediglich
+            eine Datenverbindung zu unserem eigenen Server aufgebaut.
           </p>
         </LegalSection>
 

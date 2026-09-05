@@ -1,34 +1,26 @@
 [
   {
-    "content": "Typografie: Figtree (self-hosted, variabel) als klar lesbare Schrift einbinden; fonts.css, index.html, index.css aktualisieren",
+    "content": "Backend: SMTP-Mailer (stdlib smtplib, Hintergrundversand) – Benachrichtigung an info@ + Eingangsbestaetigung an Kunden; Env-Platzhalter in backend/.env; Admin-Statusendpunkt",
     "status": "completed"
   },
   {
-    "content": "Design-Klarheit: Eyebrows und Kacheln auf Home, Leistungen, Über uns, Team, ContactCTA, Footer, ServiceCard, LegalLayout, NotFound reduzieren; Kontraste erhöhen",
+    "content": "Google-Profil-URL bereinigt in site.js eintragen (profileUrl -> sameAs im JSON-LD)",
     "status": "completed"
   },
   {
-    "content": "Backend: POST /api/contact (Validierung, Honeypot, Rate-Limit, Mongo) + geschützter GET /api/contact",
+    "content": "Tracking entfernen: PostHog raus, Emergent-Skript nur auf Preview-Hosts laden (index.html)",
     "status": "completed"
   },
   {
-    "content": "Frontend: ContactForm-Komponente (shadcn Input/Textarea/Checkbox, Sonner) auf Startseite; Link aus ContactCTA",
+    "content": "Saisonhinweise: data/seasons.js + SeasonHint-Komponente im Kontaktbereich der Startseite",
     "status": "completed"
   },
   {
-    "content": "Google-Unternehmensprofil: konfigurierbarer Slot in site.js, Maps-Link in Footer/Kontakt/Impressum, hasMap/sameAs im JSON-LD",
+    "content": "Datenschutzerklaerung um E-Mail-Benachrichtigung/Eingangsbestaetigung ergaenzen",
     "status": "completed"
   },
   {
-    "content": "Rechtstexte: vollstaendige Datenschutzerklaerung (inkl. Formular, WhatsApp, Hosting, Google-Link) und AGB fuer Garten- und Landschaftspflege",
-    "status": "completed"
-  },
-  {
-    "content": "Build pruefen (esbuild), Screenshots, plan.md aktualisieren",
-    "status": "completed"
-  },
-  {
-    "content": "Testing-Agent: Backend-API + Frontend-Regression (Formular, Routen, Links)",
+    "content": "Build pruefen, Screenshots, plan.md aktualisieren, Testing-Agent",
     "status": "completed"
   }
 ]

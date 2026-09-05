@@ -38,11 +38,13 @@ export const site = {
   whatsapp: "https://wa.me/491773216077",
 
   // Google-Unternehmensprofil.
-  // profileUrl: Sobald die endgültige Profil-/Kurz-URL des Google-Unternehmensprofils vorliegt
-  // (z. B. https://g.page/... oder https://maps.app.goo.gl/...), hier eintragen.
-  // Bis dahin verweist der Google-Link auf die Google-Maps-Suche nach Firmenname und Anschrift.
+  // profileUrl: vom Kunden bereitgestellter Link zum Google-Unternehmensprofil (Knowledge Panel),
+  // bereinigt um persoenliche Parameter (authuser). Falls Google eine kuerzere Profil-URL
+  // (z. B. https://g.page/... oder https://maps.app.goo.gl/...) bereitstellt, kann sie hier ersetzt werden.
+  // mapsUrl: Fallback (Google-Maps-Suche nach Firmenname und Anschrift), falls profileUrl leer ist.
   google: {
-    profileUrl: null,
+    profileUrl:
+      "https://www.google.com/search?q=Garten-und+Landschaftspflege+B.Streich&stick=H4sIAAAAAAAA_-NgU1I1qDAxTzIyNzY1TEpKMTO2NDO1MqiwNEhMS0w2SzFOTTIxM0hKXsSq5p5YVJKap1ual6Lgk5iXUpyckZhWUlyQlpOanqrgpBdcUpSamZwBAFc9O-lSAAAA&hl=de&mat=CSolaoINfiISElYBa0lj_zsf8XbgU8aUIdYWT7QOKirBVd9II722658dIVku9qXJQZHN4GDbyZR5wUyujz2nKgD9xFxGD0_ih245Ea8b1QdfXjoONVYqXROmS7m3txRCEg",
     mapsUrl: `https://www.google.com/maps/search/?api=1&query=${addressQuery}`,
   },
 

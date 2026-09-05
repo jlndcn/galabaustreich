@@ -4,6 +4,7 @@ import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ContactForm } from "@/components/ContactForm";
+import { SeasonHint } from "@/components/SeasonHint";
 import { seoPages, buildLocalBusinessJsonLd } from "@/data/seo";
 import { services, keyServices, furtherServices } from "@/data/services";
 import { site, googleLink, contactPrompt } from "@/data/site";
@@ -249,6 +250,8 @@ export default function Home() {
               Auf Google ansehen
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
+
+            <SeasonHint className="mt-10" />
           </div>
 
           <div id="anfrage" className="lg:col-span-7 lg:border-l lg:border-border lg:pl-16">

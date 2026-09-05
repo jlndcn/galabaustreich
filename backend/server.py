@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Header, Query
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Header, Query, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -12,6 +12,8 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr, field_validator
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+
+from mailer import send_mail, build_notification, build_confirmation, mail_status, smtp_settings
 
 
 ROOT_DIR = Path(__file__).parent
@@ -91,12 +93,44 @@ class ContactRequest(BaseModel):
     page: Optional[str] = None
     status: str = "new"
     created_at: str
+    notification_sent: Optional[bool] = None
+    confirmation_sent: Optional[bool] = None
 
 
 class ContactResponse(BaseModel):
     id: str
     received: bool = True
     message: str = "Vielen Dank für Ihre Anfrage. Wir melden uns persönlich bei Ihnen."
+
+
+class MailStatus(BaseModel):
+    configured: bool
+    host: Optional[str] = None
+    port: int
+    security: str
+    mail_from: Optional[str] = None
+    mail_to: str
+
+
+async def deliver_contact_mails(doc: dict) -> None:
+    """Background task: notify the company and send the customer a receipt."""
+    subject, body = build_notification(doc)
+    notified = await send_mail(
+        to=smtp_settings()["mail_to"],
+        subject=subject,
+        body=body,
+        reply_to=doc.get("email") or None,
+    )
+
+    confirmed = None
+    if doc.get("email"):
+        c_subject, c_body = build_confirmation(doc)
+        confirmed = await send_mail(to=doc["email"], subject=c_subject, body=c_body)
+
+    await db.contact_requests.update_one(
+        {"id": doc["id"]},
+        {"$set": {"notification_sent": notified, "confirmation_sent": confirmed}},
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -160,8 +194,10 @@ async def get_status_checks():
 
 
 @api_router.post("/contact", response_model=ContactResponse, status_code=201)
-async def create_contact_request(payload: ContactRequestCreate, request: Request):
-    """Store an inquiry from the website contact form."""
+async def create_contact_request(
+    payload: ContactRequestCreate, request: Request, background_tasks: BackgroundTasks
+):
+    """Store an inquiry from the website contact form and notify by e-mail."""
     # Honeypot filled -> silently accept without storing (do not tip off bots).
     if payload.website:
         logger.info("Kontaktformular: Honeypot ausgelöst, Anfrage verworfen.")
@@ -198,7 +234,19 @@ async def create_contact_request(payload: ContactRequestCreate, request: Request
     }
     await db.contact_requests.insert_one(doc)
     logger.info("Neue Kontaktanfrage gespeichert: %s", doc["id"])
+    background_tasks.add_task(deliver_contact_mails, {k: v for k, v in doc.items() if k != "_id"})
     return ContactResponse(id=doc["id"])
+
+
+@api_router.get("/contact/mail-status", response_model=MailStatus)
+async def get_mail_status(x_admin_token: Optional[str] = Header(default=None)):
+    """Protected: shows whether SMTP notifications are configured (no secrets)."""
+    expected = os.environ.get("CONTACT_ADMIN_TOKEN")
+    if not expected:
+        raise HTTPException(status_code=503, detail="Admin-Zugriff ist nicht konfiguriert.")
+    if not x_admin_token or not secrets.compare_digest(x_admin_token, expected):
+        raise HTTPException(status_code=401, detail="Nicht autorisiert.")
+    return mail_status()
 
 
 @api_router.get("/contact", response_model=List[ContactRequest])
