@@ -1,0 +1,74 @@
+{
+  "summary": "Completed comprehensive testing of the redesigned German-only company website for Garten-und Landschaftspflege B.Streich. Tested both backend API (POST /api/contact with validation, honeypot, rate limiting, admin endpoint) and frontend (all 7 routes + 404, Figtree font, contact form, navigation, legal pages, SEO, static files). All critical functionality working correctly.",
+  "backend_issues": {
+    "critical_bugs": [],
+    "flaky_endpoints": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "passed_tests": [
+    "BACKEND: POST /api/contact with valid payload returns 201 with correct response structure",
+    "BACKEND: POST /api/contact with consent=false returns 400 with German error message",
+    "BACKEND: POST /api/contact without phone AND email returns 400 with German error message",
+    "BACKEND: POST /api/contact with invalid email returns 422 validation error",
+    "BACKEND: POST /api/contact with name < 2 chars returns 422 validation error",
+    "BACKEND: POST /api/contact with message < 10 chars returns 422 validation error",
+    "BACKEND: POST /api/contact with honeypot filled returns 201 but does NOT store record in database (verified via GET)",
+    "BACKEND: GET /api/contact without X-Admin-Token returns 401",
+    "BACKEND: GET /api/contact with correct X-Admin-Token returns 200 with list sorted newest first",
+    "BACKEND: GET /api/contact limit query parameter works correctly",
+    "BACKEND: Rate limit triggers 429 after 5 valid requests with German error message",
+    "FRONTEND: All 7 routes (/, /leistungen, /ueber-uns, /team, /impressum, /datenschutz, /agb) render without console errors",
+    "FRONTEND: 404 route renders correctly for unknown paths",
+    "FRONTEND: Figtree font loaded (document.fonts.check('16px Figtree') returns true, body font-family contains 'Figtree')",
+    "FRONTEND: No elements with class 'eyebrow' exist on any page",
+    "FRONTEND: Desktop header navigation has 4 main nav links (Startseite, Leistungen, Über uns, Team)",
+    "FRONTEND: Mobile navigation (390px width) - menu button opens Sheet menu correctly",
+    "FRONTEND: Home contact section has Google link (data-testid=home-google-link) with href starting with https://www.google.com/maps/search/ and target=_blank",
+    "FRONTEND: Hero link 'Anfrage über das Formular' (data-testid=home-hero-form-link) scrolls to #kontakt section",
+    "FRONTEND: Contact form shows German validation errors (role=alert) for empty name, contact (phone/email), message, and consent fields",
+    "FRONTEND: Contact form shows German validation error for invalid email format",
+    "FRONTEND: Contact form submission works (hit rate limit during test, which proves rate limiting is working end-to-end)",
+    "FRONTEND: Contact form reset button (data-testid=home-contact-form-reset-button) resets form after success",
+    "FRONTEND: /leistungen has sticky overview nav (data-testid=services-overview-nav) with 10 jump links (data-testid=service-jump-link)",
+    "FRONTEND: /leistungen has exactly 10 service sections (data-testid=service-section)",
+    "FRONTEND: /leistungen has inline contact hint (data-testid=services-inline-contact)",
+    "FRONTEND: /leistungen section #weitere-leistungen lists 'Hausmeisterdienste' and 'Terrassen- & Außenflächenreinigung'",
+    "FRONTEND: ContactCTA band link 'Zum Anfrageformular' navigates to /#kontakt and contact section is visible",
+    "FRONTEND: Home 'Weitere Leistungen' row (data-testid=home-further-services-link) navigates to /leistungen#weitere-leistungen",
+    "FRONTEND: Footer phone link (data-testid=footer-phone-link) has href tel:01773216077 and displays '0177 3216077'",
+    "FRONTEND: Footer WhatsApp link (data-testid=footer-whatsapp-link) has href https://wa.me/491773216077",
+    "FRONTEND: Footer email link (data-testid=footer-email-link) has href mailto:info@garten-streich.de",
+    "FRONTEND: Footer address text (data-testid=footer-address-text) contains 'Dorfstraße 12' and '23684 Scharbeutz'",
+    "FRONTEND: Footer Google link (data-testid=footer-google-link) has correct href and target=_blank",
+    "FRONTEND: /datenschutz shows full policy with headings '5. Anfrageformular', '6. Kontakt über WhatsApp', 'Stand: September 2026' (data-testid=legal-stand), no text 'vorläufige' or 'in Vorbereitung'",
+    "FRONTEND: /agb shows '§ 1 Geltungsbereich' through '§ 14 Schlussbestimmungen', includes 'Widerrufsbelehrung' and 'Muster-Widerrufsformular', 'Stand: September 2026'",
+    "FRONTEND: /agb has Datenschutzerklärung link that navigates client-side to /datenschutz",
+    "FRONTEND: /impressum contains USt-IdNr 'DE415720615', does NOT contain 'Steuernummer', contains Google link (data-testid=impressum-google-link)",
+    "FRONTEND: Home page has route-specific <title> 'Garten- & Landschaftspflege Lübeck | Streich', meta description (188 chars), canonical link https://garten-streich.de/, robots meta 'noindex,nofollow' (preview host)",
+    "FRONTEND: Home page has JSON-LD script#ld-json-main with @type 'HomeAndConstructionBusiness' and 'hasMap' property",
+    "FRONTEND: /leistungen, /ueber-uns, /team pages correctly do NOT have JSON-LD script",
+    "FRONTEND: All routes have route-specific titles: /leistungen='Gartenpflege, Baumfällung & Heckenpflege | Streich', /ueber-uns contains 'Über uns', /team='Unser Team', /impressum='Impressum', /datenschutz='Datenschutzerklärung', /agb='AGB'",
+    "FRONTEND: All routes have correct canonical links pointing to https://garten-streich.de/<path>",
+    "FRONTEND: Static file /robots.txt returns 200 (2065 bytes)",
+    "FRONTEND: Static file /sitemap.xml returns 200 (1026 bytes)",
+    "FRONTEND: Static file /fonts.css returns 200 (1009 bytes)",
+    "FRONTEND: Static file /fonts/figtree-variable.woff2 returns 200 (20156 bytes)"
+  ],
+  "test_report_links": [
+    "/app/backend_test.py"
+  ],
+  "action_item_for_main_agent": "",
+  "updated_files": [
+    "/app/backend_test.py"
+  ],
+  "success_percentage": {
+    "backend": "100% (12/12 tests passed)",
+    "frontend": "100% (46/46 tests passed)"
+  },
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_test_itself": false
+}

@@ -1,26 +1,34 @@
 [
   {
-    "content": "Home: delete hero eyebrow, delete 'Erreichbar unter' line, delete 'Unsere Schwerpunkte' eyebrow, reformulate h2, update imports",
+    "content": "Typografie: Figtree (self-hosted, variabel) als klar lesbare Schrift einbinden; fonts.css, index.html, index.css aktualisieren",
     "status": "completed"
   },
   {
-    "content": "Home: redesign region/trust strip (modern 2026 split panel)",
+    "content": "Design-Klarheit: Eyebrows und Kacheln auf Home, Leistungen, Über uns, Team, ContactCTA, Footer, ServiceCard, LegalLayout, NotFound reduzieren; Kontraste erhöhen",
     "status": "completed"
   },
   {
-    "content": "ServiceCard: delete 'entdecken' CTA span + clean unused import",
+    "content": "Backend: POST /api/contact (Validierung, Honeypot, Rate-Limit, Mongo) + geschützter GET /api/contact",
     "status": "completed"
   },
   {
-    "content": "ContactCTA: fix readability/contrast (redesign for legibility)",
+    "content": "Frontend: ContactForm-Komponente (shadcn Input/Textarea/Checkbox, Sonner) auf Startseite; Link aus ContactCTA",
     "status": "completed"
   },
   {
-    "content": "Footer: complete modern 2026 redesign",
+    "content": "Google-Unternehmensprofil: konfigurierbarer Slot in site.js, Maps-Link in Footer/Kontakt/Impressum, hasMap/sameAs im JSON-LD",
     "status": "completed"
   },
   {
-    "content": "Verify build + visual check",
+    "content": "Rechtstexte: vollstaendige Datenschutzerklaerung (inkl. Formular, WhatsApp, Hosting, Google-Link) und AGB fuer Garten- und Landschaftspflege",
+    "status": "completed"
+  },
+  {
+    "content": "Build pruefen (esbuild), Screenshots, plan.md aktualisieren",
+    "status": "completed"
+  },
+  {
+    "content": "Testing-Agent: Backend-API + Frontend-Regression (Formular, Routen, Links)",
     "status": "completed"
   }
 ]

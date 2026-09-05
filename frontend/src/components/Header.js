@@ -18,10 +18,10 @@ export const Header = () => {
   }, []);
 
   const navLinkClass = ({ isActive }) =>
-    `relative py-2 text-sm font-medium transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-[color:var(--brand-accent)] after:transition-all ${
+    `relative py-2 text-[15px] font-semibold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-[color:var(--brand-accent)] after:transition-all ${
       isActive
         ? "text-[color:var(--brand-forest)] after:w-full"
-        : "text-foreground/70 hover:text-[color:var(--brand-forest)] after:w-0 hover:after:w-full"
+        : "text-[color:var(--brand-ink-soft)] hover:text-[color:var(--brand-forest)] after:w-0 hover:after:w-full"
     }`;
 
   const iconBtn =
@@ -132,7 +132,7 @@ export const Header = () => {
                   </nav>
                   <div className="mt-auto border-t border-border px-6 py-6">
                     <ContactActions prefix="mobile-menu" tone="onLight" full />
-                    <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-foreground/60">
+                    <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[color:var(--brand-ink-soft)]">
                       {legalNav.map((l) => (
                         <SheetClose asChild key={l.path}>
                           <Link to={l.path} className="hover:text-[color:var(--brand-forest)]">

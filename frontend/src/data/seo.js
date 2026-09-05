@@ -1,11 +1,11 @@
 // Per-page SEO metadata, centrally defined.
-import { site } from "@/data/site";
+import { site, googleLink } from "@/data/site";
 
 export const seoPages = {
   home: {
     title: "Garten- & Landschaftspflege Lübeck | Streich",
     description:
-      "Garten- und Landschaftspflege Streich für Lübeck und Ostholstein: Gartenpflege, Heckenpflege, Rasenpflege, Baumfällungen und weitere Arbeiten rund um Garten und Grundstück.",
+      "Garten- und Landschaftspflege Streich für Lübeck und Ostholstein: Gartenpflege, Heckenpflege, Rasenpflege, Baumfällungen und weitere Arbeiten rund um Garten und Grundstück. Jetzt anfragen.",
     path: "/",
   },
   leistungen: {
@@ -33,15 +33,15 @@ export const seoPages = {
     path: "/impressum",
   },
   datenschutz: {
-    title: "Datenschutz | Garten- und Landschaftspflege Streich",
+    title: "Datenschutzerklärung | Garten- und Landschaftspflege Streich",
     description:
-      "Datenschutzinformationen der Garten-und Landschaftspflege B.Streich.",
+      "Datenschutzerklärung der Garten-und Landschaftspflege B.Streich: Informationen zur Verarbeitung personenbezogener Daten auf dieser Website.",
     path: "/datenschutz",
   },
   agb: {
     title: "AGB | Garten- und Landschaftspflege Streich",
     description:
-      "Allgemeine Geschäftsbedingungen der Garten-und Landschaftspflege B.Streich.",
+      "Allgemeine Geschäftsbedingungen der Garten-und Landschaftspflege B.Streich für Garten- und Landschaftspflegeleistungen.",
     path: "/agb",
   },
 };
@@ -49,7 +49,7 @@ export const seoPages = {
 // JSON-LD LocalBusiness structured data (no opening hours, ratings, socials, prices – none invented).
 export function buildLocalBusinessJsonLd() {
   const base = site.domain.replace(/\/$/, "");
-  return {
+  const data = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "@id": base + "/#business",
@@ -71,6 +71,7 @@ export function buildLocalBusinessJsonLd() {
       addressLocality: site.address.city,
       addressCountry: site.address.countryCode,
     },
+    hasMap: googleLink,
     areaServed: [
       { "@type": "City", name: "Lübeck" },
       { "@type": "AdministrativeArea", name: "Ostholstein" },
@@ -86,5 +87,18 @@ export function buildLocalBusinessJsonLd() {
       "Objekt- und Grundstückspflege",
       "Winterdienst",
     ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: site.phone.intl,
+      email: site.email,
+      availableLanguage: "de",
+      areaServed: "DE",
+    },
   };
+  // Only reference the Google Business Profile once its real URL is configured.
+  if (site.google.profileUrl) {
+    data.sameAs = [site.google.profileUrl];
+  }
+  return data;
 }

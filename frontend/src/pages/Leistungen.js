@@ -1,70 +1,76 @@
+import { Check, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
-import { BrandSurface } from "@/components/BrandSurface";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 import { services, furtherServices } from "@/data/services";
-import { getServiceIcon, getServiceMotif } from "@/components/serviceIcons";
+import { site } from "@/data/site";
 
-const serif = { fontFamily: "'Cormorant Garamond', ui-serif, Georgia, serif" };
-
-function ServiceSection({ service, index }) {
-  const Icon = getServiceIcon(service.id);
-  const motif = getServiceMotif(service.id);
-  const flip = index % 2 === 1;
-  const num = String(index + 1).padStart(2, "0");
-
+function ServiceSection({ service }) {
   return (
-    <section id={service.id} data-testid="service-section" className="scroll-mt-28">
+    <section
+      id={service.id}
+      data-testid="service-section"
+      className="scroll-mt-28 py-10 first:pt-0 lg:py-12"
+    >
       <Reveal>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-          <div className={flip ? "lg:order-2" : ""}>
-            <BrandSurface
-              ratioClass="aspect-[4/3]"
-              variant={service.highlight ? "forest" : "organic"}
-              icon={Icon}
-              label={motif}
-            />
-          </div>
-          <div className={flip ? "lg:order-1" : ""}>
-            <div className="flex items-center gap-3">
-              <span className="eyebrow">{num}</span>
-              {service.highlight && (
-                <span className="eyebrow rounded-full bg-[rgba(15,187,130,0.12)] px-3 py-1 !text-[color:var(--brand-accent-strong)]">
-                  Schwerpunkt
-                </span>
-              )}
-            </div>
-            <h2 className="mt-3 text-3xl sm:text-4xl">{service.title}</h2>
-            <p style={serif} className="mt-2 text-xl italic text-[color:var(--brand-leaf)]">
-              {service.claim}
-            </p>
-            <div className="mt-5 space-y-4 text-foreground/80">
-              {service.description.map((para, i) => (
-                <p key={i} className="leading-relaxed">
-                  {para}
-                </p>
-              ))}
-            </div>
-            {service.list && (
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {service.list.map((item) => (
-                  <li
-                    key={item}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1 text-sm text-[color:var(--brand-forest)]"
-                  >
-                    <Check className="h-3.5 w-3.5 text-[color:var(--brand-accent-strong)]" strokeWidth={2.4} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+        <h2 className="text-3xl sm:text-4xl">{service.title}</h2>
+        <p className="mt-3 text-xl font-medium text-[color:var(--brand-leaf)]">
+          {service.claim}
+        </p>
+        <div className="mt-5 max-w-3xl space-y-4 text-lg leading-relaxed text-muted-foreground">
+          {service.description.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
         </div>
+        {service.list && (
+          <ul className="mt-6 grid max-w-2xl grid-cols-1 gap-2 sm:grid-cols-2">
+            {service.list.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-2.5 text-base text-[color:var(--brand-ink)]"
+              >
+                <Check
+                  className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
+                  strokeWidth={2.4}
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
       </Reveal>
     </section>
+  );
+}
+
+// Short contact hint placed between the service sections (plain text, no box).
+function InlineContact() {
+  return (
+    <aside
+      data-testid="services-inline-contact"
+      className="my-4 border-l-2 border-[color:var(--brand-accent)] pl-5 lg:my-6"
+    >
+      <p className="text-lg font-semibold text-[color:var(--brand-forest)]">
+        Sie haben eine Frage zu einer Leistung?
+      </p>
+      <p className="mt-1 text-base text-muted-foreground">
+        Rufen Sie uns an oder senden Sie uns eine kurze Anfrage – wir beraten
+        Sie persönlich.
+      </p>
+      <div className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+        <a href={site.phone.href} className="text-link text-base">
+          <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+          {site.phone.display}
+        </a>
+        <Link to="/#kontakt" className="text-link text-base">
+          Zum Anfrageformular
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
+    </aside>
   );
 }
 
@@ -78,82 +84,102 @@ export default function Leistungen() {
       />
 
       {/* Intro */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <section className="mx-auto max-w-6xl px-4 pb-10 pt-14 sm:px-6 lg:px-8 lg:pb-14 lg:pt-20">
         <Reveal className="max-w-3xl">
-          <span className="eyebrow">Leistungen</span>
-          <h1 className="mt-4 text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
             Unsere Leistungen rund um Garten und Grünflächen
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-foreground/80 sm:text-lg">
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
             Von der regelmäßigen Pflege bis zur Neugestaltung: Wir begleiten
             Gärten, Grünflächen und Grundstücke in Lübeck und Ostholstein durch
             das ganze Gartenjahr – abgestimmt auf Ihre Fläche und Ihren Bedarf.
           </p>
         </Reveal>
+      </section>
 
-        {/* Quick jump */}
-        <Reveal delay={120} className="mt-8 flex flex-wrap gap-2">
-          {services.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="inline-flex items-center rounded-full border border-border bg-white px-4 py-2 text-sm text-foreground/75 transition-colors hover:border-[color:var(--brand-accent)] hover:text-[color:var(--brand-forest)]"
+      {/* Overview + sections */}
+      <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          <aside className="lg:col-span-4 xl:col-span-3">
+            <nav
+              aria-label="Leistungsübersicht"
+              data-testid="services-overview-nav"
+              className="lg:sticky lg:top-28"
             >
-              {s.title}
-            </a>
-          ))}
-        </Reveal>
-      </section>
+              <h2 className="text-lg">Übersicht</h2>
+              <ol className="mt-3 border-t border-border">
+                {services.map((s, i) => (
+                  <li key={s.id} className="border-b border-border">
+                    <a
+                      href={`#${s.id}`}
+                      data-testid="service-jump-link"
+                      className="flex items-baseline gap-3 py-2.5 text-base text-[color:var(--brand-ink-soft)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
+                    >
+                      <span className="w-6 shrink-0 text-sm font-semibold tabular-nums text-[color:var(--brand-leaf)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </aside>
 
-      {/* First three services */}
-      <div className="mx-auto max-w-6xl space-y-16 px-4 sm:px-6 lg:space-y-24 lg:px-8">
-        {services.slice(0, 3).map((s, i) => (
-          <ServiceSection key={s.id} service={s} index={i} />
-        ))}
+          <div className="lg:col-span-8 xl:col-span-9">
+            <div className="divide-y divide-border">
+              {services.slice(0, 3).map((s) => (
+                <ServiceSection key={s.id} service={s} />
+              ))}
+            </div>
+
+            <InlineContact />
+
+            <div className="divide-y divide-border border-t border-border">
+              {services.slice(3).map((s) => (
+                <ServiceSection key={s.id} service={s} />
+              ))}
+            </div>
+
+            {/* Weitere Leistungen */}
+            <section
+              id="weitere-leistungen"
+              data-testid="further-services-section"
+              className="border-t border-border pt-10 lg:pt-12"
+            >
+              <Reveal>
+                <h2 className="text-3xl sm:text-4xl">Weitere Leistungen</h2>
+                <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                  Zusätzlich zu unseren Garten- und Landschaftsleistungen bieten wir an:
+                </p>
+                <ul className="mt-5 space-y-2">
+                  {furtherServices.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2.5 text-lg font-medium text-[color:var(--brand-forest)]"
+                    >
+                      <Check
+                        className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
+                        strokeWidth={2.4}
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-base text-muted-foreground">
+                  Sie möchten wissen, wer hinter Streich steht?{" "}
+                  <Link to="/ueber-uns" className="text-link text-base">
+                    Mehr über Streich erfahren
+                  </Link>
+                </p>
+              </Reveal>
+            </section>
+          </div>
+        </div>
       </div>
 
-      <div className="my-16 lg:my-24">
-        <ContactCTA prefix="services-mid-cta" />
-      </div>
-
-      {/* Remaining services */}
-      <div className="mx-auto max-w-6xl space-y-16 px-4 sm:px-6 lg:space-y-24 lg:px-8">
-        {services.slice(3).map((s, i) => (
-          <ServiceSection key={s.id} service={s} index={i + 3} />
-        ))}
-      </div>
-
-      {/* Weitere Leistungen */}
-      <section className="mx-auto max-w-6xl px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
-        <Reveal className="rounded-3xl border border-border bg-white p-8 sm:p-12">
-          <span className="eyebrow">Weitere Leistungen</span>
-          <h2 className="mt-3 text-2xl sm:text-3xl">Darüber hinaus für Sie da</h2>
-          <p className="mt-4 max-w-2xl text-foreground/75">
-            Zusätzlich zu unseren Garten- und Landschaftsleistungen bieten wir an:
-          </p>
-          <ul className="mt-6 flex flex-wrap gap-3">
-            {furtherServices.map((item) => (
-              <li
-                key={item}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-[color:var(--brand-cream)] px-4 py-2 text-sm font-medium text-[color:var(--brand-forest)]"
-              >
-                <Check className="h-4 w-4 text-[color:var(--brand-accent-strong)]" strokeWidth={2.2} aria-hidden="true" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-sm text-foreground/60">
-            Sie haben eine Frage zu einer bestimmten Leistung?{" "}
-            <Link to="/ueber-uns" className="link-underline text-sm">
-              Mehr über Streich erfahren
-            </Link>
-          </p>
-        </Reveal>
-      </section>
-
-      <div className="mt-16 lg:mt-24">
-        <ContactCTA prefix="services-contact-cta" />
-      </div>
+      <ContactCTA prefix="services-contact-cta" />
     </div>
   );
 }

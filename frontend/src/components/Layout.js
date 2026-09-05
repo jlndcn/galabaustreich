@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { Toaster } from "@/components/ui/sonner";
 
 export const Layout = () => (
   <div className="App">
@@ -11,5 +12,6 @@ export const Layout = () => (
       <Outlet />
     </main>
     <Footer />
+    <Toaster theme="light" position="bottom-right" closeButton />
   </div>
 );

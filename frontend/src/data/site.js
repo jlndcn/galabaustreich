@@ -3,6 +3,10 @@
 
 export const PRODUCTION_HOST = "garten-streich.de";
 
+const addressQuery = encodeURIComponent(
+  "Garten-und Landschaftspflege B.Streich, Dorfstraße 12, 23684 Scharbeutz"
+);
+
 export const site = {
   displayName: "Garten- und Landschaftspflege Streich",
   legalName: "Garten-und Landschaftspflege B.Streich",
@@ -33,12 +37,24 @@ export const site = {
   // WhatsApp deep link (no bot, no prefilled AI text) – country code without leading 0.
   whatsapp: "https://wa.me/491773216077",
 
+  // Google-Unternehmensprofil.
+  // profileUrl: Sobald die endgültige Profil-/Kurz-URL des Google-Unternehmensprofils vorliegt
+  // (z. B. https://g.page/... oder https://maps.app.goo.gl/...), hier eintragen.
+  // Bis dahin verweist der Google-Link auf die Google-Maps-Suche nach Firmenname und Anschrift.
+  google: {
+    profileUrl: null,
+    mapsUrl: `https://www.google.com/maps/search/?api=1&query=${addressQuery}`,
+  },
+
   // Local SEO – confirmed service areas only.
   areaServed: ["Lübeck", "Ostholstein"],
 
   // Canonical base URL (no trailing slash). Configurable – preferred final domain.
   domain: "https://garten-streich.de",
 };
+
+// Public Google link (profile if configured, otherwise Maps search for name + address).
+export const googleLink = site.google.profileUrl || site.google.mapsUrl;
 
 export const mainNav = [
   { label: "Startseite", path: "/" },

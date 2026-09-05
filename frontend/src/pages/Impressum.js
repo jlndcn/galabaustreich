@@ -1,7 +1,8 @@
+import { ExternalLink } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { LegalLayout, LegalSection } from "@/components/LegalLayout";
 import { seoPages } from "@/data/seo";
-import { site } from "@/data/site";
+import { site, googleLink } from "@/data/site";
 
 export default function Impressum() {
   return (
@@ -11,7 +12,7 @@ export default function Impressum() {
         description={seoPages.impressum.description}
         path={seoPages.impressum.path}
       />
-      <LegalLayout eyebrow="Rechtliches" title="Impressum">
+      <LegalLayout title="Impressum">
         <LegalSection title="Angaben gemäß § 5 DDG">
           <p>
             <strong>{site.legalName}</strong>
@@ -37,6 +38,18 @@ export default function Impressum() {
             E-Mail:{" "}
             <a href={`mailto:${site.email}`} className="link-underline">
               {site.email}
+            </a>
+          </p>
+          <p>
+            <a
+              href={googleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="impressum-google-link"
+              className="link-underline inline-flex items-center gap-1.5"
+            >
+              Unser Unternehmen auf Google
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
           </p>
         </LegalSection>
@@ -79,6 +92,17 @@ export default function Impressum() {
             Wir sind nicht bereit oder verpflichtet, an
             Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
             teilzunehmen.
+          </p>
+        </LegalSection>
+
+        <LegalSection title="Haftung für Inhalte und Links">
+          <p>
+            Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
+            Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
+            können wir jedoch keine Gewähr übernehmen. Unsere Website enthält
+            Links zu externen Websites Dritter, auf deren Inhalte wir keinen
+            Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige
+            Anbieter oder Betreiber der Seiten verantwortlich.
           </p>
         </LegalSection>
       </LegalLayout>

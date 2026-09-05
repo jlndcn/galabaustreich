@@ -1,130 +1,156 @@
 # plan.md (UPDATED)
 
 ## 1) Objectives
-- Deliver a complete, modern, trustworthy, responsive **German-only** company website for **Garten-und Landschaftspflege B.Streich** (Marke: **Streich**) as a **React SPA** on the existing stack (**React + FastAPI**, MongoDB present but not required for v1).
-- Maintain strict content fidelity: **use the provided German texts/claims**; **do not invent** services, qualifications, history, reviews, opening hours, staff names/photos.
-- Implement strong **Local SEO** for **Lübeck, Scharbeutz, Ostholstein** (natural wording, no keyword-stuffing) via:
+- Deliver a complete, modern, trustworthy, responsive **German-only** company website for **Garten-und Landschaftspflege B.Streich** (Marke: **Streich**) as a **React SPA** on the existing stack (**React + FastAPI**, MongoDB available).
+- Maintain strict content fidelity for business facts: **do not invent** services, qualifications, history, reviews, opening hours, staff names/photos, prices, or project references.
+- Implement strong **Local SEO** for **Lübeck, Scharbeutz, Ostholstein** (natural wording) via:
   - per-page titles/descriptions, canonical URLs, Open Graph
   - JSON-LD structured data
   - `sitemap.xml` + `robots.txt`
-- Respect the image constraint: **no photos** → use premium **brand-consistent gradient/texture placeholder surfaces** with fixed aspect ratios (avoid CLS).
-- Use the **client-provided logo** (PNG) and provide an **exchangeable logo slot** via `/frontend/public/*` assets.
+- Respect the image constraint: **no photos** → use restrained brand surfaces only where needed, with fixed aspect ratios (avoid CLS).
+- Use the **client-provided logo** (PNG) and keep an **exchangeable logo slot** via `/frontend/public/*` assets.
+- Ensure **clear readability**: reduce decorative labels/"eyebrows" and avoid tile-heavy layouts; use a highly legible typeface.
+- Provide contact via **phone, email, WhatsApp**, plus (as requested) a **lean inquiry form** (no booking/payment).
 
-**Status:** V1 complete, polished, and tested (100% pass).
+**Status:** V1 delivered earlier. Phase 5 enhancements implemented (design clarity, readable font, final legal pages, Google link integration, contact form + API). Pending: regression test run and policy/analytics alignment check.
+
+---
 
 ## 2) Implementation Steps
 
 ### Phase 1: Core function/feature POC (Isolation) — skipped
-- No external integrations/AI/auth/payments/forms; complexity is straightforward; proceed directly to build.
+- Proceeded directly to build due to low complexity.
 
 ### Phase 2: V1 App Development (React SPA + minimal FastAPI)
 **User stories (UX-critical)**
 1. Visitor understands **Wer/Was/Wo** (Streich, Leistungen, Region) within seconds on the Startseite.
 2. Visitor can contact via **Anruf / WhatsApp / E-Mail** with one tap (header + CTAs).
-3. Visitor can scan the **3 wichtigsten Leistungen** (Gartenpflege, Heckenrückschnitt, Baumfällungen) and jump to `/leistungen`.
-4. Visitor can read all **10 Leistungen** with clear structure (H2 sections) and consistent claims.
-5. Visitor can find **Impressum/Datenschutz/AGB** quickly via footer; NAP is consistent site-wide.
+3. Visitor can scan the **3 wichtigsten Leistungen** and jump to `/leistungen`.
+4. Visitor can read all **10 Leistungen** with clear structure and consistent claims.
+5. Visitor can find **Impressum/Datenschutz/AGB** quickly; NAP is consistent site-wide.
 
 **Frontend foundation (implemented)**
 - Central configs/data modules:
-  - `src/data/site.js` (NAP: legalName, address, phone, email, WhatsApp; areaServed only Lübeck/Ostholstein; **domain configurable** `site.domain` set to `https://garten-streich.de`)
-  - `src/data/services.js` (single source of truth for the **10 services** with claims + descriptions, highlights)
+  - `src/data/site.js` (NAP; areaServed; **domain configurable** `site.domain` = `https://garten-streich.de`)
+  - `src/data/services.js` (single source of truth for the **10 services** + furtherServices)
   - `src/data/seo.js` (per-route SEO metadata + JSON-LD builder)
 - Design system:
-  - `src/index.css` brand tokens mapped to shadcn HSL tokens (cream canvas, forest greens, ink, #0FBB82 accent)
-  - IntersectionObserver-based **Reveal** animation (Soft Organic Motion, respects `prefers-reduced-motion`)
+  - `src/index.css` brand tokens + improved readability defaults
+  - IntersectionObserver-based **Reveal** animation (respects `prefers-reduced-motion`)
 - SEO head management:
-  - Custom `Seo` component (React 19 friendly; no Helmet dependency) for per-page title/description/canonical/OG
-  - `robots` meta auto-switch: **noindex** on preview/staging host; intended **index** on `garten-streich.de`
-  - JSON-LD included on Startseite only
+  - Custom `Seo` component (no Helmet) for title/description/canonical/OG
+  - `robots` meta auto-switch: **noindex** on preview/staging; intended **index** on `garten-streich.de`
 
 **Components (implemented)**
-- `Logo` (exchangeable public assets: `logo-header.webp`, `logo-hero.webp`, `logo*.png`)
-- `Header` (sticky; desktop nav + contact cluster; mobile Sheet menu with large touch targets)
-- `Footer` (dark forest; consistent NAP + legal links)
-- `ContactActions` + recurring `ContactCTA` block (tel / wa.me / mailto; **no forms**)
-- `BrandSurface` premium placeholder panels (fixed ratios to avoid CLS)
-- `ServiceCard` (key/teaser variants)
-- `ScrollToTop` (route changes + anchor scrolling)
-- `LegalLayout` for legal pages
+- `Logo` (public assets: `logo-header.webp`, `logo-hero.webp`, `logo*.png`)
+- `Header` (sticky; desktop nav + contact cluster; mobile Sheet)
+- `Footer` (NAP + legal links + Google link)
+- `ContactActions` (tel / WhatsApp / mail)
+- `ContactCTA` (full-bleed, high-contrast band)
+- `ServiceCard` (now non-tile: hairline-separated entries)
+- `ContactForm` (lean inquiry form on Home)
+- `ScrollToTop`
+- `LegalLayout`
 
 **Pages (implemented; exactly 7 + 404 route)**
 - `/` Startseite
-  - H1: **"Garten- und Landschaftspflege in und um Lübeck"**
-  - Intro text close to the provided wording
-  - 3 highlighted key services (Gartenpflege, Heckenrückschnitt, Baumfällungen)
-  - Teaser grid of remaining services + internal links
 - `/leistungen`
-  - H1: **"Unsere Leistungen rund um Garten und Grünflächen"**
-  - Intro with natural Lübeck/Ostholstein mention
-  - Quick-jump chips
-  - Exactly 10 services as H2 sections, claims/texts faithful
-  - "Weitere Leistungen" mention only: Hausmeisterdienste; Terrassen- & Außenflächenreinigung
-  - Mid + end recurring contact CTA
-- `/ueber-uns` (confirmed facts only: Bianca Streich, Einzelunternehmen, Scharbeutz, Lübeck/Ostholstein)
-- `/team` (familiär; general qualifications only; no names/photos)
-- `/impressum` (includes USt-IdNr **DE415720615**; **no Steuernummer/Wirtschafts-IdNr**; no invented register/authority)
-- `/datenschutz` (preliminary, honest placeholder; minimal external services)
-- `/agb` (in Vorbereitung; no invented clauses)
-- `*` 404 NotFound page (not indexed on preview due to robots meta)
+- `/ueber-uns`
+- `/team`
+- `/impressum`
+- `/datenschutz`
+- `/agb`
+- `*` 404
 
 **Backend (FastAPI)**
-- Left minimal; no required API calls from frontend (site is static content SPA).
+- V1 originally minimal.
 
 ### Phase 3: Technical SEO finalization + polish
 **User stories**
-1. Search engines can discover the 7 pages via `sitemap.xml` and see correct canonical URLs.
+1. Search engines can discover the pages via `sitemap.xml` and see correct canonical URLs.
 2. Site feels fast and stable (no layout jumps; calm motion).
 3. Admin can change the domain once (`site.domain`) and canonicals/OG/JSON-LD update.
-4. NAP is consistent everywhere; contact CTAs always available.
-5. Logo assets can be swapped by replacing files in `/frontend/public/`.
+4. NAP is consistent everywhere.
 
 **Tasks (implemented)**
-- Static SEO files in `/public`:
-  - `sitemap.xml` (7 URLs, pointing to `https://garten-streich.de/...`)
-  - `robots.txt`
-  - `manifest.json`
-- Generated brand assets from client logo:
-  - `favicon.ico`, `favicon-64.png`, `logo192.png`, `logo512.png`, `og-image.jpg`
-  - optimized logo variants: `logo-header.webp`, `logo-hero.webp`, `logo-transparent.png`
-- **Self-hosted fonts** for privacy + performance:
-  - WOFF2 latin subset stored in `/public/fonts/`
-  - `public/fonts.css` loaded from `index.html` + preload of key files
-- Verified per-route SEO head + JSON-LD:
-  - correct titles/descriptions/canonical/OG
-  - staging auto noindex; production host intended index
+- Static SEO files in `/public`: `sitemap.xml`, `robots.txt`, `manifest.json`
+- Generated brand assets: favicons + `og-image.jpg`
+- Self-hosted fonts (privacy/performance)
 
-**Testing (completed)**
-- `testing_agent_v3` iteration_1: **100% frontend pass**, 0 issues
-  - all routes render
-  - desktop + mobile nav works
-  - tel / WhatsApp / mailto links correct
-  - Leistungen anchors + quick-jump work
-  - footer NAP correct
-  - SEO head present per route, JSON-LD on home only
-  - Impressum contains USt-Id and does not contain Steuernummer
-  - static files serve: `/robots.txt`, `/sitemap.xml`, `/fonts.css`
+**Testing (completed for V1, pre-Phase-5)**
+- `testing_agent_v3` iteration_1: **100% frontend pass**, 0 issues.
 
-### Phase 4+: Optional enhancements (only if requested)
+---
+
+### Phase 5: Readability + Legal + Google + Inquiry Form (requested) — COMPLETED (tested: iteration_2, backend 12/12, frontend 46/46)
 **User stories**
-1. Admin can swap in **real photos** later without redesign (placeholders already sized).
-2. Admin can add a contact form (only if explicitly approved).
-3. Admin can manage texts via CMS/admin UI (then use MongoDB).
-4. Add Google Business Profile link (only if provided/confirmed).
-5. Convert/replace logo with final vector (SVG/PDF/AI) when delivered.
+1. Visitors can read the site comfortably (clear font, less visual noise).
+2. Legal pages are final (Datenschutz + AGB), consistent with actual features.
+3. Google presence is linked for stronger local visibility.
+4. Users can send a short inquiry without calling (form), while still offering phone/WhatsApp/email.
+
+**Design/UX changes (implemented)**
+- **Typography:** switched to **Figtree variable** (self-hosted) for headings and body.
+  - Files: `/frontend/public/fonts/figtree-variable*.woff2`
+  - CSS: `/frontend/public/fonts.css`, referenced in `public/index.html` with preload.
+- **Reduced “eyebrows” and tiles:** removed reliance on `.eyebrow` labels and replaced tile-heavy blocks with clearer, hairline-separated lists and simple columns.
+  - Home: key services as column blocks; additional services as list; dedicated contact section with form.
+  - Leistungen: sticky TOC + section list; simplified sections; fewer decorative surfaces.
+  - Über uns: facts via `dl` (no cards), values as simple columns.
+  - Team: simple columns and list.
+  - Footer: plain column layout, improved legibility.
+
+**Google-Unternehmensprofil integration (implemented)**
+- Added `site.google.profileUrl` (currently `null`) + fallback `mapsUrl` (Maps search by business name/address).
+- Exposed `googleLink` used in:
+  - Footer, Home contact section, Impressum
+- SEO/JSON-LD:
+  - `hasMap` uses `googleLink`
+  - `sameAs` is included **only if** `profileUrl` is set
+
+**Inquiry form + API (implemented)**
+- Frontend: `ContactForm` on `/` at `#kontakt` / `#anfrage`
+  - Validations: name, message, at least one of phone/email, consent checkbox
+  - Sonner toasts for success/failure
+- Backend:
+  - `POST /api/contact` stores request in MongoDB (`contact_requests`)
+  - Anti-spam: honeypot field (`website`), in-memory per-IP rate limit (**5/hour**)
+  - `GET /api/contact` protected via `X-Admin-Token` header (token stored in `backend/.env` as `CONTACT_ADMIN_TOKEN`)
+
+**Legal texts (implemented)**
+- `/datenschutz`: replaced placeholder with a full policy (sections incl. hosting/logs, phone/email contact, form processing, WhatsApp, external links, rights; Stand September 2026).
+- `/agb`: replaced placeholder with full AGB for gardening/landscape services incl. Widerrufsbelehrung; includes adjustable `terms` object.
+
+**Known alignment issue / follow-up**
+- `public/index.html` includes Emergent/PostHog scripts; this may conflict with statements like “kein Tracking”.
+  - Before production: either **remove** tracking scripts or **update** the Datenschutzerklärung to accurately describe them.
+
+---
 
 ## 3) Next Actions
-- **Delivery-ready** (no pending engineering tasks for V1).
-- When the client is ready:
-  1. Confirm final production domain (or update `src/data/site.js` → `site.domain`).
-  2. Provide final legal texts for **Datenschutz** and **AGB** (replace placeholders).
-  3. Provide real images (team/garden) if desired; swap placeholder surfaces.
-  4. Provide final vector logo (optional) and replace `/public/logo-*.webp/png` assets.
+- Run a **full regression test** (frontend routes + mobile nav + SEO tags + inquiry form flow + backend contact endpoints).
+- Decide on **tracking posture**:
+  1) remove Emergent/PostHog scripts for a strict “no tracking” stance, or
+  2) document tracking accurately in Datenschutzerklärung.
+- Client inputs:
+  1. Provide the real **Google Business Profile URL** (`site.google.profileUrl`) to replace the Maps-search fallback.
+  2. Confirm final production domain (or update `site.domain`) and regenerate sitemap/robots if domain changes.
+  3. Optional: provide final vector logo and real photos (if desired).
+
+---
 
 ## 4) Success Criteria
-- Exactly 7 pages (+ 404), German-only, all required texts/claims present and not rewritten into aggressive marketing.
-- No invented facts (no hours, no reviews, no extra locations, no staff names/photos).
-- Contact actions work everywhere (tel/mail/WhatsApp) on desktop and mobile.
-- Technical SEO in place: correct titles/descriptions, canonicals, OG, JSON-LD, `sitemap.xml`, `robots.txt`.
-- Performance: stable layout (no CLS), fast navigation, subtle motion with reduced-motion support.
-- Swappable assets: logo and image areas can be replaced without redesign (placeholders only, no photos in V1).
+- Exactly **7 pages** (+ 404), **German-only**.
+- No invented business facts; services remain the defined set.
+- Contact options work everywhere:
+  - tel / mail / WhatsApp links
+  - **lean inquiry form** submits successfully and stores inquiries
+- Local SEO:
+  - correct titles/descriptions, canonicals, OG, JSON-LD
+  - `sitemap.xml`, `robots.txt`
+- Readability:
+  - clear font (Figtree), high contrast, minimal decorative labels, reduced tile usage
+- Privacy consistency:
+  - legal text matches actual deployed scripts/services (no contradiction).
+- Performance:
+  - stable layout (no CLS), fast navigation, subtle motion with reduced-motion support.
