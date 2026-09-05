@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Brand palette (sampled from the Streich logo) */
+        --brand-cream: #f7f4ec;
+        --brand-cream-2: #fbf9f3;
+        --brand-ink: #111513;
+        --brand-forest: #0f2e14;
+        --brand-forest-2: #12331a;
+        --brand-forest-3: #204020;
+        --brand-leaf: #507030;
+        --brand-leaf-2: #608030;
+        --brand-taupe: #6b5b4a;
+        --brand-accent: #0fbb82;
+        --brand-accent-strong: #0ca772;
+
+        /* shadcn/ui tokens mapped to the brand palette (HSL triplets) */
+        --background: 44 41% 95%;
+        --foreground: 150 12% 8%;
+        --card: 0 0% 100%;
+        --card-foreground: 150 12% 8%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 150 12% 8%;
+        --primary: 130 51% 12%;
+        --primary-foreground: 44 41% 96%;
+        --secondary: 120 22% 92%;
+        --secondary-foreground: 130 51% 12%;
+        --muted: 40 24% 90%;
+        --muted-foreground: 150 8% 32%;
+        --accent: 160 60% 92%;
+        --accent-foreground: 130 51% 12%;
+        --destructive: 6 78% 43%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 96 16% 84%;
+        --input: 96 16% 80%;
+        --ring: 160 85% 40%;
+        --radius: 14px;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        margin: 0;
+        background-color: var(--brand-cream);
+        color: var(--brand-ink);
+        font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+            "Segoe UI", Roboto, sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman",
+            serif;
+        color: var(--brand-forest);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    ::selection {
+        background: var(--brand-accent);
+        color: var(--brand-forest);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--brand-accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    /* Reserve space for the sticky header when jumping to anchors */
+    [id] {
+        scroll-margin-top: 6.5rem;
+    }
+}
+
+@layer components {
+    .eyebrow {
+        font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--brand-leaf);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+            opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+            transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+        will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Premium placeholder surfaces (no photos) */
+    .surface-organic {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(
+                120% 90% at 18% 8%,
+                rgba(15, 187, 130, 0.16),
+                transparent 55%
+            ),
+            radial-gradient(
+                90% 80% at 82% 30%,
+                rgba(96, 128, 48, 0.2),
+                transparent 60%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(15, 46, 20, 0.06),
+                rgba(247, 244, 236, 0)
+            ),
+            var(--brand-cream-2);
+    }
+
+    .surface-forest {
+        position: relative;
+        overflow: hidden;
+        background:
+            radial-gradient(
+                120% 90% at 15% 10%,
+                rgba(15, 187, 130, 0.18),
+                transparent 55%
+            ),
+            radial-gradient(
+                90% 80% at 85% 20%,
+                rgba(96, 128, 48, 0.16),
+                transparent 60%
+            ),
+            linear-gradient(160deg, #0f2e14, #12331a 60%, #0c2410);
+    }
+
+    .grain::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.5'/></svg>");
+        mix-blend-mode: overlay;
+        opacity: 0.12;
+    }
+
+    .link-underline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 600;
+        color: var(--brand-forest);
+        background-image: linear-gradient(
+            var(--brand-accent),
+            var(--brand-accent)
+        );
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 0% 2px;
+        transition: background-size 0.35s ease;
+        padding-bottom: 2px;
+    }
+
+    .link-underline:hover {
+        background-size: 100% 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
