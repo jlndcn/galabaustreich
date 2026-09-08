@@ -65,8 +65,10 @@ export default function Datenschutz() {
 
         <LegalSection title="3. Hosting und Server-Logfiles">
           <p>
-            Diese Website wird bei einem externen Dienstleister gehostet. Beim
-            Aufruf unserer Website werden automatisch Informationen in
+            Diese Website wird von unserem Dienstleister diaconuit.de betreut
+            und über die Hosting-Plattform Netlify (Netlify, Inc., 512 2nd
+            Street, Suite 200, San Francisco, CA 94107, USA) bereitgestellt.
+            Beim Aufruf unserer Website werden automatisch Informationen in
             sogenannten Server-Logfiles gespeichert, die Ihr Browser an den
             Server übermittelt. Dies sind:
           </p>
@@ -88,9 +90,20 @@ export default function Datenschutz() {
             Datenquellen findet nicht statt.
           </p>
           <p>
-            Soweit der Hosting-Anbieter in unserem Auftrag personenbezogene
-            Daten verarbeitet, erfolgt dies auf Grundlage eines Vertrags über
-            Auftragsverarbeitung nach Art. 28 DSGVO.
+            Netlify verarbeitet Daten auch auf Servern außerhalb der EU,
+            insbesondere in den USA. Die Übermittlung erfolgt auf Grundlage
+            eines Vertrags über Auftragsverarbeitung nach Art. 28 DSGVO
+            einschließlich der Standardvertragsklauseln der EU-Kommission
+            (Art. 46 Abs. 2 lit. c DSGVO). Weitere Informationen:{" "}
+            <a
+              href="https://www.netlify.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline"
+            >
+              www.netlify.com/privacy
+            </a>
+            .
           </p>
         </LegalSection>
 
@@ -126,17 +139,18 @@ export default function Datenschutz() {
             <li>Zeitpunkt der Übermittlung und die Seite, von der das Formular gesendet wurde</li>
           </ul>
           <p>
-            Die Daten werden verschlüsselt übertragen und in einer
-            zugangsgeschützten Datenbank gespeichert, damit wir Ihre Anfrage
-            bearbeiten und uns bei Ihnen melden können. Zusätzlich werden wir
-            über jede neue Anfrage per E-Mail an unser Postfach benachrichtigt;
-            haben Sie eine E-Mail-Adresse angegeben, erhalten Sie eine
-            automatische Eingangsbestätigung mit Ihren Angaben. Der Versand
-            erfolgt über den E-Mail-Server unseres E-Mail-Anbieters. Ihre
-            IP-Adresse wird nicht zusammen mit Ihrer Anfrage gespeichert. Zur
-            Abwehr automatisierter Missbrauchsversuche wird die Anzahl der
-            Absendungen je Verbindung lediglich kurzzeitig und ohne dauerhafte
-            Speicherung technisch begrenzt.
+            Die Daten werden verschlüsselt übertragen und ausschließlich
+            serverseitig verarbeitet: Nach dem Absenden erhalten wir eine
+            E-Mail-Benachrichtigung über Ihre Anfrage an unser Postfach; haben
+            Sie eine E-Mail-Adresse angegeben, erhalten Sie eine automatische
+            Eingangsbestätigung mit Ihren Angaben. Der Versand erfolgt über
+            den E-Mail-Server unseres E-Mail-Anbieters STRATO (STRATO GmbH,
+            Otto-Ostrowski-Straße 7, 10249 Berlin). Ihre IP-Adresse wird
+            nicht zusammen mit Ihrer Anfrage gespeichert. Zur Abwehr
+            automatisierter Missbrauchsversuche wird ein unsichtbares
+            Kontrollfeld eingesetzt und die Anzahl der Absendungen je
+            Verbindung lediglich kurzzeitig und ohne dauerhafte Speicherung
+            technisch begrenzt.
           </p>
           <p>
             Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung

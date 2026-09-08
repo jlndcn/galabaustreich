@@ -57,7 +57,7 @@ export const seasonByMonth = {
     note: "Herbstdüngung und Nachsaat – die beste Pflanzzeit beginnt",
   },
   10: {
-    ids: ["saisonale-gartenarbeiten", "hecken-gehoelzpflege", "neupflanzungen", "baumfaellungen"],
+    ids: ["saisonale-gartenarbeiten", "hecken-gehoelzpflege", "baumfaellungen", "neupflanzungen"],
     note: "Laub und Herbstpflege; Rückschnitte und Fällungen sind ab 1. Oktober wieder möglich",
   },
   11: {
@@ -74,4 +74,21 @@ export function getSeason(date = new Date()) {
   const month = date.getMonth() + 1;
   const entry = seasonByMonth[month] || { ids: [], note: "" };
   return { month, monthName: monthNames[month - 1], ...entry };
+}
+
+// The n services that are most in demand in the current month (ordered by relevance),
+// resolved against the full service list. Falls back to the flagged key services.
+export function getSeasonalTop(allServices, n = 3, date = new Date()) {
+  const season = getSeason(date);
+  const picked = season.ids
+    .map((id) => allServices.find((s) => s.id === id))
+    .filter(Boolean)
+    .slice(0, n);
+  if (picked.length < n) {
+    for (const s of allServices) {
+      if (picked.length >= n) break;
+      if (s.key && !picked.includes(s)) picked.push(s);
+    }
+  }
+  return { season, services: picked };
 }

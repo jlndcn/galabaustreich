@@ -1,43 +1,49 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MessageCircle, ExternalLink } from "lucide-react";
+import { Phone, Mail, ExternalLink, ArrowRight } from "lucide-react";
+import { Logo } from "@/components/Logo";
+import { GoogleRating } from "@/components/GoogleRating";
+import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
 import { site, mainNav, legalNav, googleLink } from "@/data/site";
 
-// Clear, readable footer: plain columns, no boxes, no decorative labels.
+// Light footer so the (dark-green) logo is shown as-is. Plain columns, clear links.
 export const Footer = () => {
   const year = new Date().getFullYear();
 
   const contactLink =
-    "inline-flex items-center gap-3 text-base text-white/90 transition-colors hover:text-[color:var(--brand-accent)]";
+    "inline-flex items-center gap-3 text-base font-medium text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]";
   const navLink =
-    "inline-block text-base text-white/80 transition-colors hover:text-[color:var(--brand-accent)]";
+    "inline-block text-base text-[color:var(--brand-ink-soft)] transition-colors hover:text-[color:var(--brand-accent-strong)]";
 
   return (
-    <footer
-      data-testid="site-footer"
-      className="border-t border-white/15 bg-[color:var(--brand-forest)] text-white"
-    >
+    <footer data-testid="site-footer" className="border-t border-border bg-[color:var(--brand-cream)]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-4">
-            <p className="text-3xl font-bold tracking-tight text-white">Streich</p>
-            <p className="mt-1 text-base text-white/70">
-              Garten- und Landschaftspflege
-            </p>
-            <p className="mt-5 max-w-sm text-base leading-relaxed text-white/75">
+            <Logo className="h-24 w-auto" priority={false} />
+            <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
               Von der ersten Pflanze bis zum gewachsenen Garten – persönlich,
               zuverlässig und mit einem Blick für das Schöne. In Lübeck und
               Ostholstein für Sie im Einsatz.
             </p>
+            <GoogleRating variant="inline" className="mt-5" />
+            <Link
+              to="/#kontakt"
+              data-testid="footer-cta-link"
+              className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[color:var(--brand-accent-strong)]"
+            >
+              Anfrage senden
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
 
           {/* Contact */}
           <div className="lg:col-span-3">
-            <h3 className="text-lg text-white">Kontakt</h3>
+            <h3 className="text-lg">Kontakt</h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <a href={site.phone.href} data-testid="footer-phone-link" className={contactLink}>
-                  <Phone className="h-4 w-4 shrink-0 text-[color:var(--brand-accent)]" strokeWidth={1.9} aria-hidden="true" />
+                  <Phone className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={2} aria-hidden="true" />
                   {site.phone.display}
                 </a>
               </li>
@@ -49,13 +55,13 @@ export const Footer = () => {
                   data-testid="footer-whatsapp-link"
                   className={contactLink}
                 >
-                  <MessageCircle className="h-4 w-4 shrink-0 text-[color:var(--brand-accent)]" strokeWidth={1.9} aria-hidden="true" />
+                  <WhatsAppIcon className="h-4 w-4 shrink-0" style={{ color: channelColors.whatsapp }} />
                   WhatsApp
                 </a>
               </li>
               <li>
                 <a href={`mailto:${site.email}`} data-testid="footer-email-link" className={`${contactLink} break-all`}>
-                  <Mail className="h-4 w-4 shrink-0 text-[color:var(--brand-accent)]" strokeWidth={1.9} aria-hidden="true" />
+                  <Mail className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={2} aria-hidden="true" />
                   {site.email}
                 </a>
               </li>
@@ -64,10 +70,10 @@ export const Footer = () => {
 
           {/* Address */}
           <div className="lg:col-span-3">
-            <h3 className="text-lg text-white">Anschrift</h3>
+            <h3 className="text-lg">Anschrift</h3>
             <address
               data-testid="footer-address-text"
-              className="mt-4 not-italic text-base leading-relaxed text-white/80"
+              className="mt-4 not-italic text-base leading-relaxed text-[color:var(--brand-ink-soft)]"
             >
               {site.legalName}
               <br />
@@ -80,7 +86,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               data-testid="footer-google-link"
-              className="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white underline decoration-[color:var(--brand-accent)] decoration-2 underline-offset-4 transition-colors hover:text-[color:var(--brand-accent)]"
+              className="text-link mt-4 text-base"
             >
               Auf Google ansehen
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -90,7 +96,7 @@ export const Footer = () => {
           {/* Navigation */}
           <div className="lg:col-span-2">
             <nav aria-label="Seiten">
-              <h3 className="text-lg text-white">Seiten</h3>
+              <h3 className="text-lg">Seiten</h3>
               <ul className="mt-4 space-y-2.5">
                 {mainNav.map((n) => (
                   <li key={n.path}>
@@ -102,7 +108,7 @@ export const Footer = () => {
               </ul>
             </nav>
             <nav aria-label="Rechtliches" className="mt-8">
-              <h3 className="text-lg text-white">Rechtliches</h3>
+              <h3 className="text-lg">Rechtliches</h3>
               <ul className="mt-4 space-y-2.5">
                 {legalNav.map((n) => (
                   <li key={n.path}>
@@ -116,11 +122,22 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-white/15 py-6 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-border py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName}
+            © {year} {site.legalName} · Garten- und Landschaftspflege in und um Lübeck
           </p>
-          <p>Garten- und Landschaftspflege in und um Lübeck</p>
+          <p data-testid="footer-madeby">
+            Made and hosted by{" "}
+            <a
+              href={site.madeBy.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="footer-madeby-link"
+              className="font-semibold text-[color:var(--brand-forest)] underline decoration-[color:var(--brand-accent)] decoration-2 underline-offset-4 transition-colors hover:text-[color:var(--brand-accent-strong)]"
+            >
+              {site.madeBy.label}
+            </a>
+          </p>
         </div>
       </div>
     </footer>

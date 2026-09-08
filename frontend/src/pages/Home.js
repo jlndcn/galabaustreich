@@ -1,16 +1,36 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Phone, Mail, MessageCircle, MapPin, ExternalLink, Plus } from "lucide-react";
+import { useMemo } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, Phone, Plus, MapPin } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ContactForm } from "@/components/ContactForm";
+import { ContactTiles } from "@/components/ContactTiles";
 import { SeasonHint } from "@/components/SeasonHint";
+import { GoogleRating } from "@/components/GoogleRating";
 import { seoPages, buildLocalBusinessJsonLd } from "@/data/seo";
-import { services, keyServices, furtherServices } from "@/data/services";
-import { site, googleLink, contactPrompt } from "@/data/site";
+import { services, furtherServices } from "@/data/services";
+import { getSeasonalTop } from "@/data/seasons";
+import { site, contactPrompt } from "@/data/site";
+
+const primaryBtn =
+  "inline-flex h-12 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-6 text-base font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow,transform] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md active:scale-[0.99]";
+const secondaryBtn =
+  "inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(15,46,20,0.3)] bg-white px-6 text-base font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[rgba(15,46,20,0.05)]";
 
 export default function Home() {
-  const teaserServices = services.filter((s) => !s.key);
+  const location = useLocation();
+
+  // The three services most in demand right now (season-aware), the rest as compact list.
+  const { season, services: topServices } = useMemo(() => getSeasonalTop(services, 3), []);
+  const teaserServices = services.filter((s) => !topServices.includes(s));
+
+  // Optional prefill when arriving from a service ("Diese Leistung anfragen").
+  const prefill = useMemo(() => {
+    const id = new URLSearchParams(location.search).get("leistung");
+    const svc = id ? services.find((s) => s.id === id) : null;
+    return svc ? `Anfrage zu: ${svc.title}\n\n` : "";
+  }, [location.search]);
 
   return (
     <>
@@ -40,30 +60,22 @@ export default function Home() {
             </Reveal>
             <Reveal delay={180}>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a
-                  href={site.phone.href}
-                  data-testid="home-hero-primary-cta"
-                  className="inline-flex h-12 items-center gap-2 rounded-lg bg-[color:var(--brand-accent)] px-6 text-base font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow,transform] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md active:scale-[0.99]"
-                >
-                  <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-                  Jetzt anrufen
-                </a>
-                <Link
-                  to="/leistungen"
-                  data-testid="home-hero-services-link"
-                  className="inline-flex h-12 items-center gap-2 rounded-lg border border-[rgba(15,46,20,0.3)] bg-white px-6 text-base font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[rgba(15,46,20,0.05)]"
-                >
-                  Leistungen ansehen
+                <Link to="/#kontakt" data-testid="home-hero-primary-cta" className={primaryBtn}>
+                  Anfrage senden
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-              </div>
-              <p className="mt-5 text-base text-muted-foreground">
-                Oder senden Sie uns eine{" "}
-                <a href="#kontakt" data-testid="home-hero-form-link" className="text-link">
-                  Anfrage über das Formular
+                <a href={site.phone.href} data-testid="home-hero-call-cta" className={secondaryBtn}>
+                  <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                  {site.phone.display}
                 </a>
-                .
-              </p>
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+                <Link to="/leistungen" data-testid="home-hero-services-link" className="text-link text-base">
+                  Alle Leistungen ansehen
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <GoogleRating variant="inline" />
+              </div>
             </Reveal>
           </div>
 
@@ -73,10 +85,10 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
                   <img
                     src="/logo-hero.webp"
-                    width="760"
-                    height="514"
-                    alt="Logo der Garten- und Landschaftspflege Streich mit stilisiertem Holstentor und Baum"
-                    className="max-h-full w-auto max-w-[94%] object-contain"
+                    width="1080"
+                    height="809"
+                    alt="Logo der Garten- und Landschaftspflege Streich mit Holstentor und Bäumen"
+                    className="max-h-full w-auto max-w-[92%] object-contain"
                     decoding="async"
                   />
                 </div>
@@ -86,25 +98,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Key services */}
+      {/* Seasonal top services */}
       <section
         data-testid="home-key-services-section"
         className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
       >
-        <Reveal className="max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl">Unsere gefragtesten Leistungen</h2>
+        <Reveal className="max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl">
+            Unsere gefragtesten Leistungen im{" "}
+            <span data-testid="home-season-month">{season.monthName}</span>
+          </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Drei Leistungen, für die uns Privatkunden, Unternehmen und
-            Organisationen in und um Lübeck besonders oft anfragen.
+            Passend zur Jahreszeit: Diese drei Arbeiten stehen im {season.monthName} in
+            den meisten Gärten und auf den meisten Grundstücken in Lübeck und
+            Ostholstein an. <span data-testid="home-season-note">{season.note}.</span>
           </p>
         </Reveal>
         <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-10">
-          {keyServices.map((s, i) => (
+          {topServices.map((s, i) => (
             <Reveal key={s.id} delay={i * 80}>
               <ServiceCard service={s} variant="key" />
             </Reveal>
           ))}
         </div>
+
+        {/* CTA */}
+        <Reveal delay={120}>
+          <div
+            data-testid="home-mid-cta"
+            className="mt-12 flex flex-col gap-5 rounded-2xl bg-[color:var(--brand-forest)] px-6 py-7 text-white sm:px-8 lg:flex-row lg:items-center lg:justify-between"
+          >
+            <div>
+              <p className="text-xl font-semibold text-white">
+                Nicht sicher, was Ihr Garten gerade braucht?
+              </p>
+              <p className="mt-1 text-base text-white/80">
+                Wir schauen uns Ihre Fläche an und beraten Sie persönlich – unverbindlich.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/#kontakt" data-testid="home-mid-cta-form" className={primaryBtn}>
+                Anfrage senden
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <a
+                href={site.phone.href}
+                data-testid="home-mid-cta-call"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/30 px-6 text-base font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                Anrufen
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* Further services */}
@@ -118,17 +165,17 @@ export default function Home() {
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-x-12 border-t border-border sm:grid-cols-2">
+        <div className="mt-8 grid grid-cols-1 gap-x-12 border-t border-border sm:grid-cols-2 sm:auto-rows-fr">
           {teaserServices.map((s, i) => (
-            <Reveal key={s.id} delay={(i % 2) * 60}>
+            <Reveal key={s.id} delay={(i % 2) * 60} className="h-full">
               <ServiceCard service={s} variant="teaser" />
             </Reveal>
           ))}
-          <Reveal delay={60}>
+          <Reveal delay={60} className="h-full">
             <Link
               to="/leistungen#weitere-leistungen"
               data-testid="home-further-services-link"
-              className="group flex items-start gap-4 border-b border-border py-5 transition-colors"
+              className="group flex h-full items-start gap-4 border-b border-border py-5 transition-colors"
             >
               <Plus
                 className="mt-1 h-5 w-5 shrink-0 text-[color:var(--brand-leaf)]"
@@ -177,87 +224,48 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* Contact + inquiry form */}
+      {/* Contact: tiles + inquiry form */}
       <section
         id="kontakt"
         aria-labelledby="home-contact-title"
         data-testid="home-contact-section"
         className="bg-white"
       >
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8 lg:py-20">
-          <div className="lg:col-span-5">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="max-w-3xl">
             <h2 id="home-contact-title" className="text-3xl sm:text-4xl">
-              Kontakt
+              Kontakt – so erreichen Sie uns
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              {contactPrompt} Rufen Sie uns an, schreiben Sie uns per WhatsApp
-              oder E-Mail – oder senden Sie uns eine kurze Anfrage über das
-              Formular. Wir melden uns persönlich bei Ihnen.
+              {contactPrompt} Wählen Sie den Weg, der Ihnen am liebsten ist –
+              wir melden uns persönlich bei Ihnen.
             </p>
-
-            <ul className="mt-8 space-y-4 text-lg">
-              <li>
-                <a
-                  href={site.phone.href}
-                  data-testid="home-contact-phone-link"
-                  className="inline-flex items-center gap-3 font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
-                >
-                  <Phone className="h-5 w-5 text-[color:var(--brand-accent-strong)]" strokeWidth={1.8} aria-hidden="true" />
-                  {site.phone.display}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="home-contact-whatsapp-link"
-                  className="inline-flex items-center gap-3 font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
-                >
-                  <MessageCircle className="h-5 w-5 text-[color:var(--brand-accent-strong)]" strokeWidth={1.8} aria-hidden="true" />
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  data-testid="home-contact-email-link"
-                  className="inline-flex items-center gap-3 break-all font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
-                >
-                  <Mail className="h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={1.8} aria-hidden="true" />
-                  {site.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-1.5 h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={1.8} aria-hidden="true" />
-                <address data-testid="home-contact-address" className="not-italic text-base leading-relaxed text-muted-foreground">
-                  {site.legalName}
-                  <br />
-                  {site.address.street}
-                  <br />
-                  {site.address.zip} {site.address.city}
-                </address>
-              </li>
-            </ul>
-
-            <a
-              href={googleLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="home-google-link"
-              className="text-link mt-8 text-base"
-            >
-              Auf Google ansehen
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            </a>
-
-            <SeasonHint className="mt-10" />
           </div>
 
-          <div id="anfrage" className="lg:col-span-7 lg:border-l lg:border-border lg:pl-16">
-            <h3 className="text-2xl">Anfrage senden</h3>
-            <div className="mt-6">
-              <ContactForm prefix="home-contact-form" />
+          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <ContactTiles prefix="home-contact-tile" />
+
+              <div className="mt-6 flex items-start gap-3">
+                <MapPin className="mt-1.5 h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={1.8} aria-hidden="true" />
+                <address data-testid="home-contact-address" className="not-italic text-base leading-relaxed text-muted-foreground">
+                  {site.legalName} · {site.address.street}, {site.address.zip} {site.address.city}
+                  <br />
+                  Im Einsatz in Lübeck, Scharbeutz und ganz Ostholstein
+                </address>
+              </div>
+
+              <SeasonHint className="mt-12" />
+            </div>
+
+            <div id="anfrage" className="lg:col-span-6 lg:border-l lg:border-border lg:pl-16">
+              <h3 className="text-2xl">Anfrage senden</h3>
+              <p className="mt-2 text-base text-muted-foreground">
+                Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.
+              </p>
+              <div className="mt-6">
+                <ContactForm prefix="home-contact-form" initialMessage={prefill} />
+              </div>
             </div>
           </div>
         </div>

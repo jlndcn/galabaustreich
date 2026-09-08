@@ -132,6 +132,18 @@
 - **Saisonhinweise**: `src/data/seasons.js` (month -> service ids + note, based on general horticultural practice and § 39 BNatSchG cutting season) + `SeasonHint` component in Home contact section.
 - Datenschutz §5 updated (e-mail notification + Eingangsbestätigung).
 
+### Phase 7: Logo, Navbar, Footer, Kacheln, Sterne, saisonale Top-3, mehr CTA, Netlify-Kontaktformular — IMPLEMENTED (pending regression test)
+- **Logo**: user-provided transparent PNG (`/app/assets-src/logo-new.png` = master). Generated: `logo-header.webp` (480x360), `logo-hero.webp`, `logo-transparent.png`, `logo.png`, `favicon.ico`/`favicon-64.png` + `logo192/512.png` (Holstentor-Emblem-Ausschnitt), `og-image.jpg`. Old `logo-header.png` removed.
+- **Navbar** (`Header.js`): white bar, logo left, pill navigation (cream group, white active pill), phone number + WhatsApp round icon + "Anfrage senden" CTA (→ `/#kontakt`); mobile: phone button + Sheet with logo, nav, CTA, ContactActions, GoogleRating, legal links.
+- **Footer** (`Footer.js`): light (white) so the logo renders; columns Kontakt/Anschrift/Seiten/Rechtliches, GoogleRating inline, CTA; bottom bar with "Made and hosted by diaconuit.de" (`site.madeBy`).
+- **Google rating**: manual values in `site.google.rating = 5.0`, `reviewCount = 6` (user-provided); `GoogleRating`/`Stars` component (inline/block), shown in hero, footer, mobile menu, contact tile.
+- **Contact section** (Home): `ContactTiles` (Anrufen / WhatsApp / E-Mail / Google-Sterne) + address + SeasonHint; form column with prefill via `/?leistung=<id>#kontakt`.
+- **Seasonal top-3** (`getSeasonalTop` in `seasons.js`): Home "Unsere gefragtesten Leistungen im <Monat>" picks the 3 most relevant services for the current month; teaser list = remaining services.
+- **More CTA**: hero (Anfrage senden + phone), dark CTA band after top services, per-service "Diese Leistung anfragen" on /leistungen, `FloatingWhatsApp` button (all pages), header/footer CTAs. Toaster moved to top-center.
+- **Netlify** (production target): `/app/netlify.toml` (base=frontend, publish=build, functions=netlify/functions, `/api/*` → functions, SPA redirect, headers, `REACT_APP_BACKEND_URL=""`), `frontend/netlify/functions/contact.mjs` (nodemailer 10, STRATO 465 SSL, env-only config, POST-only, validation + limits, honeypot, From=SMTP_USER "Garten Streich Website", Reply-To=visitor, subject "Neue Anfrage über garten-streich.de", confirmation mail, no internal details in errors). Verified locally against a fake TLS SMTP server (all cases). `ContactForm` posts to relative `/api` when `REACT_APP_BACKEND_URL` is empty. `.gitignore` now excludes `.env` files. Docs: `/app/NETLIFY_DEPLOY.md`, `backend/.env.example`.
+- FastAPI mailer aligned (From name, subject, `CONTACT_TO`, 465 → SSL auto).
+- Datenschutz §3 (Netlify/diaconuit, SCC) and §5 (STRATO mail server, honeypot) updated.
+
 ---
 
 ## 3) Next Actions

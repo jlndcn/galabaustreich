@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, Phone, MessageCircle, Mail } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Menu, Phone, ArrowRight } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { Logo } from "@/components/Logo";
 import { ContactActions } from "@/components/ContactActions";
+import { GoogleRating } from "@/components/GoogleRating";
+import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
 import { mainNav, legalNav, site } from "@/data/site";
 
+// Redesigned navbar: white bar, logo left, pill navigation, phone + WhatsApp + primary CTA right.
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -17,39 +20,45 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinkClass = ({ isActive }) =>
-    `relative py-2 text-[15px] font-semibold transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:bg-[color:var(--brand-accent)] after:transition-all ${
+  const pill = ({ isActive }) =>
+    `inline-flex h-11 items-center rounded-full px-5 text-base font-semibold transition-[background-color,color,box-shadow] ${
       isActive
-        ? "text-[color:var(--brand-forest)] after:w-full"
-        : "text-[color:var(--brand-ink-soft)] hover:text-[color:var(--brand-forest)] after:w-0 hover:after:w-full"
+        ? "bg-white text-[color:var(--brand-forest)] shadow-[0_1px_2px_rgba(15,46,20,0.12)]"
+        : "text-[color:var(--brand-ink-soft)] hover:bg-white/70 hover:text-[color:var(--brand-forest)]"
     }`;
-
-  const iconBtn =
-    "inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-[color:var(--brand-forest)] transition-colors hover:bg-[rgba(15,46,20,0.05)]";
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-[background-color,box-shadow] ${
+      data-testid="site-header"
+      className={`sticky top-0 z-50 border-b bg-white transition-[box-shadow,border-color] ${
         scrolled
-          ? "bg-[color:var(--brand-cream)]/95 shadow-[0_1px_0_rgba(15,46,20,0.10)] backdrop-blur"
-          : "bg-[color:var(--brand-cream)]"
+          ? "border-border shadow-[0_6px_24px_-16px_rgba(15,46,20,0.35)]"
+          : "border-transparent"
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div
-          className={`flex items-center justify-between gap-4 transition-all ${
-            scrolled ? "h-16" : "h-16 sm:h-20"
+          className={`flex items-center justify-between gap-4 transition-[height] ${
+            scrolled ? "h-[72px] lg:h-[84px]" : "h-[80px] lg:h-[108px]"
           }`}
         >
-          <Logo />
+          <Logo
+            className={`w-auto transition-[height] ${
+              scrolled ? "h-14 lg:h-16" : "h-16 lg:h-[88px]"
+            }`}
+          />
 
-          <nav aria-label="Hauptnavigation" className="hidden items-center gap-8 lg:flex">
+          {/* Desktop navigation */}
+          <nav
+            aria-label="Hauptnavigation"
+            className="hidden items-center gap-1 rounded-full bg-[color:var(--brand-cream)] p-1 lg:flex"
+          >
             {mainNav.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.path === "/"}
-                className={navLinkClass}
+                className={pill}
                 data-testid={`nav-${item.path === "/" ? "home" : item.path.replace("/", "")}`}
               >
                 {item.label}
@@ -57,40 +66,45 @@ export const Header = () => {
             ))}
           </nav>
 
+          {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
             <a
               href={site.phone.href}
-              className="inline-flex h-11 items-center gap-2 rounded-xl bg-[color:var(--brand-accent)] px-5 text-sm font-semibold text-[color:var(--brand-forest)] shadow-sm transition-colors hover:bg-[color:var(--brand-accent-strong)]"
-              data-testid="header-call-button"
+              data-testid="header-phone-link"
+              className="mr-2 inline-flex items-center gap-2 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
             >
-              <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" /> Anrufen
+              <Phone className="h-4 w-4 text-[color:var(--brand-accent-strong)]" strokeWidth={2.2} aria-hidden="true" />
+              {site.phone.display}
             </a>
             <a
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className={iconBtn}
+              aria-label="WhatsApp schreiben"
+              title="WhatsApp"
               data-testid="header-whatsapp-button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm transition-[transform,filter] hover:scale-105 hover:brightness-95"
+              style={{ backgroundColor: channelColors.whatsapp }}
             >
-              <MessageCircle className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+              <WhatsAppIcon className="h-6 w-6" />
             </a>
-            <a
-              href={`mailto:${site.email}`}
-              aria-label="E-Mail"
-              className={iconBtn}
-              data-testid="header-email-button"
+            <Link
+              to="/#kontakt"
+              data-testid="header-cta-button"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow,transform] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md active:scale-[0.99]"
             >
-              <Mail className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
-            </a>
+              Anfrage senden
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
 
+          {/* Mobile actions */}
           <div className="flex items-center gap-2 lg:hidden">
             <a
               href={site.phone.href}
               aria-label="Anrufen"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[color:var(--brand-accent)] text-[color:var(--brand-forest)]"
               data-testid="header-call-button-mobile"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--brand-accent)] text-[color:var(--brand-forest)]"
             >
               <Phone className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
             </a>
@@ -99,28 +113,29 @@ export const Header = () => {
                 <button
                   type="button"
                   aria-label="Menü öffnen"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-[color:var(--brand-forest)]"
                   data-testid="header-mobile-menu-button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-[color:var(--brand-forest)]"
                 >
                   <Menu className="h-5 w-5" aria-hidden="true" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[86%] max-w-sm bg-[color:var(--brand-cream)] p-0">
+              <SheetContent side="right" className="w-[88%] max-w-sm bg-white p-0">
                 <div className="flex h-full flex-col">
-                  <div className="border-b border-border px-6 pb-4 pt-6">
-                    <Logo linked={false} className="h-12 w-auto" />
+                  <div className="border-b border-border px-6 pb-5 pt-6">
+                    <SheetTitle className="sr-only">Navigation</SheetTitle>
+                    <Logo linked={false} className="h-14 w-auto" priority={false} />
                   </div>
-                  <nav aria-label="Mobile Navigation" className="flex flex-col px-4 py-3">
+                  <nav aria-label="Mobile Navigation" className="flex flex-col px-4 py-4">
                     {mainNav.map((item) => (
                       <SheetClose asChild key={item.path}>
                         <NavLink
                           to={item.path}
                           end={item.path === "/"}
                           className={({ isActive }) =>
-                            `flex min-h-[48px] items-center rounded-lg px-3 text-base font-medium transition-colors ${
+                            `flex min-h-[50px] items-center rounded-xl px-4 text-lg font-semibold transition-colors ${
                               isActive
-                                ? "bg-[rgba(15,46,20,0.06)] text-[color:var(--brand-forest)]"
-                                : "text-foreground/80 hover:bg-[rgba(15,46,20,0.04)]"
+                                ? "bg-[color:var(--brand-cream)] text-[color:var(--brand-forest)]"
+                                : "text-[color:var(--brand-ink-soft)] hover:bg-[color:var(--brand-cream)]"
                             }`
                           }
                           data-testid={`mobile-nav-${item.path === "/" ? "home" : item.path.replace("/", "")}`}
@@ -129,9 +144,20 @@ export const Header = () => {
                         </NavLink>
                       </SheetClose>
                     ))}
+                    <SheetClose asChild>
+                      <Link
+                        to="/#kontakt"
+                        data-testid="mobile-nav-cta"
+                        className="mt-3 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-base font-semibold text-[color:var(--brand-forest)]"
+                      >
+                        Anfrage senden
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    </SheetClose>
                   </nav>
                   <div className="mt-auto border-t border-border px-6 py-6">
                     <ContactActions prefix="mobile-menu" tone="onLight" full />
+                    <GoogleRating variant="inline" className="mt-5" />
                     <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[color:var(--brand-ink-soft)]">
                       {legalNav.map((l) => (
                         <SheetClose asChild key={l.path}>

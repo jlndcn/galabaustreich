@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { CheckCircle2, Send } from "lucide-react";
@@ -9,7 +9,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/components/ui/sonner";
 import { site } from "@/data/site";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+// Same-origin "/api" by default (Netlify Function via redirect); an explicit backend URL
+// (preview environment) is used when REACT_APP_BACKEND_URL is set. Never talks SMTP itself.
+const backendBase = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const API = `${backendBase}/api`;
 
 const initialValues = {
   name: "",
@@ -57,11 +60,18 @@ const FieldError = ({ id, children }) =>
   ) : null;
 
 // Lean inquiry form – an additional contact channel next to phone, WhatsApp and e-mail.
-export const ContactForm = ({ prefix = "contact-form" }) => {
-  const [values, setValues] = useState(initialValues);
+// initialMessage: optional prefill (e.g. when arriving from a specific service).
+export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) => {
+  const [values, setValues] = useState({ ...initialValues, message: initialMessage });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success
   const [serverError, setServerError] = useState("");
+
+  // Apply a new prefill when the incoming service changes and the user has not typed yet.
+  useEffect(() => {
+    if (!initialMessage) return;
+    setValues((v) => (v.message.trim() === "" || v.message.startsWith("Anfrage zu:") ? { ...v, message: initialMessage } : v));
+  }, [initialMessage]);
 
   const update = (field) => (e) => {
     const value = e && e.target ? e.target.value : e;
@@ -105,15 +115,17 @@ export const ContactForm = ({ prefix = "contact-form" }) => {
         description: "Vielen Dank – wir melden uns persönlich bei Ihnen.",
       });
     } catch (err) {
-      setStatus("idle");
+      setStatus("error");
       const code = err?.response?.status;
-      const detail = err?.response?.data?.detail;
+      const data = err?.response?.data;
+      const detail =
+        typeof data?.detail === "string" ? data.detail : typeof data?.error === "string" ? data.error : null;
       let message =
         "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
       if (code === 429) {
         message =
           "Es wurden bereits mehrere Anfragen gesendet. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
-      } else if (code === 400 && typeof detail === "string") {
+      } else if ((code === 400 || code === 422 || code === 502 || code === 503) && detail) {
         message = detail;
       }
       setServerError(message);
@@ -166,8 +178,10 @@ export const ContactForm = ({ prefix = "contact-form" }) => {
       noValidate
       data-form={prefix}
       data-testid={prefix}
+      data-state={status}
       className="relative space-y-6"
       aria-describedby={`${prefix}-intro`}
+      aria-busy={submitting ? "true" : undefined}
     >
       <p id={`${prefix}-intro`} className="text-base text-muted-foreground">
         Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie eine

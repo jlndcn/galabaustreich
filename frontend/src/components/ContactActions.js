@@ -1,7 +1,7 @@
-import { Phone, MessageCircle, Mail } from "lucide-react";
 import { site } from "@/data/site";
+import { ChannelBadge } from "@/components/BrandIcons";
 
-// Three primary contact actions (tel / WhatsApp / mail). No forms, no bot.
+// Three primary contact actions (tel / WhatsApp / mail) – each channel with its own, clearly distinct colour badge.
 // tone: "onLight" (default page background) | "onDark" (forest surface)
 export const ContactActions = ({
   prefix = "contact",
@@ -10,44 +10,42 @@ export const ContactActions = ({
   full = false,
 }) => {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl h-12 px-5 text-sm font-semibold transition-[background-color,box-shadow,transform] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-accent)] focus-visible:ring-offset-2";
+    "inline-flex h-12 items-center gap-3 rounded-full pl-1.5 pr-5 text-[15px] font-semibold transition-[background-color,box-shadow,transform] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-accent)] focus-visible:ring-offset-2";
 
-  const primary =
-    "bg-[color:var(--brand-accent)] text-[color:var(--brand-forest)] shadow-sm hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md";
-
-  const secondary =
+  const surface =
     tone === "onDark"
-      ? "border border-white/25 bg-white/5 text-[color:var(--brand-cream)] hover:bg-white/12"
-      : "border border-border bg-white text-[color:var(--brand-forest)] hover:bg-[rgba(15,46,20,0.05)]";
+      ? "bg-white text-[color:var(--brand-forest)] shadow-sm hover:bg-[color:var(--brand-cream)] hover:shadow-md focus-visible:ring-offset-[color:var(--brand-forest)]"
+      : "border border-border bg-white text-[color:var(--brand-forest)] hover:border-[color:var(--brand-accent)] hover:shadow-sm";
 
-  const grow = full ? "flex-1 min-w-[9rem]" : "";
+  const grow = full ? "flex-1 min-w-[9rem] justify-start" : "";
+  const badge = { size: "h-9 w-9", iconSize: "h-4 w-4" };
 
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
       <a
         href={site.phone.href}
-        className={`${base} ${primary} ${grow}`}
+        className={`${base} ${surface} ${grow}`}
         data-testid={`${prefix}-call-button`}
       >
-        <Phone className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+        <ChannelBadge channel="phone" {...badge} />
         Anrufen
       </a>
       <a
         href={site.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${base} ${secondary} ${grow}`}
+        className={`${base} ${surface} ${grow}`}
         data-testid={`${prefix}-whatsapp-button`}
       >
-        <MessageCircle className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+        <ChannelBadge channel="whatsapp" {...badge} />
         WhatsApp
       </a>
       <a
         href={`mailto:${site.email}`}
-        className={`${base} ${secondary} ${grow}`}
+        className={`${base} ${surface} ${grow}`}
         data-testid={`${prefix}-email-button`}
       >
-        <Mail className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+        <ChannelBadge channel="email" {...badge} />
         E-Mail
       </a>
     </div>

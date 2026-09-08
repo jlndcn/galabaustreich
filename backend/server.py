@@ -120,6 +120,7 @@ async def deliver_contact_mails(doc: dict) -> None:
         subject=subject,
         body=body,
         reply_to=doc.get("email") or None,
+        reply_to_name=doc.get("name") or None,
     )
 
     confirmed = None

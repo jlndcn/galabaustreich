@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
 
-// Exchangeable logo slot. To swap the final logo, replace the files in /public
-// (logo-header.webp / logo.png). Aspect ratio is reserved to avoid layout shift.
-export const Logo = ({ className = "h-11 w-auto sm:h-14", linked = true }) => {
+// Brand logo (transparent WebP derived from the client's final logo file).
+// Intrinsic ratio 4:3 (480x360) is declared to avoid layout shift.
+export const Logo = ({ className = "h-12 w-auto sm:h-14", linked = true, priority = true }) => {
   const img = (
     <img
       src="/logo-header.webp"
-      width="440"
-      height="298"
-      alt="Streich – Garten- und Landschaftspflege in und um Lübeck"
+      width="480"
+      height="360"
+      alt="Garten- und Landschaftspflege Streich – in und um Lübeck"
       className={className}
       decoding="async"
-      fetchPriority="high"
+      fetchPriority={priority ? "high" : "auto"}
+      loading={priority ? "eager" : "lazy"}
     />
   );
   if (!linked) return img;
   return (
-    <Link to="/" aria-label="Zur Startseite – Streich Garten- und Landschaftspflege" data-testid="logo-home-link">
+    <Link
+      to="/"
+      aria-label="Zur Startseite – Garten- und Landschaftspflege Streich"
+      data-testid="logo-home-link"
+      className="inline-flex shrink-0 items-center"
+    >
       {img}
     </Link>
   );

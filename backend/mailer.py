@@ -1,14 +1,14 @@
 """
-SMTP mailer for contact-form notifications.
+SMTP mailer for contact-form notifications (FastAPI backend, used in the preview environment).
+The production site on Netlify uses the equivalent Netlify Function (frontend/netlify/functions/contact.mjs).
 
-Configuration via environment variables (backend/.env):
-  SMTP_HOST      e.g. smtp.ihr-hoster.de
-  SMTP_PORT      587 (STARTTLS) or 465 (SSL)
-  SMTP_USER      login of the mailbox (usually the full address)
-  SMTP_PASSWORD  mailbox password
-  SMTP_SECURITY  "starttls" (default) | "ssl" | "none"
-  MAIL_FROM      sender address (defaults to SMTP_USER)
-  MAIL_TO        recipient of notifications (defaults to info@garten-streich.de)
+Configuration via environment variables (backend/.env) – same names as in Netlify:
+  SMTP_HOST      e.g. smtp.strato.de
+  SMTP_PORT      465 (SSL/TLS, default) or 587 (STARTTLS)
+  SMTP_USER      login of the mailbox (info@garten-streich.de)
+  SMTP_PASSWORD  mailbox password (never in source code)
+  CONTACT_TO     recipient of notifications (defaults to SMTP_USER)
+  SMTP_SECURITY  optional: "auto" (default: 465 -> SSL, otherwise STARTTLS) | "ssl" | "starttls" | "none"
 
 If SMTP_HOST / SMTP_USER / SMTP_PASSWORD are missing, sending is disabled and
 inquiries are only stored in the database.
@@ -26,23 +26,32 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-COMPANY_NAME = "Garten-und Landschaftspflege B.Streich"
+SENDER_NAME = "Garten Streich Website"
+COMPANY_LEGAL = "Garten-und Landschaftspflege B.Streich"
 COMPANY_PHONE = "0177 3216077"
-DEFAULT_MAIL_TO = "info@garten-streich.de"
+COMPANY_ADDRESS = "Dorfstraße 12, 23684 Scharbeutz"
+NOTIFICATION_SUBJECT = "Neue Anfrage über garten-streich.de"
+
+
+def _header_safe(value: str) -> str:
+    return " ".join(str(value).replace("\r", " ").replace("\n", " ").split())
 
 
 def smtp_settings() -> dict:
     host = (os.environ.get("SMTP_HOST") or "").strip()
     user = (os.environ.get("SMTP_USER") or "").strip()
     password = os.environ.get("SMTP_PASSWORD") or ""
-    port_raw = (os.environ.get("SMTP_PORT") or "587").strip()
+    port_raw = (os.environ.get("SMTP_PORT") or "465").strip()
     try:
         port = int(port_raw)
     except ValueError:
-        port = 587
-    security = (os.environ.get("SMTP_SECURITY") or "starttls").strip().lower()
-    mail_from = (os.environ.get("MAIL_FROM") or user).strip()
-    mail_to = (os.environ.get("MAIL_TO") or DEFAULT_MAIL_TO).strip()
+        port = 465
+    security = (os.environ.get("SMTP_SECURITY") or "auto").strip().lower()
+    if security == "auto":
+        security = "ssl" if port == 465 else "starttls"
+    # From is always the company mailbox (SMTP_USER); the visitor's address is only used as Reply-To.
+    mail_from = user
+    mail_to = (os.environ.get("CONTACT_TO") or os.environ.get("MAIL_TO") or user).strip()
     return {
         "host": host,
         "port": port,
@@ -51,7 +60,7 @@ def smtp_settings() -> dict:
         "security": security,
         "mail_from": mail_from,
         "mail_to": mail_to,
-        "configured": bool(host and user and password and mail_from),
+        "configured": bool(host and user and password and mail_to),
     }
 
 
@@ -64,7 +73,7 @@ def mail_status() -> dict:
         "port": s["port"],
         "security": s["security"],
         "mail_from": s["mail_from"] or None,
-        "mail_to": s["mail_to"],
+        "mail_to": s["mail_to"] or None,
     }
 
 
@@ -92,6 +101,7 @@ async def send_mail(
     subject: str,
     body: str,
     reply_to: Optional[str] = None,
+    reply_to_name: Optional[str] = None,
 ) -> bool:
     """Send a plain-text e-mail. Returns True on success, False otherwise (never raises)."""
     settings = smtp_settings()
@@ -100,21 +110,21 @@ async def send_mail(
         return False
 
     msg = EmailMessage()
-    msg["From"] = formataddr((COMPANY_NAME, settings["mail_from"]))
+    msg["From"] = formataddr((SENDER_NAME, settings["mail_from"]))
     msg["To"] = to
-    msg["Subject"] = subject
+    msg["Subject"] = _header_safe(subject)
     msg["Date"] = formatdate(localtime=True)
     msg["Message-ID"] = make_msgid(domain=settings["mail_from"].split("@")[-1] or None)
     if reply_to:
-        msg["Reply-To"] = reply_to
+        msg["Reply-To"] = formataddr((_header_safe(reply_to_name or ""), reply_to)) if reply_to_name else reply_to
     msg.set_content(body, charset="utf-8")
 
     try:
         await asyncio.to_thread(_send_sync, msg, settings)
         logger.info("E-Mail versendet: '%s' -> %s", subject, to)
         return True
-    except Exception as exc:  # noqa: BLE001 – log and continue, inquiry is stored anyway
-        logger.error("E-Mail-Versand fehlgeschlagen ('%s' -> %s): %s", subject, to, exc)
+    except Exception as exc:  # noqa: BLE001 – log (without secrets) and continue, inquiry is stored anyway
+        logger.error("E-Mail-Versand fehlgeschlagen ('%s' -> %s): %s", subject, to, exc.__class__.__name__)
         return False
 
 
@@ -124,9 +134,8 @@ def _fmt(value: Optional[str]) -> str:
 
 def build_notification(doc: dict) -> tuple[str, str]:
     """Internal notification about a new inquiry (subject, body)."""
-    subject = f"Neue Anfrage über die Website: {doc.get('name', '')}".strip()
     body = (
-        "Neue Anfrage über das Kontaktformular der Website\n"
+        "Neue Anfrage über das Kontaktformular auf garten-streich.de\n"
         "\n"
         f"Name:      {_fmt(doc.get('name'))}\n"
         f"Telefon:   {_fmt(doc.get('phone'))}\n"
@@ -140,14 +149,19 @@ def build_notification(doc: dict) -> tuple[str, str]:
         "\n"
         "—\n"
         f"Anfrage-ID: {doc.get('id', '')}\n"
-        "Diese E-Mail wurde automatisch von der Website erzeugt."
+        "Diese E-Mail wurde automatisch von der Website erzeugt. "
+        + (
+            "Antworten Sie einfach auf diese E-Mail, um den Absender zu erreichen."
+            if doc.get("email")
+            else "Der Absender hat keine E-Mail-Adresse angegeben – bitte telefonisch melden."
+        )
     )
-    return subject, body
+    return NOTIFICATION_SUBJECT, body
 
 
 def build_confirmation(doc: dict) -> tuple[str, str]:
     """Short receipt for the customer (subject, body). No promises on response times."""
-    subject = f"Ihre Anfrage bei {COMPANY_NAME}"
+    subject = f"Ihre Anfrage bei {COMPANY_LEGAL}"
     body = (
         f"Guten Tag {doc.get('name', '')},\n"
         "\n"
@@ -165,8 +179,8 @@ def build_confirmation(doc: dict) -> tuple[str, str]:
         f"Wenn es eilt, erreichen Sie uns telefonisch unter {COMPANY_PHONE}.\n"
         "\n"
         "Mit freundlichen Grüßen\n"
-        f"{COMPANY_NAME}\n"
-        "Dorfstraße 12, 23684 Scharbeutz\n"
+        f"{COMPANY_LEGAL}\n"
+        f"{COMPANY_ADDRESS}\n"
         "\n"
         "Hinweis: Dies ist eine automatische Eingangsbestätigung. Sie können auf diese E-Mail antworten."
     )

@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
-
-const qualifications = [
-  "Forstwirt",
-  "Zierpflanzengärtner",
-  "Altgeselle",
-  "Erfahrung aus der Baumschule",
-];
 
 const values = [
   {
@@ -48,11 +41,15 @@ export default function Team() {
         </Reveal>
       </section>
 
-      {/* Values */}
+      {/* Values – stacked */}
       <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8 lg:py-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="max-w-3xl">
           {values.map((v, i) => (
-            <Reveal key={v.title} delay={i * 80} className="border-t-2 border-[color:var(--brand-forest)] pt-6">
+            <Reveal
+              key={v.title}
+              delay={i * 80}
+              className="border-t-2 border-[color:var(--brand-forest)] py-8 first:pt-0 first:border-t-0"
+            >
               <h2 className="text-2xl">{v.title}</h2>
               <p className="mt-3 text-lg leading-relaxed text-muted-foreground">{v.text}</p>
             </Reveal>
@@ -60,37 +57,22 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Qualifications */}
+      {/* Background */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <Reveal className="grid grid-cols-1 gap-8 border-t border-border pt-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6">
-            <h2 className="text-3xl sm:text-4xl">Fachlicher Hintergrund im Team</h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Zum fachlichen Hintergrund unseres Teams gehören unter anderem:
-            </p>
-            <p className="mt-6 text-base text-muted-foreground">
-              Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
-              <Link to="/leistungen" data-testid="team-services-link" className="text-link text-base">
-                Unsere Leistungen ansehen
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </p>
-          </div>
-          <ul data-testid="team-qualifications" className="lg:col-span-6 lg:pt-2">
-            {qualifications.map((q) => (
-              <li
-                key={q}
-                className="flex items-center gap-3 border-b border-border py-3.5 text-lg font-medium text-[color:var(--brand-forest)] first:border-t"
-              >
-                <Check
-                  className="h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)]"
-                  strokeWidth={2.3}
-                  aria-hidden="true"
-                />
-                {q}
-              </li>
-            ))}
-          </ul>
+        <Reveal className="max-w-3xl border-t border-border pt-12">
+          <h2 className="text-3xl sm:text-4xl">Fachlicher Hintergrund im Team</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            In unserem Team kommen forstliche und gärtnerische Ausbildung sowie
+            Erfahrung aus der Baumschule zusammen – vom Forstwirt über den
+            Zierpflanzengärtner bis zum Altgesellen.
+          </p>
+          <p className="mt-6 text-base text-muted-foreground">
+            Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
+            <Link to="/leistungen" data-testid="team-services-link" className="text-link text-base">
+              Unsere Leistungen ansehen
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </p>
         </Reveal>
       </section>
 

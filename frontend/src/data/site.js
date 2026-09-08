@@ -46,6 +46,17 @@ export const site = {
     profileUrl:
       "https://www.google.com/search?q=Garten-und+Landschaftspflege+B.Streich&stick=H4sIAAAAAAAA_-NgU1I1qDAxTzIyNzY1TEpKMTO2NDO1MqiwNEhMS0w2SzFOTTIxM0hKXsSq5p5YVJKap1ual6Lgk5iXUpyckZhWUlyQlpOanqrgpBdcUpSamZwBAFc9O-lSAAAA&hl=de&mat=CSolaoINfiISElYBa0lj_zsf8XbgU8aUIdYWT7QOKirBVd9II722658dIVku9qXJQZHN4GDbyZR5wUyujz2nKgD9xFxGD0_ih245Ea8b1QdfXjoONVYqXROmS7m3txRCEg",
     mapsUrl: `https://www.google.com/maps/search/?api=1&query=${addressQuery}`,
+    // Manuell gepflegte Google-Bewertung (Stand: September 2026, Angabe des Kunden).
+    // Bei Aenderungen hier aktualisieren; null = Sterne werden nicht angezeigt.
+    rating: 5.0,
+    reviewCount: 6,
+    ratingUpdated: "September 2026",
+  },
+
+  // Umsetzung & Hosting (Footer-Hinweis).
+  madeBy: {
+    label: "diaconuit.de",
+    url: "https://diaconuit.de",
   },
 
   // Local SEO – confirmed service areas only.

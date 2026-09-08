@@ -107,22 +107,19 @@ export default function Leistungen() {
               className="lg:sticky lg:top-28"
             >
               <h2 className="text-lg">Übersicht</h2>
-              <ol className="mt-3 border-t border-border">
-                {services.map((s, i) => (
+              <ul className="mt-3 border-t border-border">
+                {services.map((s) => (
                   <li key={s.id} className="border-b border-border">
                     <a
                       href={`#${s.id}`}
                       data-testid="service-jump-link"
-                      className="flex items-baseline gap-3 py-2.5 text-base text-[color:var(--brand-ink-soft)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
+                      className="flex items-baseline py-2.5 text-base text-[color:var(--brand-ink-soft)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
                     >
-                      <span className="w-6 shrink-0 text-sm font-semibold tabular-nums text-[color:var(--brand-leaf)]">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                       {s.title}
                     </a>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </nav>
           </aside>
 

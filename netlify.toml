@@ -1,0 +1,57 @@
+# Netlify-Konfiguration fuer die Website garten-streich.de
+# Repo-Struktur: /frontend = React-App (Create React App), Netlify Functions unter /frontend/netlify/functions
+#
+# Erforderliche Environment Variables (ausschliesslich in Netlify -> Site configuration -> Environment variables setzen,
+# NIEMALS in dieser Datei oder im Quellcode):
+#   SMTP_HOST      = smtp.strato.de
+#   SMTP_PORT      = 465
+#   SMTP_USER      = info@garten-streich.de
+#   SMTP_PASSWORD  = <nur in Netlify hinterlegt>
+#   CONTACT_TO     = info@garten-streich.de
+
+[build]
+  base    = "frontend"
+  command = "yarn build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # CRA behandelt Warnungen im CI-Modus als Fehler; Build soll nur bei echten Fehlern abbrechen.
+  CI = "false"
+  # Leer lassen: Das Formular sendet dann relativ an /api/contact (diese Netlify Function).
+  REACT_APP_BACKEND_URL = ""
+
+[functions]
+  directory    = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API-Endpunkt: /api/contact -> Netlify Function "contact" (serverseitig, nur POST)
+[[redirects]]
+  from   = "/api/*"
+  to     = "/.netlify/functions/:splat"
+  status = 200
+  force  = true
+
+# Single-Page-App: alle uebrigen Pfade an index.html (Client-Routing)
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options        = "DENY"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

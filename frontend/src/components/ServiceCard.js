@@ -38,7 +38,7 @@ export const ServiceCard = ({ service, variant = "teaser" }) => {
     <Link
       to={to}
       data-testid="service-card"
-      className="group flex items-start gap-4 border-b border-border py-5 transition-colors hover:text-[color:var(--brand-accent-strong)]"
+      className="group flex h-full items-start gap-4 border-b border-border py-5 transition-colors hover:text-[color:var(--brand-accent-strong)]"
     >
       <Icon
         className="mt-1 h-5 w-5 shrink-0 text-[color:var(--brand-leaf)]"

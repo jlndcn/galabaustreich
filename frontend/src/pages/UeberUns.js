@@ -5,13 +5,6 @@ import { Reveal } from "@/components/Reveal";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 
-const facts = [
-  { label: "Inhaberin", value: "Bianca Streich" },
-  { label: "Rechtsform", value: "Einzelunternehmen" },
-  { label: "Standort", value: "Scharbeutz" },
-  { label: "Tätig in", value: "Lübeck und Ostholstein" },
-];
-
 const values = [
   {
     title: "Persönlich",
@@ -62,22 +55,14 @@ export default function UeberUns() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5 lg:pt-3">
+          {/* Photo slot: replace the placeholder surface with <img> once the photo is available. */}
+          <div className="lg:col-span-5">
             <Reveal delay={120}>
-              <h2 className="text-lg">Auf einen Blick</h2>
-              <dl data-testid="about-facts" className="mt-3 border-t border-border">
-                {facts.map((f) => (
-                  <div
-                    key={f.label}
-                    className="grid grid-cols-[7.5rem_1fr] gap-4 border-b border-border py-4"
-                  >
-                    <dt className="text-base text-muted-foreground">{f.label}</dt>
-                    <dd className="text-base font-semibold text-[color:var(--brand-forest)]">
-                      {f.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <div
+                data-testid="about-photo-placeholder"
+                aria-hidden="true"
+                className="surface-organic aspect-[4/3] rounded-2xl"
+              />
             </Reveal>
           </div>
         </div>
@@ -97,14 +82,23 @@ export default function UeberUns() {
           ))}
         </div>
 
-        <Reveal delay={120} className="mt-14 flex flex-col gap-4 sm:flex-row sm:gap-10">
-          <Link to="/leistungen" data-testid="about-services-link" className="text-link text-lg">
+        {/* Two equal columns, mirroring the page grid */}
+        <Reveal delay={120} className="mt-14 grid grid-cols-1 gap-x-10 border-t border-border sm:grid-cols-2">
+          <Link
+            to="/leistungen"
+            data-testid="about-services-link"
+            className="group flex items-center justify-between gap-4 border-b border-border py-5 text-lg font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
+          >
             Unsere Leistungen ansehen
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)] transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
-          <Link to="/team" data-testid="about-team-link" className="text-link text-lg">
+          <Link
+            to="/team"
+            data-testid="about-team-link"
+            className="group flex items-center justify-between gap-4 border-b border-border py-5 text-lg font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
+          >
             Unser Team kennenlernen
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)] transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
         </Reveal>
       </section>
