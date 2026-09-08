@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ContactTiles } from "@/components/ContactTiles";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { SeasonHint } from "@/components/SeasonHint";
 import { GoogleRating } from "@/components/GoogleRating";
 import { seoPages, buildLocalBusinessJsonLd } from "@/data/seo";
@@ -210,18 +211,60 @@ export default function Home() {
               mit einem Blick für das Schöne. Von der ersten Pflanze bis zum
               gewachsenen Garten.
             </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-8">
+              <Link to="/ueber-uns" data-testid="home-about-link" className="text-link text-lg">
+                Mehr über Streich
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link to="/team" data-testid="home-team-link" className="text-link text-lg">
+                Unser Team kennenlernen
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-col justify-center gap-4 lg:col-span-5">
-            <Link to="/ueber-uns" data-testid="home-about-link" className="text-link text-lg">
-              Mehr über Streich
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-            <Link to="/team" data-testid="home-team-link" className="text-link text-lg">
-              Unser Team kennenlernen
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+          <div className="lg:col-span-5">
+            <PhotoPlaceholder
+              label="Streich im Einsatz"
+              hint="Team / Fahrzeug bei der Arbeit in einem Garten der Region"
+              spec="Querformat · min. 1600×1200 px"
+            />
           </div>
         </Reveal>
+      </section>
+
+      {/* Einblicke / impressions – strategic photo slots */}
+      <section
+        data-testid="home-gallery-section"
+        className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+      >
+        <Reveal className="max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl">Einblicke in unsere Arbeit</h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            An dieser Stelle zeigen wir künftig echte Aufnahmen aus Gärten und
+            von Projekten in Lübeck und Ostholstein – von gepflegten Flächen bis
+            zu neu gestalteten Gartenbereichen.
+          </p>
+        </Reveal>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal>
+            <PhotoPlaceholder
+              label="Projekt-Foto"
+              hint="z. B. gepflegter Garten oder Grünfläche"
+            />
+          </Reveal>
+          <Reveal delay={80}>
+            <PhotoPlaceholder
+              label="Detailaufnahme"
+              hint="z. B. Heckenschnitt, Beet oder Rasenkante"
+            />
+          </Reveal>
+          <Reveal delay={160}>
+            <PhotoPlaceholder
+              label="Vorher / Nachher"
+              hint="z. B. Umgestaltung eines Gartenbereichs"
+            />
+          </Reveal>
+        </div>
       </section>
 
       {/* Contact: tiles + inquiry form */}

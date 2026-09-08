@@ -2,6 +2,7 @@ import { Check, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 import { services, furtherServices } from "@/data/services";
@@ -14,34 +15,44 @@ function ServiceSection({ service }) {
       data-testid="service-section"
       className="scroll-mt-28 py-10 first:pt-0 lg:py-12"
     >
-      <Reveal>
-        <h2 className="text-3xl sm:text-4xl">{service.title}</h2>
-        <p className="mt-3 text-xl font-medium text-[color:var(--brand-leaf)]">
-          {service.claim}
-        </p>
-        <div className="mt-5 max-w-3xl space-y-4 text-lg leading-relaxed text-muted-foreground">
-          {service.description.map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </div>
-        {service.list && (
-          <ul className="mt-6 grid max-w-2xl grid-cols-1 gap-2 sm:grid-cols-2">
-            {service.list.map((item) => (
-              <li
-                key={item}
-                className="flex items-center gap-2.5 text-base text-[color:var(--brand-ink)]"
-              >
-                <Check
-                  className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
-                  strokeWidth={2.4}
-                  aria-hidden="true"
-                />
-                {item}
-              </li>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
+        <Reveal className="lg:col-span-7">
+          <h2 className="text-3xl sm:text-4xl">{service.title}</h2>
+          <p className="mt-3 text-xl font-medium text-[color:var(--brand-leaf)]">
+            {service.claim}
+          </p>
+          <div className="mt-5 max-w-3xl space-y-4 text-lg leading-relaxed text-muted-foreground">
+            {service.description.map((para, i) => (
+              <p key={i}>{para}</p>
             ))}
-          </ul>
-        )}
-      </Reveal>
+          </div>
+          {service.list && (
+            <ul className="mt-6 grid max-w-2xl grid-cols-1 gap-2 sm:grid-cols-2">
+              {service.list.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center gap-2.5 text-base text-[color:var(--brand-ink)]"
+                >
+                  <Check
+                    className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
+                    strokeWidth={2.4}
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+        </Reveal>
+
+        <Reveal delay={80} className="lg:col-span-5">
+          <PhotoPlaceholder
+            label={service.title}
+            hint={`Beispielbild: ${service.claim}`}
+            spec="Querformat · min. 1600×1200 px"
+          />
+        </Reveal>
+      </div>
     </section>
   );
 }

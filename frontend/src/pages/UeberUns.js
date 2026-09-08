@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 
@@ -55,13 +56,13 @@ export default function UeberUns() {
             </Reveal>
           </div>
 
-          {/* Photo slot: replace the placeholder surface with <img> once the photo is available. */}
+          {/* Photo slot: replace the placeholder with <img> once the photo is available. */}
           <div className="lg:col-span-5">
             <Reveal delay={120}>
-              <div
-                data-testid="about-photo-placeholder"
-                aria-hidden="true"
-                className="surface-organic aspect-[4/3] rounded-2xl"
+              <PhotoPlaceholder
+                label="Bianca Streich / Betrieb"
+                hint="Portrait oder Aufnahme aus dem Betriebsalltag"
+                spec="Hochformat/Quer · min. 1200×1600 px"
               />
             </Reveal>
           </div>
@@ -100,6 +101,18 @@ export default function UeberUns() {
             Unser Team kennenlernen
             <ArrowRight className="h-5 w-5 shrink-0 text-[color:var(--brand-accent-strong)] transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
+        </Reveal>
+      </section>
+
+      {/* Wide impressions slot */}
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <Reveal>
+          <PhotoPlaceholder
+            label="Impression aus der Region"
+            hint="Breites Stimmungsbild – z. B. gepflegter Garten, Landschaft oder Grünanlage in Lübeck/Ostholstein"
+            ratio="aspect-[21/9]"
+            spec="Breites Querformat · min. 2400×1000 px"
+          />
         </Reveal>
       </section>
 

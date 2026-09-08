@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
+import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 
@@ -41,6 +42,18 @@ export default function Team() {
         </Reveal>
       </section>
 
+      {/* Team group photo slot */}
+      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 lg:px-8 lg:pb-8">
+        <Reveal>
+          <PhotoPlaceholder
+            label="Teamfoto"
+            hint="Gruppenaufnahme des Teams – gern vor Ort oder mit Fahrzeug/Ausrüstung"
+            ratio="aspect-[16/9]"
+            spec="Breites Querformat · min. 2000×1125 px"
+          />
+        </Reveal>
+      </section>
+
       {/* Values – stacked */}
       <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8 lg:py-8">
         <div className="max-w-3xl">
@@ -74,6 +87,29 @@ export default function Team() {
             </Link>
           </p>
         </Reveal>
+      </section>
+
+      {/* Role-based portrait slots (no invented names) */}
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <Reveal className="max-w-3xl">
+          <h2 className="text-2xl">Gesichter im Team</h2>
+          <p className="mt-3 text-base text-muted-foreground">
+            Hier folgen später Porträts der Personen hinter Streich – die Rollen
+            dienen bis dahin als Orientierung.
+          </p>
+        </Reveal>
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {["Forstwirt", "Zierpflanzengärtner", "Altgeselle"].map((role, i) => (
+            <Reveal key={role} delay={i * 80}>
+              <PhotoPlaceholder
+                label={role}
+                hint="Porträtfoto"
+                ratio="aspect-[3/4]"
+                spec="Hochformat · min. 1200×1600 px"
+              />
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <ContactCTA prefix="team-contact-cta" />

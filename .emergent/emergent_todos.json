@@ -1,38 +1,26 @@
 [
   {
-    "content": "Logo-Assets aus neuem transparentem Logo erzeugen (header/hero webp, favicon, 192/512, og-image)",
+    "content": "Create reusable PhotoPlaceholder component (design-token based, clearly marked 'Foto folgt')",
     "status": "completed"
   },
   {
-    "content": "Daten: site.js (Google rating 5.0/6, madeBy), seasons.js (getSeasonalTop, Reihenfolge verfeinert)",
+    "content": "Home: add photo slots (region section + 'Einblicke in unsere Arbeit' strip)",
     "status": "completed"
   },
   {
-    "content": "Komponenten: Header-Redesign, Footer hell mit Logo + Made by, Logo-Groessen, GoogleRating (Sterne), ContactTiles, FloatingWhatsApp, Layout (Toaster top)",
+    "content": "Leistungen: add a photo slot per service section",
     "status": "completed"
   },
   {
-    "content": "ContactForm: API-Fallback /api, initialMessage (?leistung=), 200/201, Fehler-Mapping",
+    "content": "UeberUns: upgrade existing slot + add impressions slot",
     "status": "completed"
   },
   {
-    "content": "Home: saisonale Top-3, Teaser-Rest, CTA-Band, Kontaktkacheln + Formular; Leistungen: CTA je Leistung",
+    "content": "Team: add group photo + role-based portrait slots",
     "status": "completed"
   },
   {
-    "content": "Netlify: netlify.toml (root), Function contact.mjs mit nodemailer (STRATO 465 SSL, Env only, Honeypot, Validierung, Reply-To), yarn add nodemailer; lokal gegen Fake-SMTP testen",
+    "content": "Verify build (esbuild) + screenshots desktop & mobile",
     "status": "completed"
-  },
-  {
-    "content": "Backend mailer.py an Spec angleichen (From-Name, Subject, CONTACT_TO, Port 465 auto-SSL) + .env Platzhalter",
-    "status": "completed"
-  },
-  {
-    "content": "Datenschutz: Hosting Netlify/diaconuit, STRATO-Mailserver ergaenzen",
-    "status": "completed"
-  },
-  {
-    "content": "Build, Screenshots (Desktop+Mobile), plan.md, Testing-Agent",
-    "status": "in_progress"
   }
 ]
