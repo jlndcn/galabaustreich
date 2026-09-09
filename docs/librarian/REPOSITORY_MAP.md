@@ -1,0 +1,455 @@
+# Repository Map
+
+## Erklärung
+
+Die Repository-Karte listet Verzeichnisse und Dateien mit abgeleiteten Rollen (page, component, serverless-function, …).
+
+Sie dient der Orientierung; Verhaltensdetails stehen in Architektur-, API- und Komponenten-Dokumenten.
+
+## Technische Referenz
+
+### Verzeichnisse
+
+- **.emergent/** — Rolle: `source`
+- **.emergent/cron/** — Rolle: `source`
+- **.emergent/markers/** — Rolle: `source`
+- **assets-src/** — Rolle: `source`
+- **backend/** — Rolle: `source`
+- **frontend/** — Rolle: `source`
+- **frontend/dist-preview/** — Rolle: `source`
+- **frontend/dist-preview/fonts/** — Rolle: `source`
+- **frontend/dist-preview/_astro/** — Rolle: `source`
+- **frontend/netlify/** — Rolle: `source`
+- **frontend/netlify/functions/** — Rolle: `source`
+- **frontend/playwright-report/** — Rolle: `source`
+- **frontend/playwright-report/data/** — Rolle: `source`
+- **frontend/public/** — Rolle: `source`
+- **frontend/public/fonts/** — Rolle: `source`
+- **frontend/reports/** — Rolle: `source`
+- **frontend/reports/performance/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/component_crx_cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Crashpad/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/AutofillAiModelCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/AutofillStrikeDatabase/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/BudgetDatabase/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Cache/No_Vary_Search/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/chrome_cart_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/ClientCertificates/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Code Cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Code Cache/js/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Code Cache/js/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Code Cache/wasm/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Code Cache/wasm/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/commerce_subscription_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/discounts_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/discount_infos_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Extension State/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/GCM Store/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/GPUCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Local Storage/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Local Storage/leveldb/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Network/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/parcel_tracking_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/PersistentOriginTrials/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Safe Browsing Network/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Segmentation Platform/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Segmentation Platform/SegmentInfoDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Segmentation Platform/SignalDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Segmentation Platform/SignalStorageConfigDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Session Storage/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Sessions/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Shared Dictionary/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Shared Dictionary/cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Shared Dictionary/cache/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/shared_proto_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/shared_proto_db/metadata/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Site Characteristics Database/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Sync Data/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/Sync Data/LevelDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/Default/WebStorage/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/extensions_crx_cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/GPUPersistentCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/GPUPersistentCache/DawnGraphiteCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/GPUPersistentCache/DawnGraphiteCache/3VTFBHJDFNU2V4IGSN4IATDSGV2NT3ME/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/GrShaderCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/segmentation_platform/** — Rolle: `source`
+- **frontend/reports/performance/profile-0ACeKh/ShaderCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/component_crx_cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Crashpad/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/AutofillAiModelCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/AutofillStrikeDatabase/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/BudgetDatabase/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Cache/Cache_Data/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Cache/No_Vary_Search/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/chrome_cart_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/ClientCertificates/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Code Cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Code Cache/js/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Code Cache/js/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Code Cache/wasm/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Code Cache/wasm/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/commerce_subscription_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/DawnGraphiteCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/DawnWebGPUCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/discounts_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/discount_infos_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Extension Rules/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Extension Scripts/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Extension State/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/GCM Store/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/GPUCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Local Storage/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Local Storage/leveldb/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Network/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/parcel_tracking_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/PersistentOriginTrials/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Safe Browsing Network/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Segmentation Platform/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Segmentation Platform/SegmentInfoDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Segmentation Platform/SignalDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Segmentation Platform/SignalStorageConfigDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Session Storage/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Sessions/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Shared Dictionary/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Shared Dictionary/cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Shared Dictionary/cache/index-dir/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/shared_proto_db/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/shared_proto_db/metadata/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Site Characteristics Database/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Sync Data/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/Sync Data/LevelDB/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/Default/WebStorage/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/extensions_crx_cache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/GPUPersistentCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/GPUPersistentCache/DawnGraphiteCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/GPUPersistentCache/DawnGraphiteCache/3VTFBHJDFNU2V4IGSN4IATDSGV2NT3ME/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/GrShaderCache/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/segmentation_platform/** — Rolle: `source`
+- **frontend/reports/performance/profile-2nabJN/ShaderCache/** — Rolle: `source`
+- **frontend/reports/screenshots/** — Rolle: `source`
+- **frontend/src/** — Rolle: `source`
+- **frontend/src/assets/** — Rolle: `source`
+- **frontend/src/components/** — Rolle: `source`
+- **frontend/src/data/** — Rolle: `source`
+- **frontend/src/layouts/** — Rolle: `source`
+- **frontend/src/pages/** — Rolle: `source`
+- **frontend/src/scripts/** — Rolle: `source`
+- **frontend/src/styles/** — Rolle: `source`
+- **frontend/test-results/** — Rolle: `source`
+- **frontend/tests/** — Rolle: `source`
+- **frontend/tests/e2e/** — Rolle: `source`
+- **frontend/tests/fixtures/** — Rolle: `source`
+- **frontend/tests/unit/** — Rolle: `source`
+- **memory/** — Rolle: `source`
+- **tests/** — Rolle: `source`
+- **test_reports/** — Rolle: `source`
+- **test_reports/pytest/** — Rolle: `source`
+
+### Dateien (Auszug)
+
+- `.emergent/cron/applied.hash` — `source`
+- `.emergent/cron/dispatch_webhook.sh` — `source`
+- `.emergent/cron/watch_crons.sh` — `source`
+- `.emergent/cron/webhook-crons` — `source`
+- `.emergent/cron/webhook_crond.sh` — `source`
+- `.emergent/emergent.yml` — `source`
+- `.emergent/emergent_todos.json` — `source`
+- `.emergent/markers/.bootstrap-complete` — `source`
+- `.emergent/markers/.restore-complete` — `source`
+- `.emergent/system_deps.txt` — `source`
+- `.gitconfig` — `source`
+- `.gitignore` — `source`
+- `ABSCHLUSSBERICHT.md` — `source`
+- `assets-src/logo-new.png` — `source`
+- `backend/mailer.py` — `source`
+- `backend/pytest.ini` — `source`
+- `backend/requirements.txt` — `source`
+- `backend/server.py` — `source`
+- `design_guidelines.md` — `source`
+- `frontend/.gitignore` — `source`
+- `frontend/.npmrc` — `source`
+- `frontend/.nvmrc` — `source`
+- `frontend/.prettierignore` — `source`
+- `frontend/.prettierrc.json` — `source`
+- `frontend/astro.config.mjs` — `app-config`
+- `frontend/dist-preview/404.html` — `source`
+- `frontend/dist-preview/agb.html` — `source`
+- `frontend/dist-preview/datenschutz.html` — `source`
+- `frontend/dist-preview/favicon-64.png` — `source`
+- `frontend/dist-preview/favicon.ico` — `source`
+- `frontend/dist-preview/fonts/figtree-variable-latin-ext.woff2` — `source`
+- `frontend/dist-preview/fonts/figtree-variable.woff2` — `source`
+- `frontend/dist-preview/fonts.css` — `stylesheet`
+- `frontend/dist-preview/impressum.html` — `source`
+- `frontend/dist-preview/index.html` — `source`
+- `frontend/dist-preview/leistungen.html` — `source`
+- `frontend/dist-preview/logo-header.webp` — `source`
+- `frontend/dist-preview/logo-hero.webp` — `source`
+- `frontend/dist-preview/logo-transparent.png` — `source`
+- `frontend/dist-preview/logo.png` — `source`
+- `frontend/dist-preview/logo192.png` — `source`
+- `frontend/dist-preview/logo512.png` — `source`
+- `frontend/dist-preview/manifest.json` — `source`
+- `frontend/dist-preview/og-image.jpg` — `source`
+- `frontend/dist-preview/robots.txt` — `source`
+- `frontend/dist-preview/sitemap.xml` — `source`
+- `frontend/dist-preview/team.html` — `source`
+- `frontend/dist-preview/ueber-uns.html` — `source`
+- `frontend/dist-preview/_astro/BaseLayout.Brri_bPq.css` — `stylesheet`
+- `frontend/dist-preview/_astro/ContactForm.astro_astro_type_script_index_0_lang.BidsZuqT.js` — `source`
+- `frontend/dist-preview/_astro/Header.astro_astro_type_script_index_0_lang.CBsehvv9.js` — `source`
+- `frontend/dist-preview/_astro/logo-header.CaUoF8j1.webp` — `source`
+- `frontend/dist-preview/_astro/logo-header.CaUoF8j1_10Molr.webp` — `source`
+- `frontend/dist-preview/_astro/logo-header.CaUoF8j1_2hW3qK.webp` — `source`
+- `frontend/dist-preview/_astro/logo-hero.C9tMEr05.webp` — `source`
+- `frontend/dist-preview/_astro/logo-hero.C9tMEr05_1Df0G4.webp` — `source`
+- `frontend/dist-preview/_astro/logo-hero.C9tMEr05_2afhky.webp` — `source`
+- `frontend/dist-preview/_astro/logo-hero.C9tMEr05_zjS0k.webp` — `source`
+- `frontend/dist-preview/_astro/logo-hero.C9tMEr05_ZKLEpS.webp` — `source`
+- `frontend/dist-preview/_astro/SeasonalServices.astro_astro_type_script_index_0_lang.DGQzwFce.js` — `source`
+- `frontend/dist-preview/_headers` — `source`
+- `frontend/netlify/functions/contact.mjs` — `serverless-function`
+- `frontend/package-lock.json` — `source`
+- `frontend/package.json` — `source`
+- `frontend/playwright-report/data/00067a1c5754300c680edbc224ed3d4a381d0a2c.png` — `data-module`
+- `frontend/playwright-report/data/028203f2f6281f8c81f68d3fff11f37692a15de0.png` — `data-module`
+- `frontend/playwright-report/data/05175d02f607ec3da364a1ede1df817baa87fe9c.png` — `data-module`
+- `frontend/playwright-report/data/07fb88e6817bf9d3dfed3825168f8a42697c6cce.png` — `data-module`
+- `frontend/playwright-report/data/09a94360f9cfa3333e6d892c64740a0084b99065.png` — `data-module`
+- `frontend/playwright-report/data/0ed2f17616eb2dad2ee2589d082043c33d9b7cb8.png` — `data-module`
+- `frontend/playwright-report/data/1235cc294925d45d4c560ce3d2af30db0be97fc6.png` — `data-module`
+- `frontend/playwright-report/data/127b3463bf64347ff2242b65510590f9ce213471.png` — `data-module`
+- `frontend/playwright-report/data/246965497c8a47962be2fb63f35361580dd201f0.png` — `data-module`
+- `frontend/playwright-report/data/27e8c880b382b8faac1904febe0e85b86a9359d2.png` — `data-module`
+- `frontend/playwright-report/data/30731a64768fb7850d2a26a131464431dac31f98.png` — `data-module`
+- `frontend/playwright-report/data/32d102d3c856bd5d3e8b3bdb10411ba6bb7f548d.png` — `data-module`
+- `frontend/playwright-report/data/3e8bcd40e370c98533285c9aeebdca3c077f9b15.png` — `data-module`
+- `frontend/playwright-report/data/45c43b8419e1c4438a0890abaffe5516e0f7245c.png` — `data-module`
+- `frontend/playwright-report/data/4609b222996bd7df9d856a23176a29db4fe3390d.png` — `data-module`
+- `frontend/playwright-report/data/4903b75314733e89d3d25be872db5c4c27f072c6.png` — `data-module`
+- `frontend/playwright-report/data/4b2d77181a4922bc5b0bd6d53c5cf2ecdc14b122.png` — `data-module`
+- `frontend/playwright-report/data/4c3b50a7ba2bbf8a3ac938fc4c0954771306ced1.png` — `data-module`
+- `frontend/playwright-report/data/4e2c8497e038390349ebf9bc8444644d67b8f1e1.png` — `data-module`
+- `frontend/playwright-report/data/517ee1d599b1bcbacf332e7fbedf6dd9d363a35c.png` — `data-module`
+- `frontend/playwright-report/data/558a5578eca04874100aad37ad20cd8c57178ede.png` — `data-module`
+- `frontend/playwright-report/data/591072be4b47835dd7b17399932a645af0207273.png` — `data-module`
+- `frontend/playwright-report/data/5b41421d0c0ac39e43af8babc39500b94c5456cf.png` — `data-module`
+- `frontend/playwright-report/data/641a235fd18eec3a20a6da49edea4a1374bae79e.png` — `data-module`
+- `frontend/playwright-report/data/6595335ab5510deb2f37d51f6fd14340cd4b09fc.png` — `data-module`
+- `frontend/playwright-report/data/67dccad5a4c14f9267b4286f6d25aeedba967087.png` — `data-module`
+- `frontend/playwright-report/data/69142ab16c8ba20de88ec946009b15247eaa549d.png` — `data-module`
+- `frontend/playwright-report/data/76afb7a7cbeb7f96082055932e99f91680dc2ffa.png` — `data-module`
+- `frontend/playwright-report/data/771ed3e8747311dec5476eb3a6408630b96ebc60.png` — `data-module`
+- `frontend/playwright-report/data/79ff16a2496bede180d51d688038b7f37f475648.png` — `data-module`
+- `frontend/playwright-report/data/7c2fd1ec5bfa2faabd2811e84d8c61601ccc3d35.png` — `data-module`
+- `frontend/playwright-report/data/7ffb370caacbcb01ac0f0325d8391e297e3a57f6.png` — `data-module`
+- `frontend/playwright-report/data/82440a4a251f6a4d96fbf003dc99af47ee7ac375.png` — `data-module`
+- `frontend/playwright-report/data/85864fc6019e0a54ca81f11e1521c2a8508f5801.png` — `data-module`
+- `frontend/playwright-report/data/8abc76c19127f620acb3cc2b88f9fab8ebed247e.png` — `data-module`
+- `frontend/playwright-report/data/8b2cbc8bfa2e2780c36436c2f923c063135ad129.png` — `data-module`
+- `frontend/playwright-report/data/9a52f9c4d7ea42712d4ee9c797269d40b20fb23b.png` — `data-module`
+- `frontend/playwright-report/data/a1841698875ada1522256b0eb2313e0f2602d0c5.png` — `data-module`
+- `frontend/playwright-report/data/a36731098f58dc92f66573ffd6fe6b21af1f47d7.png` — `data-module`
+- `frontend/playwright-report/data/a7f5995911726deeae5d83f3ac9960b604e55660.png` — `data-module`
+- `frontend/playwright-report/data/aa0d397cb3ca3bfa3c2b8b264bbe2f95ef1aa124.png` — `data-module`
+- `frontend/playwright-report/data/aad284704165681c6b8afd37a1f155939fcc7993.png` — `data-module`
+- `frontend/playwright-report/data/ab2e1ec0abf81d7563e85f34496b2ff68be04bf4.png` — `data-module`
+- `frontend/playwright-report/data/aee7bcc0b60c78447abefa72750a28cd82739154.png` — `data-module`
+- `frontend/playwright-report/data/b0d0f82e23811cc186e2b07c30a1eba5970e78ac.png` — `data-module`
+- `frontend/playwright-report/data/b601375986ba2086a82d582ea00772aa2d66a96b.png` — `data-module`
+- `frontend/playwright-report/data/b653d817d93a35e343b2a96a90709a3708d7250e.png` — `data-module`
+- `frontend/playwright-report/data/b90963e3204d7c8f5e9250b96dca41bb649c00d0.png` — `data-module`
+- `frontend/playwright-report/data/bbf2371d07ad3d3cb8049852a2e1a7a849298f0e.png` — `data-module`
+- `frontend/playwright-report/data/be26e843a99319b4583771f3009eb79b58ff7c12.png` — `data-module`
+- `frontend/playwright-report/data/bff320a5488422bf5cd1d19d99e4efe04f804ee5.png` — `data-module`
+- `frontend/playwright-report/data/bff99c6accbb4a13f7d6174699836d834311dd12.png` — `data-module`
+- `frontend/playwright-report/data/c2d65ecc36eff31e02902750e3e019fdc4e75e74.png` — `data-module`
+- `frontend/playwright-report/data/c6e34e996752f034e626ab79dae2e5d063d533c3.png` — `data-module`
+- `frontend/playwright-report/data/d1e6a7864603c54c65bd52a9aa0ce5e84e276c23.png` — `data-module`
+- `frontend/playwright-report/data/d359a8d865b5ec43b2c1220ce609f94642a666fd.png` — `data-module`
+- `frontend/playwright-report/data/d6570d621795991366c5c159ecac3d7772d97085.png` — `data-module`
+- `frontend/playwright-report/data/d7d215d1b57a4620216892601e6cad5abb80f2ee.png` — `data-module`
+- `frontend/playwright-report/data/d8ee07a88d7e61e3f097288e7e6f798028d53276.png` — `data-module`
+- `frontend/playwright-report/data/d909eda9eea2acf4af62f6fd181c7f3dbe213a34.png` — `data-module`
+- `frontend/playwright-report/data/dc1a4b9f2afd07ebefc36f9cb2099e3916eb17a9.png` — `data-module`
+- `frontend/playwright-report/data/dc770e67fbcbf5009fc143a0f2f8a5282c77c06e.png` — `data-module`
+- `frontend/playwright-report/data/dddeecb68b400dbbffb793b2c2d2912e3af2d4e4.png` — `data-module`
+- `frontend/playwright-report/data/df5d44c1205901b804c22605a2cee51770c7358b.png` — `data-module`
+- `frontend/playwright-report/data/e230d70cb2fd262b71734a6df5b572978e1a1562.png` — `data-module`
+- `frontend/playwright-report/data/e871a955e14c405ec5dff9f3c7ccd9ef80ecc898.png` — `data-module`
+- `frontend/playwright-report/data/ebb58af8c9498938311c864d39da3e5af026c6ea.png` — `data-module`
+- `frontend/playwright-report/data/ec6ff5f95cee9fb741e79792c13d05a603c020e1.png` — `data-module`
+- `frontend/playwright-report/data/ee59aa169012cd4c34b2a62d1ad5496f582965ed.png` — `data-module`
+- `frontend/playwright-report/data/f80d0771b4cbafc536d343242e5382c2294b0cf7.png` — `data-module`
+- `frontend/playwright-report/data/fd4bf21f852e0859928fc77baf31f1addf86b8cf.png` — `data-module`
+- `frontend/playwright-report/data/fd866d610a910b23bf79eb9e8a8e7188271040b8.png` — `data-module`
+- `frontend/playwright-report/index.html` — `source`
+- `frontend/playwright.config.ts` — `source`
+- `frontend/public/favicon-64.png` — `source`
+- `frontend/public/favicon.ico` — `source`
+- `frontend/public/fonts/figtree-variable-latin-ext.woff2` — `source`
+- `frontend/public/fonts/figtree-variable.woff2` — `source`
+- `frontend/public/fonts.css` — `stylesheet`
+- `frontend/public/logo-header.webp` — `source`
+- `frontend/public/logo-hero.webp` — `source`
+- `frontend/public/logo-transparent.png` — `source`
+- `frontend/public/logo.png` — `source`
+- `frontend/public/logo192.png` — `source`
+- `frontend/public/logo512.png` — `source`
+- `frontend/public/manifest.json` — `source`
+- `frontend/public/og-image.jpg` — `source`
+- `frontend/public/sitemap.xml` — `source`
+- `frontend/README.md` — `source`
+- `frontend/reports/browser-tests.log` — `source`
+- `frontend/reports/build-final.log` — `source`
+- `frontend/reports/build-preview.json` — `source`
+- `frontend/reports/build-production.json` — `source`
+- `frontend/reports/format.log` — `source`
+- `frontend/reports/npm-audit.json` — `source`
+- `frontend/reports/performance/agb-mobile-1.json` — `source`
+- `frontend/reports/performance/datenschutz-mobile-1.json` — `source`
+- `frontend/reports/performance/desktop-1.json` — `source`
+- `frontend/reports/performance/desktop-2.json` — `source`
+- `frontend/reports/performance/desktop-3.json` — `source`
+- `frontend/reports/performance/home-desktop-1.json` — `source`
+- `frontend/reports/performance/home-desktop-2.json` — `source`
+- `frontend/reports/performance/home-desktop-3.json` — `source`
+- `frontend/reports/performance/home-mobile-1.json` — `source`
+- `frontend/reports/performance/home-mobile-2.json` — `source`
+- `frontend/reports/performance/home-mobile-3.json` — `source`
+- `frontend/reports/performance/impressum-mobile-1.json` — `source`
+- `frontend/reports/performance/leistungen-mobile-1.json` — `source`
+- `frontend/reports/performance/mobile-1.json` — `source`
+- `frontend/reports/performance/mobile-2.json` — `source`
+- `frontend/reports/performance/mobile-3.json` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Breadcrumbs` — `source`
+- `frontend/reports/performance/profile-0ACeKh/chrome-err.log` — `source`
+- `frontend/reports/performance/profile-0ACeKh/chrome-out.log` — `source`
+- `frontend/reports/performance/profile-0ACeKh/chrome.pid` — `source`
+- `frontend/reports/performance/profile-0ACeKh/component_crx_cache/metadata.json` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Crashpad/metadata` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Crashpad/settings.dat` — `source`
+- `frontend/reports/performance/profile-0ACeKh/CrashpadMetrics-active.pma` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Account Web Data` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Account Web Data-journal` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Affiliation Database` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Affiliation Database-journal` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/AutofillAiModelCache/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/AutofillAiModelCache/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/AutofillStrikeDatabase/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/AutofillStrikeDatabase/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/BookmarkMergedSurfaceOrdering` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/BudgetDatabase/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/BudgetDatabase/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/data_0` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/data_1` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/data_2` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/data_3` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/f_000001` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/f_000002` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/f_000004` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/Cache_Data/index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/No_Vary_Search/journal.baj` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Cache/No_Vary_Search/snapshot.baf` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/chrome_cart_db/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/chrome_cart_db/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/ClientCertificates/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/ClientCertificates/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Code Cache/js/eb42cb3381e79817_0` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Code Cache/js/index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Code Cache/js/index-dir/the-real-index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Code Cache/wasm/index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Code Cache/wasm/index-dir/the-real-index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/commerce_subscription_db/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/commerce_subscription_db/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/data_0` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/data_1` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/data_2` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/data_3` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnGraphiteCache/index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/data_0` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/data_1` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/data_2` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/data_3` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DawnWebGPUCache/index` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/declarative_performance_observer.db` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/declarative_performance_observer.db-journal` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DIPS` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/DIPS-wal` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/discounts_db/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/discounts_db/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/discount_infos_db/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/discount_infos_db/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/engine_allowlist.bf` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/000003.log` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/CURRENT` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Rules/MANIFEST-000001` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/000003.log` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/CURRENT` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension Scripts/MANIFEST-000001` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension State/000003.log` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension State/CURRENT` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension State/LOCK` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension State/LOG` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Extension State/MANIFEST-000001` — `source`
+- `frontend/reports/performance/profile-0ACeKh/Default/Favicons` — `source`
+
+HEAD: `3c837baf80be192e4c782180ccb951126dce9878` · Branch: `feat/astro-modernisierung`
+
+## Evidence
+
+- **directory** .emergent/: `.emergent`
+- **directory** .emergent/cron/: `.emergent/cron`
+- **directory** .emergent/markers/: `.emergent/markers`
+- **directory** assets-src/: `assets-src`
+- **directory** backend/: `backend`
+- **directory** frontend/: `frontend`
+- **directory** frontend/dist-preview/: `frontend/dist-preview`
+- **directory** frontend/dist-preview/fonts/: `frontend/dist-preview/fonts`
+- **directory** frontend/dist-preview/_astro/: `frontend/dist-preview/_astro`
+- **directory** frontend/netlify/: `frontend/netlify`
+- **directory** frontend/netlify/functions/: `frontend/netlify/functions`
+- **directory** frontend/playwright-report/: `frontend/playwright-report`
+- **directory** frontend/playwright-report/data/: `frontend/playwright-report/data`
+- **directory** frontend/public/: `frontend/public`
+- **directory** frontend/public/fonts/: `frontend/public/fonts`
+- **directory** frontend/reports/: `frontend/reports`
+- **directory** frontend/reports/performance/: `frontend/reports/performance`
+- **directory** frontend/reports/performance/profile-0ACeKh/: `frontend/reports/performance/profile-0ACeKh`
+- **directory** frontend/reports/performance/profile-0ACeKh/component_crx_cache/: `frontend/reports/performance/profile-0ACeKh/component_crx_cache`
+- **directory** frontend/reports/performance/profile-0ACeKh/Crashpad/: `frontend/reports/performance/profile-0ACeKh/Crashpad`
+- **file** .emergent/cron/applied.hash: `.emergent/cron/applied.hash:1`
+- **file** .emergent/cron/dispatch_webhook.sh: `.emergent/cron/dispatch_webhook.sh:1`
+- **file** .emergent/cron/watch_crons.sh: `.emergent/cron/watch_crons.sh:1`
+- **file** .emergent/cron/webhook-crons: `.emergent/cron/webhook-crons:1`
+- **file** .emergent/cron/webhook_crond.sh: `.emergent/cron/webhook_crond.sh:1`
+- **file** .emergent/emergent.yml: `.emergent/emergent.yml:1`
+- **file** .emergent/emergent_todos.json: `.emergent/emergent_todos.json:1`
+- **file** .emergent/markers/.bootstrap-complete: `.emergent/markers/.bootstrap-complete:1`
+- **file** .emergent/markers/.restore-complete: `.emergent/markers/.restore-complete:1`
+- **file** .emergent/system_deps.txt: `.emergent/system_deps.txt:1`
+- **file** .gitconfig: `.gitconfig:1`
+- **file** .gitignore: `.gitignore:1`
+- **file** ABSCHLUSSBERICHT.md: `ABSCHLUSSBERICHT.md:1`
+- **file** assets-src/logo-new.png: `assets-src/logo-new.png:1`
+- **file** backend/mailer.py: `backend/mailer.py:1`
+- **file** backend/pytest.ini: `backend/pytest.ini:1`
+- **file** backend/requirements.txt: `backend/requirements.txt:1`
+- **file** backend/server.py: `backend/server.py:1`
+- **file** design_guidelines.md: `design_guidelines.md:1`
+- **file** frontend/.gitignore: `frontend/.gitignore:1`

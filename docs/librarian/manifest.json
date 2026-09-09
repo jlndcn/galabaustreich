@@ -1,0 +1,14 @@
+{
+  "documentationVersion": 1,
+  "schemaVersion": "techdoc-schema:v2-evidence",
+  "promptVersion": "techdoc-full:v2-evidence",
+  "mode": "recovery",
+  "documentedCommit": "3c837baf80be192e4c782180ccb951126dce9878",
+  "previousDocumentedCommit": null,
+  "createdAt": "2026-09-09T18:11:54.443Z",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "mainDocument": "docs/librarian/TECHNICAL_DOCUMENTATION.md",
+  "changeDocument": null,
+  "commitRange": null
+}
