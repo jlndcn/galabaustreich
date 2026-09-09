@@ -14,6 +14,7 @@ const LIMITS = {
   location: 160,
   message: 4000,
   page: 200,
+  website: 300,
 };
 
 const COMPANY = "Garten Streich Website";
@@ -40,7 +41,7 @@ const clean = (value, max) => {
 // Header-Injection verhindern: keine Zeilenumbrueche in Header-Werten.
 const headerSafe = (s) => s.replace(/[\r\n]+/g, " ").trim();
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const EMAIL_RE = /^[^\s@<>,;:"\\()[\]\x00-\x1f\x7f]+@[^\s@<>,;:"\\()[\]\x00-\x1f\x7f]+\.[^\s@<>,;:"\\()[\]\x00-\x1f\x7f]{2,}$/;
 const PHONE_RE = /^[+0-9][0-9\s()/.-]{4,}$/;
 
 const escapeHtml = (s) =>
@@ -51,6 +52,17 @@ const escapeHtml = (s) =>
     .replace(/"/g, "&quot;");
 
 function validate(input) {
+  for (const [key, max] of Object.entries(LIMITS)) {
+    const value = input[key];
+    if (value === undefined || value === null) continue;
+    if (typeof value !== "string" || value.length > max) {
+      return { error: "Bitte prüfen Sie die Angaben und die zulässigen Feldlängen." };
+    }
+    const invalidControls = key === "message" ? /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/ : /[\x00-\x1f\x7f]/;
+    if (invalidControls.test(value)) {
+      return { error: "Bitte entfernen Sie ungültige Steuerzeichen aus Ihren Angaben." };
+    }
+  }
   const data = {
     name: clean(input.name, LIMITS.name),
     phone: clean(input.phone, LIMITS.phone),
@@ -85,11 +97,12 @@ function validate(input) {
 
 function smtpConfig() {
   const host = (process.env.SMTP_HOST || "").trim();
-  const port = Number.parseInt(process.env.SMTP_PORT || "465", 10) || 465;
+  const port = Number(process.env.SMTP_PORT || "465");
   const user = (process.env.SMTP_USER || "").trim();
   const pass = process.env.SMTP_PASSWORD || "";
   const to = (process.env.CONTACT_TO || user).trim();
-  const configured = Boolean(host && user && pass && to);
+  const configured = Boolean(host && user && pass && EMAIL_RE.test(user) && EMAIL_RE.test(to)
+    && Number.isInteger(port) && port > 0 && port <= 65535);
   return { host, port, user, pass, to, configured };
 }
 
@@ -195,13 +208,36 @@ export default async (request) => {
     });
   }
 
+  // Read with a byte limit even when Content-Length is absent or incorrect.
+  const maxBytes = 32768;
+  if (Number(request.headers.get("content-length")) > maxBytes) {
+    return json(413, { detail: "Ihre Anfrage ist zu groß. Bitte kürzen Sie Ihre Angaben." });
+  }
   let payload;
   try {
-    payload = await request.json();
+    const reader = request.body?.getReader();
+    if (!reader) return json(400, { detail: "Ungültige Anfrage." });
+    const chunks = [];
+    let bytes = 0;
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        bytes += value.byteLength;
+        if (bytes > maxBytes) {
+          await reader.cancel();
+          return json(413, { detail: "Ihre Anfrage ist zu groß. Bitte kürzen Sie Ihre Angaben." });
+        }
+        chunks.push(value);
+      }
+    } finally {
+      reader.releaseLock();
+    }
+    payload = JSON.parse(Buffer.concat(chunks).toString("utf8"));
   } catch {
     return json(400, { detail: "Ungültige Anfrage." });
   }
-  if (!payload || typeof payload !== "object") {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
     return json(400, { detail: "Ungültige Anfrage." });
   }
 

@@ -1,0 +1,117 @@
+---
+import { services } from '../data/services';
+import { getSeasonalTop } from '../data/seasons';
+import Icon from './Icon.astro';
+const { season, services: top } = getSeasonalTop(services);
+---
+
+<section
+  class="section container"
+  aria-labelledby="season-title"
+  data-season-month={season.month}
+  data-testid="home-key-services-section"
+>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Im Rhythmus der Natur</p>
+      <h2 id="season-title">
+        Unsere gefragtesten Leistungen im{' '}
+        <span data-season-name data-testid="home-season-month">
+          {season.monthName}
+        </span>
+      </h2>
+    </div>
+    <a href="/leistungen" class="text-link">
+      Alle Leistungen ansehen
+      <Icon />
+    </a>
+  </div>
+  <p class="section-intro">
+    Passend zur Jahreszeit: Diese drei Arbeiten stehen im{' '}
+    <span data-season-name>{season.monthName}</span> in den meisten Gärten und auf den meisten
+    Grundstücken in Lübeck und Ostholstein an. <span data-season-note>{season.note}</span>.
+  </p>
+  <div class="season-grid" data-season-cards>
+    {top.map((service, index) => (
+      <a
+        href={`/leistungen#${service.id}`}
+        class="season-card"
+        data-service-id={service.id}
+        data-service-title={service.title}
+      >
+        <span class="card-number" aria-hidden="true">
+          0{index + 1}
+        </span>
+        <Icon name="leaf" />
+        <h3>{service.title}</h3>
+        <p class="service-claim">{service.claim}</p>
+        <p>{service.teaser}</p>
+        <span class="card-arrow" aria-hidden="true">
+          <Icon />
+        </span>
+      </a>
+    ))}
+  </div>
+  <div class="advice-strip">
+    <div>
+      <h3>Nicht sicher, was Ihr Garten gerade braucht?</h3>
+      <p>Wir schauen uns Ihre Fläche an und beraten Sie persönlich – unverbindlich.</p>
+    </div>
+    <a href="/#anfrage" class="button button-dark">
+      Anfrage senden
+      <Icon />
+    </a>
+  </div>
+</section>
+<section class="section container all-services" aria-labelledby="all-services-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Was wir für Sie tun</p>
+      <h2 id="all-services-title">Alles rund um Garten, Grünflächen und Grundstück</h2>
+    </div>
+    <a href="/leistungen" class="text-link" data-testid="home-all-services-link">
+      Alle Leistungen ansehen
+      <Icon />
+    </a>
+  </div>
+  <div class="service-list">
+    {services.map((service) => (
+      <a
+        href={`/leistungen#${service.id}`}
+        data-service-id={service.id}
+        data-service-title={service.title}
+        data-service-claim={service.claim}
+      >
+        <Icon name="leaf" />
+        <div>
+          <h3>{service.title}</h3>
+          <p>{service.teaser}</p>
+        </div>
+        <Icon />
+      </a>
+    ))}
+    <a href="/leistungen#weitere-leistungen">
+      <Icon name="leaf" />
+      <div>
+        <h3>Weitere Leistungen</h3>
+        <p>Hausmeisterdienste · Terrassen- &amp; Außenflächenreinigung</p>
+      </div>
+      <Icon />
+    </a>
+  </div>
+</section>
+<template id="season-card-template">
+  <a class="season-card">
+    <span class="card-number" aria-hidden="true"></span>
+    <Icon name="leaf" />
+    <h3></h3>
+    <p class="service-claim"></p>
+    <p data-teaser></p>
+    <span class="card-arrow" aria-hidden="true">
+      <Icon />
+    </span>
+  </a>
+</template>
+<script>
+  import '../scripts/season';
+</script>

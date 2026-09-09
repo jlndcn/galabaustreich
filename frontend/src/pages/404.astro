@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+const seo = {
+  title: 'Seite nicht gefunden | Garten- und Landschaftspflege Streich',
+  description: 'Die aufgerufene Seite wurde nicht gefunden.',
+  path: '/404',
+};
+---
+
+<BaseLayout seo={seo} noindex>
+  <section class="container not-found">
+    <p class="eyebrow">Fehler 404</p>
+    <h1>Seite nicht gefunden</h1>
+    <p class="lead">
+      Die von Ihnen aufgerufene Seite existiert leider nicht. Kehren Sie gerne zur Startseite
+      zurück.
+    </p>
+    <a href="/" class="button button-dark" data-testid="notfound-home-link">
+      Zur Startseite
+      <Icon />
+    </a>
+  </section>
+</BaseLayout>

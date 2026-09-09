@@ -90,3 +90,21 @@ frontend/.env
 credentials.json
 *.key
 .credentials
+
+# Local hosting state, authentication stores and secret backups
+.netlify/
+.env*
+*.env.*
+.npmrc.local
+.netrc
+_netrc
+.pypirc
+*.p12
+*.pfx
+*.keystore
+id_rsa*
+id_ed25519*
+secrets.json
+secrets.yaml
+secrets.yml
+credentials.*

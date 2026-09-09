@@ -1,0 +1,40 @@
+---
+import { getImage } from 'astro:assets';
+import headerLogo from '../assets/logo-header.webp';
+import heroLogo from '../assets/logo-hero.webp';
+interface Props {
+  large?: boolean;
+  linked?: boolean;
+  priority?: boolean;
+}
+const { large = false, linked = true, priority = false } = Astro.props;
+const widths = large ? [320, 360, 640, 720] : [128, 256];
+const source = large ? heroLogo : headerLogo;
+const images = await Promise.all(
+  widths.map((width) => getImage({ src: source, width, format: 'webp', quality: 82 })),
+);
+const props = {
+  src: images[0].src,
+  srcset: images.map((image, i) => `${image.src} ${widths[i]}w`).join(', '),
+  sizes: large ? '(max-width: 479px) 260px, (max-width: 799px) 300px, 360px' : '112px',
+  width: source.width,
+  height: source.height,
+  alt: 'Garten- und Landschaftspflege Streich – in und um Lübeck',
+  loading: priority ? ('eager' as const) : ('lazy' as const),
+  fetchpriority: priority ? ('high' as const) : ('auto' as const),
+  decoding: 'async' as const,
+};
+---
+
+{linked ? (
+  <a
+    class="logo"
+    href="/"
+    aria-label="Zur Startseite – Garten- und Landschaftspflege Streich"
+    data-testid="logo-home-link"
+  >
+    <img {...props} />
+  </a>
+) : (
+  <img class:list={['brand-logo', { 'brand-logo-large': large }]} {...props} />
+)}

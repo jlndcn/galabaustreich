@@ -1,5 +1,5 @@
 # Netlify-Konfiguration fuer die Website garten-streich.de
-# Repo-Struktur: /frontend = React-App (Create React App), Netlify Functions unter /frontend/netlify/functions
+# /frontend = statische Astro-Website; Kontaktversand über Netlify Functions.
 #
 # Erforderliche Environment Variables (ausschliesslich in Netlify -> Site configuration -> Environment variables setzen,
 # NIEMALS in dieser Datei oder im Quellcode):
@@ -11,15 +11,14 @@
 
 [build]
   base    = "frontend"
-  command = "yarn build"
-  publish = "build"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
-  # CRA behandelt Warnungen im CI-Modus als Fehler; Build soll nur bei echten Fehlern abbrechen.
-  CI = "false"
-  # Leer lassen: Das Formular sendet dann relativ an /api/contact (diese Netlify Function).
-  REACT_APP_BACKEND_URL = ""
+  NODE_VERSION = "24"
+
+[build.processing.html]
+  pretty_urls = false
 
 [functions]
   directory    = "netlify/functions"
@@ -32,11 +31,15 @@
   status = 200
   force  = true
 
-# Single-Page-App: alle uebrigen Pfade an index.html (Client-Routing)
+# Keine Slash-zu-Ohne-Slash-Redirects: Netlify normalisiert diese Pfade
+# vor dem Regelvergleich. Solche Regeln sind wirkungslos oder erzeugen Schleifen.
+# Canonicals und interne Links verwenden die bestehenden URLs ohne Slash.
+
+# Vorhandene Dateien haben Vorrang. Unbekannte URLs liefern einen echten HTTP 404.
 [[redirects]]
   from   = "/*"
-  to     = "/index.html"
-  status = 200
+  to     = "/404.html"
+  status = 404
 
 [[headers]]
   for = "/*"
@@ -52,6 +55,6 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/static/*"
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

@@ -1,0 +1,90 @@
+---
+import { mainNav, legalNav, site, googleLink } from '../data/site';
+import Logo from './Logo.astro';
+import Rating from './Rating.astro';
+import Icon from './Icon.astro';
+---
+
+<footer class="site-footer" data-testid="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p>
+        Von der ersten Pflanze bis zum gewachsenen Garten – persönlich, zuverlässig und mit einem
+        Blick für das Schöne. In Lübeck und Ostholstein für Sie im Einsatz.
+      </p>
+      <Rating />
+    </div>
+    <div>
+      <h2>Kontakt</h2>
+      <ul>
+        <li>
+          <a href={site.phone.href} data-testid="footer-phone-link">
+            {site.phone.display}
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`} data-testid="footer-email-link">
+            {site.email}
+          </a>
+        </li>
+        <li>
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+            <Icon name="external" />
+            <span class="sr-only"> (öffnet in neuem Tab)</span>
+          </a>
+        </li>
+      </ul>
+      <a href="/#anfrage" class="text-link" data-testid="footer-cta-link">
+        Anfrage senden
+        <Icon />
+      </a>
+    </div>
+    <div>
+      <h2>Anschrift</h2>
+      <address>
+        {site.legalName}
+        <br />
+        {site.address.street}
+        <br />
+        {site.address.zip} {site.address.city}
+      </address>
+      <a href={googleLink} target="_blank" rel="noopener noreferrer" class="text-link">
+        Auf Google ansehen
+        <Icon name="external" />
+        <span class="sr-only"> (öffnet in neuem Tab)</span>
+      </a>
+    </div>
+    <nav aria-label="Seiten und Rechtliches">
+      <h2>Seiten</h2>
+      <ul>
+        {mainNav.map((item) => (
+          <li>
+            <a href={item.path}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      <h2>Rechtliches</h2>
+      <ul>
+        {legalNav.map((item) => (
+          <li>
+            <a href={item.path}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <small>
+      © <span data-year>{new Date().getFullYear()}</span> {site.legalName} · {site.brandMessage}
+    </small>
+    <small>
+      Made and hosted by{' '}
+      <a href={site.madeBy.url} target="_blank" rel="noopener noreferrer">
+        {site.madeBy.label}
+        <span class="sr-only"> (öffnet in neuem Tab)</span>
+      </a>
+    </small>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+import { seoPages } from '../data/seo';
+const values = [
+  {
+    title: 'Persönlich',
+    text: 'Ein direkter Ansprechpartner, der Ihren Garten kennt – ohne anonyme Strukturen.',
+  },
+  {
+    title: 'Zuverlässig',
+    text: 'Verlässliche Pflege über das ganze Gartenjahr, auf Ihren Bedarf abgestimmt.',
+  },
+  {
+    title: 'Blick für das Schöne',
+    text: 'Wir arbeiten mit Gefühl für das, was bereits gewachsen ist.',
+  },
+];
+---
+
+<BaseLayout seo={seoPages.ueberUns}>
+  <section class="container about-hero" data-testid="about-page">
+    <div class="page-heading">
+      <p class="eyebrow">Streich · Scharbeutz</p>
+      <h1>Garten- und Landschaftspflege mit Wurzeln in der Region</h1>
+      <p class="lead">
+        Von der ersten Pflanze bis zum gewachsenen Garten. Von der regelmäßigen Pflege bis zur
+        Neugestaltung. Streich steht für Garten- und Landschaftspflege mit Wurzeln in der Region –
+        persönlich, zuverlässig und mit einem Blick für das Schöne.
+      </p>
+      <p>
+        Als Einzelunternehmen von Bianca Streich sind wir von Scharbeutz aus in Lübeck und
+        Ostholstein für Sie im Einsatz – für Privatkunden ebenso wie für Unternehmen, Vereine und
+        Organisationen.
+      </p>
+    </div>
+    <div class="about-brand">
+      <Logo large linked={false} priority />
+      <p>
+        Von der ersten Pflanze
+        <br />
+        bis zum gewachsenen Garten.
+      </p>
+    </div>
+  </section>
+  <section class="section container values-section">
+    <p class="eyebrow">Unser Anspruch</p>
+    <h2>Wofür wir stehen</h2>
+    <div class="values-grid">
+      {values.map((value, index) => (
+        <article>
+          <span class="card-number" aria-hidden="true">
+            0{index + 1}
+          </span>
+          <h3>{value.title}</h3>
+          <p>{value.text}</p>
+        </article>
+      ))}
+    </div>
+    <div class="editorial-links">
+      <a href="/leistungen" data-testid="about-services-link">
+        Unsere Leistungen ansehen
+        <Icon />
+      </a>
+      <a href="/team" data-testid="about-team-link">
+        Unser Team kennenlernen
+        <Icon />
+      </a>
+    </div>
+  </section>
+  <ContactCTA />
+</BaseLayout>

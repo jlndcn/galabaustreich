@@ -1,0 +1,41 @@
+---
+import { site, contactPrompt } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<section class="contact-band" aria-labelledby="contact-band-title">
+  <div class="container contact-band-grid">
+    <div>
+      <p class="eyebrow">Persönlich für Sie da</p>
+      <h2 id="contact-band-title">{contactPrompt}</h2>
+      <p>
+        Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail – oder nutzen Sie unser kurzes
+        Anfrageformular. Wir melden uns persönlich bei Ihnen.
+      </p>
+      <a class="button button-cream" href="/#anfrage">
+        Zum Anfrageformular
+        <Icon />
+      </a>
+    </div>
+    <div class="contact-band-details">
+      <h3>Direkt erreichbar</h3>
+      <a href={site.phone.href}>
+        <Icon name="phone" />
+        {site.phone.display}
+      </a>
+      <a href={`mailto:${site.email}`}>
+        <Icon name="mail" />
+        {site.email}
+      </a>
+      <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+        <Icon name="whatsapp" />
+        WhatsApp<span class="sr-only"> (öffnet in neuem Tab)</span>
+      </a>
+      <address>
+        {site.legalName}
+        <br />
+        {site.address.street}, {site.address.zip} {site.address.city}
+      </address>
+    </div>
+  </div>
+</section>

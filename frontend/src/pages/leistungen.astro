@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+import { services, furtherServices } from '../data/services';
+import { seoPages } from '../data/seo';
+import { site } from '../data/site';
+---
+
+<BaseLayout seo={seoPages.leistungen}>
+  <header class="container page-heading">
+    <p class="eyebrow">Pflegen. Erhalten. Gestalten.</p>
+    <h1>Unsere Leistungen rund um Garten und Grünflächen</h1>
+    <p class="lead">
+      Von der regelmäßigen Pflege bis zur Neugestaltung: Wir begleiten Gärten, Grünflächen und
+      Grundstücke in Lübeck und Ostholstein durch das ganze Gartenjahr – abgestimmt auf Ihre Fläche
+      und Ihren Bedarf.
+    </p>
+  </header>
+  <div class="container services-layout" data-testid="services-page">
+    <aside class="services-sidebar">
+      <nav aria-label="Leistungen im Überblick">
+        <h2>Übersicht</h2>
+        <ol>
+          {services.map((service, index) => (
+            <li>
+              <a href={`#${service.id}`} data-testid="service-jump-link">
+                <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                {service.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+        <a class="text-link" href="#weitere-leistungen">
+          Weitere Leistungen
+          <Icon />
+        </a>
+      </nav>
+    </aside>
+    <div class="service-sections">
+      {services.map((service, index) => (
+        <>
+          <section id={service.id} class="service-section" data-testid="service-section">
+            <div class="service-section-top">
+              <span class="service-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <Icon name="leaf" />
+            </div>
+            <h2>{service.title}</h2>
+            <p class="service-claim">{service.claim}</p>
+            <div class="service-description">
+              {service.description.map((text) => (
+                <p>{text}</p>
+              ))}
+            </div>
+            {service.list && (
+              <ul class="check-list">
+                {service.list.map((text) => (
+                  <li>
+                    <Icon name="check" />
+                    {text}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <a class="text-link" href={`/?leistung=${service.id}#anfrage`}>
+              Diese Leistung anfragen
+              <Icon />
+            </a>
+          </section>
+          {index === 2 && (
+            <aside class="inline-contact">
+              <h3>Sie haben eine Frage zu einer Leistung?</h3>
+              <p>
+                Rufen Sie uns an oder senden Sie uns eine kurze Anfrage – wir beraten Sie
+                persönlich.
+              </p>
+              <div class="button-row">
+                <a href={site.phone.href} class="text-link">
+                  {site.phone.display}
+                  <Icon name="phone" />
+                </a>
+                <a href="/#anfrage" class="text-link">
+                  Zum Anfrageformular
+                  <Icon />
+                </a>
+              </div>
+            </aside>
+          )}
+        </>
+      ))}
+      <section id="weitere-leistungen" class="service-section">
+        <p class="eyebrow">Darüber hinaus</p>
+        <h2>Weitere Leistungen</h2>
+        <p>Zusätzlich zu unseren Garten- und Landschaftsleistungen bieten wir an:</p>
+        <ul class="check-list">
+          {furtherServices.map((text) => (
+            <li>
+              <Icon name="check" />
+              {text}
+            </li>
+          ))}
+        </ul>
+        <p>
+          Sie möchten wissen, wer hinter Streich steht?{' '}
+          <a href="/ueber-uns" class="text-link">
+            Mehr über Streich erfahren
+            <Icon />
+          </a>
+        </p>
+      </section>
+    </div>
+  </div>
+  <ContactCTA />
+</BaseLayout>

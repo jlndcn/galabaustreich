@@ -1,6 +1,0 @@
-/* App-level styles. The Streich site relies on Tailwind utilities + index.css tokens. */
-.App {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}

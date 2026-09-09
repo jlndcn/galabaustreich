@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Garten Streich – Astro-Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Statische Website mit Astro, TypeScript und lokal gehostetem Figtree. Kein React-Runtime, kein Router im Browser und keine UI-Bibliothek. Inhalte stehen bereits in der HTML-Antwort.
 
-## Available Scripts
+## Entwicklung
 
-In the project directory, you can run:
+Node.js 24 verwenden (siehe `.nvmrc`), dann:
 
-### `npm start`
+```sh
+npm ci
+npm run dev
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Lokale Entwicklung und Vorschauen sind absichtlich `noindex`. Einen Produktionsbuild erzeugt Netlify automatisch mit `CONTEXT=production`. Lokal unter PowerShell:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```powershell
+$env:CONTEXT='production'
+npm run build
+npm run preview
+```
 
-### `npm test`
+Ausgabe: `dist/`. Auf Netlify wird ausschließlich die bestehende Function `netlify/functions/contact.mjs` serverseitig ausgeführt. Lokales Astro-Preview versendet keine Kontaktanfragen.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Struktur
 
-### `npm run build`
+- `src/pages/`: sieben bestehende Seiten, 404 und robots.txt.
+- `src/data/`: Unternehmensdaten, Navigation, Leistungen, SEO, Saisonzuordnung und Formularvalidierung.
+- `src/layouts/`, `src/components/`: semantische Astro-Komponenten.
+- `src/scripts/`: ausschließlich Menü, Formular und Aktualisierung des Saisonmonats.
+- `src/styles/global.css`: Farben, Typografie, Layout und Interaktionszustände.
+- `src/assets/`: unveränderte Logoquellen für responsive WebP-Varianten.
+- `public/`: bestehende öffentliche Assets, lokale Fonts, Sitemap und Manifest.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Die Saison wird beim Build vorgerendert und bei einem abweichenden Browsermonat aktualisiert. Alle Leistungen bleiben ohne JavaScript erreichbar. Ohne JavaScript stehen Telefonnummer, E-Mail und WhatsApp sowie die Navigation zur Verfügung; der JSON-Formularversand ist dann deaktiviert.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Prüfungen
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nach einem Produktionsbuild:
 
-### `npm run eject`
+```sh
+npm test
+npm exec playwright install firefox webkit
+npm run test:e2e
+npm run test:performance
+npm run test:security
+node tests/verify-build.mjs
+npm run format:check
+npm audit
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Für Chrome verwendet Playwright die lokal installierte Chrome-Version. Firefox und WebKit werden als Testbrowser installiert. Browserprüfungen blockieren externe Requests und fangen sämtliche Kontakt-POSTs ab. Function-Tests ersetzen Nodemailer durch einen lokalen Stub. Es werden keine E-Mails versendet.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm run test:e2e` startet einen lokalen statischen Testserver auf Port 4140. Vorhandene unbekannte Server auf diesem Port zuerst beenden. Der Testserver bildet die beabsichtigten statischen Routen ab; er ist kein Beweis für die Konfiguration eines bereits veröffentlichten Netlify-Deployments.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Screenshots, Logs und Lighthouse-JSON liegen unter `reports/`; der Playwright-Bericht unter `playwright-report/`. Diese erzeugten Dateien sind nicht versioniert. `tests/fixtures/baseline.json` bewahrt unverändert den Inhaltsvergleich mit CRA-Commit `8e6a511`. Die begrenzten Korrekturen an Rechtstexten sind separat in `tests/fixtures/content-corrections.ts` dokumentiert und werden beim Vergleich berücksichtigt.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`npm run format` formatiert den Astro-Quellcode und die Tests. Die Kontaktfunktion behält ihren vorhandenen Stil; Feldtypen, Längen, Steuerzeichen, einzelne E-Mail-Adressen, SMTP-Konfiguration und die maximale Anfragegröße werden zusätzlich geprüft. Benachrichtigung und optionale Eingangsbestätigung bleiben erhalten. SMTP-Zugangsdaten werden ausschließlich aus serverseitigen Environment Variables gelesen.
 
-## Learn More
+`npm run test:security` prüft Projektdateien einschließlich ignorierter Builds und Reports, den Git-Index und alle erreichbaren historischen Git-Blobs auf typische Secret-Muster. Lokale `.env`-Dateien und Git-Ignore-Regeln werden zusätzlich geprüft. Es werden nur Fundstellen ausgegeben. Fremde Dependencies, temporäre Browserprofile und Binärinhalte sind ausgenommen; ein heuristischer Scan kann nicht jedes denkbare Secret erkennen. Keine Secrets mit `git add -f` aufnehmen.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Für die separate lokale Vorschauprüfung unter PowerShell:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```powershell
+$env:CONTEXT='deploy-preview'
+npm exec astro build -- --outDir dist-preview
+node tests/verify-build.mjs --preview
+```
 
-### Code Splitting
+`compare-baseline.mjs` ist ein historisches Werkzeug zum Erstellen der CRA-Vergleichsdaten, kein zusätzlicher Testlauf. Die vorhandenen Daten nicht neu erzeugen. Unter `backend/` und `tests/` im Repository-Root sind keine ausführbaren Python-Testfälle vorhanden; die alte Vorschauanwendung wird nicht gestartet.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployment und offene Freigabepunkte: [../NETLIFY_DEPLOY.md](../NETLIFY_DEPLOY.md) und [../ABSCHLUSSBERICHT.md](../ABSCHLUSSBERICHT.md).

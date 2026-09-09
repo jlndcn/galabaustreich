@@ -1,0 +1,102 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { mainNav, legalNav, site } from '../data/site';
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header" data-testid="site-header">
+  <div class="container header-inner">
+    <Logo priority />
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
+      {mainNav.map((item) => (
+        <a
+          href={item.path}
+          aria-current={pathname === item.path ? 'page' : undefined}
+          data-testid={`nav-${item.path === '/' ? 'home' : item.path.slice(1)}`}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href={site.phone.href}>
+        <Icon name="phone" />
+        {site.phone.display}
+      </a>
+      <a class="button button-dark header-cta" href="/#anfrage" data-testid="header-cta-button">
+        Anfrage senden
+        <Icon />
+      </a>
+    </div>
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Menü öffnen"
+      aria-haspopup="dialog"
+      aria-controls="mobile-menu"
+      data-testid="header-mobile-menu-button"
+      hidden
+    >
+      <Icon name="menu" />
+    </button>
+  </div>
+  <noscript>
+    <nav class="nojs-nav container" aria-label="Hauptnavigation ohne JavaScript">
+      {mainNav.map((item) => (
+        <a href={item.path}>{item.label}</a>
+      ))}
+    </nav>
+  </noscript>
+</header>
+<dialog id="mobile-menu" class="mobile-menu" aria-labelledby="mobile-menu-title">
+  <div class="menu-heading">
+    <span id="mobile-menu-title" class="eyebrow">
+      Navigation
+    </span>
+    <button type="button" class="menu-button" data-close-menu aria-label="Menü schließen">
+      <Icon name="close" />
+    </button>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile Navigation">
+    {mainNav.map((item, index) => (
+      <a
+        href={item.path}
+        aria-current={pathname === item.path ? 'page' : undefined}
+        data-testid={`mobile-nav-${item.path === '/' ? 'home' : item.path.slice(1)}`}
+      >
+        <span class="nav-number" aria-hidden="true">
+          0{index + 1}
+        </span>
+        {item.label}
+        <Icon />
+      </a>
+    ))}
+  </nav>
+  <a class="button button-dark" href="/#anfrage" data-testid="mobile-nav-cta">
+    Anfrage senden
+    <Icon />
+  </a>
+  <div class="menu-contact">
+    <a href={site.phone.href}>
+      <Icon name="phone" />
+      {site.phone.display}
+    </a>
+    <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+      <Icon name="whatsapp" />
+      WhatsApp<span class="sr-only"> (öffnet in neuem Tab)</span>
+    </a>
+    <a href={`mailto:${site.email}`}>
+      <Icon name="mail" />
+      {site.email}
+    </a>
+  </div>
+  <nav class="menu-legal" aria-label="Rechtliche Informationen">
+    {legalNav.map((item) => (
+      <a href={item.path}>{item.label}</a>
+    ))}
+  </nav>
+</dialog>
+<script>
+  import '../scripts/navigation';
+</script>

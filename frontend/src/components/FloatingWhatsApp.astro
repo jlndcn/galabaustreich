@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<a
+  class="floating-whatsapp"
+  href={site.whatsapp}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Per WhatsApp schreiben (öffnet in neuem Tab)"
+  title="Per WhatsApp schreiben"
+  data-testid="floating-whatsapp-button"
+>
+  <Icon name="whatsapp" />
+</a>

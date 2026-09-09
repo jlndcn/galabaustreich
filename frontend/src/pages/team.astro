@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+import { seoPages } from '../data/seo';
+const values = [
+  {
+    title: 'Familiär',
+    text: 'Wir arbeiten familiär und nah – man kennt sich, und das merkt man in jedem Auftrag.',
+  },
+  {
+    title: 'Fachlich fundiert',
+    text: 'Gärtnerisches und forstliches Wissen kommt bei uns direkt in Ihrem Garten zusammen.',
+  },
+  {
+    title: 'Sorgfältig',
+    text: 'Wir gehen sorgfältig mit dem um, was gewachsen ist – für ein gepflegtes Ergebnis.',
+  },
+];
+---
+
+<BaseLayout seo={seoPages.team}>
+  <header class="container page-heading" data-testid="team-page">
+    <p class="eyebrow">Die Menschen hinter Streich</p>
+    <h1>Unser Team</h1>
+    <p class="lead">
+      Bei Streich geht es familiär zu. Hinter der Garten- und Landschaftspflege in und um Lübeck
+      steht ein eingespieltes Team, in dem gärtnerisches und forstliches Können zusammenkommen – mit
+      einem gemeinsamen Anspruch an sorgfältige, gepflegte Arbeit.
+    </p>
+  </header>
+  <section class="container team-values" aria-label="Wofür unser Team steht">
+    {values.map((value, index) => (
+      <div>
+        <span class="service-index" aria-hidden="true">
+          0{index + 1}
+        </span>
+        <h2>{value.title}</h2>
+        <p>{value.text}</p>
+      </div>
+    ))}
+  </section>
+  <section class="region-section">
+    <div class="container team-background">
+      <div>
+        <p class="eyebrow">Wissen, das wächst</p>
+        <h2>Fachlicher Hintergrund im Team</h2>
+      </div>
+      <div>
+        <p class="lead">
+          In unserem Team kommen forstliche und gärtnerische Ausbildung sowie Erfahrung aus der
+          Baumschule zusammen – vom Forstwirt über den Zierpflanzengärtner bis zum Altgesellen.
+        </p>
+        <p>Sie möchten wissen, wie wir Ihren Garten pflegen können?</p>
+        <a href="/leistungen" class="text-link" data-testid="team-services-link">
+          Unsere Leistungen ansehen
+          <Icon />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="container section team-portraits">
+    <p class="eyebrow">Persönlich verbunden</p>
+    <h2>Gesichter im Team</h2>
+    <p>
+      Hier folgen später Porträts der Personen hinter Streich – die Rollen dienen bis dahin als
+      Orientierung.
+    </p>
+    <ul class="role-list">
+      {['Forstwirt', 'Zierpflanzengärtner', 'Altgeselle'].map((role) => (
+        <li>
+          <Icon name="leaf" />
+          {role}
+        </li>
+      ))}
+    </ul>
+  </section>
+  <ContactCTA />
+</BaseLayout>

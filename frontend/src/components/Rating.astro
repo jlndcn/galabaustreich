@@ -1,0 +1,27 @@
+---
+import { site, googleLink } from '../data/site';
+import Icon from './Icon.astro';
+const { rating, reviewCount } = site.google;
+---
+
+{rating && (
+  <a
+    href={googleLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="rating"
+    data-testid="google-rating"
+  >
+    <span class="rating-stars" aria-hidden="true">
+      {Array.from({ length: 5 }, () => (
+        <Icon name="star" />
+      ))}
+    </span>
+    <span>
+      {rating.toLocaleString('de-DE', { minimumFractionDigits: 1 })} von 5 · {reviewCount}{' '}
+      Bewertungen auf Google
+    </span>
+    <span class="sr-only"> (öffnet in neuem Tab)</span>
+    <Icon name="external" />
+  </a>
+)}

@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/Logo.astro';
+import Icon from '../components/Icon.astro';
+import Rating from '../components/Rating.astro';
+import SeasonalServices from '../components/SeasonalServices.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site, contactPrompt } from '../data/site';
+import { seoPages, buildLocalBusinessJsonLd } from '../data/seo';
+import { getSeason } from '../data/seasons';
+import { services } from '../data/services';
+const season = getSeason();
+---
+
+<BaseLayout seo={seoPages.home} jsonLd={buildLocalBusinessJsonLd()}>
+  <section class="container hero">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="status-dot" aria-hidden="true"></span>Lübeck · Ostholstein
+      </p>
+      <h1>Garten- und Landschaftspflege in und um Lübeck</h1>
+      <p class="hero-lead">
+        Von der ersten Pflanze bis zum gewachsenen Garten. Von der regelmäßigen Pflege bis zur
+        Neugestaltung. Streich steht für Garten- und Landschaftspflege mit Wurzeln in der Region –
+        persönlich, zuverlässig und mit einem Blick für das Schöne.
+      </p>
+      <div class="button-row">
+        <a class="button button-dark" href="/#anfrage" data-testid="home-hero-primary-cta">
+          Anfrage senden
+          <Icon />
+        </a>
+        <a class="button button-outline" href={site.phone.href} data-testid="home-hero-call-cta">
+          <Icon name="phone" />
+          {site.phone.display}
+        </a>
+      </div>
+      <a class="text-link hero-services" href="/leistungen" data-testid="home-hero-services-link">
+        Alle Leistungen ansehen
+        <Icon />
+      </a>
+      <Rating />
+    </div>
+    <div class="hero-art">
+      <span class="eyebrow">Mit Wurzeln in der Region</span>
+      <div class="brand-emblem">
+        <Logo large linked={false} priority />
+      </div>
+      <div class="hero-art-caption">
+        <span>Persönlich. Zuverlässig.</span>
+        <Icon name="leaf" />
+      </div>
+    </div>
+  </section>
+  <div class="brand-strip">
+    <div class="container">
+      <span>Garten &amp; Grünflächen</span>
+      <span>Pflege &amp; Neugestaltung</span>
+      <span>Lübeck &amp; Ostholstein</span>
+    </div>
+  </div>
+  <SeasonalServices />
+  <section class="region-section">
+    <div class="container region-grid">
+      <div>
+        <p class="eyebrow">Streich. Persönlich vor Ort.</p>
+        <h2>Mit Wurzeln in der Region</h2>
+        <p class="lead">
+          Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck und Ostholstein für Sie im
+          Einsatz – persönlich, zuverlässig und mit einem Blick für das Schöne. Von der ersten
+          Pflanze bis zum gewachsenen Garten.
+        </p>
+        <div class="button-row">
+          <a href="/ueber-uns" class="text-link">
+            Mehr über Streich
+            <Icon />
+          </a>
+          <a href="/team" class="text-link">
+            Unser Team kennenlernen
+            <Icon />
+          </a>
+        </div>
+      </div>
+      <div class="region-note">
+        <Icon name="location" />
+        <p class="eyebrow">Unser Zuhause</p>
+        <p class="region-name">Scharbeutz.</p>
+        <p>In Lübeck und Ostholstein für Sie im Einsatz.</p>
+        <span class="rule"></span>
+        <p>Persönlich, zuverlässig und mit einem Blick für das Schöne.</p>
+      </div>
+    </div>
+  </section>
+  <section class="container section project-preview" data-testid="home-gallery-section">
+    <div>
+      <p class="eyebrow">Gärten. Details. Veränderungen.</p>
+      <h2>Einblicke in unsere Arbeit</h2>
+    </div>
+    <p>
+      An dieser Stelle zeigen wir künftig echte Aufnahmen aus Gärten und von Projekten in Lübeck und
+      Ostholstein – von gepflegten Flächen bis zu neu gestalteten Gartenbereichen.
+    </p>
+    <a href="/leistungen" class="text-link">
+      Unsere Leistungen kennenlernen
+      <Icon />
+    </a>
+  </section>
+  <section
+    id="kontakt"
+    class="contact-section"
+    aria-labelledby="home-contact-title"
+    data-testid="home-contact-section"
+  >
+    <div class="container contact-grid">
+      <div class="contact-copy">
+        <p class="eyebrow">Lassen Sie uns sprechen</p>
+        <h2 id="home-contact-title">Kontakt – so erreichen Sie uns</h2>
+        <p class="lead">
+          {contactPrompt} Wählen Sie den Weg, der Ihnen am liebsten ist – wir melden uns persönlich
+          bei Ihnen.
+        </p>
+        <div class="contact-channels">
+          <a href={site.phone.href}>
+            <Icon name="phone" />
+            <div>
+              <span>Anrufen</span>
+              <strong>{site.phone.display}</strong>
+            </div>
+            <Icon />
+          </a>
+          <a href={`mailto:${site.email}`}>
+            <Icon name="mail" />
+            <div>
+              <span>E-Mail</span>
+              <strong>{site.email}</strong>
+            </div>
+            <Icon />
+          </a>
+          <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
+            <Icon name="whatsapp" />
+            <div>
+              <span>WhatsApp</span>
+              <strong>Nachricht schreiben – gern mit Foto</strong>
+            </div>
+            <Icon name="external" />
+            <span class="sr-only"> (öffnet in neuem Tab)</span>
+          </a>
+        </div>
+        <Rating />
+        <address>
+          {site.legalName}
+          <br />
+          {site.address.street}, {site.address.zip} {site.address.city}
+          <br />
+          Im Einsatz in Lübeck, Scharbeutz und ganz Ostholstein
+        </address>
+        <aside class="season-hint">
+          <h3>
+            Gerade Saison im <span data-season-name>{season.monthName}</span>
+          </h3>
+          <p>
+            <span data-season-note>{season.note}</span>.
+          </p>
+          <div data-season-links>
+            {season.ids
+              .map((id) => services.find((service) => service.id === id))
+              .filter((service) => service !== undefined)
+              .map((service) => (
+                <a href={`/leistungen#${service.id}`}>{service.title}</a>
+              ))}
+          </div>
+        </aside>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>

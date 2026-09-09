@@ -1,0 +1,168 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+---
+
+<div id="anfrage" class="inquiry-panel" aria-labelledby="inquiry-title">
+  <p class="eyebrow">Ihr Garten. Ihr Anliegen.</p>
+  <h3 id="inquiry-title">Anfrage senden</h3>
+  <p>Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.</p>
+  <noscript>
+    <p class="notice">
+      Für den sicheren Formularversand benötigen Sie JavaScript. Sie erreichen uns auch unter{' '}
+      <a href={site.phone.href}>{site.phone.display}</a> oder{' '}
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+  </noscript>
+  <form
+    id="contact-form"
+    action="/api/contact"
+    method="post"
+    data-testid="home-contact-form"
+    aria-describedby="form-intro"
+  >
+    <p id="form-intro" class="small">
+      Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie eine Telefonnummer oder
+      E-Mail-Adresse an.
+    </p>
+    <fieldset disabled>
+      <legend class="sr-only">Ihre Kontaktdaten und Ihr Anliegen</legend>
+      <div class="form-grid">
+        <div class="field full">
+          <label for="inquiry-name">Name *</label>
+          <input
+            id="inquiry-name"
+            name="name"
+            autocomplete="name"
+            required
+            minlength="2"
+            maxlength="120"
+            aria-describedby="name-error"
+            data-testid="home-contact-form-name-input"
+          />
+          <p id="name-error" class="field-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="inquiry-phone">Telefon</label>
+          <input
+            id="inquiry-phone"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            maxlength="40"
+            aria-describedby="phone-error"
+            data-testid="home-contact-form-phone-input"
+          />
+          <p id="phone-error" class="field-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="inquiry-email">E-Mail</label>
+          <input
+            id="inquiry-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            maxlength="160"
+            aria-describedby="email-error"
+            data-testid="home-contact-form-email-input"
+          />
+          <p id="email-error" class="field-error" hidden></p>
+        </div>
+        <div class="field full">
+          <label for="inquiry-location">
+            Ort des Gartens / Grundstücks <span class="optional">(freiwillig)</span>
+          </label>
+          <input
+            id="inquiry-location"
+            name="location"
+            autocomplete="address-level2"
+            maxlength="160"
+            placeholder="z. B. Lübeck, Scharbeutz, Bad Schwartau"
+            data-testid="home-contact-form-location-input"
+          />
+        </div>
+        <div class="field full">
+          <label for="inquiry-message">Ihr Anliegen *</label>
+          <textarea
+            id="inquiry-message"
+            name="message"
+            rows="5"
+            required
+            minlength="10"
+            maxlength="4000"
+            placeholder="Worum geht es? Zum Beispiel: Heckenschnitt, regelmäßige Gartenpflege, Baumfällung …"
+            aria-describedby="message-error"
+            data-testid="home-contact-form-message-input"
+          ></textarea>
+          <p id="message-error" class="field-error" hidden></p>
+        </div>
+      </div>
+      <div class="honeypot" aria-hidden="true">
+        <label for="inquiry-website">Website</label>
+        <input id="inquiry-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="consent-field">
+        <div class="consent-row">
+          <input
+            type="checkbox"
+            id="inquiry-consent"
+            name="consent"
+            required
+            aria-describedby="consent-error"
+            data-testid="home-contact-form-consent-checkbox"
+          />
+          <label for="inquiry-consent">
+            Ich habe die{' '}
+            <a href="/datenschutz" target="_blank" rel="noopener noreferrer" class="text-link">
+              Datenschutzerklärung
+              <span class="sr-only"> (öffnet in neuem Tab; Ihre Eingaben bleiben erhalten)</span>
+            </a>{' '}
+            gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage
+            gespeichert und verwendet werden. *
+          </label>
+        </div>
+        <p id="consent-error" class="field-error" hidden></p>
+      </div>
+      <p
+        id="form-error"
+        tabindex="-1"
+        role="alert"
+        class="notice notice-error"
+        data-testid="home-contact-form-server-error"
+        hidden
+      ></p>
+      <button
+        type="submit"
+        class="button button-dark submit-button"
+        data-testid="home-contact-form-submit-button"
+      >
+        <span data-submit-label>Anfrage senden</span>
+        <Icon />
+      </button>
+      <p class="small privacy-note">
+        Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+      </p>
+    </fieldset>
+  </form>
+  <div
+    id="form-success"
+    class="form-success"
+    role="status"
+    data-testid="home-contact-form-success"
+    hidden
+  >
+    <Icon name="check" />
+    <h4 tabindex="-1">Vielen Dank für Ihre Anfrage.</h4>
+    <p>
+      Wir haben Ihre Nachricht erhalten und melden uns persönlich bei Ihnen. Wenn es eilt, erreichen
+      Sie uns telefonisch unter <a href={site.phone.href}>{site.phone.display}</a>.
+    </p>
+    <button type="button" class="button button-outline" data-reset-form>
+      Weitere Anfrage senden
+      <Icon />
+    </button>
+  </div>
+</div>
+<script>
+  import '../scripts/contact';
+</script>

@@ -1,0 +1,592 @@
+{
+  "sourceCommit": "8e6a5119f06580a48114bc2c573d9fc0b9176c1b",
+  "recordedAt": "2026-09-09T11:54:57.050Z",
+  "routes": {
+    "/": {
+      "paragraphs": [
+        "Von der ersten Pflanze bis zum gewachsenen Garten. Von der regelmäßigen Pflege bis zur Neugestaltung. Streich steht für Garten- und Landschaftspflege mit Wurzeln in der Region – persönlich, zuverlässig und mit einem Blick für das Schöne.",
+        "Passend zur Jahreszeit: Diese drei Arbeiten stehen im September in den meisten Gärten und auf den meisten Grundstücken in Lübeck und Ostholstein an. Herbstdüngung und Nachsaat – die beste Pflanzzeit beginnt.",
+        "Grün, das sich sehen lassen kann.",
+        "Mähen, Kantenpflege, Düngung und weitere Pflegemaßnahmen – abgestimmt auf Fläche und Nutzung.",
+        "Heute gepflanzt. Für morgen gewachsen.",
+        "Von Blumen und Stauden über Sträucher bis hin zu Bäumen – neues Grün für Ihren Garten.",
+        "Wo es blüht, darf es leben.",
+        "Pflegen, schneiden, jäten und erhalten – für gepflegte Pflanzflächen zu jeder Jahreszeit.",
+        "Nicht sicher, was Ihr Garten gerade braucht?",
+        "Wir schauen uns Ihre Fläche an und beraten Sie persönlich – unverbindlich.",
+        "Rasen, Beete und Grünflächen – regelmäßig und fachgerecht gepflegt für ein dauerhaft schönes Erscheinungsbild.",
+        "Hecken, Sträucher und Gehölze – vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit.",
+        "Baumfällungen und die dazugehörigen Arbeiten – zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+        "Vom einzelnen Beet bis zur Neugestaltung einzelner Gartenbereiche – aus Bestehendem etwas Neues.",
+        "Frühjahrs- und Herbstpflege, Rückschnitte und Laubbeseitigung – im Lauf des Gartenjahres.",
+        "Regelmäßige Pflege von Grünflächen und Außenanlagen – abgestimmt auf den Bedarf.",
+        "Schnee- und Eisbeseitigung sowie Streudienst auf Wegen, Zufahrten und Außenflächen.",
+        "Hausmeisterdienste · Terrassen- & Außenflächenreinigung",
+        "Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck und Ostholstein für Sie im Einsatz – persönlich, zuverlässig und mit einem Blick für das Schöne. Von der ersten Pflanze bis zum gewachsenen Garten.",
+        "An dieser Stelle zeigen wir künftig echte Aufnahmen aus Gärten und von Projekten in Lübeck und Ostholstein – von gepflegten Flächen bis zu neu gestalteten Gartenbereichen.",
+        "Sie möchten Unterstützung bei der Pflege Ihres Gartens oder Grundstücks? Wählen Sie den Weg, der Ihnen am liebsten ist – wir melden uns persönlich bei Ihnen.",
+        "6 Bewertungen auf Google",
+        "Gerade Saison im September",
+        "Herbstdüngung und Nachsaat – die beste Pflanzzeit beginnt.",
+        "Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.",
+        "Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie eine Telefonnummer oder E-Mail-Adresse an.",
+        "Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet."
+      ]
+    },
+    "/leistungen": {
+      "paragraphs": [
+        "Von der regelmäßigen Pflege bis zur Neugestaltung: Wir begleiten Gärten, Grünflächen und Grundstücke in Lübeck und Ostholstein durch das ganze Gartenjahr – abgestimmt auf Ihre Fläche und Ihren Bedarf.",
+        "Damit aus Grün ein Garten wird.",
+        "Von der kleinen privaten Gartenoase bis zur weitläufigen Grünanlage – wir pflegen, erhalten und begleiten Außenflächen in Lübeck und Ostholstein durch die Jahreszeiten.",
+        "Rasen, Beete und Grünflächen werden regelmäßig und fachgerecht gepflegt – für ein dauerhaft schönes und gepflegtes Erscheinungsbild.",
+        "In Form gebracht. Natürlich erhalten.",
+        "Von der jungen Hecke bis zum gewachsenen Gehölz – wir schneiden mit Blick auf Form, Gesundheit und natürlichen Wuchs.",
+        "Hecken, Sträucher und Gehölze pflegen wir vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit.",
+        "Manchmal braucht Neues wieder Raum.",
+        "Wir übernehmen Baumfällungen und die dazugehörigen Arbeiten zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+        "Von einzelnen Bäumen bis zu anspruchsvolleren Fällarbeiten schaffen wir fachgerecht Platz für Neues.",
+        "Sie haben eine Frage zu einer Leistung?",
+        "Rufen Sie uns an oder senden Sie uns eine kurze Anfrage – wir beraten Sie persönlich.",
+        "Grün, das sich sehen lassen kann.",
+        "Vom regelmäßigen Mähen bis zur gezielten Pflege – für Rasenflächen, die gesund wachsen und dauerhaft gepflegt aussehen.",
+        "Dazu gehören Mähen, Kantenpflege, Düngung und weitere Pflegemaßnahmen – abgestimmt auf Fläche und Nutzung.",
+        "Wo es blüht, darf es leben.",
+        "Vom ersten Austrieb im Frühjahr bis zum letzten Rückschnitt begleiten wir Beete und Stauden durch das Gartenjahr.",
+        "Pflegen, schneiden, jäten und erhalten – für gepflegte und ansprechende Pflanzflächen zu jeder Jahreszeit.",
+        "Heute gepflanzt. Für morgen gewachsen.",
+        "Von Blumen und Stauden über Sträucher und Hecken bis hin zu Bäumen übernehmen wir die fachgerechte Neupflanzung und Gestaltung Ihrer Grünflächen.",
+        "Neues Grün für Ihren Garten.",
+        "Aus Bestehendem etwas Neues entstehen lassen.",
+        "Wir verändern, erneuern und ergänzen vorhandene Gartenflächen.",
+        "Vom einzelnen Beet und neuen Bepflanzungen bis zur Neugestaltung einzelner Gartenbereiche gestalten wir mit Gefühl für das, was bereits gewachsen ist.",
+        "Jede Jahreszeit hat ihre Arbeit.",
+        "Vom ersten Frühjahrsschnitt bis zum letzten Herbstlaub kümmern wir uns um die Arbeiten, die im Laufe des Gartenjahres anfallen.",
+        "Gepflegt. Verlässlich. Das ganze Jahr.",
+        "Regelmäßige Pflege von Grünflächen und Außenanlagen – für Privatgrundstücke, Wohnanlagen, Gewerbeobjekte und öffentliche Flächen in Lübeck und Ostholstein.",
+        "Die Pflege wird auf den jeweiligen Bedarf abgestimmt.",
+        "Auch wenn das Grün Pause macht, sind wir für Sie da.",
+        "Schnee- und Eisbeseitigung sowie Streudienst auf Wegen, Zufahrten und Außenflächen – für private, gewerbliche und öffentliche Grundstücke.",
+        "Zusätzlich zu unseren Garten- und Landschaftsleistungen bieten wir an:",
+        "Sie möchten wissen, wer hinter Streich steht? Mehr über Streich erfahren",
+        "Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail – oder nutzen Sie unser kurzes Anfrageformular. Wir melden uns persönlich bei Ihnen."
+      ]
+    },
+    "/ueber-uns": {
+      "paragraphs": [
+        "Von der ersten Pflanze bis zum gewachsenen Garten. Von der regelmäßigen Pflege bis zur Neugestaltung. Streich steht für Garten- und Landschaftspflege mit Wurzeln in der Region – persönlich, zuverlässig und mit einem Blick für das Schöne.",
+        "Als Einzelunternehmen von Bianca Streich sind wir von Scharbeutz aus in Lübeck und Ostholstein für Sie im Einsatz – für Privatkunden ebenso wie für Unternehmen, Vereine und Organisationen.",
+        "Ein direkter Ansprechpartner, der Ihren Garten kennt – ohne anonyme Strukturen.",
+        "Verlässliche Pflege über das ganze Gartenjahr, auf Ihren Bedarf abgestimmt.",
+        "Wir arbeiten mit Gefühl für das, was bereits gewachsen ist.",
+        "Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail – oder nutzen Sie unser kurzes Anfrageformular. Wir melden uns persönlich bei Ihnen."
+      ]
+    },
+    "/team": {
+      "paragraphs": [
+        "Bei Streich geht es familiär zu. Hinter der Garten- und Landschaftspflege in und um Lübeck steht ein eingespieltes Team, in dem gärtnerisches und forstliches Können zusammenkommen – mit einem gemeinsamen Anspruch an sorgfältige, gepflegte Arbeit.",
+        "Wir arbeiten familiär und nah – man kennt sich, und das merkt man in jedem Auftrag.",
+        "Gärtnerisches und forstliches Wissen kommt bei uns direkt in Ihrem Garten zusammen.",
+        "Wir gehen sorgfältig mit dem um, was gewachsen ist – für ein gepflegtes Ergebnis.",
+        "In unserem Team kommen forstliche und gärtnerische Ausbildung sowie Erfahrung aus der Baumschule zusammen – vom Forstwirt über den Zierpflanzengärtner bis zum Altgesellen.",
+        "Sie möchten wissen, wie wir Ihren Garten pflegen können? Unsere Leistungen ansehen",
+        "Hier folgen später Porträts der Personen hinter Streich – die Rollen dienen bis dahin als Orientierung.",
+        "Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail – oder nutzen Sie unser kurzes Anfrageformular. Wir melden uns persönlich bei Ihnen."
+      ]
+    },
+    "/impressum": {
+      "paragraphs": [
+        "Garten-und Landschaftspflege B.StreichInhaberin: Bianca StreichDorfstraße 1223684 ScharbeutzDeutschland",
+        "Rechtsform: Einzelunternehmen",
+        "Telefon: 0177 3216077E-Mail: info@garten-streich.de",
+        "Unser Unternehmen auf Google",
+        "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:DE415720615",
+        "Bianca StreichAnschrift wie oben.",
+        "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben im Impressum.",
+        "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+        "Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich."
+      ],
+      "legal": "Angaben gemäß § 5 DDGGarten-und Landschaftspflege B.StreichInhaberin: Bianca StreichDorfstraße 1223684 ScharbeutzDeutschlandRechtsform: EinzelunternehmenKontaktTelefon: 0177 3216077E-Mail: info@garten-streich.deUnser Unternehmen auf GoogleUmsatzsteuer-IdentifikationsnummerUmsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:DE415720615Verantwortlich für den Inhalt nach § 18 Abs. 2 MStVBianca StreichAnschrift wie oben.EU-StreitschlichtungDie Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben im Impressum.Verbraucherstreitbeilegung / UniversalschlichtungsstelleWir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.Haftung für Inhalte und LinksDie Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich."
+    },
+    "/datenschutz": {
+      "paragraphs": [
+        "Mit dieser Datenschutzerklärung informieren wir Sie darüber, welche personenbezogenen Daten wir bei der Nutzung unserer Website und bei der Kontaktaufnahme verarbeiten, zu welchen Zwecken dies geschieht und welche Rechte Ihnen zustehen.",
+        "Stand: September 2026",
+        "Verantwortlich für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:",
+        "Garten-und Landschaftspflege B.StreichInhaberin: Bianca StreichDorfstraße 12, 23684 ScharbeutzTelefon: 0177 3216077E-Mail: info@garten-streich.de",
+        "Anfragen zum Datenschutz richten Sie bitte an die oben genannten Kontaktdaten.",
+        "Personenbezogene Daten sind alle Informationen, mit denen Sie persönlich identifiziert werden können, zum Beispiel Name, Anschrift, Telefonnummer oder E-Mail-Adresse. Wir verarbeiten Ihre Daten ausschließlich im Rahmen der gesetzlichen Bestimmungen, insbesondere der DSGVO, des Bundesdatenschutzgesetzes (BDSG) und des Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG).",
+        "Diese Website kann grundsätzlich ohne Angabe personenbezogener Daten genutzt werden. Personenbezogene Daten verarbeiten wir nur, wenn Sie sie uns freiwillig mitteilen – etwa bei einer Kontaktaufnahme oder über unser Anfrageformular – oder soweit dies für den technischen Betrieb der Website erforderlich ist.",
+        "Diese Website wird von unserem Dienstleister diaconuit.de betreut und über die Hosting-Plattform Netlify (Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf unserer Website werden automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser an den Server übermittelt. Dies sind:",
+        "Die Verarbeitung dient dem sicheren und stabilen Betrieb der Website, der Fehleranalyse sowie der Abwehr von Angriffen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Website). Die Logfiles werden nur so lange gespeichert, wie dies für die genannten Zwecke erforderlich ist, und anschließend gelöscht oder anonymisiert. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.",
+        "Netlify verarbeitet Daten auch auf Servern außerhalb der EU, insbesondere in den USA. Die Übermittlung erfolgt auf Grundlage eines Vertrags über Auftragsverarbeitung nach Art. 28 DSGVO einschließlich der Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Weitere Informationen: www.netlify.com/privacy.",
+        "Wenn Sie uns per Telefon oder E-Mail kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Telefonnummer, E-Mail-Adresse, Inhalt Ihrer Anfrage), um Ihre Anfrage zu bearbeiten und zu beantworten sowie für den Fall von Anschlussfragen.",
+        "Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss oder die Durchführung eines Vertrags gerichtet ist, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Die Daten werden gelöscht, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.",
+        "Auf unserer Startseite bieten wir ein Anfrageformular als zusätzlichen Kontaktweg an. Wenn Sie es nutzen, verarbeiten wir folgende Angaben:",
+        "Die Daten werden verschlüsselt übertragen und ausschließlich serverseitig verarbeitet: Nach dem Absenden erhalten wir eine E-Mail-Benachrichtigung über Ihre Anfrage an unser Postfach; haben Sie eine E-Mail-Adresse angegeben, erhalten Sie eine automatische Eingangsbestätigung mit Ihren Angaben. Der Versand erfolgt über den E-Mail-Server unseres E-Mail-Anbieters STRATO (STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin). Ihre IP-Adresse wird nicht zusammen mit Ihrer Anfrage gespeichert. Zur Abwehr automatisierter Missbrauchsversuche wird ein unsichtbares Kontrollfeld eingesetzt und die Anzahl der Absendungen je Verbindung lediglich kurzzeitig und ohne dauerhafte Speicherung technisch begrenzt.",
+        "Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Mit dem Absenden des Formulars bestätigen Sie, diese Datenschutzerklärung zur Kenntnis genommen zu haben.",
+        "Die über das Formular übermittelten Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und kein Vertrag zustande kommt, spätestens jedoch sechs Monate nach der letzten Kommunikation. Kommt es zu einem Auftrag, gelten die Aufbewahrungsfristen gemäß Abschnitt 7.",
+        "Wir bieten Ihnen die Möglichkeit, uns über den Messenger-Dienst WhatsApp zu kontaktieren. Anbieter ist WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland (ein Unternehmen der Meta-Gruppe). Wenn Sie uns über WhatsApp kontaktieren, verarbeiten wir Ihre Telefonnummer, Ihren Profilnamen sowie die Inhalte Ihrer Nachrichten zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO).",
+        "Bei der Nutzung von WhatsApp werden Daten – insbesondere Metadaten wie Telefonnummer, Geräte- und Verbindungsdaten – durch WhatsApp verarbeitet; dabei kann es zu einer Übermittlung in Drittländer, insbesondere in die USA, kommen. Die Nachrichteninhalte sind Ende-zu-Ende-verschlüsselt. Die Nutzung von WhatsApp ist freiwillig; alternativ erreichen Sie uns jederzeit telefonisch, per E-Mail oder über unser Anfrageformular. Weitere Informationen finden Sie in der Datenschutzrichtlinie von WhatsApp unter www.whatsapp.com/legal/privacy-policy-eea.",
+        "Erteilen Sie uns einen Auftrag oder fordern Sie ein Angebot an, verarbeiten wir die hierfür erforderlichen Daten (insbesondere Name, Anschrift des Grundstücks, Kontaktdaten, Angaben zu den gewünschten Leistungen sowie Rechnungs- und Zahlungsdaten) zur Angebotserstellung, Vertragsdurchführung und Abrechnung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.",
+        "Rechnungs- und Buchungsbelege bewahren wir aufgrund handels- und steuerrechtlicher Vorgaben (insbesondere § 147 AO, § 257 HGB) für die gesetzlich vorgeschriebene Dauer von bis zu zehn Jahren auf (Art. 6 Abs. 1 lit. c DSGVO). Soweit erforderlich, geben wir Daten an unsere Steuerberatung, unser Kreditinstitut oder – bei Zahlungsverzug – an Inkassodienstleister bzw. Gerichte weiter.",
+        "Unsere Website setzt keine eigenen Cookies ein und verwendet keine Analyse-, Tracking- oder Marketing-Werkzeuge. Es werden keine Nutzungsprofile erstellt und keine Daten zu Werbezwecken an Dritte weitergegeben. Beim Absenden des Anfrageformulars wird lediglich eine Datenverbindung zu unserem eigenen Server aufgebaut.",
+        "Die auf dieser Website verwendeten Schriftarten sind lokal auf unserem Server gespeichert. Beim Aufruf der Website wird keine Verbindung zu Servern von Schriftanbietern (z. B. Google Fonts) aufgebaut.",
+        "Unsere Website enthält Verweise auf unser Unternehmensprofil bei Google bzw. Google Maps (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland), auf WhatsApp sowie auf die Plattform der EU-Kommission zur Online-Streitbeilegung. Diese Dienste sind nicht in unsere Website eingebettet; es werden erst dann Daten an den jeweiligen Anbieter übertragen, wenn Sie einen solchen Link aktiv anklicken. Ab diesem Zeitpunkt gelten die Datenschutzbestimmungen des jeweiligen Anbieters, z. B. policies.google.com/privacy.",
+        "Eine Übermittlung Ihrer personenbezogenen Daten an Dritte erfolgt nur, wenn dies zur Vertragsdurchführung erforderlich ist (z. B. an Steuerberatung oder Kreditinstitut), wenn Sie eingewilligt haben, wenn wir gesetzlich dazu verpflichtet sind oder wenn ein Dienstleister in unserem Auftrag Daten verarbeitet (z. B. Hosting). Ein Verkauf Ihrer Daten findet nicht statt.",
+        "Soweit in dieser Datenschutzerklärung keine speziellere Speicherdauer genannt ist, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen).",
+        "Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine TLS/SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt, sowie am Schloss-Symbol in Ihrer Browserzeile. Wir treffen darüber hinaus angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Missbrauch und unberechtigten Zugriff zu schützen.",
+        "Ihnen stehen im Rahmen der gesetzlichen Bestimmungen folgende Rechte zu:",
+        "Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung an die unter Abschnitt 1 genannten Kontaktdaten.",
+        "Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO). Die für uns zuständige Aufsichtsbehörde ist das Unabhängige Landeszentrum für Datenschutz Schleswig-Holstein (ULD), Holstenstraße 98, 24103 Kiel, www.datenschutzzentrum.de.",
+        "Soweit wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) verarbeiten, haben Sie das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen die Verarbeitung einzulegen. Wir verarbeiten Ihre Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.",
+        "Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet nicht statt.",
+        "Wir passen diese Datenschutzerklärung an, sobald sich die Rechtslage, unsere Leistungen oder die eingesetzten technischen Dienste ändern. Es gilt jeweils die auf dieser Seite veröffentlichte aktuelle Fassung."
+      ],
+      "legal": "1. VerantwortlicherVerantwortlich für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:Garten-und Landschaftspflege B.StreichInhaberin: Bianca StreichDorfstraße 12, 23684 ScharbeutzTelefon: 0177 3216077E-Mail: info@garten-streich.deAnfragen zum Datenschutz richten Sie bitte an die oben genannten Kontaktdaten.2. Allgemeine HinweisePersonenbezogene Daten sind alle Informationen, mit denen Sie persönlich identifiziert werden können, zum Beispiel Name, Anschrift, Telefonnummer oder E-Mail-Adresse. Wir verarbeiten Ihre Daten ausschließlich im Rahmen der gesetzlichen Bestimmungen, insbesondere der DSGVO, des Bundesdatenschutzgesetzes (BDSG) und des Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG).Diese Website kann grundsätzlich ohne Angabe personenbezogener Daten genutzt werden. Personenbezogene Daten verarbeiten wir nur, wenn Sie sie uns freiwillig mitteilen – etwa bei einer Kontaktaufnahme oder über unser Anfrageformular – oder soweit dies für den technischen Betrieb der Website erforderlich ist.3. Hosting und Server-LogfilesDiese Website wird von unserem Dienstleister diaconuit.de betreut und über die Hosting-Plattform Netlify (Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf unserer Website werden automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser an den Server übermittelt. Dies sind:IP-Adresse des zugreifenden GerätsDatum und Uhrzeit des Zugriffsaufgerufene Seite bzw. Datei und übertragene DatenmengeReferrer-URL (zuvor besuchte Seite)Browsertyp und -version sowie verwendetes BetriebssystemDie Verarbeitung dient dem sicheren und stabilen Betrieb der Website, der Fehleranalyse sowie der Abwehr von Angriffen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Website). Die Logfiles werden nur so lange gespeichert, wie dies für die genannten Zwecke erforderlich ist, und anschließend gelöscht oder anonymisiert. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.Netlify verarbeitet Daten auch auf Servern außerhalb der EU, insbesondere in den USA. Die Übermittlung erfolgt auf Grundlage eines Vertrags über Auftragsverarbeitung nach Art. 28 DSGVO einschließlich der Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c DSGVO). Weitere Informationen: www.netlify.com/privacy.4. Kontaktaufnahme per Telefon oder E-MailWenn Sie uns per Telefon oder E-Mail kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, Telefonnummer, E-Mail-Adresse, Inhalt Ihrer Anfrage), um Ihre Anfrage zu bearbeiten und zu beantworten sowie für den Fall von Anschlussfragen.Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss oder die Durchführung eines Vertrags gerichtet ist, im Übrigen Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Die Daten werden gelöscht, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.5. AnfrageformularAuf unserer Startseite bieten wir ein Anfrageformular als zusätzlichen Kontaktweg an. Wenn Sie es nutzen, verarbeiten wir folgende Angaben:Name (Pflichtangabe)Telefonnummer und/oder E-Mail-Adresse (mindestens eine Angabe erforderlich)Ort des Gartens bzw. Grundstücks (freiwillige Angabe)Inhalt Ihrer Nachricht (Pflichtangabe)Zeitpunkt der Übermittlung und die Seite, von der das Formular gesendet wurdeDie Daten werden verschlüsselt übertragen und ausschließlich serverseitig verarbeitet: Nach dem Absenden erhalten wir eine E-Mail-Benachrichtigung über Ihre Anfrage an unser Postfach; haben Sie eine E-Mail-Adresse angegeben, erhalten Sie eine automatische Eingangsbestätigung mit Ihren Angaben. Der Versand erfolgt über den E-Mail-Server unseres E-Mail-Anbieters STRATO (STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin). Ihre IP-Adresse wird nicht zusammen mit Ihrer Anfrage gespeichert. Zur Abwehr automatisierter Missbrauchsversuche wird ein unsichtbares Kontrollfeld eingesetzt und die Anzahl der Absendungen je Verbindung lediglich kurzzeitig und ohne dauerhafte Speicherung technisch begrenzt.Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage), im Übrigen Art. 6 Abs. 1 lit. f DSGVO. Mit dem Absenden des Formulars bestätigen Sie, diese Datenschutzerklärung zur Kenntnis genommen zu haben.Die über das Formular übermittelten Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und kein Vertrag zustande kommt, spätestens jedoch sechs Monate nach der letzten Kommunikation. Kommt es zu einem Auftrag, gelten die Aufbewahrungsfristen gemäß Abschnitt 7.6. Kontakt über WhatsAppWir bieten Ihnen die Möglichkeit, uns über den Messenger-Dienst WhatsApp zu kontaktieren. Anbieter ist WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland (ein Unternehmen der Meta-Gruppe). Wenn Sie uns über WhatsApp kontaktieren, verarbeiten wir Ihre Telefonnummer, Ihren Profilnamen sowie die Inhalte Ihrer Nachrichten zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO).Bei der Nutzung von WhatsApp werden Daten – insbesondere Metadaten wie Telefonnummer, Geräte- und Verbindungsdaten – durch WhatsApp verarbeitet; dabei kann es zu einer Übermittlung in Drittländer, insbesondere in die USA, kommen. Die Nachrichteninhalte sind Ende-zu-Ende-verschlüsselt. Die Nutzung von WhatsApp ist freiwillig; alternativ erreichen Sie uns jederzeit telefonisch, per E-Mail oder über unser Anfrageformular. Weitere Informationen finden Sie in der Datenschutzrichtlinie von WhatsApp unter www.whatsapp.com/legal/privacy-policy-eea.7. Verarbeitung im Rahmen von Angeboten und AufträgenErteilen Sie uns einen Auftrag oder fordern Sie ein Angebot an, verarbeiten wir die hierfür erforderlichen Daten (insbesondere Name, Anschrift des Grundstücks, Kontaktdaten, Angaben zu den gewünschten Leistungen sowie Rechnungs- und Zahlungsdaten) zur Angebotserstellung, Vertragsdurchführung und Abrechnung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.Rechnungs- und Buchungsbelege bewahren wir aufgrund handels- und steuerrechtlicher Vorgaben (insbesondere § 147 AO, § 257 HGB) für die gesetzlich vorgeschriebene Dauer von bis zu zehn Jahren auf (Art. 6 Abs. 1 lit. c DSGVO). Soweit erforderlich, geben wir Daten an unsere Steuerberatung, unser Kreditinstitut oder – bei Zahlungsverzug – an Inkassodienstleister bzw. Gerichte weiter.8. Cookies, Analyse- und Tracking-DiensteUnsere Website setzt keine eigenen Cookies ein und verwendet keine Analyse-, Tracking- oder Marketing-Werkzeuge. Es werden keine Nutzungsprofile erstellt und keine Daten zu Werbezwecken an Dritte weitergegeben. Beim Absenden des Anfrageformulars wird lediglich eine Datenverbindung zu unserem eigenen Server aufgebaut.9. SchriftartenDie auf dieser Website verwendeten Schriftarten sind lokal auf unserem Server gespeichert. Beim Aufruf der Website wird keine Verbindung zu Servern von Schriftanbietern (z. B. Google Fonts) aufgebaut.10. Links zu externen Angeboten (Google, WhatsApp, EU-Plattform)Unsere Website enthält Verweise auf unser Unternehmensprofil bei Google bzw. Google Maps (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland), auf WhatsApp sowie auf die Plattform der EU-Kommission zur Online-Streitbeilegung. Diese Dienste sind nicht in unsere Website eingebettet; es werden erst dann Daten an den jeweiligen Anbieter übertragen, wenn Sie einen solchen Link aktiv anklicken. Ab diesem Zeitpunkt gelten die Datenschutzbestimmungen des jeweiligen Anbieters, z. B. policies.google.com/privacy.11. Weitergabe von DatenEine Übermittlung Ihrer personenbezogenen Daten an Dritte erfolgt nur, wenn dies zur Vertragsdurchführung erforderlich ist (z. B. an Steuerberatung oder Kreditinstitut), wenn Sie eingewilligt haben, wenn wir gesetzlich dazu verpflichtet sind oder wenn ein Dienstleister in unserem Auftrag Daten verarbeitet (z. B. Hosting). Ein Verkauf Ihrer Daten findet nicht statt.12. SpeicherdauerSoweit in dieser Datenschutzerklärung keine speziellere Speicherdauer genannt ist, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen).13. DatensicherheitDiese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine TLS/SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt, sowie am Schloss-Symbol in Ihrer Browserzeile. Wir treffen darüber hinaus angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Missbrauch und unberechtigten Zugriff zu schützen.14. Ihre RechteIhnen stehen im Rahmen der gesetzlichen Bestimmungen folgende Rechte zu:Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten (Art. 15 DSGVO)Recht auf Berichtigung unrichtiger Daten (Art. 16 DSGVO)Recht auf Löschung (Art. 17 DSGVO)Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)Recht auf Datenübertragbarkeit (Art. 20 DSGVO)Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO, siehe Abschnitt 15)Recht, eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen (Art. 7 Abs. 3 DSGVO)Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung an die unter Abschnitt 1 genannten Kontaktdaten.Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO). Die für uns zuständige Aufsichtsbehörde ist das Unabhängige Landeszentrum für Datenschutz Schleswig-Holstein (ULD), Holstenstraße 98, 24103 Kiel, www.datenschutzzentrum.de.15. WiderspruchsrechtSoweit wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) verarbeiten, haben Sie das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen die Verarbeitung einzulegen. Wir verarbeiten Ihre Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.16. Keine automatisierte EntscheidungsfindungEine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO findet nicht statt.17. Änderung dieser DatenschutzerklärungWir passen diese Datenschutzerklärung an, sobald sich die Rechtslage, unsere Leistungen oder die eingesetzten technischen Dienste ändern. Es gilt jeweils die auf dieser Seite veröffentlichte aktuelle Fassung."
+    },
+    "/agb": {
+      "paragraphs": [
+        "Allgemeine Geschäftsbedingungen der Garten-und Landschaftspflege B.Streich, Inhaberin Bianca Streich, Dorfstraße 12, 23684 Scharbeutz (nachfolgend „Auftragnehmer“) für Leistungen der Garten- und Landschaftspflege.",
+        "Stand: September 2026",
+        "Verbrauchern steht bei Verträgen, die außerhalb von Geschäftsräumen (z. B. bei einem Termin vor Ort) oder im Fernabsatz (z. B. per Telefon, E-Mail oder WhatsApp) geschlossen werden, ein gesetzliches Widerrufsrecht nach Maßgabe der folgenden Belehrung zu.",
+        "Kein Widerrufsrecht besteht bei Verträgen, bei denen der Verbraucher den Auftragnehmer ausdrücklich aufgefordert hat, ihn aufzusuchen, um dringende Reparatur- oder Instandhaltungsarbeiten vorzunehmen (§ 312g Abs. 2 Nr. 11 BGB), etwa bei der Beseitigung von Sturmschäden.",
+        "Widerrufsrecht. Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Garten-und Landschaftspflege B.Streich, Dorfstraße 12, 23684 Scharbeutz, Telefon 0177 3216077, E-Mail info@garten-streich.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das unten stehende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.",
+        "Folgen des Widerrufs. Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet. Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen sollen, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.",
+        "Vorzeitiges Erlöschen des Widerrufsrechts. Das Widerrufsrecht erlischt bei einem Vertrag zur Erbringung von Dienstleistungen, wenn wir die Dienstleistung vollständig erbracht haben und mit der Ausführung der Dienstleistung erst begonnen haben, nachdem Sie dazu Ihre ausdrückliche Zustimmung gegeben und gleichzeitig Ihre Kenntnis davon bestätigt haben, dass Sie Ihr Widerrufsrecht bei vollständiger Vertragserfüllung durch uns verlieren.",
+        "(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)",
+        "(*) Unzutreffendes streichen.",
+        "Der Auftragnehmer verarbeitet personenbezogene Daten des Auftraggebers ausschließlich zur Durchführung des Vertrags und im Rahmen der gesetzlichen Bestimmungen. Einzelheiten ergeben sich aus unserer Datenschutzerklärung."
+      ],
+      "legal": "§ 1 GeltungsbereichDiese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge über Leistungen der Garten- und Landschaftspflege sowie damit zusammenhängende Arbeiten – insbesondere Garten- und Grünflächenpflege, Hecken- und Gehölzpflege, Rasenpflege, Beet- und Staudenpflege, Neupflanzungen, Baumfällungen, Gartenumgestaltung, saisonale Gartenarbeiten, Objekt- und Grundstückspflege, Winterdienst, Hausmeisterdienste sowie Terrassen- und Außenflächenreinigung –, die zwischen dem Auftragnehmer und dem Kunden (nachfolgend „Auftraggeber“) geschlossen werden.Die AGB gelten gegenüber Verbrauchern (§ 13 BGB) und Unternehmern (§ 14 BGB). Soweit einzelne Regelungen nur für eine dieser Gruppen gelten, ist dies ausdrücklich gekennzeichnet.Abweichende, entgegenstehende oder ergänzende Bedingungen des Auftraggebers werden nur Vertragsbestandteil, wenn der Auftragnehmer ihrer Geltung ausdrücklich in Textform zugestimmt hat.Individuelle Vereinbarungen zwischen den Parteien haben Vorrang vor diesen AGB.§ 2 Angebote, Kostenvoranschläge und VertragsschlussAngebote des Auftragnehmers sind freibleibend, sofern sie nicht ausdrücklich als verbindlich bezeichnet sind. Kostenvoranschläge sind unverbindlich; sie beruhen auf den bei der Besichtigung erkennbaren Gegebenheiten und den Angaben des Auftraggebers.Der Vertrag kommt durch die Annahme des Angebots durch den Auftraggeber (in Textform, per E-Mail, WhatsApp oder mündlich) und die Bestätigung durch den Auftragnehmer oder spätestens mit Beginn der Arbeiten zustande.Zeichnet sich während der Ausführung ab, dass ein Kostenvoranschlag wesentlich (in der Regel um mehr als 15 %) überschritten wird, zeigt der Auftragnehmer dies dem Auftraggeber unverzüglich an (§ 650 BGB). Der Auftraggeber kann den Vertrag in diesem Fall kündigen; bereits erbrachte Leistungen sind zu vergüten.§ 3 Leistungsumfang und AusführungArt und Umfang der Leistungen ergeben sich aus dem Angebot bzw. der Auftragsbestätigung. Nicht ausdrücklich aufgeführte Leistungen sind nicht geschuldet.Der Auftragnehmer führt die Arbeiten fachgerecht nach den anerkannten Regeln der gärtnerischen Fachpraxis und unter Beachtung der einschlägigen Vorschriften aus. Er ist berechtigt, sich zur Erfüllung fachkundiger Dritter zu bedienen.Änderungen und Zusatzleistungen bedürfen einer Vereinbarung und werden gesondert vergütet. Ohne Vereinbarung gilt hierfür die übliche Vergütung.Die Entsorgung von anfallendem Grünschnitt, Holz, Wurzelwerk und sonstigen Materialien ist nur geschuldet, wenn dies vereinbart ist. Entsorgungskosten werden gesondert berechnet, sofern sie nicht im Angebot enthalten sind.Pflanzen sind Naturprodukte. Geringfügige Abweichungen in Größe, Form, Wuchs und Farbe gegenüber Abbildungen oder Beschreibungen stellen keinen Mangel dar.§ 4 Termine, Ausführungsfristen und WitterungTermine und Ausführungsfristen sind unverbindlich, sofern sie nicht ausdrücklich als verbindlich vereinbart wurden.Arbeiten im Freien sind witterungsabhängig. Bei ungeeigneten Witterungsbedingungen (z. B. Frost, Dauerregen, Sturm, Nässe, starke Hitze) sowie bei vegetations- oder naturschutzrechtlichen Einschränkungen (z. B. Schnittzeitenregelung nach § 39 Abs. 5 BNatSchG für Hecken und Gehölze) können sich Termine verschieben. Der Auftragnehmer informiert den Auftraggeber und stimmt einen neuen Termin ab. Ansprüche des Auftraggebers wegen solcher Verschiebungen bestehen nicht.Ereignisse höherer Gewalt, Krankheit, Lieferengpässe oder andere vom Auftragnehmer nicht zu vertretende Umstände verlängern die Fristen angemessen.Beim Winterdienst werden Einsatzkriterien, Leistungszeiten und die zu betreuenden Flächen im jeweiligen Winterdienstvertrag festgelegt.§ 5 Mitwirkungspflichten des AuftraggebersDer Auftraggeber stellt sicher, dass das Grundstück zum vereinbarten Termin zugänglich ist und die Arbeiten ungehindert ausgeführt werden können.Soweit erforderlich, stellt der Auftraggeber Strom- und Wasseranschluss unentgeltlich zur Verfügung.Der Auftraggeber weist den Auftragnehmer vor Beginn der Arbeiten auf unterirdische Leitungen, Bewässerungsanlagen, Drainagen, Mähroboter-Begrenzungskabel, Grenzverläufe, Gefahrenstellen und sonstige Besonderheiten hin. Für Schäden, die auf unterlassenen oder unrichtigen Hinweisen beruhen, haftet der Auftragnehmer nicht.Erforderliche Genehmigungen und Zustimmungen (z. B. Fällgenehmigungen nach kommunalen Baumschutzsatzungen, Zustimmung von Eigentümern, Eigentümergemeinschaften oder Nachbarn) holt der Auftraggeber ein, sofern nichts anderes vereinbart wurde. Der Auftragnehmer unterstützt auf Wunsch bei der Beurteilung.Der Auftraggeber versichert, Eigentümer des Grundstücks oder zur Beauftragung der Arbeiten berechtigt zu sein.§ 6 Preise und ZahlungEs gelten die im Angebot bzw. in der Auftragsbestätigung genannten Preise. Gegenüber Verbrauchern sind alle Preise Endpreise einschließlich der gesetzlichen Umsatzsteuer; gegenüber Unternehmern verstehen sich die Preise zuzüglich der gesetzlichen Umsatzsteuer.Die Abrechnung erfolgt je nach Vereinbarung nach Aufwand (Stunden- bzw. Einsatzsätze) oder zu einem Pauschalpreis. Material, Pflanzen, Maschinen- und Geräteeinsatz, Anfahrt und Entsorgung werden gesondert berechnet, soweit sie nicht im Angebot enthalten sind.Rechnungen sind innerhalb von 14 Tagen nach Rechnungsdatum ohne Abzug zahlbar. Bei Dauerpflegeverträgen erfolgt die Abrechnung in den vereinbarten Zeitabständen.Bei umfangreicheren Aufträgen kann der Auftragnehmer angemessene Abschlagszahlungen für erbrachte Leistungen und gelieferte Materialien verlangen (§ 632a BGB).Bei Zahlungsverzug gelten die gesetzlichen Regelungen, insbesondere zu Verzugszinsen (§ 288 BGB) und Mahnkosten.Der Auftraggeber kann nur mit unbestrittenen oder rechtskräftig festgestellten Forderungen aufrechnen. Ein Zurückbehaltungsrecht steht ihm nur wegen Ansprüchen aus demselben Vertragsverhältnis zu.§ 7 AbnahmeBei Werkleistungen (z. B. Neupflanzungen, Gartenumgestaltung, Baumfällungen) ist der Auftraggeber verpflichtet, die Leistung nach Fertigstellung abzunehmen. Wegen unwesentlicher Mängel kann die Abnahme nicht verweigert werden.Die Abnahme gilt als erfolgt, wenn der Auftraggeber nicht innerhalb einer angemessenen, vom Auftragnehmer gesetzten Frist nach Fertigstellungsanzeige die Abnahme unter Angabe mindestens eines Mangels verweigert (§ 640 Abs. 2 BGB). Gegenüber Verbrauchern gilt dies nur, wenn der Auftragnehmer mit der Aufforderung zur Abnahme in Textform auf diese Folgen hingewiesen hat.Nimmt der Auftraggeber die Leistung in Gebrauch, ohne Mängel anzuzeigen, steht dies der Abnahme gleich.§ 8 GewährleistungEs gelten die gesetzlichen Mängelrechte, soweit nachfolgend nichts anderes bestimmt ist.Pflanzen sind Lebewesen. Für das Anwachsen von Pflanzen und den Erfolg von Rasensaaten steht der Auftragnehmer nur ein, wenn eine Fertigstellungs- und Entwicklungspflege durch den Auftragnehmer ausdrücklich vereinbart wurde. Andernfalls geht die Pflege – insbesondere die ausreichende Wässerung – mit Übergabe auf den Auftraggeber über.Keine Mängel sind Schäden oder Ausfälle, die auf unterlassene oder unsachgemäße Pflege durch den Auftraggeber, Witterung (insbesondere Trockenheit, Frost, Sturm), Wild-, Schädlings- oder Krankheitsbefall, Vandalismus oder Eingriffe Dritter zurückzuführen sind.Offensichtliche Mängel an Pflegeleistungen (z. B. Schnitt- oder Mäharbeiten) sind dem Auftragnehmer innerhalb angemessener Frist anzuzeigen, damit sie nachgebessert werden können. Unternehmer haben offensichtliche Mängel unverzüglich, spätestens innerhalb von sieben Tagen nach Ausführung, in Textform anzuzeigen.Gegenüber Unternehmern beträgt die Verjährungsfrist für Mängelansprüche ein Jahr ab Abnahme, soweit das Gesetz nicht zwingend längere Fristen vorsieht. Gegenüber Verbrauchern gelten die gesetzlichen Verjährungsfristen.§ 9 HaftungDer Auftragnehmer haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, für Schäden, die auf Vorsatz oder grober Fahrlässigkeit beruhen, für Ansprüche nach dem Produkthaftungsgesetz sowie im Umfang einer übernommenen Garantie.Bei einfacher Fahrlässigkeit haftet der Auftragnehmer nur bei Verletzung wesentlicher Vertragspflichten (Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags erst ermöglicht und auf deren Einhaltung der Auftraggeber regelmäßig vertrauen darf), begrenzt auf den vertragstypischen, vorhersehbaren Schaden.Für Schäden an nicht angezeigten Leitungen, Anlagen oder Gegenständen im Arbeitsbereich (§ 5 Abs. 3) haftet der Auftragnehmer nicht, sofern er die gebotene Sorgfalt beachtet hat.Beim Winterdienst besteht kein Anspruch auf eine jederzeitige vollständige Schnee- und Eisfreiheit der betreuten Flächen. Die Haftung beschränkt sich auf die vertraglich vereinbarten Flächen und Einsatzzeiten.Die vorstehenden Haftungsbeschränkungen gelten auch für die persönliche Haftung der Mitarbeiter, Vertreter und Erfüllungsgehilfen des Auftragnehmers.§ 10 Laufzeit und Kündigung von DauerpflegeverträgenVerträge über regelmäßig wiederkehrende Leistungen (z. B. Objekt- und Grundstückspflege, laufende Rasen- und Gartenpflege, Winterdienst) laufen für die vereinbarte Dauer. Ist keine Dauer vereinbart, gelten sie als unbefristet geschlossen.Unbefristete Dauerpflegeverträge können von beiden Seiten mit einer Frist von vier Wochen zum Monatsende in Textform gekündigt werden, sofern nichts anderes vereinbart ist.Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.§ 11 Kündigung von Einzelaufträgen und TerminabsagenDer Auftraggeber kann einen Werkvertrag bis zur Vollendung der Leistung jederzeit kündigen (§ 648 BGB). In diesem Fall ist der Auftragnehmer berechtigt, die vereinbarte Vergütung zu verlangen; er muss sich jedoch anrechnen lassen, was er infolge der Aufhebung des Vertrags an Aufwendungen erspart oder durch anderweitige Verwendung seiner Arbeitskraft erwirbt.Sagt der Auftraggeber einen vereinbarten Termin aus Gründen, die er zu vertreten hat, weniger als 2 Werktage vorher ab, kann der Auftragnehmer die bis dahin entstandenen und nicht anderweitig verwertbaren Aufwendungen (z. B. bereits beschaffte Pflanzen und Materialien) in Rechnung stellen.Das gesetzliche Widerrufsrecht von Verbrauchern (§ 12) bleibt von diesen Regelungen unberührt.§ 12 Widerrufsrecht für VerbraucherVerbrauchern steht bei Verträgen, die außerhalb von Geschäftsräumen (z. B. bei einem Termin vor Ort) oder im Fernabsatz (z. B. per Telefon, E-Mail oder WhatsApp) geschlossen werden, ein gesetzliches Widerrufsrecht nach Maßgabe der folgenden Belehrung zu.Kein Widerrufsrecht besteht bei Verträgen, bei denen der Verbraucher den Auftragnehmer ausdrücklich aufgefordert hat, ihn aufzusuchen, um dringende Reparatur- oder Instandhaltungsarbeiten vorzunehmen (§ 312g Abs. 2 Nr. 11 BGB), etwa bei der Beseitigung von Sturmschäden.WiderrufsbelehrungWiderrufsrecht. Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Garten-und Landschaftspflege B.Streich, Dorfstraße 12, 23684 Scharbeutz, Telefon 0177 3216077, E-Mail info@garten-streich.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das unten stehende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist. Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.Folgen des Widerrufs. Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet. Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen sollen, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.Vorzeitiges Erlöschen des Widerrufsrechts. Das Widerrufsrecht erlischt bei einem Vertrag zur Erbringung von Dienstleistungen, wenn wir die Dienstleistung vollständig erbracht haben und mit der Ausführung der Dienstleistung erst begonnen haben, nachdem Sie dazu Ihre ausdrückliche Zustimmung gegeben und gleichzeitig Ihre Kenntnis davon bestätigt haben, dass Sie Ihr Widerrufsrecht bei vollständiger Vertragserfüllung durch uns verlieren.Muster-Widerrufsformular(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)An: Garten-und Landschaftspflege B.Streich, Dorfstraße 12, 23684 Scharbeutz, E-Mail: info@garten-streich.deHiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung: …Bestellt am (*) / erhalten am (*): …Name des/der Verbraucher(s): …Anschrift des/der Verbraucher(s): …Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier): …Datum: …(*) Unzutreffendes streichen.§ 13 DatenschutzDer Auftragnehmer verarbeitet personenbezogene Daten des Auftraggebers ausschließlich zur Durchführung des Vertrags und im Rahmen der gesetzlichen Bestimmungen. Einzelheiten ergeben sich aus unserer Datenschutzerklärung.§ 14 SchlussbestimmungenEs gilt das Recht der Bundesrepublik Deutschland. Gegenüber Verbrauchern gilt diese Rechtswahl nur, soweit ihnen dadurch nicht der Schutz zwingender Bestimmungen des Rechts des Staates entzogen wird, in dem sie ihren gewöhnlichen Aufenthalt haben.Ist der Auftraggeber Unternehmer, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen, ist ausschließlicher Gerichtsstand für alle Streitigkeiten aus dem Vertragsverhältnis der Sitz des Auftragnehmers.Der Auftragnehmer ist nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Anstelle der unwirksamen Bestimmung gilt die gesetzliche Regelung."
+    }
+  },
+  "data": {
+    "PRODUCTION_HOST": "garten-streich.de",
+    "contactPrompt": "Sie möchten Unterstützung bei der Pflege Ihres Gartens oder Grundstücks?",
+    "googleLink": "https://www.google.com/search?q=Garten-und+Landschaftspflege+B.Streich&stick=H4sIAAAAAAAA_-NgU1I1qDAxTzIyNzY1TEpKMTO2NDO1MqiwNEhMS0w2SzFOTTIxM0hKXsSq5p5YVJKap1ual6Lgk5iXUpyckZhWUlyQlpOanqrgpBdcUpSamZwBAFc9O-lSAAAA&hl=de&mat=CSolaoINfiISElYBa0lj_zsf8XbgU8aUIdYWT7QOKirBVd9II722658dIVku9qXJQZHN4GDbyZR5wUyujz2nKgD9xFxGD0_ih245Ea8b1QdfXjoONVYqXROmS7m3txRCEg",
+    "legalNav": [
+      {
+        "label": "Impressum",
+        "path": "/impressum"
+      },
+      {
+        "label": "Datenschutz",
+        "path": "/datenschutz"
+      },
+      {
+        "label": "AGB",
+        "path": "/agb"
+      }
+    ],
+    "mainNav": [
+      {
+        "label": "Startseite",
+        "path": "/"
+      },
+      {
+        "label": "Leistungen",
+        "path": "/leistungen"
+      },
+      {
+        "label": "Über uns",
+        "path": "/ueber-uns"
+      },
+      {
+        "label": "Team",
+        "path": "/team"
+      }
+    ],
+    "site": {
+      "displayName": "Garten- und Landschaftspflege Streich",
+      "legalName": "Garten-und Landschaftspflege B.Streich",
+      "brand": "Streich",
+      "owner": "Bianca Streich",
+      "legalForm": "Einzelunternehmen",
+      "industry": "Garten- & Landschaftspflege",
+      "vatId": "DE415720615",
+      "brandMessage": "Garten- und Landschaftspflege in und um Lübeck",
+      "address": {
+        "street": "Dorfstraße 12",
+        "zip": "23684",
+        "city": "Scharbeutz",
+        "country": "Deutschland",
+        "countryCode": "DE"
+      },
+      "phone": {
+        "display": "0177 3216077",
+        "href": "tel:01773216077",
+        "intl": "+491773216077"
+      },
+      "email": "info@garten-streich.de",
+      "whatsapp": "https://wa.me/491773216077",
+      "google": {
+        "profileUrl": "https://www.google.com/search?q=Garten-und+Landschaftspflege+B.Streich&stick=H4sIAAAAAAAA_-NgU1I1qDAxTzIyNzY1TEpKMTO2NDO1MqiwNEhMS0w2SzFOTTIxM0hKXsSq5p5YVJKap1ual6Lgk5iXUpyckZhWUlyQlpOanqrgpBdcUpSamZwBAFc9O-lSAAAA&hl=de&mat=CSolaoINfiISElYBa0lj_zsf8XbgU8aUIdYWT7QOKirBVd9II722658dIVku9qXJQZHN4GDbyZR5wUyujz2nKgD9xFxGD0_ih245Ea8b1QdfXjoONVYqXROmS7m3txRCEg",
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Garten-und%20Landschaftspflege%20B.Streich%2C%20Dorfstra%C3%9Fe%2012%2C%2023684%20Scharbeutz",
+        "rating": 5,
+        "reviewCount": 6,
+        "ratingUpdated": "September 2026"
+      },
+      "madeBy": {
+        "label": "diaconuit.de",
+        "url": "https://diaconuit.de"
+      },
+      "areaServed": [
+        "Lübeck",
+        "Ostholstein"
+      ],
+      "domain": "https://garten-streich.de"
+    },
+    "furtherServices": [
+      "Hausmeisterdienste",
+      "Terrassen- & Außenflächenreinigung"
+    ],
+    "keyServices": [
+      {
+        "id": "garten-gruenflaechenpflege",
+        "title": "Garten- & Grünflächenpflege",
+        "claim": "Damit aus Grün ein Garten wird.",
+        "teaser": "Rasen, Beete und Grünflächen – regelmäßig und fachgerecht gepflegt für ein dauerhaft schönes Erscheinungsbild.",
+        "description": [
+          "Von der kleinen privaten Gartenoase bis zur weitläufigen Grünanlage – wir pflegen, erhalten und begleiten Außenflächen in Lübeck und Ostholstein durch die Jahreszeiten.",
+          "Rasen, Beete und Grünflächen werden regelmäßig und fachgerecht gepflegt – für ein dauerhaft schönes und gepflegtes Erscheinungsbild."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": false,
+        "intent": "Gartenpflege benötigt"
+      },
+      {
+        "id": "hecken-gehoelzpflege",
+        "title": "Hecken- & Gehölzpflege",
+        "claim": "In Form gebracht. Natürlich erhalten.",
+        "teaser": "Hecken, Sträucher und Gehölze – vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit.",
+        "description": [
+          "Von der jungen Hecke bis zum gewachsenen Gehölz – wir schneiden mit Blick auf Form, Gesundheit und natürlichen Wuchs.",
+          "Hecken, Sträucher und Gehölze pflegen wir vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": true,
+        "intent": "Hecke schneiden lassen"
+      },
+      {
+        "id": "baumfaellungen",
+        "title": "Baumfällungen",
+        "claim": "Manchmal braucht Neues wieder Raum.",
+        "teaser": "Baumfällungen und die dazugehörigen Arbeiten – zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+        "description": [
+          "Wir übernehmen Baumfällungen und die dazugehörigen Arbeiten zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+          "Von einzelnen Bäumen bis zu anspruchsvolleren Fällarbeiten schaffen wir fachgerecht Platz für Neues."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": true,
+        "intent": "Baum muss gefällt werden"
+      }
+    ],
+    "services": [
+      {
+        "id": "garten-gruenflaechenpflege",
+        "title": "Garten- & Grünflächenpflege",
+        "claim": "Damit aus Grün ein Garten wird.",
+        "teaser": "Rasen, Beete und Grünflächen – regelmäßig und fachgerecht gepflegt für ein dauerhaft schönes Erscheinungsbild.",
+        "description": [
+          "Von der kleinen privaten Gartenoase bis zur weitläufigen Grünanlage – wir pflegen, erhalten und begleiten Außenflächen in Lübeck und Ostholstein durch die Jahreszeiten.",
+          "Rasen, Beete und Grünflächen werden regelmäßig und fachgerecht gepflegt – für ein dauerhaft schönes und gepflegtes Erscheinungsbild."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": false,
+        "intent": "Gartenpflege benötigt"
+      },
+      {
+        "id": "hecken-gehoelzpflege",
+        "title": "Hecken- & Gehölzpflege",
+        "claim": "In Form gebracht. Natürlich erhalten.",
+        "teaser": "Hecken, Sträucher und Gehölze – vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit.",
+        "description": [
+          "Von der jungen Hecke bis zum gewachsenen Gehölz – wir schneiden mit Blick auf Form, Gesundheit und natürlichen Wuchs.",
+          "Hecken, Sträucher und Gehölze pflegen wir vom Formschnitt bis zum fachgerechten Rückschnitt zur richtigen Jahreszeit."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": true,
+        "intent": "Hecke schneiden lassen"
+      },
+      {
+        "id": "baumfaellungen",
+        "title": "Baumfällungen",
+        "claim": "Manchmal braucht Neues wieder Raum.",
+        "teaser": "Baumfällungen und die dazugehörigen Arbeiten – zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+        "description": [
+          "Wir übernehmen Baumfällungen und die dazugehörigen Arbeiten zuverlässig und unter Berücksichtigung der örtlichen Gegebenheiten.",
+          "Von einzelnen Bäumen bis zu anspruchsvolleren Fällarbeiten schaffen wir fachgerecht Platz für Neues."
+        ],
+        "list": null,
+        "key": true,
+        "highlight": true,
+        "intent": "Baum muss gefällt werden"
+      },
+      {
+        "id": "rasenpflege",
+        "title": "Rasenpflege",
+        "claim": "Grün, das sich sehen lassen kann.",
+        "teaser": "Mähen, Kantenpflege, Düngung und weitere Pflegemaßnahmen – abgestimmt auf Fläche und Nutzung.",
+        "description": [
+          "Vom regelmäßigen Mähen bis zur gezielten Pflege – für Rasenflächen, die gesund wachsen und dauerhaft gepflegt aussehen.",
+          "Dazu gehören Mähen, Kantenpflege, Düngung und weitere Pflegemaßnahmen – abgestimmt auf Fläche und Nutzung."
+        ],
+        "list": null,
+        "key": false,
+        "highlight": false,
+        "intent": "Rasen regelmäßig pflegen lassen"
+      },
+      {
+        "id": "beet-staudenpflege",
+        "title": "Beet- & Staudenpflege",
+        "claim": "Wo es blüht, darf es leben.",
+        "teaser": "Pflegen, schneiden, jäten und erhalten – für gepflegte Pflanzflächen zu jeder Jahreszeit.",
+        "description": [
+          "Vom ersten Austrieb im Frühjahr bis zum letzten Rückschnitt begleiten wir Beete und Stauden durch das Gartenjahr.",
+          "Pflegen, schneiden, jäten und erhalten – für gepflegte und ansprechende Pflanzflächen zu jeder Jahreszeit."
+        ],
+        "list": null,
+        "key": false,
+        "highlight": false,
+        "intent": null
+      },
+      {
+        "id": "neupflanzungen",
+        "title": "Neupflanzungen",
+        "claim": "Heute gepflanzt. Für morgen gewachsen.",
+        "teaser": "Von Blumen und Stauden über Sträucher bis hin zu Bäumen – neues Grün für Ihren Garten.",
+        "description": [
+          "Von Blumen und Stauden über Sträucher und Hecken bis hin zu Bäumen übernehmen wir die fachgerechte Neupflanzung und Gestaltung Ihrer Grünflächen.",
+          "Neues Grün für Ihren Garten."
+        ],
+        "list": null,
+        "key": false,
+        "highlight": false,
+        "intent": null
+      },
+      {
+        "id": "gartenumgestaltung",
+        "title": "Gartenumgestaltung",
+        "claim": "Aus Bestehendem etwas Neues entstehen lassen.",
+        "teaser": "Vom einzelnen Beet bis zur Neugestaltung einzelner Gartenbereiche – aus Bestehendem etwas Neues.",
+        "description": [
+          "Wir verändern, erneuern und ergänzen vorhandene Gartenflächen.",
+          "Vom einzelnen Beet und neuen Bepflanzungen bis zur Neugestaltung einzelner Gartenbereiche gestalten wir mit Gefühl für das, was bereits gewachsen ist."
+        ],
+        "list": null,
+        "key": false,
+        "highlight": false,
+        "intent": null
+      },
+      {
+        "id": "saisonale-gartenarbeiten",
+        "title": "Saisonale Gartenarbeiten",
+        "claim": "Jede Jahreszeit hat ihre Arbeit.",
+        "teaser": "Frühjahrs- und Herbstpflege, Rückschnitte und Laubbeseitigung – im Lauf des Gartenjahres.",
+        "description": [
+          "Vom ersten Frühjahrsschnitt bis zum letzten Herbstlaub kümmern wir uns um die Arbeiten, die im Laufe des Gartenjahres anfallen."
+        ],
+        "list": [
+          "Frühjahrs- und Herbstpflege",
+          "Rückschnitte",
+          "Laubbeseitigung"
+        ],
+        "key": false,
+        "highlight": false,
+        "intent": null
+      },
+      {
+        "id": "objekt-grundstueckspflege",
+        "title": "Objekt- & Grundstückspflege",
+        "claim": "Gepflegt. Verlässlich. Das ganze Jahr.",
+        "teaser": "Regelmäßige Pflege von Grünflächen und Außenanlagen – abgestimmt auf den Bedarf.",
+        "description": [
+          "Regelmäßige Pflege von Grünflächen und Außenanlagen – für Privatgrundstücke, Wohnanlagen, Gewerbeobjekte und öffentliche Flächen in Lübeck und Ostholstein.",
+          "Die Pflege wird auf den jeweiligen Bedarf abgestimmt."
+        ],
+        "list": [
+          "Privatgrundstücke",
+          "Wohnanlagen",
+          "Gewerbeobjekte",
+          "Öffentliche Flächen"
+        ],
+        "key": false,
+        "highlight": false,
+        "intent": "Grundstück dauerhaft pflegen lassen"
+      },
+      {
+        "id": "winterdienst",
+        "title": "Winterdienst",
+        "claim": "Auch wenn das Grün Pause macht, sind wir für Sie da.",
+        "teaser": "Schnee- und Eisbeseitigung sowie Streudienst auf Wegen, Zufahrten und Außenflächen.",
+        "description": [
+          "Schnee- und Eisbeseitigung sowie Streudienst auf Wegen, Zufahrten und Außenflächen – für private, gewerbliche und öffentliche Grundstücke."
+        ],
+        "list": [
+          "Wege",
+          "Zufahrten",
+          "Außenflächen"
+        ],
+        "key": false,
+        "highlight": false,
+        "intent": null
+      }
+    ],
+    "monthNames": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "seasonByMonth": {
+      "1": {
+        "ids": [
+          "winterdienst",
+          "baumfaellungen",
+          "hecken-gehoelzpflege"
+        ],
+        "note": "Fäll- und Rückschnittsaison für Bäume und Gehölze, dazu Winterdienst"
+      },
+      "2": {
+        "ids": [
+          "baumfaellungen",
+          "hecken-gehoelzpflege",
+          "winterdienst"
+        ],
+        "note": "Letzte Wochen für Fällungen und starke Rückschnitte vor der Schonzeit ab 1. März"
+      },
+      "3": {
+        "ids": [
+          "saisonale-gartenarbeiten",
+          "beet-staudenpflege",
+          "neupflanzungen"
+        ],
+        "note": "Frühjahrspflege, Staudenrückschnitt – die Pflanzzeit beginnt"
+      },
+      "4": {
+        "ids": [
+          "rasenpflege",
+          "neupflanzungen",
+          "beet-staudenpflege"
+        ],
+        "note": "Rasen vertikutieren und düngen, Frühjahrspflanzungen"
+      },
+      "5": {
+        "ids": [
+          "rasenpflege",
+          "garten-gruenflaechenpflege",
+          "beet-staudenpflege"
+        ],
+        "note": "Das Wachstum startet – Zeit für regelmäßige Pflege"
+      },
+      "6": {
+        "ids": [
+          "hecken-gehoelzpflege",
+          "rasenpflege",
+          "garten-gruenflaechenpflege"
+        ],
+        "note": "Schonender Formschnitt an Hecken, regelmäßiges Mähen"
+      },
+      "7": {
+        "ids": [
+          "garten-gruenflaechenpflege",
+          "rasenpflege",
+          "objekt-grundstueckspflege"
+        ],
+        "note": "Sommerpflege für Gärten, Rasen und Außenanlagen"
+      },
+      "8": {
+        "ids": [
+          "hecken-gehoelzpflege",
+          "garten-gruenflaechenpflege",
+          "rasenpflege"
+        ],
+        "note": "Zweiter Formschnitt an Hecken, Sommerpflege"
+      },
+      "9": {
+        "ids": [
+          "rasenpflege",
+          "neupflanzungen",
+          "beet-staudenpflege"
+        ],
+        "note": "Herbstdüngung und Nachsaat – die beste Pflanzzeit beginnt"
+      },
+      "10": {
+        "ids": [
+          "saisonale-gartenarbeiten",
+          "hecken-gehoelzpflege",
+          "baumfaellungen",
+          "neupflanzungen"
+        ],
+        "note": "Laub und Herbstpflege; Rückschnitte und Fällungen sind ab 1. Oktober wieder möglich"
+      },
+      "11": {
+        "ids": [
+          "saisonale-gartenarbeiten",
+          "baumfaellungen",
+          "winterdienst"
+        ],
+        "note": "Laubbeseitigung, Fällsaison – und Zeit, den Winterdienst zu planen"
+      },
+      "12": {
+        "ids": [
+          "winterdienst",
+          "baumfaellungen",
+          "hecken-gehoelzpflege"
+        ],
+        "note": "Winterdienst sowie Fäll- und Rückschnittsaison"
+      }
+    },
+    "seoPages": {
+      "home": {
+        "title": "Garten- & Landschaftspflege Lübeck | Streich",
+        "description": "Garten- und Landschaftspflege Streich für Lübeck und Ostholstein: Gartenpflege, Heckenpflege, Rasenpflege, Baumfällungen und weitere Arbeiten rund um Garten und Grundstück. Jetzt anfragen.",
+        "path": "/"
+      },
+      "leistungen": {
+        "title": "Gartenpflege, Baumfällung & Heckenpflege | Streich",
+        "description": "Unsere Leistungen rund um Garten und Grünflächen in Lübeck und Ostholstein: Garten- & Grünflächenpflege, Hecken- & Gehölzpflege, Baumfällungen, Rasenpflege, Winterdienst und mehr.",
+        "path": "/leistungen"
+      },
+      "ueberUns": {
+        "title": "Garten- und Landschaftspflege Streich | Über uns",
+        "description": "Streich – regionales Einzelunternehmen für Garten- und Landschaftspflege aus Scharbeutz, tätig in Lübeck und Ostholstein. Persönlich, zuverlässig und mit einem Blick für das Schöne.",
+        "path": "/ueber-uns"
+      },
+      "team": {
+        "title": "Unser Team | Garten- und Landschaftspflege Streich",
+        "description": "Unser Team steht für familiäre, sorgfältige Garten- und Landschaftspflege in und um Lübeck – mit fundiertem gärtnerischem und forstlichem Hintergrund.",
+        "path": "/team"
+      },
+      "impressum": {
+        "title": "Impressum | Garten- und Landschaftspflege Streich",
+        "description": "Impressum der Garten-und Landschaftspflege B.Streich, Scharbeutz.",
+        "path": "/impressum"
+      },
+      "datenschutz": {
+        "title": "Datenschutzerklärung | Garten- und Landschaftspflege Streich",
+        "description": "Datenschutzerklärung der Garten-und Landschaftspflege B.Streich: Informationen zur Verarbeitung personenbezogener Daten auf dieser Website.",
+        "path": "/datenschutz"
+      },
+      "agb": {
+        "title": "AGB | Garten- und Landschaftspflege Streich",
+        "description": "Allgemeine Geschäftsbedingungen der Garten-und Landschaftspflege B.Streich für Garten- und Landschaftspflegeleistungen.",
+        "path": "/agb"
+      }
+    }
+  },
+  "contactFunctionSha256": "390cb5f7486e402de1c76155a791ac8b11c99bfb759f228017bf8beb4d693e1b"
+}

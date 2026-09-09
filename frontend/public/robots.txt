@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-# Bitte keine internen Vorschau-/Staging-Umgebungen indexieren.
-# Auf Nicht-Produktions-Domains verhindert zusätzlich ein noindex-Meta-Tag die Indexierung.
-
-Sitemap: https://garten-streich.de/sitemap.xml
