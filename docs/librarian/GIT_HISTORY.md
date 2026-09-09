@@ -2,7 +2,7 @@
 
 ## Erklärung
 
-Dokumentierter Commit (Analyse-HEAD): `3c837baf80be192e4c782180ccb951126dce9878` auf Branch `feat/astro-modernisierung`, erzeugt 2026-09-09T18:11:01.553Z.
+Dokumentierter Commit (Analyse-HEAD): `5dbbb4cf4b43ff97b971e3b56f9ff974f145bd5a` auf Branch `feat/astro-modernisierung`, erzeugt 2026-09-09T18:27:42.367Z.
 
 Inkonsistenzen und getrennte Anforderungsquellen (Node engines vs README, package vs lock Version) sind unter Konfiguration als Facts geführt — nicht als spekulativer Technical Debt.
 
@@ -10,9 +10,9 @@ Inkonsistenzen und getrennte Anforderungsquellen (Node engines vs README, packag
 
 ### Analyse-Stand
 
-- HEAD: `3c837baf80be192e4c782180ccb951126dce9878`
+- HEAD: `5dbbb4cf4b43ff97b971e3b56f9ff974f145bd5a`
 - Branch: `feat/astro-modernisierung`
-- Generated: `2026-09-09T18:11:01.553Z`
+- Generated: `2026-09-09T18:27:42.367Z`
 - Facts: 1234
 - Relationships: 280
 

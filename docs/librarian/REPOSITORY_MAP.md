@@ -409,7 +409,7 @@ Sie dient der Orientierung; Verhaltensdetails stehen in Architektur-, API- und K
 - `frontend/reports/performance/profile-0ACeKh/Default/Extension State/MANIFEST-000001` — `source`
 - `frontend/reports/performance/profile-0ACeKh/Default/Favicons` — `source`
 
-HEAD: `3c837baf80be192e4c782180ccb951126dce9878` · Branch: `feat/astro-modernisierung`
+HEAD: `5dbbb4cf4b43ff97b971e3b56f9ff974f145bd5a` · Branch: `feat/astro-modernisierung`
 
 ## Evidence
 

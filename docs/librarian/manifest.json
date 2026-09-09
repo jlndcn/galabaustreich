@@ -1,14 +1,14 @@
 {
-  "documentationVersion": 1,
+  "documentationVersion": 2,
   "schemaVersion": "techdoc-schema:v2-evidence",
   "promptVersion": "techdoc-full:v2-evidence",
-  "mode": "recovery",
-  "documentedCommit": "3c837baf80be192e4c782180ccb951126dce9878",
-  "previousDocumentedCommit": null,
-  "createdAt": "2026-09-09T18:11:54.443Z",
+  "mode": "full",
+  "documentedCommit": "5dbbb4cf4b43ff97b971e3b56f9ff974f145bd5a",
+  "previousDocumentedCommit": "3c837baf80be192e4c782180ccb951126dce9878",
+  "createdAt": "2026-09-09T18:28:33.505Z",
   "provider": "ollama",
   "model": "qwen3.5:9b",
   "mainDocument": "docs/librarian/TECHNICAL_DOCUMENTATION.md",
   "changeDocument": null,
-  "commitRange": null
+  "commitRange": "3c837baf80be192e4c782180ccb951126dce9878..5dbbb4cf4b43ff97b971e3b56f9ff974f145bd5a"
 }
