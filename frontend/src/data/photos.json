@@ -1,0 +1,223 @@
+{
+  "gartenpflege-team-streich": {
+    "name": "gartenpflege-team-streich-d9ba21ca",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_50_42.png"
+  },
+  "gartenpflege-team-streich-mobil": {
+    "name": "gartenpflege-team-streich-mobil-76e4997b",
+    "width": 640,
+    "height": 1024,
+    "widths": [
+      480,
+      640
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_50_42.png"
+  },
+  "streich-im-rosengarten": {
+    "name": "streich-im-rosengarten-866c2f74",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 11_13_21.png"
+  },
+  "team-streich": {
+    "name": "team-streich-ba208894",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_47_00.png"
+  },
+  "garten-streich-arbeitskleidung": {
+    "name": "garten-streich-arbeitskleidung-74ea49a3",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_42_40.png"
+  },
+  "gartenarbeit-streich": {
+    "name": "gartenarbeit-streich-7079c1ff",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_53_11.png"
+  },
+  "rose-in-haenden-streich": {
+    "name": "rose-in-haenden-streich-ea616fe3",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 11_19_53.png"
+  },
+  "rosenpflege-detail-streich": {
+    "name": "rosenpflege-detail-streich-6a8527a4",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 11_18_09.png"
+  },
+  "gartenbrunnen-streich": {
+    "name": "gartenbrunnen-streich-9f970a07",
+    "width": 1024,
+    "height": 1536,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "source": "Bilder\\ChatGPT Image 14. Sept. 2026, 10_35_47.png"
+  },
+  "baumfaellungen": {
+    "name": "baumfaellungen-4bb0ab8d",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\baumfaellungen.png"
+  },
+  "beetpflege": {
+    "name": "beetpflege-ca7b4eb9",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\beetpflege.png"
+  },
+  "gartenpflege": {
+    "name": "gartenpflege-a17b8fa9",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\gartenpflege.png"
+  },
+  "gartenumgestaltung": {
+    "name": "gartenumgestaltung-b642814f",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\gartenumgestaltung.png"
+  },
+  "grundstueckspflege": {
+    "name": "grundstueckspflege-ccef9c26",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\grundstueckspflege.png"
+  },
+  "heckenpflege": {
+    "name": "heckenpflege-20023196",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\heckenpflege.png"
+  },
+  "neupflanzungen": {
+    "name": "neupflanzungen-9b5464cb",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\neupflanzungen.png"
+  },
+  "rasenpflege": {
+    "name": "rasenpflege-d72a4ec6",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\rasenpflege.png"
+  },
+  "saisonale-gartenarbeiten": {
+    "name": "saisonale-gartenarbeiten-c183a564",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\saisonale-gartenarbeiten.png"
+  },
+  "winterdienst": {
+    "name": "winterdienst-6554c13c",
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "source": "assets-src\\services\\winterdienst.png"
+  }
+}

@@ -5,7 +5,7 @@ import { GoogleRating } from "@/components/GoogleRating";
 import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
 import { site, mainNav, legalNav, googleLink } from "@/data/site";
 
-// Light footer so the (dark-green) logo is shown as-is. Plain columns, clear links.
+// A distinct forest-green closing section; the original logo sits on ivory.
 export const Footer = () => {
   const year = new Date().getFullYear();
 
@@ -15,7 +15,7 @@ export const Footer = () => {
     "inline-block text-base text-[color:var(--brand-ink-soft)] transition-colors hover:text-[color:var(--brand-accent-strong)]";
 
   return (
-    <footer data-testid="site-footer" className="border-t border-border bg-[color:var(--brand-cream)]">
+    <footer data-testid="site-footer" className="site-footer">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
           {/* Brand */}
@@ -42,8 +42,16 @@ export const Footer = () => {
             <h3 className="text-lg">Kontakt</h3>
             <ul className="mt-4 space-y-3">
               <li>
-                <a href={site.phone.href} data-testid="footer-phone-link" className={contactLink}>
-                  <Phone className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={2} aria-hidden="true" />
+                <a
+                  href={site.phone.href}
+                  data-testid="footer-phone-link"
+                  className={contactLink}
+                >
+                  <Phone
+                    className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                   {site.phone.display}
                 </a>
               </li>
@@ -55,13 +63,24 @@ export const Footer = () => {
                   data-testid="footer-whatsapp-link"
                   className={contactLink}
                 >
-                  <WhatsAppIcon className="h-4 w-4 shrink-0" style={{ color: channelColors.whatsapp }} />
+                  <WhatsAppIcon
+                    className="h-4 w-4 shrink-0"
+                    style={{ color: channelColors.whatsapp }}
+                  />
                   WhatsApp
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} data-testid="footer-email-link" className={`${contactLink} break-all`}>
-                  <Mail className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]" strokeWidth={2} aria-hidden="true" />
+                <a
+                  href={`mailto:${site.email}`}
+                  data-testid="footer-email-link"
+                  className={`${contactLink} break-all`}
+                >
+                  <Mail
+                    className="h-4 w-4 shrink-0 text-[color:var(--brand-accent-strong)]"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  />
                   {site.email}
                 </a>
               </li>
@@ -124,7 +143,8 @@ export const Footer = () => {
 
         <div className="flex flex-col gap-2 border-t border-border py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName} · Garten- und Landschaftspflege in und um Lübeck
+            © {year} {site.legalName} · Garten- und Landschaftspflege in und um
+            Lübeck
           </p>
           <p data-testid="footer-madeby">
             Made and hosted by{" "}

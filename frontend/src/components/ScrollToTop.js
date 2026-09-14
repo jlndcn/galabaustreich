@@ -9,7 +9,8 @@ export const ScrollToTop = () => {
     if (hash) {
       const el = document.getElementById(hash.replace("#", ""));
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
         return;
       }
     }

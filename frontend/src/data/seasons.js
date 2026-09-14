@@ -45,7 +45,11 @@ export const seasonByMonth = {
     note: "Schonender Formschnitt an Hecken, regelmäßiges Mähen",
   },
   7: {
-    ids: ["garten-gruenflaechenpflege", "rasenpflege", "objekt-grundstueckspflege"],
+    ids: [
+      "garten-gruenflaechenpflege",
+      "rasenpflege",
+      "objekt-grundstueckspflege",
+    ],
     note: "Sommerpflege für Gärten, Rasen und Außenanlagen",
   },
   8: {
@@ -57,7 +61,12 @@ export const seasonByMonth = {
     note: "Herbstdüngung und Nachsaat – die beste Pflanzzeit beginnt",
   },
   10: {
-    ids: ["saisonale-gartenarbeiten", "hecken-gehoelzpflege", "baumfaellungen", "neupflanzungen"],
+    ids: [
+      "saisonale-gartenarbeiten",
+      "hecken-gehoelzpflege",
+      "baumfaellungen",
+      "neupflanzungen",
+    ],
     note: "Laub und Herbstpflege; Rückschnitte und Fällungen sind ab 1. Oktober wieder möglich",
   },
   11: {
@@ -71,9 +80,17 @@ export const seasonByMonth = {
 };
 
 export function getSeason(date = new Date()) {
-  const month = date.getMonth() + 1;
+  const month = Number(
+    new Intl.DateTimeFormat("de-DE", {
+      month: "numeric",
+      timeZone: "Europe/Berlin",
+    }).format(date),
+  );
   const entry = seasonByMonth[month] || { ids: [], note: "" };
-  return { month, monthName: monthNames[month - 1], ...entry };
+  const seasonName = ["Winter", "Frühling", "Sommer", "Herbst"][
+    Math.floor((month % 12) / 3)
+  ];
+  return { month, monthName: monthNames[month - 1], seasonName, ...entry };
 }
 
 // The n services that are most in demand in the current month (ordered by relevance),

@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
+import { Photo } from "@/components/Photo";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 
 const values = [
   {
     title: "Familiär",
-    text: "Wir arbeiten familiär und nah – man kennt sich, und das merkt man in jedem Auftrag.",
+    text: "Bei uns kennt man sich und packt gemeinsam an. Dieses familiäre Miteinander gehört für uns einfach dazu.",
   },
   {
     title: "Fachlich fundiert",
-    text: "Gärtnerisches und forstliches Wissen kommt bei uns direkt in Ihrem Garten zusammen.",
+    text: "Gärtnerisches und forstliches Wissen bringen wir gemeinsam mit in Ihren Garten. Jeder trägt sein Können zur Arbeit bei.",
   },
   {
     title: "Sorgfältig",
-    text: "Wir gehen sorgfältig mit dem um, was gewachsen ist – für ein gepflegtes Ergebnis.",
+    text: "Wir schauen genau hin und gehen behutsam mit dem um, was gewachsen ist. Denn ein gepflegter Garten steckt auch in den kleinen Details.",
   },
 ];
 
@@ -30,86 +30,96 @@ export default function Team() {
         path={seoPages.team.path}
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-        <Reveal className="max-w-3xl">
-          <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">Unser Team</h1>
+      <section className="section-shell team-intro">
+        <Reveal>
+          <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
+            Unser Team
+          </h1>
+        </Reveal>
+        <Reveal delay={100}>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Bei Streich geht es familiär zu. Hinter der Garten- und
-            Landschaftspflege in und um Lübeck steht ein eingespieltes Team, in
-            dem gärtnerisches und forstliches Können zusammenkommen – mit einem
-            gemeinsamen Anspruch an sorgfältige, gepflegte Arbeit.
+            Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
+            packt gemeinsam an. In unserem Team kommen gärtnerisches und
+            forstliches Können zusammen. Was uns verbindet? Wir kümmern uns gern
+            um Ihren Garten und legen Wert auf sorgfältige, gepflegte Arbeit.
           </p>
         </Reveal>
       </section>
 
-      {/* Team group photo slot */}
-      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 lg:px-8 lg:pb-8">
+      {/* Full group photograph; qualifications are not assigned to individuals. */}
+      <section className="section-shell">
         <Reveal>
-          <PhotoPlaceholder
-            label="Teamfoto"
-            hint="Gruppenaufnahme des Teams – gern vor Ort oder mit Fahrzeug/Ausrüstung"
-            ratio="aspect-[16/9]"
-            spec="Breites Querformat · min. 2000×1125 px"
+          <Photo
+            name="team-streich"
+            alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
+            className="team-wide-photo"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            priority
           />
         </Reveal>
       </section>
 
       {/* Values – stacked */}
-      <section className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8 lg:py-8">
-        <div className="max-w-3xl">
+      <section className="section-shell team-values-layout">
+        <Reveal className="team-detail-photo">
+          <Photo
+            name="rose-in-haenden-streich"
+            alt="Hände halten eine rote Rosenblüte vor einer Backsteinwand"
+            sizes="(max-width: 767px) 100vw, 45vw"
+          />
+          <p>Mit einem Blick für das Schöne.</p>
+        </Reveal>
+        <div className="team-values">
           {values.map((v, i) => (
-            <Reveal
-              key={v.title}
-              delay={i * 80}
-              className="border-t-2 border-[color:var(--brand-forest)] py-8 first:pt-0 first:border-t-0"
-            >
+            <Reveal key={v.title} delay={i * 80} className="team-value">
+              <span className="team-value-number" aria-hidden="true">
+                0{i + 1}
+              </span>
               <h2 className="text-2xl">{v.title}</h2>
-              <p className="mt-3 text-lg leading-relaxed text-muted-foreground">{v.text}</p>
+              <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
+                {v.text}
+              </p>
             </Reveal>
           ))}
         </div>
       </section>
 
       {/* Background */}
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <Reveal className="max-w-3xl border-t border-border pt-12">
-          <h2 className="text-3xl sm:text-4xl">Fachlicher Hintergrund im Team</h2>
+      <section className="section-shell">
+        <Reveal className="team-background">
+          <h2 className="text-3xl sm:text-4xl">
+            Fachlicher Hintergrund im Team
+          </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             In unserem Team kommen forstliche und gärtnerische Ausbildung sowie
             Erfahrung aus der Baumschule zusammen – vom Forstwirt über den
             Zierpflanzengärtner bis zum Altgesellen.
           </p>
+          <ul
+            className="team-qualifications"
+            aria-label="Fachlicher Hintergrund"
+          >
+            {[
+              "Forstwirt",
+              "Zierpflanzengärtner",
+              "Baumschule",
+              "Altgeselle",
+            ].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <p className="mt-6 text-base text-muted-foreground">
             Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
-            <Link to="/leistungen" data-testid="team-services-link" className="text-link text-base">
+            <Link
+              to="/leistungen"
+              data-testid="team-services-link"
+              className="text-link text-base"
+            >
               Unsere Leistungen ansehen
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </p>
         </Reveal>
-      </section>
-
-      {/* Role-based portrait slots (no invented names) */}
-      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-        <Reveal className="max-w-3xl">
-          <h2 className="text-2xl">Gesichter im Team</h2>
-          <p className="mt-3 text-base text-muted-foreground">
-            Hier folgen später Porträts der Personen hinter Streich – die Rollen
-            dienen bis dahin als Orientierung.
-          </p>
-        </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {["Forstwirt", "Zierpflanzengärtner", "Altgeselle"].map((role, i) => (
-            <Reveal key={role} delay={i * 80}>
-              <PhotoPlaceholder
-                label={role}
-                hint="Porträtfoto"
-                ratio="aspect-[3/4]"
-                spec="Hochformat · min. 1200×1600 px"
-              />
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       <ContactCTA prefix="team-contact-cta" />

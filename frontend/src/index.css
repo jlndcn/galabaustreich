@@ -16,7 +16,7 @@
         --brand-leaf-2: #608030;
         --brand-taupe: #6b5b4a;
         --brand-accent: #0fbb82;
-        --brand-accent-strong: #0ca772;
+        --brand-accent-strong: #087653;
 
         /* Typography */
         --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system,
@@ -122,7 +122,6 @@
         transition:
             opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
             transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-        will-change: opacity, transform;
     }
 
     .reveal.is-visible {

@@ -1,0 +1,35 @@
+[
+  {
+    "hero": {
+      "currentSrc": "http://127.0.0.1:4173/images/gartenpflege-team-streich-mobil-76e4997b-640.webp",
+      "loading": "eager",
+      "priority": "high",
+      "animation": "none"
+    }
+  },
+  {
+    "navigation": "menu, Escape focus return, service inquiry prefill passed"
+  },
+  {
+    "formSuccess": "mock response passed; no email sent",
+    "payloadFields": [
+      "name",
+      "phone",
+      "email",
+      "location",
+      "message",
+      "consent",
+      "website",
+      "page"
+    ]
+  },
+  {
+    "formError": "mock 503 shown; entered data preserved"
+  },
+  {
+    "floatingCTA": "hidden when footer is visible"
+  },
+  {
+    "responsive": "no overflow at 320, 375, 768, 1024, 1920px"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "gartenpflege",
+    "prompt": "Use case: photorealistic-natural. Generate one landscape 3:2 photograph for a gardening services website, part of a consistent ten-image editorial series. Subject: regular garden maintenance in progress, a worker seen candidly from behind using a rake along a perennial border beside an ordinary cared-for lawn. Northern German domestic garden with hornbeam hedge, established perennials and modest brick architecture in background. Soft overcast daylight, neutral warm colour temperature, natural forest greens and muted earth tones, realistic documentary 35mm photography, authentic textures, restrained contrast. Work and tools anatomically and technically plausible. No posing, no luxury garden, no American suburb, no text, no logo, no watermark. This is a generic service illustration, not a real Streich project.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "heckenpflege",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Worker wearing eye and hearing protection trimming the vertical face of a hornbeam hedge with a two-handed cordless hedge trimmer, both hands on handles, stable stance on the ground. Neatly clipped face, small clippings below; ordinary mature garden.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "baumfaellungen",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Professional tree felling in progress on a level spacious northern German rural garden boundary. Side view of trained arborist wearing forestry helmet with lowered face shield, hearing protection, gloves, orange high visibility jacket, chainsaw protective trousers and forestry boots, both hands firmly holding a chainsaw at a realistic horizontal felling cut near base of a modest upright tree. Visible completed directional notch on other face, clear empty fall zone into open ground, no bystanders, no buildings within falling distance, calm controlled scene. Tree still upright, no dramatic falling trunk. Make the cutting situation unmistakable, not pruning, not brushcutting.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "rasenpflege",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Gardener seen from behind pushing a normal walk-behind lawn mower over a modest healthy but naturally imperfect lawn with gentle stripes, established mixed borders and hornbeam hedge. No golf course or oversized ride-on mower.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "beetpflege",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Close documentary view of gloved hands carefully deadheading a flowering perennial with bypass secateurs in a naturally planted mixed border of salvia and hardy perennials. One hand holds stem clear of blade, other operates secateurs, real garden soil visible, lush but imperfect.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "neupflanzungen",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Gardener kneeling at a prepared planting hole lowering an intact shrub root ball into the ground with both gloved hands, a few nursery pots and spade lying safely nearby, existing perennial garden. Clearly new planting in progress, plausible hole and rootball size.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "gartenumgestaltung",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: A modest established garden midway through reshaping a planting border: curved fresh excavated bed edge beside existing lawn, retained shrubs, wheelbarrow with soil, spade and gardener using rake to level soil, some new potted perennials awaiting planting. Process of redesign visible, no luxury completed render.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "saisonale-gartenarbeiten",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Candid gardener raking fallen autumn leaves into a manageable pile on an ordinary lawn, simple leaf rake and garden waste bag, mixed deciduous hedge, muted ochre leaves, temperate northern German autumn, quiet overcast daylight, no seasonal decorations.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "grundstueckspflege",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Regular grounds maintenance outside a modest red-brick northern German apartment building, tidy paths, shrubs and larger lawn, caretaker in distance sweeping a path with broom and garden cart nearby. Natural everyday residential grounds, cared-for but not luxurious.",
+    "method": "built-in image_gen"
+  },
+  {
+    "id": "winterdienst",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 photograph in a consistent gardening-service editorial series. Northern German ordinary garden or grounds, restrained natural forest green and earth palette, soft overcast daylight, neutral slightly warm colour temperature, documentary 35mm photography, authentic textures, realistic detail, restrained contrast. Candid workers never posing. Tools and work must be technically plausible. No luxury landscape, American suburb, tropical plants, CGI look, text, logos or watermarks. Generic service illustration, not a real Streich project. Subject: Worker in winter work clothes, gloves and sturdy boots pushing a broad snow shovel along a brick home's paved pedestrian path in northern Germany, very thin layer of fresh snow, cleared wet paving and small container of grit nearby. Flat ground, bare hedge, mild overcast winter day, no mountains or heavy snowstorm.",
+    "method": "built-in image_gen"
+  }
+]

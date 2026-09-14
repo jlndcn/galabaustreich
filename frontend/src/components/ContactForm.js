@@ -93,8 +93,11 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
-      const first = document.querySelector(`[data-form="${prefix}"] [aria-invalid="true"]`);
-      if (first) first.focus();
+      // Wait for React to render the error attributes before moving focus.
+      window.requestAnimationFrame(() => {
+        const first = document.querySelector(`[data-form="${prefix}"] [aria-invalid="true"]`);
+        if (first) first.focus();
+      });
       return;
     }
 

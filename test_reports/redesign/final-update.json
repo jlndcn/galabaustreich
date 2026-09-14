@@ -1,0 +1,152 @@
+[
+  {
+    "width": 1440,
+    "contact": {
+      "season": 709.421875,
+      "form": 709.421875,
+      "overflow": false
+    },
+    "months": [
+      {
+        "month": 1,
+        "title": "Gerade Saison im Januar",
+        "count": 3
+      },
+      {
+        "month": 2,
+        "title": "Gerade Saison im Februar",
+        "count": 3
+      },
+      {
+        "month": 3,
+        "title": "Gerade Saison im März",
+        "count": 3
+      },
+      {
+        "month": 4,
+        "title": "Gerade Saison im April",
+        "count": 3
+      },
+      {
+        "month": 5,
+        "title": "Gerade Saison im Mai",
+        "count": 3
+      },
+      {
+        "month": 6,
+        "title": "Gerade Saison im Juni",
+        "count": 3
+      },
+      {
+        "month": 7,
+        "title": "Gerade Saison im Juli",
+        "count": 3
+      },
+      {
+        "month": 8,
+        "title": "Gerade Saison im August",
+        "count": 3
+      },
+      {
+        "month": 9,
+        "title": "Gerade Saison im September",
+        "count": 3
+      },
+      {
+        "month": 10,
+        "title": "Gerade Saison im Oktober",
+        "count": 4
+      },
+      {
+        "month": 11,
+        "title": "Gerade Saison im November",
+        "count": 3
+      },
+      {
+        "month": 12,
+        "title": "Gerade Saison im Dezember",
+        "count": 3
+      }
+    ],
+    "monthRollover": true,
+    "dotTracksServices": true,
+    "teamReveals": true,
+    "noDepthResources": true,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "contact": {
+      "season": 738.890625,
+      "form": 1837.34375,
+      "overflow": false
+    },
+    "months": [
+      {
+        "month": 1,
+        "title": "Gerade Saison im Januar",
+        "count": 3
+      },
+      {
+        "month": 2,
+        "title": "Gerade Saison im Februar",
+        "count": 3
+      },
+      {
+        "month": 3,
+        "title": "Gerade Saison im März",
+        "count": 3
+      },
+      {
+        "month": 4,
+        "title": "Gerade Saison im April",
+        "count": 3
+      },
+      {
+        "month": 5,
+        "title": "Gerade Saison im Mai",
+        "count": 3
+      },
+      {
+        "month": 6,
+        "title": "Gerade Saison im Juni",
+        "count": 3
+      },
+      {
+        "month": 7,
+        "title": "Gerade Saison im Juli",
+        "count": 3
+      },
+      {
+        "month": 8,
+        "title": "Gerade Saison im August",
+        "count": 3
+      },
+      {
+        "month": 9,
+        "title": "Gerade Saison im September",
+        "count": 3
+      },
+      {
+        "month": 10,
+        "title": "Gerade Saison im Oktober",
+        "count": 4
+      },
+      {
+        "month": 11,
+        "title": "Gerade Saison im November",
+        "count": 3
+      },
+      {
+        "month": 12,
+        "title": "Gerade Saison im Dezember",
+        "count": 3
+      }
+    ],
+    "monthRollover": true,
+    "dotTracksServices": true,
+    "teamReveals": true,
+    "noDepthResources": true,
+    "errors": []
+  }
+]

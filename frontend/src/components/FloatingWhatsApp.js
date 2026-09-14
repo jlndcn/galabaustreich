@@ -1,17 +1,61 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { site } from "@/data/site";
-import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
+import { useLocation } from "react-router-dom";
+import { WhatsAppIcon } from "@/components/BrandIcons";
 
-// Floating WhatsApp button (all pages): only the official WhatsApp logo as a round button,
-// no glow. Calm entrance animation, transform-only hover/press feedback, stable fixed size.
 export const FloatingWhatsApp = () => {
-  const [mounted, setMounted] = useState(false);
-
+  const [footerVisible, setFooterVisible] = useState(false);
+  const [contentUnderButton, setContentUnderButton] = useState(false);
+  const { pathname } = useLocation();
   useEffect(() => {
-    const t = window.setTimeout(() => setMounted(true), 400);
-    return () => window.clearTimeout(t);
+    const footer = document.querySelector('[data-testid="site-footer"]');
+    if (!footer || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) =>
+      setFooterVisible(entry.isIntersecting),
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    let observer;
+    const observeCorner = () => {
+      observer?.disconnect();
+      setContentUnderButton(false);
+      if (window.innerWidth > 700) return;
+      const overlaps = new Set();
+      // Keep text and form controls readable behind the floating contact button.
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) overlaps.add(entry.target);
+            else overlaps.delete(entry.target);
+          });
+          setContentUnderButton(overlaps.size > 0);
+        },
+        {
+          rootMargin: `-${Math.max(0, window.innerHeight - 84)}px 0px 0px -${Math.max(0, window.innerWidth - 84)}px`,
+        },
+      );
+      document
+        .querySelectorAll(
+          "main h1, main h2, main h3, main p, main li, main a, main address, #anfrage",
+        )
+        .forEach((element) => observer.observe(element));
+    };
+    observeCorner();
+    window.addEventListener("resize", observeCorner);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", observeCorner);
+    };
+  }, [pathname]);
+  const hidden = footerVisible || contentUnderButton;
+  if (
+    ["/datenschutz", "/impressum", "/agb"].includes(pathname.replace(/\/$/, ""))
+  )
+    return null;
   return (
     <a
       href={site.whatsapp}
@@ -20,12 +64,11 @@ export const FloatingWhatsApp = () => {
       aria-label="Per WhatsApp schreiben"
       title="Per WhatsApp schreiben"
       data-testid="floating-whatsapp-button"
-      style={{ backgroundColor: channelColors.whatsapp }}
-      className={`fixed bottom-4 right-4 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full text-white shadow-[0_6px_16px_-6px_rgba(20,28,23,0.35)] transition-[transform,opacity] duration-300 ease-out will-change-transform hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-forest)] focus-visible:ring-offset-2 motion-reduce:transition-none sm:bottom-6 sm:right-6 ${
-        mounted ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-100"
-      }`}
+      aria-hidden={hidden || undefined}
+      tabIndex={hidden ? -1 : undefined}
+      className={`floating-whatsapp ${hidden ? "is-hidden" : ""}`}
     >
-      <WhatsAppIcon className="h-8 w-8" />
+      <WhatsAppIcon className="h-7 w-7" />
     </a>
   );
 };
