@@ -210,10 +210,10 @@ async def create_contact_request(
             detail="Bitte bestätigen Sie den Hinweis zum Datenschutz.",
         )
 
-    if not payload.phone and not payload.email:
+    if not payload.phone:
         raise HTTPException(
             status_code=400,
-            detail="Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an.",
+            detail="Bitte geben Sie Ihre Telefonnummer an.",
         )
 
     if _is_rate_limited(_client_ip(request)):

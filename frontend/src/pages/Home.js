@@ -8,7 +8,6 @@ import { ContactForm } from "@/components/ContactForm";
 import { ContactTiles } from "@/components/ContactTiles";
 import { Photo } from "@/components/Photo";
 import { Hero } from "@/components/Hero";
-import { PlantVine } from "@/components/PlantVine";
 import { SeasonHint } from "@/components/SeasonHint";
 import { seoPages, buildLocalBusinessJsonLd } from "@/data/seo";
 import { services, keyServices } from "@/data/services";
@@ -27,7 +26,6 @@ export default function Home() {
       <Seo {...seoPages.home} jsonLd={buildLocalBusinessJsonLd()} />
       <Hero />
       <div className="home-content">
-        <PlantVine className="home-vine-top" />
         <section
           className="section-shell"
           data-testid="home-key-services-section"
@@ -106,7 +104,6 @@ export default function Home() {
         </section>
 
         <section className="section-shell home-region">
-          <PlantVine className="home-vine-region" />
           <div className="region-split aligned-split">
             <Reveal className="aligned-copy">
               <h2>Mit Wurzeln in der Region</h2>

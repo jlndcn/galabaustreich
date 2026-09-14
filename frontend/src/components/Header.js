@@ -75,6 +75,18 @@ export const Header = () => {
           {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
             <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp schreiben"
+              title="WhatsApp"
+              data-testid="header-whatsapp-button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm transition-[transform,filter] hover:scale-105 hover:brightness-95"
+              style={{ backgroundColor: channelColors.whatsapp }}
+            >
+              <WhatsAppIcon className="h-6 w-6" />
+            </a>
+            <a
               href={site.phone.href}
               data-testid="header-phone-link"
               className="header-phone"
@@ -90,18 +102,6 @@ export const Header = () => {
               <span className="header-phone-number" aria-hidden="true">
                 {site.phone.display}
               </span>
-            </a>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp schreiben"
-              title="WhatsApp"
-              data-testid="header-whatsapp-button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm transition-[transform,filter] hover:scale-105 hover:brightness-95"
-              style={{ backgroundColor: channelColors.whatsapp }}
-            >
-              <WhatsAppIcon className="h-6 w-6" />
             </a>
             <Link
               to="/#kontakt"

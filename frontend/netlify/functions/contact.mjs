@@ -65,8 +65,8 @@ function validate(input) {
   if (data.name.length < 2) {
     return { error: "Bitte geben Sie Ihren Namen an." };
   }
-  if (!data.phone && !data.email) {
-    return { error: "Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an." };
+  if (!data.phone) {
+    return { error: "Bitte geben Sie Ihre Telefonnummer an." };
   }
   if (data.email && !EMAIL_RE.test(data.email)) {
     return { error: "Bitte geben Sie eine gültige E-Mail-Adresse an." };

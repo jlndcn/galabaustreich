@@ -52,7 +52,7 @@
       "canonical": "https://garten-streich.de/team",
       "overflow": false,
       "images": [],
-      "headingTop": 181,
+      "headingTop": 1001,
       "headerBottom": 109,
       "violations": []
     },
@@ -129,7 +129,7 @@
     {
       "formValidation": [
         "Bitte geben Sie Ihren Namen an.",
-        "Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an, damit wir Sie erreichen können.",
+        "Bitte geben Sie Ihre Telefonnummer an.",
         "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen).",
         "Bitte bestätigen Sie den Hinweis zum Datenschutz."
       ],
@@ -173,7 +173,7 @@
       "canonical": "https://garten-streich.de/team",
       "overflow": false,
       "images": [],
-      "headingTop": 129,
+      "headingTop": 845,
       "headerBottom": 81,
       "violations": []
     },

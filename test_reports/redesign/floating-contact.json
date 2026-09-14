@@ -32,8 +32,8 @@
   {
     "route": "/team",
     "y": 0,
-    "hidden": false,
-    "overlap": false
+    "hidden": true,
+    "overlap": true
   },
   {
     "route": "/team",
@@ -50,13 +50,13 @@
   {
     "route": "/team",
     "y": 1200,
-    "hidden": true,
-    "overlap": true
+    "hidden": false,
+    "overlap": false
   },
   {
     "route": "/team",
     "y": 2000,
-    "hidden": false,
-    "overlap": false
+    "hidden": true,
+    "overlap": true
   }
 ]

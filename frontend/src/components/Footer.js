@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, ExternalLink, ArrowRight } from "lucide-react";
+import { Phone, Mail, ExternalLink } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { GoogleRating } from "@/components/GoogleRating";
 import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
 import { site, mainNav, legalNav, googleLink } from "@/data/site";
 
@@ -26,15 +25,6 @@ export const Footer = () => {
               zuverlässig und mit einem Blick für das Schöne. In Lübeck und
               Ostholstein für Sie im Einsatz.
             </p>
-            <GoogleRating variant="inline" />
-            <Link
-              to="/#kontakt"
-              data-testid="footer-cta-link"
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[color:var(--brand-accent-strong)]"
-            >
-              Anfrage senden
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
           </div>
 
           {/* Contact */}

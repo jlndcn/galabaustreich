@@ -25,7 +25,7 @@
         ]
       }
     ],
-    "footer": 923.03125,
+    "footer": 811.03125,
     "cta": 320,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -46,7 +46,7 @@
         ]
       }
     ],
-    "footer": 923.03125,
+    "footer": 811.03125,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -57,26 +57,16 @@
     "pairs": [
       {
         "bottoms": [
-          387.875,
-          683.0625
+          2172.59375,
+          2392.59375
         ],
         "tops": [
-          195.875,
-          415.875
-        ]
-      },
-      {
-        "bottoms": [
-          923.0625,
-          1589.90625
-        ],
-        "tops": [
-          731.0625,
-          951.0625
+          1721.25,
+          2200.59375
         ]
       }
     ],
-    "footer": 923.03125,
+    "footer": 811.03125,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -85,7 +75,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 923.03125,
+    "footer": 811.03125,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -115,7 +105,7 @@
         ]
       }
     ],
-    "footer": 833.359375,
+    "footer": 745.359375,
     "cta": 390,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -136,7 +126,7 @@
         ]
       }
     ],
-    "footer": 833.359375,
+    "footer": 745.359375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -147,26 +137,16 @@
     "pairs": [
       {
         "bottoms": [
-          434.53125,
-          670.34375
+          2002.34375,
+          2269
         ],
         "tops": [
-          195.875,
-          462.53125
-        ]
-      },
-      {
-        "bottoms": [
-          957,
-          1536.09375
-        ],
-        "tops": [
-          718.34375,
-          985
+          1633.5,
+          2030.34375
         ]
       }
     ],
-    "footer": 833.359375,
+    "footer": 745.359375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -175,7 +155,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 833.359375,
+    "footer": 745.359375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -205,7 +185,7 @@
         ]
       }
     ],
-    "footer": 729.546875,
+    "footer": 694.375,
     "cta": 768,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -226,7 +206,7 @@
         ]
       }
     ],
-    "footer": 729.546875,
+    "footer": 694.375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -237,26 +217,16 @@
     "pairs": [
       {
         "bottoms": [
-          597,
-          597
+          1849.34375,
+          1849.34375
         ],
         "tops": [
-          237,
-          237
-        ]
-      },
-      {
-        "bottoms": [
-          1249.34375,
-          1249.34375
-        ],
-        "tops": [
-          669,
-          669
+          1408.5,
+          1408.5
         ]
       }
     ],
-    "footer": 729.546875,
+    "footer": 694.375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -265,7 +235,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 729.546875,
+    "footer": 694.375,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -295,7 +265,7 @@
         ]
       }
     ],
-    "footer": 434.3125,
+    "footer": 331.1875,
     "cta": 1024,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -316,7 +286,7 @@
         ]
       }
     ],
-    "footer": 434.3125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -327,26 +297,16 @@
     "pairs": [
       {
         "bottoms": [
-          631.40625,
-          631.40625
+          1807.25,
+          1807.25
         ],
         "tops": [
-          271.40625,
-          271.40625
-        ]
-      },
-      {
-        "bottoms": [
-          1196,
-          1196
-        ],
-        "tops": [
-          703.40625,
-          703.40625
+          1407.25,
+          1407.25
         ]
       }
     ],
-    "footer": 434.3125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -355,7 +315,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 434.3125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -385,7 +345,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "cta": 1440,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -406,7 +366,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -417,26 +377,16 @@
     "pairs": [
       {
         "bottoms": [
-          631.40625,
-          631.40625
+          1778,
+          1778
         ],
         "tops": [
-          271.40625,
-          271.40625
-        ]
-      },
-      {
-        "bottoms": [
-          1166.75,
-          1166.75
-        ],
-        "tops": [
-          703.40625,
-          703.40625
+          1378,
+          1378
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -445,7 +395,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -482,7 +432,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "cta": 1920,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -503,7 +453,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -514,26 +464,16 @@
     "pairs": [
       {
         "bottoms": [
-          631.40625,
-          631.40625
+          1778,
+          1778
         ],
         "tops": [
-          271.40625,
-          271.40625
-        ]
-      },
-      {
-        "bottoms": [
-          1166.75,
-          1166.75
-        ],
-        "tops": [
-          703.40625,
-          703.40625
+          1378,
+          1378
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -542,7 +482,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -572,7 +512,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "cta": 2560,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -593,7 +533,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -604,26 +544,16 @@
     "pairs": [
       {
         "bottoms": [
-          631.40625,
-          631.40625
+          1778,
+          1778
         ],
         "tops": [
-          271.40625,
-          271.40625
-        ]
-      },
-      {
-        "bottoms": [
-          1166.75,
-          1166.75
-        ],
-        "tops": [
-          703.40625,
-          703.40625
+          1378,
+          1378
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -632,7 +562,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -662,7 +592,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "cta": 3440,
     "seasonFootnote": false,
     "teamNumbers": 0
@@ -683,7 +613,7 @@
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -694,26 +624,16 @@
     "pairs": [
       {
         "bottoms": [
-          631.40625,
-          631.40625
+          1778,
+          1778
         ],
         "tops": [
-          271.40625,
-          271.40625
-        ]
-      },
-      {
-        "bottoms": [
-          1166.75,
-          1166.75
-        ],
-        "tops": [
-          703.40625,
-          703.40625
+          1378,
+          1378
         ]
       }
     ],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },
@@ -722,7 +642,7 @@
     "route": "/leistungen",
     "overflow": false,
     "pairs": [],
-    "footer": 367.53125,
+    "footer": 331.1875,
     "seasonFootnote": false,
     "teamNumbers": 0
   },

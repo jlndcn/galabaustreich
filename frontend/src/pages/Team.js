@@ -30,43 +30,30 @@ export default function Team() {
         path={seoPages.team.path}
       />
 
-      <section className="section-shell team-intro">
-        <Reveal>
-          <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-            Unser Team
-          </h1>
-        </Reveal>
-        <div className="team-intro-layout aligned-split">
-          <Reveal className="aligned-media">
-            <Photo
-              name="team-streich"
-              alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
-              className="team-wide-photo"
-              sizes="(max-width: 767px) 100vw, 65vw"
-              priority
-            />
-          </Reveal>
-          <Reveal delay={100} className="team-intro-copy aligned-copy">
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
-              packt gemeinsam an. In unserem Team kommen gärtnerisches und
-              forstliches Können zusammen. Was uns verbindet? Wir kümmern uns
-              gern um Ihren Garten und legen Wert auf sorgfältige, gepflegte
-              Arbeit.
-            </p>
-          </Reveal>
+      <section className="team-hero" aria-labelledby="team-heading">
+        <h1 id="team-heading" className="sr-only">
+          Unser Team
+        </h1>
+        <Photo
+          name="team-streich"
+          alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
+          className="team-hero-photo"
+          sizes="100vw"
+          priority
+        />
+        <div className="team-hero-shade" aria-hidden="true" />
+        <div className="section-shell team-hero-content">
+          <p className="team-hero-copy">
+            Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
+            packt gemeinsam an. In unserem Team kommen gärtnerisches und
+            forstliches Können zusammen. Was uns verbindet? Wir kümmern uns gern
+            um Ihren Garten und legen Wert auf sorgfältige, gepflegte Arbeit.
+          </p>
         </div>
       </section>
 
       {/* Values – stacked */}
-      <section className="section-shell team-values-layout aligned-split">
-        <Reveal className="team-detail-photo aligned-media">
-          <Photo
-            name="rose-in-haenden-streich"
-            alt="Hände halten eine rote Rosenblüte vor einer Backsteinwand"
-            sizes="(max-width: 767px) 100vw, 45vw"
-          />
-        </Reveal>
+      <section className="section-shell">
         <div className="team-values">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 80} className="team-value">
@@ -76,37 +63,44 @@ export default function Team() {
               </p>
             </Reveal>
           ))}
-          <Reveal>
-            <p className="team-photo-caption">
-              Mit einem Blick für das Schöne.
-            </p>
-          </Reveal>
         </div>
       </section>
 
       {/* Background */}
-      <section className="section-shell">
-        <Reveal className="team-background">
-          <h2 className="text-3xl sm:text-4xl">
-            Fachlicher Hintergrund im Team
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            In unserem Team kommen forstliche und gärtnerische Ausbildung sowie
-            Erfahrung aus der Baumschule zusammen – vom Forstwirt über den
-            Zierpflanzengärtner bis zum Altgesellen.
-          </p>
-          <p className="mt-6 text-base text-muted-foreground">
-            Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
-            <Link
-              to="/leistungen"
-              data-testid="team-services-link"
-              className="text-link text-base"
-            >
-              Unsere Leistungen ansehen
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </p>
-        </Reveal>
+      <section className="team-info-band">
+        <div className="section-shell team-background-layout aligned-split">
+          <Reveal className="team-background aligned-copy">
+            <h2 className="text-3xl sm:text-4xl">
+              Fachlicher Hintergrund im Team
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              In unserem Team kommen forstliche und gärtnerische Ausbildung
+              sowie Erfahrung aus der Baumschule zusammen – vom Forstwirt über
+              den Zierpflanzengärtner bis zum Altgesellen.
+            </p>
+            <p className="mt-6 text-base text-muted-foreground">
+              Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
+              <Link
+                to="/leistungen"
+                data-testid="team-services-link"
+                className="text-link text-base"
+              >
+                Unsere Leistungen ansehen
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </p>
+            <p className="team-photo-caption">
+              Mit einem Blick für das Schöne.
+            </p>
+          </Reveal>
+          <Reveal className="aligned-media">
+            <Photo
+              name="rose-in-haenden-streich"
+              alt="Hände halten eine rote Rosenblüte vor einer Backsteinwand"
+              sizes="(max-width: 767px) 100vw, 45vw"
+            />
+          </Reveal>
+        </div>
       </section>
 
       <ContactCTA prefix="team-contact-cta" />

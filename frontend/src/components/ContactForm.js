@@ -11,7 +11,10 @@ import { site } from "@/data/site";
 
 // Same-origin "/api" by default (Netlify Function via redirect); an explicit backend URL
 // (preview environment) is used when REACT_APP_BACKEND_URL is set. Never talks SMTP itself.
-const backendBase = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const backendBase = (process.env.REACT_APP_BACKEND_URL || "").replace(
+  /\/$/,
+  "",
+);
 const API = `${backendBase}/api`;
 
 const initialValues = {
@@ -25,6 +28,7 @@ const initialValues = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_RE = /^[+0-9][0-9\s()/.-]{4,}$/;
 
 function validate(values) {
   const errors = {};
@@ -33,15 +37,17 @@ function validate(values) {
   }
   const phone = values.phone.trim();
   const email = values.email.trim();
-  if (!phone && !email) {
-    errors.contact =
-      "Bitte geben Sie eine Telefonnummer oder eine E-Mail-Adresse an, damit wir Sie erreichen können.";
+  if (!phone) {
+    errors.phone = "Bitte geben Sie Ihre Telefonnummer an.";
+  } else if (phone.length > 40 || !PHONE_RE.test(phone)) {
+    errors.phone = "Bitte geben Sie eine gültige Telefonnummer an.";
   }
   if (email && !EMAIL_RE.test(email)) {
     errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse an.";
   }
   if (values.message.trim().length < 10) {
-    errors.message = "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen).";
+    errors.message =
+      "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen).";
   }
   if (!values.consent) {
     errors.consent = "Bitte bestätigen Sie den Hinweis zum Datenschutz.";
@@ -54,15 +60,26 @@ const fieldClass =
 
 const FieldError = ({ id, children }) =>
   children ? (
-    <p id={id} role="alert" data-testid={`${id}`} className="mt-1.5 text-sm font-medium text-destructive">
+    <p
+      id={id}
+      role="alert"
+      data-testid={`${id}`}
+      className="mt-1.5 text-sm font-medium text-destructive"
+    >
       {children}
     </p>
   ) : null;
 
 // Lean inquiry form – an additional contact channel next to phone, WhatsApp and e-mail.
 // initialMessage: optional prefill (e.g. when arriving from a specific service).
-export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) => {
-  const [values, setValues] = useState({ ...initialValues, message: initialMessage });
+export const ContactForm = ({
+  prefix = "contact-form",
+  initialMessage = "",
+}) => {
+  const [values, setValues] = useState({
+    ...initialValues,
+    message: initialMessage,
+  });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success
   const [serverError, setServerError] = useState("");
@@ -70,18 +87,20 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
   // Apply a new prefill when the incoming service changes and the user has not typed yet.
   useEffect(() => {
     if (!initialMessage) return;
-    setValues((v) => (v.message.trim() === "" || v.message.startsWith("Anfrage zu:") ? { ...v, message: initialMessage } : v));
+    setValues((v) =>
+      v.message.trim() === "" || v.message.startsWith("Anfrage zu:")
+        ? { ...v, message: initialMessage }
+        : v,
+    );
   }, [initialMessage]);
 
   const update = (field) => (e) => {
     const value = e && e.target ? e.target.value : e;
     setValues((v) => ({ ...v, [field]: value }));
-    const isContactField = field === "phone" || field === "email";
-    if (errors[field] || (isContactField && errors.contact)) {
+    if (errors[field]) {
       setErrors((prev) => {
         const next = { ...prev };
         delete next[field];
-        if (field === "phone" || field === "email") delete next.contact;
         return next;
       });
     }
@@ -95,7 +114,9 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
     if (Object.keys(nextErrors).length > 0) {
       // Wait for React to render the error attributes before moving focus.
       window.requestAnimationFrame(() => {
-        const first = document.querySelector(`[data-form="${prefix}"] [aria-invalid="true"]`);
+        const first = document.querySelector(
+          `[data-form="${prefix}"] [aria-invalid="true"]`,
+        );
         if (first) first.focus();
       });
       return;
@@ -122,13 +143,20 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
       const code = err?.response?.status;
       const data = err?.response?.data;
       const detail =
-        typeof data?.detail === "string" ? data.detail : typeof data?.error === "string" ? data.error : null;
+        typeof data?.detail === "string"
+          ? data.detail
+          : typeof data?.error === "string"
+            ? data.error
+            : null;
       let message =
         "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
       if (code === 429) {
         message =
           "Es wurden bereits mehrere Anfragen gesendet. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
-      } else if ((code === 400 || code === 422 || code === 502 || code === 503) && detail) {
+      } else if (
+        (code === 400 || code === 422 || code === 502 || code === 503) &&
+        detail
+      ) {
         message = detail;
       }
       setServerError(message);
@@ -150,8 +178,8 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
         />
         <h3 className="mt-4 text-2xl">Vielen Dank für Ihre Anfrage.</h3>
         <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-          Wir haben Ihre Nachricht erhalten und melden uns persönlich bei
-          Ihnen. Wenn es eilt, erreichen Sie uns telefonisch unter{" "}
+          Wir haben Ihre Nachricht erhalten und melden uns persönlich bei Ihnen.
+          Wenn es eilt, erreichen Sie uns telefonisch unter{" "}
           <a href={site.phone.href} className="text-link">
             {site.phone.display}
           </a>
@@ -187,13 +215,16 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
       aria-busy={submitting ? "true" : undefined}
     >
       <p id={`${prefix}-intro`} className="text-base text-muted-foreground">
-        Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie eine
-        Telefonnummer oder E-Mail-Adresse an.
+        Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie Ihre
+        Telefonnummer an.
       </p>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="sm:col-span-2">
-          <Label htmlFor={`${prefix}-name`} className="text-base font-semibold text-[color:var(--brand-forest)]">
+          <Label
+            htmlFor={`${prefix}-name`}
+            className="text-base font-semibold text-[color:var(--brand-forest)]"
+          >
             Name *
           </Label>
           <Input
@@ -211,26 +242,37 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
         </div>
 
         <div>
-          <Label htmlFor={`${prefix}-phone`} className="text-base font-semibold text-[color:var(--brand-forest)]">
-            Telefon
+          <Label
+            htmlFor={`${prefix}-phone`}
+            className="text-base font-semibold text-[color:var(--brand-forest)]"
+          >
+            Telefon *
           </Label>
           <Input
             id={`${prefix}-phone`}
             name="phone"
             type="tel"
+            required
+            maxLength={40}
             autoComplete="tel"
             inputMode="tel"
             value={values.phone}
             onChange={update("phone")}
-            aria-invalid={errors.contact ? "true" : undefined}
-            aria-describedby={errors.contact ? `${prefix}-contact-error` : undefined}
+            aria-invalid={errors.phone ? "true" : undefined}
+            aria-describedby={
+              errors.phone ? `${prefix}-phone-error` : undefined
+            }
             data-testid={`${prefix}-phone-input`}
             className={`mt-2 ${fieldClass}`}
           />
+          <FieldError id={`${prefix}-phone-error`}>{errors.phone}</FieldError>
         </div>
 
         <div>
-          <Label htmlFor={`${prefix}-email`} className="text-base font-semibold text-[color:var(--brand-forest)]">
+          <Label
+            htmlFor={`${prefix}-email`}
+            className="text-base font-semibold text-[color:var(--brand-forest)]"
+          >
             E-Mail
           </Label>
           <Input
@@ -241,9 +283,9 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
             inputMode="email"
             value={values.email}
             onChange={update("email")}
-            aria-invalid={errors.email || errors.contact ? "true" : undefined}
+            aria-invalid={errors.email ? "true" : undefined}
             aria-describedby={
-              errors.email ? `${prefix}-email-error` : errors.contact ? `${prefix}-contact-error` : undefined
+              errors.email ? `${prefix}-email-error` : undefined
             }
             data-testid={`${prefix}-email-input`}
             className={`mt-2 ${fieldClass}`}
@@ -251,14 +293,11 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
           <FieldError id={`${prefix}-email-error`}>{errors.email}</FieldError>
         </div>
 
-        {errors.contact && (
-          <div className="sm:col-span-2 -mt-2">
-            <FieldError id={`${prefix}-contact-error`}>{errors.contact}</FieldError>
-          </div>
-        )}
-
         <div className="sm:col-span-2">
-          <Label htmlFor={`${prefix}-location`} className="text-base font-semibold text-[color:var(--brand-forest)]">
+          <Label
+            htmlFor={`${prefix}-location`}
+            className="text-base font-semibold text-[color:var(--brand-forest)]"
+          >
             Ort des Gartens / Grundstücks
           </Label>
           <Input
@@ -274,7 +313,10 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
         </div>
 
         <div className="sm:col-span-2">
-          <Label htmlFor={`${prefix}-message`} className="text-base font-semibold text-[color:var(--brand-forest)]">
+          <Label
+            htmlFor={`${prefix}-message`}
+            className="text-base font-semibold text-[color:var(--brand-forest)]"
+          >
             Ihr Anliegen *
           </Label>
           <Textarea
@@ -285,16 +327,23 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
             value={values.message}
             onChange={update("message")}
             aria-invalid={errors.message ? "true" : undefined}
-            aria-describedby={errors.message ? `${prefix}-message-error` : undefined}
+            aria-describedby={
+              errors.message ? `${prefix}-message-error` : undefined
+            }
             data-testid={`${prefix}-message-input`}
             className="mt-2 min-h-[150px] rounded-lg border-input bg-white px-4 py-3 text-base text-[color:var(--brand-ink)] placeholder:text-muted-foreground/70 focus-visible:ring-2 focus-visible:ring-[color:var(--brand-accent)] md:text-base"
           />
-          <FieldError id={`${prefix}-message-error`}>{errors.message}</FieldError>
+          <FieldError id={`${prefix}-message-error`}>
+            {errors.message}
+          </FieldError>
         </div>
       </div>
 
       {/* Honeypot – invisible for humans, filled by bots */}
-      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+        aria-hidden="true"
+      >
         <label htmlFor={`${prefix}-website`}>Website</label>
         <input
           id={`${prefix}-website`}
@@ -314,7 +363,9 @@ export const ContactForm = ({ prefix = "contact-form", initialMessage = "" }) =>
             checked={values.consent}
             onCheckedChange={(checked) => update("consent")(checked === true)}
             aria-invalid={errors.consent ? "true" : undefined}
-            aria-describedby={errors.consent ? `${prefix}-consent-error` : undefined}
+            aria-describedby={
+              errors.consent ? `${prefix}-consent-error` : undefined
+            }
             data-testid={`${prefix}-consent-checkbox`}
             className="mt-1 h-5 w-5 rounded border-[color:var(--brand-forest)] data-[state=checked]:bg-[color:var(--brand-forest)]"
           />

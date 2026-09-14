@@ -17,7 +17,8 @@ Design vor dem Editorial-Redesign.
   Kurze Leistungsübersicht auf der Startseite, vollständige Texte auf Leistungen.
 - „Alle Leistungen ansehen“, „Weitere Leistungen“, Arbeitsgalerie und das
   Gruppenfoto von der Startseite entfernt. Das Gruppenfoto erscheint nur auf Team.
-  Dezente SVG-Pflanzenranken begleiten die Abschnittsränder unterhalb des Heros.
+  Ein dezentes, wiederholtes SVG-Blumenmuster ersetzt die Pflanzenranken auf den
+  cremigen Startseitenflächen. Weiße und grüne Bereiche bleiben ohne Muster.
   Rosenpflege-Detail im Leistungsüberblick, Brunnen näher am Regionstext.
 - Leistungsseite mit mitlaufender Übersicht (mobil horizontal), größeren Bildern
   einem animierten Punkt beim aktuellen Abschnitt und „KI Optimiert“. Keine Kontakt-CTAs im
@@ -30,16 +31,26 @@ Design vor dem Editorial-Redesign.
   gelassenen Tabs (Minutenprüfung sowie Aktualisierung bei Fokus/Rückkehr).
   Keine Textunterstreichungen.
 - Über uns: mehr Abstand nach der Hauptüberschrift und abgegrenzte Wertekästen.
-  Team: Gruppenfoto neben bündig ausgerichtetem Einführungstext, zusätzliches
-  Rosenmotiv und nacheinander eingeblendete Texte. Nummerierungen und
+  Team: bildschirmfüllendes Gruppenfoto mit Einführungstext in der unteren Ecke,
+  anschließend drei Eigenschaften und ein weißes Informationsband mit Rosenmotiv.
+  Die sichtbare Überschrift „Unser Team“ entfällt; eine für Screenreader lesbare H1
+  erhält die Überschriftenstruktur. Texte werden nacheinander eingeblendet. Nummerierungen und
   Qualifikationsbadges entfernt; der bestätigte fachliche Hintergrund bleibt als Text.
 - Durchgehendes Beratungsband über die volle Breite; Bild-/Text-Paare mit gleicher
   Höhe auf breiten Geräten, passende Bildausschnitte und Stapelung auf Smartphones.
-- Dezente Pflanzenanimation innerhalb der bestehenden Wertekarten bei Maus-Hover;
+- Fotorealistische, farbige Blüten wachsen bei Maus-Hover entlang der Außenseiten
+  der bestehenden Wertekarten und bleiben während des Hovers sichtbar;
   ohne Hover-Abhängigkeit auf Touch und ohne Bewegung bei Reduced Motion.
-- Telefon-Icon mit einfahrender Nummer bei Hover/Fokus, reservierter Platz ohne
+- Telefon-Icon direkt neben WhatsApp: bewegt sich bei Hover/Fokus nach rechts und
+  gibt die Telefonnummer frei; reservierter Platz ohne
   Verschiebung der Navigation. Auf Touch direkt erreichbare Telefonnummer.
-- Kompakter Footer mit allen bisherigen Angaben; schwebendes WhatsApp in #25D366.
+- Google-Sternebewertung und „Anfrage senden“ aus dem Footer entfernt, ohne Ersatz.
+  Übrige Angaben bleiben erhalten; schwebendes WhatsApp in #25D366.
+- Weißer Anrufen-Button mit schwarzer Schrift und schwarzem Icon im grünen
+  Beratungsband der Startseite.
+- Telefonnummer im Kontaktformular verpflichtend, mit Feldfehler und Fokusführung.
+  Auch Netlify Function und Vorschau-Backend verlangen die Telefonnummer;
+  eine E-Mail-Adresse bleibt optional. Der bestehende SMTP-Versand bleibt erhalten.
 - Der Satz zur Witterung und zum Gartenzustand wurde aus dem Saisonkasten entfernt.
 - Schwebendes WhatsApp auf allen Seiten außer Datenschutz, Impressum und AGB;
   blendet sich am Footer und bei überdeckten mobilen Inhalten aus.
@@ -69,6 +80,14 @@ Sie wurden mit dem eingebauten `image_gen` erstellt; die vollständigen Prompts
 stehen in `assets-src/service-image-prompts.json`. Diese Motive werden ausschließlich
 auf `/leistungen` als allgemeine Leistungsvisualisierungen gezeigt.
 
+Das zusätzlich beauftragte dekorative Blütenmotiv liegt als Original unter
+`assets-src/decorations/bluetenrahmen.png`; der vollständige Bildprompt steht in
+`assets-src/decorations/PROMPT.md`. Die transparente WebP-Ausgabe (ca. 330 kB)
+liegt neben dem kleinen SVG-Blumenmuster unter `frontend/src/assets/decorations/`.
+Webpack versieht beide mit einem Dateihash. Die Blüten sind rein dekorativ und
+werden von Screenreadern ignoriert. Erneut optimieren mit
+`python frontend/scripts/prepare-decorations.py` (Pillow; kein Build-Erfordernis).
+
 Die alten ausgelieferten Foto-Varianten wurden gelöscht und aus den aktuellen
 Quellen neu erzeugt. Alle optimierten Dateien liegen in `frontend/public/images/`.
 Ein Hash im Dateinamen verhindert die Wiederverwendung alter Browser-Cache-Bilder.
@@ -89,8 +108,8 @@ Die Dateien werden fertig vorbereitet mitgeliefert; der Netlify-Build benötigt 
 
 Der WebGL-Abschnitt, sein Renderer und die ausgelieferten Depth-Map-Varianten
 wurden auf Wunsch entfernt. Originaldateien bleiben im Bilder-Ordner erhalten.
-Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 160,95 kB JavaScript und
-15,01 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
+Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 159,9 kB JavaScript und
+15 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
 
 Der aktuelle Stack ist React 19 mit React Router, CRA/CRACO und Tailwind.
 Er funktioniert, ist für eine überwiegend statische Unternehmensseite aber
@@ -116,6 +135,9 @@ Der bestätigte React-Stand bleibt in dieser Designrunde bestehen.
   WCAG-A/AA-Verstöße.
 - Mobile Navigation, Escape/Fokusrückgabe, Anfrage-Vorauswahl, Pflichtfeldfehler
   sowie simulierte Formular-Erfolgs- und Fehlerantworten geprüft.
+- Pflichttelefon zusätzlich serverseitig geprüft: fehlende, leere und ungültige
+  Nummern abgewiesen, gültige Nummer mit/ohne E-Mail akzeptiert, Datenschutz und
+  Honeypot erhalten. SMTP-Transport vollständig simuliert; kein echter Versand.
 - Quelldateien und Ausschluss generierter Bilder außerhalb von Leistungen geprüft.
 - Alle zwölf Monate und automatischer Wechsel September/Oktober ohne Neuladen geprüft.
 - Kein Canvas, keine Depth-Map-Downloads und kein Gruppenfoto auf der Startseite.
