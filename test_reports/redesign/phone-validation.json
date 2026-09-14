@@ -35,9 +35,24 @@
     "simulatedEmails": 0
   },
   {
-    "label": "Phone without email accepted",
-    "status": 200,
-    "simulatedEmails": 1
+    "label": "Phone alone does not replace required email",
+    "status": 400,
+    "simulatedEmails": 0
+  },
+  {
+    "label": "Phone alone does not replace required email",
+    "status": 400,
+    "simulatedEmails": 0
+  },
+  {
+    "label": "Phone alone does not replace required email",
+    "status": 400,
+    "simulatedEmails": 0
+  },
+  {
+    "label": "Phone alone does not replace required email",
+    "status": 400,
+    "simulatedEmails": 0
   },
   {
     "label": "Phone and email accepted",

@@ -42,7 +42,9 @@ function validate(values) {
   } else if (phone.length > 40 || !PHONE_RE.test(phone)) {
     errors.phone = "Bitte geben Sie eine gültige Telefonnummer an.";
   }
-  if (email && !EMAIL_RE.test(email)) {
+  if (!email) {
+    errors.email = "Bitte geben Sie Ihre E-Mail-Adresse an.";
+  } else if (!EMAIL_RE.test(email)) {
     errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse an.";
   }
   if (values.message.trim().length < 10) {
@@ -216,7 +218,7 @@ export const ContactForm = ({
     >
       <p id={`${prefix}-intro`} className="text-base text-muted-foreground">
         Pflichtfelder sind mit * gekennzeichnet. Bitte geben Sie Ihre
-        Telefonnummer an.
+        Telefonnummer und E-Mail-Adresse an.
       </p>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -273,12 +275,13 @@ export const ContactForm = ({
             htmlFor={`${prefix}-email`}
             className="text-base font-semibold text-[color:var(--brand-forest)]"
           >
-            E-Mail
+            E-Mail *
           </Label>
           <Input
             id={`${prefix}-email`}
             name="email"
             type="email"
+            required
             autoComplete="email"
             inputMode="email"
             value={values.email}

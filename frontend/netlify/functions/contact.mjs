@@ -68,7 +68,10 @@ function validate(input) {
   if (!data.phone) {
     return { error: "Bitte geben Sie Ihre Telefonnummer an." };
   }
-  if (data.email && !EMAIL_RE.test(data.email)) {
+  if (!data.email) {
+    return { error: "Bitte geben Sie Ihre E-Mail-Adresse an." };
+  }
+  if (!EMAIL_RE.test(data.email)) {
     return { error: "Bitte geben Sie eine gültige E-Mail-Adresse an." };
   }
   if (data.phone && !PHONE_RE.test(data.phone)) {

@@ -216,6 +216,12 @@ async def create_contact_request(
             detail="Bitte geben Sie Ihre Telefonnummer an.",
         )
 
+    if not payload.email:
+        raise HTTPException(
+            status_code=400,
+            detail="Bitte geben Sie Ihre E-Mail-Adresse an.",
+        )
+
     if _is_rate_limited(_client_ip(request)):
         raise HTTPException(
             status_code=429,

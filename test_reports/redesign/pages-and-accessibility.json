@@ -130,6 +130,7 @@
       "formValidation": [
         "Bitte geben Sie Ihren Namen an.",
         "Bitte geben Sie Ihre Telefonnummer an.",
+        "Bitte geben Sie Ihre E-Mail-Adresse an.",
         "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen).",
         "Bitte bestätigen Sie den Hinweis zum Datenschutz."
       ],

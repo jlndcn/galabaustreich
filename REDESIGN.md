@@ -13,12 +13,16 @@ Design vor dem Editorial-Redesign.
   Ivory-Headline links unten. Mobil wird ein eigener Hochformat-Ausschnitt geladen.
   Beim normalen Scrollen bewegt sich die Headline leicht nach oben und wird
   transparenter; der anschließende Ivory-Bereich überlappt den Hero leicht.
+- Ab 1.441 px wächst der Hero-Inhaltsbereich bis 2.560 px, die Überschrift
+  abhängig von Bildschirmbreite und -höhe bis 132 px. Begleittext und Buttons
+  skalieren mit; die linke Textanordnung und der mobile Aufbau bleiben erhalten.
 - Einheitliche Abschnittsabstände: 72 px auf Desktop, 48 px auf Smartphones.
   Kurze Leistungsübersicht auf der Startseite, vollständige Texte auf Leistungen.
 - „Alle Leistungen ansehen“, „Weitere Leistungen“, Arbeitsgalerie und das
   Gruppenfoto von der Startseite entfernt. Das Gruppenfoto erscheint nur auf Team.
-  Ein dezentes, wiederholtes SVG-Blumenmuster ersetzt die Pflanzenranken auf den
-  cremigen Startseitenflächen. Weiße und grüne Bereiche bleiben ohne Muster.
+  Gezeichnete Gartenpflanzen (Farn, Lavendel und Blüten) wiederholen sich als
+  SVG-Muster mit 50 % Deckkraft auf den beigen Inhaltsflächen und im Saisonkasten.
+  Weiße und grüne Bereiche bleiben ohne Muster.
   Rosenpflege-Detail im Leistungsüberblick, Brunnen näher am Regionstext.
 - Leistungsseite mit mitlaufender Übersicht (mobil horizontal), größeren Bildern
   einem animierten Punkt beim aktuellen Abschnitt und „KI Optimiert“. Keine Kontakt-CTAs im
@@ -48,9 +52,9 @@ Design vor dem Editorial-Redesign.
   Übrige Angaben bleiben erhalten; schwebendes WhatsApp in #25D366.
 - Weißer Anrufen-Button mit schwarzer Schrift und schwarzem Icon im grünen
   Beratungsband der Startseite.
-- Telefonnummer im Kontaktformular verpflichtend, mit Feldfehler und Fokusführung.
-  Auch Netlify Function und Vorschau-Backend verlangen die Telefonnummer;
-  eine E-Mail-Adresse bleibt optional. Der bestehende SMTP-Versand bleibt erhalten.
+- Telefonnummer und E-Mail-Adresse im Kontaktformular verpflichtend, mit Feldfehler
+  und Fokusführung. Auch Netlify Function und Vorschau-Backend verlangen beide
+  Angaben. Der bestehende SMTP-Versand bleibt erhalten.
 - Der Satz zur Witterung und zum Gartenzustand wurde aus dem Saisonkasten entfernt.
 - Schwebendes WhatsApp auf allen Seiten außer Datenschutz, Impressum und AGB;
   blendet sich am Footer und bei überdeckten mobilen Inhalten aus.
@@ -108,8 +112,8 @@ Die Dateien werden fertig vorbereitet mitgeliefert; der Netlify-Build benötigt 
 
 Der WebGL-Abschnitt, sein Renderer und die ausgelieferten Depth-Map-Varianten
 wurden auf Wunsch entfernt. Originaldateien bleiben im Bilder-Ordner erhalten.
-Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 159,9 kB JavaScript und
-15 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
+Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 159,92 kB JavaScript und
+15,08 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
 
 Der aktuelle Stack ist React 19 mit React Router, CRA/CRACO und Tailwind.
 Er funktioniert, ist für eine überwiegend statische Unternehmensseite aber
@@ -135,9 +139,11 @@ Der bestätigte React-Stand bleibt in dieser Designrunde bestehen.
   WCAG-A/AA-Verstöße.
 - Mobile Navigation, Escape/Fokusrückgabe, Anfrage-Vorauswahl, Pflichtfeldfehler
   sowie simulierte Formular-Erfolgs- und Fehlerantworten geprüft.
-- Pflichttelefon zusätzlich serverseitig geprüft: fehlende, leere und ungültige
-  Nummern abgewiesen, gültige Nummer mit/ohne E-Mail akzeptiert, Datenschutz und
-  Honeypot erhalten. SMTP-Transport vollständig simuliert; kein echter Versand.
+- Pflichttelefon und Pflicht-E-Mail zusätzlich serverseitig geprüft: fehlende,
+  leere und ungültige Angaben abgewiesen, gültige Kombination akzeptiert,
+  Datenschutz und Honeypot erhalten. SMTP-Transport vollständig simuliert.
+- Hero-Skalierung auf neun Ansichten von 320 bis 5.120 px geprüft, darunter
+  3.440 × 1.440 und 3.440 × 900. Keine Überläufe oder abgeschnittenen Hero-Texte.
 - Quelldateien und Ausschluss generierter Bilder außerhalb von Leistungen geprüft.
 - Alle zwölf Monate und automatischer Wechsel September/Oktober ohne Neuladen geprüft.
 - Kein Canvas, keine Depth-Map-Downloads und kein Gruppenfoto auf der Startseite.

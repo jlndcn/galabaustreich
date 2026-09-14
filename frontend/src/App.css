@@ -154,9 +154,14 @@
   margin-top: -32px;
   border-radius: 32px 32px 0 0;
   background: var(--ivory);
+  isolation: isolate;
+}
+#main-content,
+.home-content,
+main .season-box {
   background-image: url("./assets/decorations/blumenmuster.svg");
   background-repeat: repeat;
-  isolation: isolate;
+  background-size: 640px 560px;
 }
 .home-region {
   position: relative;
@@ -792,6 +797,32 @@ a.underline {
   }
   button:not([disabled]):hover {
     filter: brightness(1.035);
+  }
+}
+/* Let the photo and typography share the available space on large displays. */
+@media (min-width: 1441px) {
+  .hero-content,
+  .team-hero-content {
+    max-width: clamp(1152px, 80vw, 2560px);
+  }
+  .hero-copy {
+    max-width: clamp(640px, 40vw, 1320px);
+  }
+  .home-hero h1 {
+    font-size: clamp(54.4px, min(3.6vw, 10svh), 132px);
+  }
+  .hero-intro,
+  .team-hero-copy {
+    font-size: clamp(19px, 1.15vw, 32px);
+  }
+  .home-hero .hero-primary,
+  .home-hero .hero-call,
+  .hero-links [data-testid="google-rating"] {
+    font-size: clamp(16px, 0.8vw, 23px);
+  }
+  .home-hero .hero-primary,
+  .home-hero .hero-call {
+    padding: 0.75em 1.5em;
   }
 }
 @media (max-width: 1023px) {
