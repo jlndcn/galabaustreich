@@ -66,7 +66,6 @@ export function ServicesOverview() {
   }, []);
   return (
     <nav aria-label="Leistungsübersicht" data-testid="services-overview-nav">
-      <h2>Übersicht</h2>
       <div className="service-track" ref={trackRef}>
         <span
           className="service-position-dot"

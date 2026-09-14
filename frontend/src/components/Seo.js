@@ -49,7 +49,7 @@ function linkRel(rel, href) {
 
 // SEO head manager – works reliably with React 19 by imperatively syncing <head>.
 // Also protects staging/preview environments from indexing (only the final domain is indexable).
-export function Seo({ title, description, path = "/", jsonLd = null }) {
+export function Seo({ title, description, path = "/", jsonLd = null, noIndex = false }) {
   useEffect(() => {
     const base = site.domain.replace(/\/$/, "");
     const url = base + path;
@@ -59,7 +59,9 @@ export function Seo({ title, description, path = "/", jsonLd = null }) {
     if (description) metaName("description", description);
 
     const host = typeof window !== "undefined" ? window.location.hostname : "";
-    const indexable = host === PRODUCTION_HOST || host === "www." + PRODUCTION_HOST;
+    const indexable =
+      !noIndex &&
+      (host === PRODUCTION_HOST || host === "www." + PRODUCTION_HOST);
     metaName("robots", indexable ? "index,follow" : "noindex,nofollow");
 
     linkRel("canonical", url);
@@ -92,7 +94,7 @@ export function Seo({ title, description, path = "/", jsonLd = null }) {
     } else if (existing) {
       existing.remove();
     }
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, jsonLd, noIndex]);
 
   return null;
 }

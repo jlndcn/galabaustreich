@@ -39,7 +39,6 @@ export const SeasonHint = ({ date, className = "" }) => {
       className={`season-box ${className}`}
     >
       <div>
-        <p className="season-label">Gartenjahr · {season.seasonName}</p>
         <h3 className="season-title">
           <CalendarDays
             className="h-4 w-4 text-[color:var(--brand-accent-strong)]"

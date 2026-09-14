@@ -21,38 +21,7 @@
         />
         <link rel="stylesheet" href="%PUBLIC_URL%/fonts.css" />
         <title>Garten- &amp; Landschaftspflege Lübeck | Streich</title>
-        <!--
-            Tracking-frei: Die Website lädt auf der Live-Domain keine Analyse-, Tracking- oder
-            Marketing-Skripte und setzt keine Cookies (siehe Datenschutzerklärung).
-            Ausschließlich in der Emergent-Vorschau-Umgebung (*.emergentagent.com / *.emergent.sh)
-            wird das Plattform-Hilfsskript für die Vorschau/Bearbeitung nachgeladen.
-        -->
-        <script>
-            (function () {
-                var h = window.location.hostname || "";
-                var isPreview =
-                    /\.emergentagent\.com$/.test(h) || /\.emergent\.sh$/.test(h) || h === "localhost";
-                if (!isPreview) return;
-                window.addEventListener(
-                    "error",
-                    function (e) {
-                        if (
-                            e.error instanceof DOMException &&
-                            e.error.name === "DataCloneError" &&
-                            e.message &&
-                            e.message.includes("PerformanceServerTiming")
-                        ) {
-                            e.stopImmediatePropagation();
-                            e.preventDefault();
-                        }
-                    },
-                    true
-                );
-                var s = document.createElement("script");
-                s.src = "https://assets.emergent.sh/scripts/emergent-main.js";
-                document.head.appendChild(s);
-            })();
-        </script>
+        <!-- Tracking-frei: keine Analyse-, Tracking- oder Marketing-Skripte. -->
     </head>
     <body>
         <noscript>Bitte aktivieren Sie JavaScript, um diese Website vollständig zu nutzen.</noscript>

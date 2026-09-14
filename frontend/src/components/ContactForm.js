@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { CheckCircle2, Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -126,41 +125,63 @@ export const ContactForm = ({
 
     setStatus("submitting");
     try {
-      await axios.post(`${API}/contact`, {
-        name: values.name.trim(),
-        phone: values.phone.trim() || null,
-        email: values.email.trim() || null,
-        location: values.location.trim() || null,
-        message: values.message.trim(),
-        consent: values.consent,
-        website: values.website,
-        page: typeof window !== "undefined" ? window.location.pathname : null,
+      const response = await fetch(`${API}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          phone: values.phone.trim() || null,
+          email: values.email.trim() || null,
+          location: values.location.trim() || null,
+          message: values.message.trim(),
+          consent: values.consent,
+          website: values.website,
+          page: typeof window !== "undefined" ? window.location.pathname : null,
+        }),
       });
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch {
+        data = null;
+      }
+
+      if (!response.ok) {
+        const detail =
+          typeof data?.detail === "string"
+            ? data.detail
+            : typeof data?.error === "string"
+              ? data.error
+              : null;
+        let message =
+          "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
+        if (response.status === 429) {
+          message =
+            "Es wurden bereits mehrere Anfragen gesendet. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
+        } else if (
+          (response.status === 400 ||
+            response.status === 422 ||
+            response.status === 502 ||
+            response.status === 503) &&
+          detail
+        ) {
+          message = detail;
+        }
+        setStatus("error");
+        setServerError(message);
+        toast.error("Senden nicht möglich", { description: message });
+        return;
+      }
+
       setStatus("success");
       toast.success("Ihre Anfrage wurde gesendet.", {
         description: "Vielen Dank – wir melden uns persönlich bei Ihnen.",
       });
-    } catch (err) {
+    } catch {
       setStatus("error");
-      const code = err?.response?.status;
-      const data = err?.response?.data;
-      const detail =
-        typeof data?.detail === "string"
-          ? data.detail
-          : typeof data?.error === "string"
-            ? data.error
-            : null;
-      let message =
+      const message =
         "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
-      if (code === 429) {
-        message =
-          "Es wurden bereits mehrere Anfragen gesendet. Bitte versuchen Sie es später erneut oder rufen Sie uns an.";
-      } else if (
-        (code === 400 || code === 422 || code === 502 || code === 503) &&
-        detail
-      ) {
-        message = detail;
-      }
       setServerError(message);
       toast.error("Senden nicht möglich", { description: message });
     }

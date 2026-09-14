@@ -74,6 +74,11 @@
 .hero-photo img {
   object-position: 60% 40%;
 }
+.photo-fallback {
+  background:
+    linear-gradient(135deg, rgba(15, 187, 130, 0.12), transparent 55%),
+    var(--brand-cream-2, #fbf9f3);
+}
 .hero-shade {
   position: absolute;
   inset: 0 auto 0 -100%;
@@ -240,12 +245,13 @@
   background: #36cd9b;
 }
 .hero-call {
-  color: var(--ivory);
-  background: rgba(20, 59, 50, 0.35);
-  border: 1px solid rgba(243, 238, 229, 0.6);
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #ffffff;
 }
 .hero-call:hover {
-  background: rgba(20, 59, 50, 0.72);
+  background: #f2f2f2;
+  border-color: #f2f2f2;
 }
 .hero-links [data-testid="google-rating"] {
   gap: 10px;
@@ -261,12 +267,21 @@
   background: var(--ivory);
   isolation: isolate;
 }
-#main-content,
-.home-content,
-main .season-box {
+/* Blumenmuster nur auf „Über uns“, mit reduzierter Deckkraft */
+.page-floral {
+  position: relative;
+  isolation: isolate;
+}
+.page-floral::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image: url("./assets/decorations/blumenmuster.svg");
   background-repeat: repeat;
   background-size: 640px 560px;
+  opacity: 0.28;
 }
 .home-region {
   position: relative;
@@ -478,7 +493,7 @@ main .season-box {
 @media (hover: hover) and (pointer: fine) {
   .value-box:hover .card-plant,
   .value-box:focus-within .card-plant {
-    opacity: 1;
+    opacity: 0.38;
     transform: scale(1);
   }
 }
@@ -523,6 +538,7 @@ main .season-box {
 }
 .team-info-band {
   background: #fff;
+  overflow: visible;
 }
 .team-background-layout {
   display: grid;
@@ -539,6 +555,20 @@ main .season-box {
   font-size: 18px;
   margin-top: 0;
   color: var(--brand-leaf);
+}
+.team-crayon-tulips {
+  width: min(190px, 36vw);
+  margin-top: 10px;
+  margin-bottom: -56px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+.team-crayon-tulips svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .team-values {
   display: grid;
@@ -760,17 +790,19 @@ a.underline {
 }
 .footer-bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px 24px;
   padding-block: 16px;
   font-size: 12px;
   line-height: 1.6;
 }
 .header-phone {
+  --phone-reveal: 11rem;
   position: relative;
   width: 44px;
-  min-height: 44px;
+  height: 44px;
   flex-shrink: 0;
+  z-index: 5;
   color: var(--brand-forest);
   font-size: 15px;
   font-weight: 600;
@@ -785,41 +817,50 @@ a.underline {
   justify-content: center;
   width: 44px;
   height: 44px;
-  flex-shrink: 0;
+  padding: 0;
+  border: none;
   background: var(--ivory);
   border-radius: 50%;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.header-phone-icon:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
 }
 .header-phone-number {
   position: absolute;
-  left: 0;
-  top: 100%;
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: var(--deep-green);
-  color: var(--ivory);
-  box-shadow: 0 8px 24px rgba(20, 59, 50, 0.15);
-  min-height: 44px;
+  left: 44px;
+  top: 0;
+  height: 44px;
   display: flex;
   align-items: center;
+  padding: 0 4px 0 10px;
   white-space: nowrap;
+  color: var(--brand-forest);
   opacity: 0;
   visibility: hidden;
-  transform: translate3d(0, -4px, 0);
+  pointer-events: none;
+  transform: translate3d(0.75rem, 0, 0);
   transition:
-    opacity 0.2s,
-    transform 0.2s,
-    visibility 0.2s;
+    opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    visibility 0.35s;
 }
-.header-phone:focus-visible .header-phone-number {
+.header-phone.is-open .header-phone-icon {
+  transform: translate3d(calc(-1 * var(--phone-reveal)), 0, 0);
+}
+.header-phone.is-open .header-phone-number {
   opacity: 1;
   visibility: visible;
-  transform: none;
+  pointer-events: auto;
+  transform: translate3d(calc(-1 * var(--phone-reveal)), 0, 0);
 }
-@media (hover: hover) and (pointer: fine) {
-  .header-phone:hover .header-phone-number {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
+@media (prefers-reduced-motion: reduce) {
+  .header-phone-icon,
+  .header-phone-number {
+    transition: none;
   }
 }
 .site-footer [data-testid="footer-madeby"] {
@@ -1003,7 +1044,7 @@ a.underline {
   }
   .hero-copy {
     width: 100%;
-    align-self: start;
+    align-self: end;
   }
   .hero-photo img {
     object-position: 52% 35%;
@@ -1013,14 +1054,14 @@ a.underline {
     width: 100%;
     background: linear-gradient(
       0deg,
-      rgba(20, 59, 50, 0.96) 0%,
-      rgba(20, 59, 50, 0.86) 42%,
-      rgba(20, 59, 50, 0.25) 85%,
-      rgba(20, 59, 50, 0.1) 100%
+      rgba(20, 59, 50, 0.97) 0%,
+      rgba(20, 59, 50, 0.9) 38%,
+      rgba(20, 59, 50, 0.35) 72%,
+      rgba(20, 59, 50, 0.08) 100%
     );
   }
   .hero-content {
-    padding-block: 48px 80px;
+    padding-block: 32px 56px;
   }
   .home-hero.is-form-open .hero-shade {
     transform: none;
@@ -1205,12 +1246,35 @@ a.underline {
     opacity: 1;
   }
 }
-@media (max-width: 380px) {
-  .header-mobile-actions > a:not([data-testid="header-contact-mobile"]),
-  .header-mobile-actions > button {
-    width: 40px;
+.header-mobile-cta {
+  display: inline-flex;
+  height: 44px;
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+@media (max-width: 1023px) {
+  .site-header {
+    will-change: transform;
   }
-  .header-mobile-actions [data-testid="header-contact-mobile"] {
-    padding-inline: 10px;
+  .site-header.is-nav-hidden {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+}
+@media (min-width: 1024px) {
+  .site-header.is-nav-hidden {
+    transform: none;
+    pointer-events: auto;
+  }
+}
+@media (max-width: 380px) {
+  .header-mobile-cta {
+    height: 40px;
+  }
+  .header-mobile-cta[data-testid="header-contact-mobile"] {
+    font-size: 12px;
   }
 }

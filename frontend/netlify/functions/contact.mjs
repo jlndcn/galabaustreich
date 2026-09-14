@@ -198,6 +198,11 @@ export default async (request) => {
     });
   }
 
+  const contentLength = Number.parseInt(request.headers.get("content-length") || "0", 10);
+  if (Number.isFinite(contentLength) && contentLength > 50_000) {
+    return json(413, { detail: "Die Anfrage ist zu groß." });
+  }
+
   let payload;
   try {
     payload = await request.json();

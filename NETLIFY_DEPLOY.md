@@ -32,7 +32,3 @@ Nicht setzen bzw. leer lassen: `REACT_APP_BACKEND_URL` (dann wird relativ `/api/
 2. Environment Variables wie oben setzen (SMTP-Passwort nur dort).
 3. Domain `garten-streich.de` in Netlify hinzufügen, HTTPS aktivieren.
 4. Testanfrage über das Formular senden und Eingang in Outlook prüfen („Antworten“ geht direkt an den Kunden).
-
-## Preview-Umgebung (Emergent)
-Dort läuft stattdessen das FastAPI-Backend (`backend/server.py`, gleiche Env-Namen). Anfragen werden zusätzlich in
-MongoDB gespeichert und sind über `GET /api/contact` (Header `X-Admin-Token`) einsehbar.

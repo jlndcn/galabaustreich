@@ -1,4 +1,5 @@
 import photos from "@/data/photos.json";
+import { useState } from "react";
 
 // Variants are prepared offline; only the required size is downloaded.
 export function Photo({
@@ -11,10 +12,23 @@ export function Photo({
 }) {
   const photo = photos[name];
   const mobilePhoto = mobile ? photos[`${name}-mobil`] : null;
+  const [failed, setFailed] = useState(false);
+
+  if (!photo || failed) {
+    return (
+      <div
+        className={`photo photo-fallback ${className}`}
+        role="img"
+        aria-label={alt || "Bildplatzhalter"}
+      />
+    );
+  }
+
   const srcSet = (asset) =>
     asset.widths
       .map((width) => `/images/${asset.name}-${width}.webp ${width}w`)
       .join(", ");
+
   return (
     <picture className={`photo ${className}`}>
       {mobilePhoto && (
@@ -36,6 +50,7 @@ export function Photo({
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding="async"
+        onError={() => setFailed(true)}
       />
     </picture>
   );

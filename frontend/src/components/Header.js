@@ -9,22 +9,59 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Logo } from "@/components/Logo";
-import { ContactActions } from "@/components/ContactActions";
 import { GoogleRating } from "@/components/GoogleRating";
 import { WhatsAppIcon, channelColors } from "@/components/BrandIcons";
 import { mainNav, legalNav, site } from "@/data/site";
 
 // Redesigned navbar: white bar, logo left, pill navigation, phone + WhatsApp + primary CTA right.
+const MOBILE_HIDE_MQ = "(max-width: 1023px)";
+const HIDE_AFTER = 72;
+const DIR_DELTA = 8;
+
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
+  const [phoneOpen, setPhoneOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      const isMobile =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia(MOBILE_HIDE_MQ).matches;
+      const reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      setScrolled(y > 8);
+
+      if (!isMobile || open || reduceMotion || y <= HIDE_AFTER) {
+        setHidden(false);
+      } else if (delta > DIR_DELTA) {
+        setHidden(true);
+      } else if (delta < -DIR_DELTA) {
+        setHidden(false);
+      }
+
+      lastY = y;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   const pill = ({ isActive }) =>
     `inline-flex h-11 items-center rounded-full px-5 text-base font-semibold transition-[background-color,color,box-shadow] ${
@@ -36,11 +73,12 @@ export const Header = () => {
   return (
     <header
       data-testid="site-header"
-      className={`sticky top-0 z-50 border-b bg-white transition-[box-shadow,border-color] ${
+      data-nav-hidden={hidden ? "true" : undefined}
+      className={`site-header sticky top-0 z-50 border-b bg-white transition-[transform,box-shadow,border-color] ${
         scrolled
           ? "border-border shadow-[0_6px_24px_-16px_rgba(15,46,20,0.35)]"
           : "border-transparent"
-      }`}
+      }${hidden ? " is-nav-hidden" : ""}`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div
@@ -74,23 +112,41 @@ export const Header = () => {
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
-            <a
-              href={site.phone.href}
-              data-testid="header-phone-link"
-              className="header-phone"
-              aria-label={`Anrufen: ${site.phone.display}`}
+            <div
+              className={`header-phone${phoneOpen ? " is-open" : ""}`}
+              data-testid="header-phone"
             >
-              <span className="header-phone-icon">
+              <button
+                type="button"
+                className="header-phone-icon"
+                aria-expanded={phoneOpen}
+                aria-controls="header-phone-number"
+                aria-label={
+                  phoneOpen
+                    ? "Telefonnummer ausblenden"
+                    : "Telefonnummer anzeigen"
+                }
+                data-testid="header-phone-toggle"
+                data-no-magnet
+                onClick={() => setPhoneOpen((value) => !value)}
+              >
                 <Phone
                   className="h-5 w-5"
                   strokeWidth={2.2}
                   aria-hidden="true"
                 />
-              </span>
-              <span className="header-phone-number" aria-hidden="true">
+              </button>
+              <a
+                id="header-phone-number"
+                href={site.phone.href}
+                className="header-phone-number"
+                tabIndex={phoneOpen ? 0 : -1}
+                aria-hidden={!phoneOpen}
+                data-testid="header-phone-link"
+              >
                 {site.phone.display}
-              </span>
-            </a>
+              </a>
+            </div>
             <a
               href={site.whatsapp}
               target="_blank"
@@ -106,20 +162,21 @@ export const Header = () => {
             <Link
               to="/#kontakt"
               data-testid="header-cta-button"
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow,transform] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md active:scale-[0.99]"
+              data-no-magnet
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md"
             >
               Kontakt
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
-          {/* Mobile actions */}
-          <div className="header-mobile-actions flex items-center gap-1 lg:hidden">
+          {/* Mobile CTAs – fill space between logo and menu, equal width */}
+          <div className="header-mobile-actions flex min-w-0 flex-1 items-center gap-1.5 lg:hidden">
             <a
               href={site.phone.href}
               aria-label="Anrufen"
               data-testid="header-call-button-mobile"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--brand-accent)] text-[color:var(--brand-forest)]"
+              className="header-mobile-cta bg-[color:var(--brand-accent)] text-[color:var(--brand-forest)]"
             >
               <Phone className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
             </a>
@@ -129,7 +186,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="WhatsApp schreiben"
               data-testid="header-whatsapp-mobile"
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
+              className="header-mobile-cta text-white"
               style={{ backgroundColor: channelColors.whatsapp }}
             >
               <WhatsAppIcon className="h-6 w-6" />
@@ -137,10 +194,14 @@ export const Header = () => {
             <Link
               to="/#kontakt"
               data-testid="header-contact-mobile"
-              className="inline-flex h-11 items-center rounded-full bg-[color:var(--brand-accent)] px-3 text-sm font-semibold text-[color:var(--brand-forest)]"
+              className="header-mobile-cta bg-[color:var(--brand-accent)] text-sm font-semibold text-[color:var(--brand-forest)]"
             >
               Kontakt
             </Link>
+          </div>
+
+          {/* Mobile menu */}
+          <div className="shrink-0 lg:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <button
@@ -199,8 +260,7 @@ export const Header = () => {
                     </SheetClose>
                   </nav>
                   <div className="mt-auto border-t border-border px-6 py-6">
-                    <ContactActions prefix="mobile-menu" tone="onLight" full />
-                    <GoogleRating variant="inline" className="mt-5" />
+                    <GoogleRating variant="inline" />
                     <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[color:var(--brand-ink-soft)]">
                       {legalNav.map((l) => (
                         <SheetClose asChild key={l.path}>

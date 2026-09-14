@@ -9,6 +9,7 @@ export default function NotFound() {
         title="Seite nicht gefunden | Garten- und Landschaftspflege Streich"
         description="Die aufgerufene Seite wurde nicht gefunden."
         path="/"
+        noIndex
       />
       <section className="mx-auto max-w-3xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
         <p className="text-base font-semibold text-muted-foreground">Fehler 404</p>

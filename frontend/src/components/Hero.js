@@ -30,10 +30,16 @@ export function Hero({ initialMessage = "" }) {
     navigate({ pathname: "/", search: location.search }, { replace: true });
   useEffect(() => {
     const hero = ref.current;
+    if (!hero) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let inView = true;
     const update = () => {
       frame = 0;
+      if (!inView) {
+        hero.style.setProperty("--hero-progress", 0);
+        return;
+      }
       const rect = hero.getBoundingClientRect();
       const progress = preference.matches
         ? 0
@@ -47,8 +53,20 @@ export function Hero({ initialMessage = "" }) {
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     preference.addEventListener("change", schedule);
+    const visibility =
+      typeof IntersectionObserver !== "undefined"
+        ? new IntersectionObserver(
+            ([entry]) => {
+              inView = entry.isIntersecting;
+              schedule();
+            },
+            { rootMargin: "10% 0px" },
+          )
+        : null;
+    visibility?.observe(hero);
     return () => {
       cancelAnimationFrame(frame);
+      visibility?.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       preference.removeEventListener("change", schedule);

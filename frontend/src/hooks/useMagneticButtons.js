@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const selector =
-  'button:not([role="checkbox"]):not([disabled]), a[class*="rounded-full"], .hero-primary, .hero-call';
+  'button:not([role="checkbox"]):not([disabled]):not([data-no-magnet]), a[class*="rounded-full"]:not([data-no-magnet]), .hero-primary, .hero-call';
 
 export function useMagneticButtons() {
   const { pathname } = useLocation();

@@ -4,24 +4,13 @@ import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { Photo } from "@/components/Photo";
 import { ContactCTA } from "@/components/ContactCTA";
+import { CrayonTulips } from "@/components/CrayonTulips";
 import { seoPages } from "@/data/seo";
-
-const values = [
-  {
-    title: "Familiär",
-    text: "Bei uns kennt man sich und packt gemeinsam an. Dieses familiäre Miteinander gehört für uns einfach dazu.",
-  },
-  {
-    title: "Fachlich fundiert",
-    text: "Gärtnerisches und forstliches Wissen bringen wir gemeinsam mit in Ihren Garten. Jeder trägt sein Können zur Arbeit bei.",
-  },
-  {
-    title: "Sorgfältig",
-    text: "Wir schauen genau hin und gehen behutsam mit dem um, was gewachsen ist. Denn ein gepflegter Garten steckt auch in den kleinen Details.",
-  },
-];
+import { teamContent } from "@/data/pages";
 
 export default function Team() {
+  const { hero, values, background } = teamContent;
+
   return (
     <div data-testid="team-page">
       <Seo
@@ -43,16 +32,10 @@ export default function Team() {
         />
         <div className="team-hero-shade" aria-hidden="true" />
         <div className="section-shell team-hero-content">
-          <p className="team-hero-copy">
-            Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
-            packt gemeinsam an. In unserem Team kommen gärtnerisches und
-            forstliches Können zusammen. Was uns verbindet? Wir kümmern uns gern
-            um Ihren Garten und legen Wert auf sorgfältige, gepflegte Arbeit.
-          </p>
+          <p className="team-hero-copy">{hero}</p>
         </div>
       </section>
 
-      {/* Values – stacked */}
       <section className="section-shell">
         <div className="team-values">
           {values.map((v, i) => (
@@ -66,17 +49,12 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Background */}
       <section className="team-info-band">
         <div className="section-shell team-background-layout aligned-split">
           <Reveal className="team-background aligned-copy">
-            <h2 className="text-3xl sm:text-4xl">
-              Fachlicher Hintergrund im Team
-            </h2>
+            <h2 className="text-3xl sm:text-4xl">{background.title}</h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              In unserem Team kommen forstliche und gärtnerische Ausbildung
-              sowie Erfahrung aus der Baumschule zusammen – vom Forstwirt über
-              den Zierpflanzengärtner bis zum Altgesellen.
+              {background.text}
             </p>
             <p className="mt-6 text-base text-muted-foreground">
               Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
@@ -89,14 +67,15 @@ export default function Team() {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </p>
-            <p className="team-photo-caption">
-              Mit einem Blick für das Schöne.
-            </p>
+            <p className="team-photo-caption">{background.caption}</p>
+            <div className="team-crayon-tulips" aria-hidden="true">
+              <CrayonTulips />
+            </div>
           </Reveal>
           <Reveal className="aligned-media">
             <Photo
-              name="rose-in-haenden-streich"
-              alt="Hände halten eine rote Rosenblüte vor einer Backsteinwand"
+              name={background.photo.name}
+              alt={background.photo.alt}
               sizes="(max-width: 767px) 100vw, 45vw"
             />
           </Reveal>

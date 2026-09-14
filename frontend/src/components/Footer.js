@@ -6,8 +6,6 @@ import { site, mainNav, legalNav, googleLink } from "@/data/site";
 
 // A distinct forest-green closing section; the original logo sits on ivory.
 export const Footer = () => {
-  const year = new Date().getFullYear();
-
   const contactLink =
     "inline-flex items-center gap-3 text-base font-medium text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]";
   const navLink =
@@ -132,10 +130,6 @@ export const Footer = () => {
         </div>
 
         <div className="footer-bottom text-muted-foreground">
-          <p>
-            © {year} {site.legalName} · Garten- und Landschaftspflege in und um
-            Lübeck
-          </p>
           <p data-testid="footer-madeby">
             Made and hosted by{" "}
             <a

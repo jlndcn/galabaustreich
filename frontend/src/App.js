@@ -1,14 +1,35 @@
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import Home from "@/pages/Home";
-import Leistungen from "@/pages/Leistungen";
-import UeberUns from "@/pages/UeberUns";
-import Team from "@/pages/Team";
-import Impressum from "@/pages/Impressum";
-import Datenschutz from "@/pages/Datenschutz";
-import AGB from "@/pages/AGB";
-import NotFound from "@/pages/NotFound";
+
+// Secondary routes: code-split so the home LCP bundle stays lean.
+const Leistungen = lazy(() => import("@/pages/Leistungen"));
+const UeberUns = lazy(() => import("@/pages/UeberUns"));
+const Team = lazy(() => import("@/pages/Team"));
+const Impressum = lazy(() => import("@/pages/Impressum"));
+const Datenschutz = lazy(() => import("@/pages/Datenschutz"));
+const AGB = lazy(() => import("@/pages/AGB"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+
+function PageFallback() {
+  return (
+    <div
+      className="page-route-fallback"
+      aria-hidden="true"
+      style={{ minHeight: "50vh", background: "var(--brand-cream, #f7f4ec)" }}
+    />
+  );
+}
+
+function LazyPages() {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <Outlet />
+    </Suspense>
+  );
+}
 
 function App() {
   return (
@@ -16,13 +37,15 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/leistungen" element={<Leistungen />} />
-          <Route path="/ueber-uns" element={<UeberUns />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          <Route path="/agb" element={<AGB />} />
-          <Route path="*" element={<NotFound />} />
+          <Route element={<LazyPages />}>
+            <Route path="/leistungen" element={<Leistungen />} />
+            <Route path="/ueber-uns" element={<UeberUns />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="/agb" element={<AGB />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
