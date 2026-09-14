@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, Phone, ArrowRight } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Logo } from "@/components/Logo";
 import { ContactActions } from "@/components/ContactActions";
 import { GoogleRating } from "@/components/GoogleRating";
@@ -71,10 +77,19 @@ export const Header = () => {
             <a
               href={site.phone.href}
               data-testid="header-phone-link"
-              className="mr-2 inline-flex items-center gap-2 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:text-[color:var(--brand-accent-strong)]"
+              className="header-phone"
+              aria-label={`Anrufen: ${site.phone.display}`}
             >
-              <Phone className="h-4 w-4 text-[color:var(--brand-accent-strong)]" strokeWidth={2.2} aria-hidden="true" />
-              {site.phone.display}
+              <span className="header-phone-icon">
+                <Phone
+                  className="h-5 w-5"
+                  strokeWidth={2.2}
+                  aria-hidden="true"
+                />
+              </span>
+              <span className="header-phone-number" aria-hidden="true">
+                {site.phone.display}
+              </span>
             </a>
             <a
               href={site.whatsapp}
@@ -119,13 +134,23 @@ export const Header = () => {
                   <Menu className="h-5 w-5" aria-hidden="true" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[88%] max-w-sm bg-white p-0">
+              <SheetContent
+                side="right"
+                className="w-[88%] max-w-sm bg-white p-0"
+              >
                 <div className="flex h-full flex-col">
                   <div className="border-b border-border px-6 pb-5 pt-6">
                     <SheetTitle className="sr-only">Navigation</SheetTitle>
-                    <Logo linked={false} className="h-14 w-auto" priority={false} />
+                    <Logo
+                      linked={false}
+                      className="h-14 w-auto"
+                      priority={false}
+                    />
                   </div>
-                  <nav aria-label="Mobile Navigation" className="flex flex-col px-4 py-4">
+                  <nav
+                    aria-label="Mobile Navigation"
+                    className="flex flex-col px-4 py-4"
+                  >
                     {mainNav.map((item) => (
                       <SheetClose asChild key={item.path}>
                         <NavLink
@@ -161,7 +186,10 @@ export const Header = () => {
                     <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[color:var(--brand-ink-soft)]">
                       {legalNav.map((l) => (
                         <SheetClose asChild key={l.path}>
-                          <Link to={l.path} className="hover:text-[color:var(--brand-forest)]">
+                          <Link
+                            to={l.path}
+                            className="hover:text-[color:var(--brand-forest)]"
+                          >
                             {l.label}
                           </Link>
                         </SheetClose>

@@ -30,7 +30,17 @@ Design vor dem Editorial-Redesign.
   gelassenen Tabs (Minutenprüfung sowie Aktualisierung bei Fokus/Rückkehr).
   Keine Textunterstreichungen.
 - Über uns: mehr Abstand nach der Hauptüberschrift und abgegrenzte Wertekästen.
-  Team: großes Gruppenfoto, zusätzliches Rosenmotiv und nacheinander eingeblendete Texte.
+  Team: Gruppenfoto neben bündig ausgerichtetem Einführungstext, zusätzliches
+  Rosenmotiv und nacheinander eingeblendete Texte. Nummerierungen und
+  Qualifikationsbadges entfernt; der bestätigte fachliche Hintergrund bleibt als Text.
+- Durchgehendes Beratungsband über die volle Breite; Bild-/Text-Paare mit gleicher
+  Höhe auf breiten Geräten, passende Bildausschnitte und Stapelung auf Smartphones.
+- Dezente Pflanzenanimation innerhalb der bestehenden Wertekarten bei Maus-Hover;
+  ohne Hover-Abhängigkeit auf Touch und ohne Bewegung bei Reduced Motion.
+- Telefon-Icon mit einfahrender Nummer bei Hover/Fokus, reservierter Platz ohne
+  Verschiebung der Navigation. Auf Touch direkt erreichbare Telefonnummer.
+- Kompakter Footer mit allen bisherigen Angaben; schwebendes WhatsApp in #25D366.
+- Der Satz zur Witterung und zum Gartenzustand wurde aus dem Saisonkasten entfernt.
 - Schwebendes WhatsApp auf allen Seiten außer Datenschutz, Impressum und AGB;
   blendet sich am Footer und bei überdeckten mobilen Inhalten aus.
 - Dezenter magnetischer Button-Hover nur bei Mausbedienung ohne Reduced Motion.
@@ -79,8 +89,8 @@ Die Dateien werden fertig vorbereitet mitgeliefert; der Netlify-Build benötigt 
 
 Der WebGL-Abschnitt, sein Renderer und die ausgelieferten Depth-Map-Varianten
 wurden auf Wunsch entfernt. Originaldateien bleiben im Bilder-Ordner erhalten.
-Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 160,62 kB JavaScript und
-14,38 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
+Keine neue Runtime-Abhängigkeit. Produktionsbuild: ca. 160,95 kB JavaScript und
+15,01 kB CSS gzip. Dies sind Dateigrößen, keine gemessenen Core Web Vitals.
 
 Der aktuelle Stack ist React 19 mit React Router, CRA/CRACO und Tailwind.
 Er funktioniert, ist für eine überwiegend statische Unternehmensseite aber
@@ -98,6 +108,9 @@ Der bestätigte React-Stand bleibt in dieser Designrunde bestehen.
 ## Prüfung
 
 - Produktionsbuild erfolgreich.
+- Bild-/Text-Höhen, Überläufe und Footer auf 320, 390, 768, 1024, 1440, 1920,
+  2560 und 3440 px geprüft. Telefon-Hover/Fokus ohne Layoutverschiebung,
+  Touch-Telefon und dekorative Pflanzenanimation inklusive Reduced Motion geprüft.
 - Sieben Seiten plus 404 auf Desktop und Smartphone geprüft: keine JavaScript-
   Fehler, fehlenden Bilder, horizontalen Überläufe oder automatisch erkannten
   WCAG-A/AA-Verstöße.

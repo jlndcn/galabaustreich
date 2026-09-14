@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { Photo } from "@/components/Photo";
+import { CardPlant } from "@/components/CardPlant";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 
@@ -31,8 +32,8 @@ export default function UeberUns() {
       />
 
       <section className="section-shell">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+        <div className="about-intro-layout aligned-split">
+          <div className="aligned-copy">
             <Reveal>
               <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
                 Garten- und Landschaftspflege mit Wurzeln in der Region
@@ -57,16 +58,14 @@ export default function UeberUns() {
           </div>
 
           {/* Genuine customer portrait, without assigning an unconfirmed identity. */}
-          <div className="lg:col-span-5">
-            <Reveal delay={120}>
-              <Photo
-                name="streich-im-rosengarten"
-                alt="Eine Mitarbeiterin von Streich zwischen blühenden Rosen"
-                className="about-portrait"
-                priority
-              />
-            </Reveal>
-          </div>
+          <Reveal delay={120} className="aligned-media">
+            <Photo
+              name="streich-im-rosengarten"
+              alt="Eine Mitarbeiterin von Streich zwischen blühenden Rosen"
+              className="about-portrait"
+              priority
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -78,6 +77,7 @@ export default function UeberUns() {
         <div className="about-values">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 80} className="value-box">
+              <CardPlant />
               <h3 className="text-2xl">{v.title}</h3>
               <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
                 {v.text}

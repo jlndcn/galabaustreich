@@ -47,7 +47,9 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <Reveal className="home-mid-cta" data-testid="home-mid-cta">
+        </section>
+        <section className="home-mid-cta" data-testid="home-mid-cta">
+          <Reveal className="section-shell home-mid-cta-inner">
             <div>
               <p className="text-xl font-semibold">
                 Nicht sicher, was Ihr Garten gerade braucht?
@@ -84,8 +86,8 @@ export default function Home() {
               Gartenpflege und Grundstückspflege in Lübeck und Ostholstein
             </h2>
           </Reveal>
-          <div className="home-services-split">
-            <Reveal>
+          <div className="home-services-split aligned-split">
+            <Reveal className="aligned-media">
               <Photo
                 name="rosenpflege-detail-streich"
                 alt="Hände mit Gartenschere bei der Pflege eines Rosenstrauchs"
@@ -105,8 +107,8 @@ export default function Home() {
 
         <section className="section-shell home-region">
           <PlantVine className="home-vine-region" />
-          <div className="region-split">
-            <Reveal>
+          <div className="region-split aligned-split">
+            <Reveal className="aligned-copy">
               <h2>Mit Wurzeln in der Region</h2>
               <p className="section-intro">
                 Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck
@@ -123,7 +125,7 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Reveal>
-            <Reveal>
+            <Reveal className="aligned-media">
               <Photo
                 name="gartenbrunnen-streich"
                 alt="Wasserspiel in einem begrünten Garten"

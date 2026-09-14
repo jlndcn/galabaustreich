@@ -69,10 +69,6 @@ export const SeasonHint = ({ date, className = "" }) => {
           </li>
         ))}
       </ul>
-      <p className="season-footnote">
-        Die passende Pflege richtet sich nach Witterung und Zustand Ihres
-        Gartens.
-      </p>
     </aside>
   );
 };

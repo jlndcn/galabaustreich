@@ -1,0 +1,733 @@
+[
+  {
+    "width": 320,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2590.75,
+          3633.09375
+        ],
+        "tops": [
+          2388.828125,
+          2618.75
+        ]
+      },
+      {
+        "bottoms": [
+          4024.515625,
+          4244.515625
+        ],
+        "tops": [
+          3681.09375,
+          4052.515625
+        ]
+      }
+    ],
+    "footer": 923.03125,
+    "cta": 320,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 320,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          712.75,
+          962.625
+        ],
+        "tops": [
+          129,
+          740.75
+        ]
+      }
+    ],
+    "footer": 923.03125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 320,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          387.875,
+          683.0625
+        ],
+        "tops": [
+          195.875,
+          415.875
+        ]
+      },
+      {
+        "bottoms": [
+          923.0625,
+          1589.90625
+        ],
+        "tops": [
+          731.0625,
+          951.0625
+        ]
+      }
+    ],
+    "footer": 923.03125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 320,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 923.03125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2371.03125,
+          3283.65625
+        ],
+        "tops": [
+          2132.375,
+          2399.03125
+        ]
+      },
+      {
+        "bottoms": [
+          3614.03125,
+          3880.6875
+        ],
+        "tops": [
+          3331.65625,
+          3642.03125
+        ]
+      }
+    ],
+    "footer": 833.359375,
+    "cta": 390,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 390,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          615.375,
+          911.875
+        ],
+        "tops": [
+          129,
+          643.375
+        ]
+      }
+    ],
+    "footer": 833.359375,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 390,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          434.53125,
+          670.34375
+        ],
+        "tops": [
+          195.875,
+          462.53125
+        ]
+      },
+      {
+        "bottoms": [
+          957,
+          1536.09375
+        ],
+        "tops": [
+          718.34375,
+          985
+        ]
+      }
+    ],
+    "footer": 833.359375,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 390,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 833.359375,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 768,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2681.546875,
+          2681.546875
+        ],
+        "tops": [
+          1854.3125,
+          1854.3125
+        ]
+      },
+      {
+        "bottoms": [
+          3035.921875,
+          3035.921875
+        ],
+        "tops": [
+          2753.546875,
+          2753.546875
+        ]
+      }
+    ],
+    "footer": 729.546875,
+    "cta": 768,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 768,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          679.25,
+          679.25
+        ],
+        "tops": [
+          153,
+          153
+        ]
+      }
+    ],
+    "footer": 729.546875,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 768,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          597,
+          597
+        ],
+        "tops": [
+          237,
+          237
+        ]
+      },
+      {
+        "bottoms": [
+          1249.34375,
+          1249.34375
+        ],
+        "tops": [
+          669,
+          669
+        ]
+      }
+    ],
+    "footer": 729.546875,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 768,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 729.546875,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1024,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2363.59375,
+          2363.59375
+        ],
+        "tops": [
+          1732.53125,
+          1732.53125
+        ]
+      },
+      {
+        "bottoms": [
+          2715.59375,
+          2715.59375
+        ],
+        "tops": [
+          2435.59375,
+          2435.59375
+        ]
+      }
+    ],
+    "footer": 434.3125,
+    "cta": 1024,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1024,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          675.625,
+          675.625
+        ],
+        "tops": [
+          181,
+          181
+        ]
+      }
+    ],
+    "footer": 434.3125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1024,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          631.40625,
+          631.40625
+        ],
+        "tops": [
+          271.40625,
+          271.40625
+        ]
+      },
+      {
+        "bottoms": [
+          1196,
+          1196
+        ],
+        "tops": [
+          703.40625,
+          703.40625
+        ]
+      }
+    ],
+    "footer": 434.3125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1024,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 434.3125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1440,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2304.140625,
+          2304.140625
+        ],
+        "tops": [
+          1719.578125,
+          1719.578125
+        ]
+      },
+      {
+        "bottoms": [
+          2656.140625,
+          2656.140625
+        ],
+        "tops": [
+          2376.140625,
+          2376.140625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "cta": 1440,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1440,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          621.21875,
+          621.21875
+        ],
+        "tops": [
+          181,
+          181
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1440,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          631.40625,
+          631.40625
+        ],
+        "tops": [
+          271.40625,
+          271.40625
+        ]
+      },
+      {
+        "bottoms": [
+          1166.75,
+          1166.75
+        ],
+        "tops": [
+          703.40625,
+          703.40625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1440,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "phoneHover": true,
+    "phoneKeyboard": true,
+    "navStable": true,
+    "plantHover": true,
+    "reducedMotion": true
+  },
+  {
+    "width": 1920,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2304.140625,
+          2304.140625
+        ],
+        "tops": [
+          1719.578125,
+          1719.578125
+        ]
+      },
+      {
+        "bottoms": [
+          2656.140625,
+          2656.140625
+        ],
+        "tops": [
+          2376.140625,
+          2376.140625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "cta": 1920,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1920,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          621.21875,
+          621.21875
+        ],
+        "tops": [
+          181,
+          181
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1920,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          631.40625,
+          631.40625
+        ],
+        "tops": [
+          271.40625,
+          271.40625
+        ]
+      },
+      {
+        "bottoms": [
+          1166.75,
+          1166.75
+        ],
+        "tops": [
+          703.40625,
+          703.40625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 1920,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 2560,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2304.140625,
+          2304.140625
+        ],
+        "tops": [
+          1719.578125,
+          1719.578125
+        ]
+      },
+      {
+        "bottoms": [
+          2656.140625,
+          2656.140625
+        ],
+        "tops": [
+          2376.140625,
+          2376.140625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "cta": 2560,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 2560,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          621.21875,
+          621.21875
+        ],
+        "tops": [
+          181,
+          181
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 2560,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          631.40625,
+          631.40625
+        ],
+        "tops": [
+          271.40625,
+          271.40625
+        ]
+      },
+      {
+        "bottoms": [
+          1166.75,
+          1166.75
+        ],
+        "tops": [
+          703.40625,
+          703.40625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 2560,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 3440,
+    "route": "/",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          2304.140625,
+          2304.140625
+        ],
+        "tops": [
+          1719.578125,
+          1719.578125
+        ]
+      },
+      {
+        "bottoms": [
+          2656.140625,
+          2656.140625
+        ],
+        "tops": [
+          2376.140625,
+          2376.140625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "cta": 3440,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 3440,
+    "route": "/ueber-uns",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          621.21875,
+          621.21875
+        ],
+        "tops": [
+          181,
+          181
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 3440,
+    "route": "/team",
+    "overflow": false,
+    "pairs": [
+      {
+        "bottoms": [
+          631.40625,
+          631.40625
+        ],
+        "tops": [
+          271.40625,
+          271.40625
+        ]
+      },
+      {
+        "bottoms": [
+          1166.75,
+          1166.75
+        ],
+        "tops": [
+          703.40625,
+          703.40625
+        ]
+      }
+    ],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "width": 3440,
+    "route": "/leistungen",
+    "overflow": false,
+    "pairs": [],
+    "footer": 367.53125,
+    "seasonFootnote": false,
+    "teamNumbers": 0
+  },
+  {
+    "touchPhoneVisible": true,
+    "whatsappOriginalGreen": true
+  }
+]

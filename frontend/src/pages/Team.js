@@ -36,51 +36,51 @@ export default function Team() {
             Unser Team
           </h1>
         </Reveal>
-        <Reveal delay={100}>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
-            packt gemeinsam an. In unserem Team kommen gärtnerisches und
-            forstliches Können zusammen. Was uns verbindet? Wir kümmern uns gern
-            um Ihren Garten und legen Wert auf sorgfältige, gepflegte Arbeit.
-          </p>
-        </Reveal>
-      </section>
-
-      {/* Full group photograph; qualifications are not assigned to individuals. */}
-      <section className="section-shell">
-        <Reveal>
-          <Photo
-            name="team-streich"
-            alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
-            className="team-wide-photo"
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            priority
-          />
-        </Reveal>
+        <div className="team-intro-layout aligned-split">
+          <Reveal className="aligned-media">
+            <Photo
+              name="team-streich"
+              alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
+              className="team-wide-photo"
+              sizes="(max-width: 767px) 100vw, 65vw"
+              priority
+            />
+          </Reveal>
+          <Reveal delay={100} className="team-intro-copy aligned-copy">
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Bei Streich geht es familiär zu: Man kennt sich, hilft sich und
+              packt gemeinsam an. In unserem Team kommen gärtnerisches und
+              forstliches Können zusammen. Was uns verbindet? Wir kümmern uns
+              gern um Ihren Garten und legen Wert auf sorgfältige, gepflegte
+              Arbeit.
+            </p>
+          </Reveal>
+        </div>
       </section>
 
       {/* Values – stacked */}
-      <section className="section-shell team-values-layout">
-        <Reveal className="team-detail-photo">
+      <section className="section-shell team-values-layout aligned-split">
+        <Reveal className="team-detail-photo aligned-media">
           <Photo
             name="rose-in-haenden-streich"
             alt="Hände halten eine rote Rosenblüte vor einer Backsteinwand"
             sizes="(max-width: 767px) 100vw, 45vw"
           />
-          <p>Mit einem Blick für das Schöne.</p>
         </Reveal>
         <div className="team-values">
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 80} className="team-value">
-              <span className="team-value-number" aria-hidden="true">
-                0{i + 1}
-              </span>
               <h2 className="text-2xl">{v.title}</h2>
               <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
                 {v.text}
               </p>
             </Reveal>
           ))}
+          <Reveal>
+            <p className="team-photo-caption">
+              Mit einem Blick für das Schöne.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -95,19 +95,6 @@ export default function Team() {
             Erfahrung aus der Baumschule zusammen – vom Forstwirt über den
             Zierpflanzengärtner bis zum Altgesellen.
           </p>
-          <ul
-            className="team-qualifications"
-            aria-label="Fachlicher Hintergrund"
-          >
-            {[
-              "Forstwirt",
-              "Zierpflanzengärtner",
-              "Baumschule",
-              "Altgeselle",
-            ].map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
           <p className="mt-6 text-base text-muted-foreground">
             Sie möchten wissen, wie wir Ihren Garten pflegen können?{" "}
             <Link

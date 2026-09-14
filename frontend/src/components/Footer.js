@@ -17,20 +17,20 @@ export const Footer = () => {
   return (
     <footer data-testid="site-footer" className="site-footer">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
+        <div className="footer-layout">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-4">
-            <Logo className="h-24 w-auto" priority={false} />
-            <p className="mt-5 max-w-sm text-base leading-relaxed text-muted-foreground">
+          <div className="footer-brand">
+            <Logo className="h-14 w-auto" priority={false} />
+            <p className="text-muted-foreground">
               Von der ersten Pflanze bis zum gewachsenen Garten – persönlich,
               zuverlässig und mit einem Blick für das Schöne. In Lübeck und
               Ostholstein für Sie im Einsatz.
             </p>
-            <GoogleRating variant="inline" className="mt-5" />
+            <GoogleRating variant="inline" />
             <Link
               to="/#kontakt"
               data-testid="footer-cta-link"
-              className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[color:var(--brand-accent-strong)]"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] transition-colors hover:bg-[color:var(--brand-accent-strong)]"
             >
               Anfrage senden
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -38,7 +38,7 @@ export const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="footer-contact">
             <h3 className="text-lg">Kontakt</h3>
             <ul className="mt-4 space-y-3">
               <li>
@@ -88,7 +88,7 @@ export const Footer = () => {
           </div>
 
           {/* Address */}
-          <div className="lg:col-span-3">
+          <div className="footer-address">
             <h3 className="text-lg">Anschrift</h3>
             <address
               data-testid="footer-address-text"
@@ -113,7 +113,7 @@ export const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div className="lg:col-span-2">
+          <div className="footer-navigation">
             <nav aria-label="Seiten">
               <h3 className="text-lg">Seiten</h3>
               <ul className="mt-4 space-y-2.5">
@@ -126,7 +126,7 @@ export const Footer = () => {
                 ))}
               </ul>
             </nav>
-            <nav aria-label="Rechtliches" className="mt-8">
+            <nav aria-label="Rechtliches">
               <h3 className="text-lg">Rechtliches</h3>
               <ul className="mt-4 space-y-2.5">
                 {legalNav.map((n) => (
@@ -141,7 +141,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-border py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="footer-bottom text-muted-foreground">
           <p>
             © {year} {site.legalName} · Garten- und Landschaftspflege in und um
             Lübeck
