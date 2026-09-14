@@ -50,7 +50,7 @@ export const Header = () => {
         >
           <Logo
             className={`w-auto transition-[height] ${
-              scrolled ? "h-14 lg:h-16" : "h-16 lg:h-[88px]"
+              scrolled ? "h-10 sm:h-14 lg:h-16" : "h-10 sm:h-16 lg:h-[88px]"
             }`}
           />
 
@@ -75,18 +75,6 @@ export const Header = () => {
           {/* Desktop actions */}
           <div className="hidden items-center gap-2 lg:flex">
             <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp schreiben"
-              title="WhatsApp"
-              data-testid="header-whatsapp-button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm transition-[transform,filter] hover:scale-105 hover:brightness-95"
-              style={{ backgroundColor: channelColors.whatsapp }}
-            >
-              <WhatsAppIcon className="h-6 w-6" />
-            </a>
-            <a
               href={site.phone.href}
               data-testid="header-phone-link"
               className="header-phone"
@@ -103,18 +91,30 @@ export const Header = () => {
                 {site.phone.display}
               </span>
             </a>
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp schreiben"
+              title="WhatsApp"
+              data-testid="header-whatsapp-button"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white shadow-sm transition-[transform,filter] hover:scale-105 hover:brightness-95"
+              style={{ backgroundColor: channelColors.whatsapp }}
+            >
+              <WhatsAppIcon className="h-6 w-6" />
+            </a>
             <Link
               to="/#kontakt"
               data-testid="header-cta-button"
               className="inline-flex h-11 items-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-[15px] font-semibold text-[color:var(--brand-forest)] shadow-sm transition-[background-color,box-shadow,transform] hover:bg-[color:var(--brand-accent-strong)] hover:shadow-md active:scale-[0.99]"
             >
-              Anfrage senden
+              Kontakt
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
           {/* Mobile actions */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="header-mobile-actions flex items-center gap-1 lg:hidden">
             <a
               href={site.phone.href}
               aria-label="Anrufen"
@@ -123,6 +123,24 @@ export const Header = () => {
             >
               <Phone className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
             </a>
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp schreiben"
+              data-testid="header-whatsapp-mobile"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
+              style={{ backgroundColor: channelColors.whatsapp }}
+            >
+              <WhatsAppIcon className="h-6 w-6" />
+            </a>
+            <Link
+              to="/#kontakt"
+              data-testid="header-contact-mobile"
+              className="inline-flex h-11 items-center rounded-full bg-[color:var(--brand-accent)] px-3 text-sm font-semibold text-[color:var(--brand-forest)]"
+            >
+              Kontakt
+            </Link>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <button
@@ -175,7 +193,7 @@ export const Header = () => {
                         data-testid="mobile-nav-cta"
                         className="mt-3 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[color:var(--brand-accent)] px-5 text-base font-semibold text-[color:var(--brand-forest)]"
                       >
-                        Anfrage senden
+                        Kontakt
                         <ArrowRight className="h-4 w-4" aria-hidden="true" />
                       </Link>
                     </SheetClose>

@@ -1,0 +1,47 @@
+{
+  "report": [
+    {
+      "width": 320,
+      "height": 844,
+      "initialHeight": 1287,
+      "formHeight": 1287,
+      "violations": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initialHeight": 1239,
+      "formHeight": 1239,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "initialHeight": 963,
+      "formHeight": 963,
+      "violations": []
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "initialHeight": 963,
+      "formHeight": 963,
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "initialHeight": 964,
+      "formHeight": 964,
+      "violations": []
+    },
+    {
+      "width": 3440,
+      "height": 1440,
+      "initialHeight": 1332,
+      "formHeight": 1332,
+      "violations": []
+    }
+  ],
+  "errors": []
+}

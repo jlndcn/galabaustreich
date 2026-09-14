@@ -4,7 +4,6 @@ import { ArrowRight, Phone, MapPin } from "lucide-react";
 import { Seo } from "@/components/Seo";
 import { Reveal } from "@/components/Reveal";
 import { ServiceCard } from "@/components/ServiceCard";
-import { ContactForm } from "@/components/ContactForm";
 import { ContactTiles } from "@/components/ContactTiles";
 import { Photo } from "@/components/Photo";
 import { Hero } from "@/components/Hero";
@@ -24,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Seo {...seoPages.home} jsonLd={buildLocalBusinessJsonLd()} />
-      <Hero />
+      <Hero initialMessage={prefill} />
       <div className="home-content">
         <section
           className="section-shell"
@@ -133,7 +132,7 @@ export default function Home() {
         </section>
 
         <section
-          id="kontakt"
+          id="kontaktinformationen"
           aria-labelledby="home-contact-title"
           data-testid="home-contact-section"
           className="home-contact"
@@ -165,20 +164,8 @@ export default function Home() {
                     </span>
                   </a>
                 </address>
-                <SeasonHint className="mt-8" />
               </div>
-              <div id="anfrage">
-                <h3 className="text-2xl">Anfrage senden</h3>
-                <p className="mt-2 text-base text-muted-foreground">
-                  Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.
-                </p>
-                <div className="contact-form-wrap mt-6">
-                  <ContactForm
-                    prefix="home-contact-form"
-                    initialMessage={prefill}
-                  />
-                </div>
-              </div>
+              <SeasonHint />
             </div>
           </div>
         </section>
