@@ -405,6 +405,15 @@
 .contact-information .season-box {
   flex: 1;
 }
+.contact-tile-google [data-testid="google-rating"],
+.contact-tile-google [data-testid="google-rating-value"],
+.contact-tile-google [data-testid="google-rating-count"] {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.contact-tile-google [data-testid="google-rating-stars"] {
+  max-width: 100%;
+}
 .contact-address {
   margin-top: 24px;
   font-style: normal;
@@ -569,11 +578,6 @@
   display: block;
   width: 100%;
   height: auto;
-}
-.team-values {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
 }
 .team-background {
   gap: 24px;
@@ -1164,10 +1168,6 @@ a.underline {
   .team-background-layout {
     grid-template-columns: 1fr;
     gap: 28px;
-  }
-  .team-values {
-    grid-template-columns: 1fr;
-    gap: 32px;
   }
   .team-background > p {
     margin-top: 0;

@@ -29,20 +29,6 @@ export const aboutContent = {
 export const teamContent = {
   hero:
     "Bei Streich geht es familiär zu: Man kennt sich, hilft sich und packt gemeinsam an. In unserem Team kommen gärtnerisches und forstliches Können zusammen. Was uns verbindet? Wir kümmern uns gern um Ihren Garten und legen Wert auf sorgfältige, gepflegte Arbeit.",
-  values: [
-    {
-      title: "Familiär",
-      text: "Bei uns kennt man sich und packt gemeinsam an. Dieses familiäre Miteinander gehört für uns einfach dazu.",
-    },
-    {
-      title: "Fachlich fundiert",
-      text: "Gärtnerisches und forstliches Wissen bringen wir gemeinsam mit in Ihren Garten. Jeder trägt sein Können zur Arbeit bei.",
-    },
-    {
-      title: "Sorgfältig",
-      text: "Wir schauen genau hin und gehen behutsam mit dem um, was gewachsen ist. Denn ein gepflegter Garten steckt auch in den kleinen Details.",
-    },
-  ],
   background: {
     title: "Fachlicher Hintergrund im Team",
     text: "In unserem Team kommen forstliche und gärtnerische Ausbildung sowie Erfahrung aus der Baumschule zusammen – vom Forstwirt über den Zierpflanzengärtner bis zum Altgesellen.",

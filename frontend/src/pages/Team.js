@@ -9,7 +9,7 @@ import { seoPages } from "@/data/seo";
 import { teamContent } from "@/data/pages";
 
 export default function Team() {
-  const { hero, values, background } = teamContent;
+  const { hero, background } = teamContent;
 
   return (
     <div data-testid="team-page">
@@ -33,19 +33,6 @@ export default function Team() {
         <div className="team-hero-shade" aria-hidden="true" />
         <div className="section-shell team-hero-content">
           <p className="team-hero-copy">{hero}</p>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="team-values">
-          {values.map((v, i) => (
-            <Reveal key={v.title} delay={i * 80} className="team-value">
-              <h2 className="text-2xl">{v.title}</h2>
-              <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
-                {v.text}
-              </p>
-            </Reveal>
-          ))}
         </div>
       </section>
 
