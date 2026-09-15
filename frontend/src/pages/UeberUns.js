@@ -7,9 +7,13 @@ import { CardPlant } from "@/components/CardPlant";
 import { ContactCTA } from "@/components/ContactCTA";
 import { seoPages } from "@/data/seo";
 import { aboutContent } from "@/data/pages";
+import { getMediaSlot } from "@/data/media";
 
 export default function UeberUns() {
-  const { title, intro, valuesHeading, values, portrait } = aboutContent;
+  const { title, intro, valuesHeading, values } = aboutContent;
+  const portrait = getMediaSlot("about-portrait");
+  const impression1 = getMediaSlot("about-impression-1");
+  const impression2 = getMediaSlot("about-impression-2");
 
   return (
     <div data-testid="about-page" className="page-floral">
@@ -41,7 +45,8 @@ export default function UeberUns() {
 
           <Reveal delay={120} className="aligned-media">
             <Photo
-              name={portrait.name}
+              name={portrait.photoKey}
+              src={portrait.src}
               alt={portrait.alt}
               className="about-portrait"
               priority
@@ -99,12 +104,14 @@ export default function UeberUns() {
         <Reveal>
           <div className="about-impressions">
             <Photo
-              name="garten-streich-arbeitskleidung"
-              alt="Mitarbeiterin in grüner Arbeitskleidung mit dem Firmennamen Streich"
+              name={impression1.photoKey}
+              src={impression1.src}
+              alt={impression1.alt}
             />
             <Photo
-              name="gartenarbeit-streich"
-              alt="Ein Mitarbeiter mit Helm, Gehörschutz und Motorsense im Garten"
+              name={impression2.photoKey}
+              src={impression2.src}
+              alt={impression2.alt}
             />
           </div>
         </Reveal>

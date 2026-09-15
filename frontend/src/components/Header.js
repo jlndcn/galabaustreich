@@ -90,6 +90,7 @@ export const Header = () => {
             className={`w-auto transition-[height] ${
               scrolled ? "h-10 sm:h-14 lg:h-16" : "h-10 sm:h-16 lg:h-[88px]"
             }`}
+            priority={false}
           />
 
           {/* Desktop navigation */}

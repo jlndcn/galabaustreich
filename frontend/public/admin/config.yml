@@ -1,0 +1,370 @@
+# Decap CMS (Headless, git-basiert) – Inhalte liegen als JSON im Repo.
+# Admin: https://www.garten-streich.de/admin/
+# Auth: E-Mail/Passwort (kein GitHub-Konto für die Redaktion).
+# Speichern: serverseitig über Git Gateway + Agentur-GitHub-Token.
+
+backend:
+  name: git-gateway
+  branch: main
+  # Eigenes Gateway (Passwort-Auth); Pfade unter /api/cms/…
+  gateway_url: /api/cms/git/github
+  commit_messages:
+    create: "cms: {{collection}} „{{slug}}“ angelegt"
+    update: "cms: {{collection}} „{{slug}}“ aktualisiert"
+    delete: "cms: {{collection}} „{{slug}}“ gelöscht"
+    uploadMedia: "cms: Medium „{{path}}“ hochgeladen"
+    deleteMedia: "cms: Medium „{{path}}“ gelöscht"
+
+# Lokal testen: `npx decap-server` und local_backend aktivieren.
+# local_backend: true
+
+media_folder: frontend/public/images
+public_folder: /images
+
+locale: de
+
+collections:
+  - name: site
+    label: Firmendaten
+    files:
+      - name: site
+        label: Firma & Kontakt
+        file: frontend/src/content/site.json
+        fields:
+          - { name: displayName, label: Anzeigename, widget: string }
+          - { name: legalName, label: Rechtlicher Name, widget: string }
+          - { name: brand, label: Markenname, widget: string }
+          - { name: owner, label: Inhaberin, widget: string }
+          - { name: legalForm, label: Rechtsform, widget: string }
+          - { name: industry, label: Branche, widget: string }
+          - { name: vatId, label: USt-IdNr., widget: string }
+          - { name: brandMessage, label: Markenbotschaft, widget: string }
+          - name: address
+            label: Anschrift
+            widget: object
+            fields:
+              - { name: street, label: Straße, widget: string }
+              - { name: zip, label: PLZ, widget: string }
+              - { name: city, label: Ort, widget: string }
+              - { name: country, label: Land, widget: string }
+              - { name: countryCode, label: Ländercode, widget: string }
+          - name: phone
+            label: Telefon
+            widget: object
+            fields:
+              - { name: display, label: Anzeige, widget: string }
+              - { name: href, label: tel-Link, widget: string }
+              - { name: intl, label: International, widget: string }
+          - { name: email, label: E-Mail, widget: string }
+          - { name: whatsapp, label: WhatsApp-Link, widget: string }
+          - name: google
+            label: Google
+            widget: object
+            fields:
+              - { name: profileUrl, label: Profil-URL, widget: string, required: false }
+              - { name: mapsUrl, label: Maps-URL (optional), widget: string, required: false }
+              - { name: rating, label: Bewertung, widget: number, value_type: float, required: false }
+              - { name: reviewCount, label: Anzahl Bewertungen, widget: number, value_type: int, required: false }
+              - { name: ratingUpdated, label: Stand, widget: string, required: false }
+          - name: madeBy
+            label: Made by
+            widget: object
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: url, label: URL, widget: string }
+          - name: areaServed
+            label: Einsatzgebiet
+            widget: list
+            allow_add: true
+          - { name: domain, label: Canonical-Domain, widget: string }
+          - { name: contactPrompt, label: Kontakt-Hinweistext, widget: text }
+          - { name: contactCtaBody, label: Kontakt-CTA Fließtext, widget: text, required: false }
+          - { name: contactCtaAsideTitle, label: Kontakt-CTA Seitenüberschrift, widget: string, required: false }
+
+  - name: services
+    label: Leistungen
+    files:
+      - name: services
+        label: Leistungskatalog
+        file: frontend/src/content/services.json
+        fields:
+          - name: furtherServices
+            label: Weitere Leistungen (Namen)
+            widget: list
+            allow_add: true
+          - name: services
+            label: Leistungen
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID (URL-Anker), widget: string }
+              - { name: title, label: Titel, widget: string }
+              - { name: claim, label: Claim, widget: string }
+              - { name: teaser, label: Teaser, widget: text }
+              - name: description
+                label: Beschreibung (Absätze)
+                widget: list
+                allow_add: true
+              - name: list
+                label: Aufzählung (optional)
+                widget: list
+                required: false
+                allow_add: true
+              - { name: key, label: Key-Leistung (Startseite), widget: boolean, default: false }
+              - { name: highlight, label: Highlight, widget: boolean, default: false }
+              - { name: intent, label: Intent (optional), widget: string, required: false }
+
+  - name: pages
+    label: Seiten
+    files:
+      - name: about
+        label: Über uns
+        file: frontend/src/content/about.json
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - name: intro
+            label: Einleitung (Absätze)
+            widget: list
+            allow_add: true
+          - { name: valuesHeading, label: Werte-Überschrift, widget: string }
+          - name: values
+            label: Werte
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text }
+      - name: team
+        label: Team
+        file: frontend/src/content/team.json
+        fields:
+          - { name: hero, label: Hero-Text, widget: text }
+          - name: background
+            label: Fachlicher Hintergrund
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: caption, label: Bildunterschrift, widget: string }
+
+  - name: seasons
+    label: Saisonhinweise
+    files:
+      - name: seasons
+        label: Monatliche Hinweise
+        file: frontend/src/content/seasons.json
+        fields:
+          - name: months
+            label: Monate
+            widget: list
+            summary: "Monat {{fields.month}}: {{fields.note}}"
+            fields:
+              - { name: month, label: Monat (1–12), widget: number, value_type: int, min: 1, max: 12 }
+              - name: ids
+                label: Service-IDs (Reihenfolge = Relevanz)
+                widget: list
+                allow_add: true
+              - { name: note, label: Hinweis, widget: text }
+
+  - name: seo
+    label: SEO
+    files:
+      - name: seo
+        label: Seitentitel & Meta
+        file: frontend/src/content/seo.json
+        fields:
+          - name: home
+            label: Startseite
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: leistungen
+            label: Leistungen
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: ueberUns
+            label: Über uns
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: team
+            label: Team
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: impressum
+            label: Impressum
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: datenschutz
+            label: Datenschutz
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+          - name: agb
+            label: AGB
+            widget: object
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+              - { name: path, label: Pfad, widget: string }
+
+  - name: home
+    label: Startseite
+    files:
+      - name: home
+        label: Startseiten-Texte
+        file: frontend/src/content/home.json
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+              - { name: intro, label: Einleitung, widget: text }
+              - { name: primaryCta, label: Primärer Button, widget: string }
+              - { name: formTitle, label: Formular-Titel, widget: string }
+              - { name: formIntro, label: Formular-Intro, widget: text }
+              - { name: backLabel, label: Zurück-Label, widget: string }
+          - name: keyServices
+            label: Wichtige Leistungen
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: intro, label: Intro, widget: text }
+          - name: midCta
+            label: Mittel-CTA
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: formCta, label: Formular-Button, widget: string }
+              - { name: callCta, label: Anruf-Button, widget: string }
+          - name: moreServices
+            label: Weitere Leistungen
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+          - name: region
+            label: Region
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: intro, label: Intro, widget: text }
+              - { name: linkLabel, label: Link-Text, widget: string }
+          - name: contact
+            label: Kontaktbereich
+            widget: object
+            fields:
+              - { name: title, label: Titel, widget: string }
+              - { name: introSuffix, label: Intro (nach Kontaktprompt), widget: text }
+              - { name: areaLine, label: Einsatzgebiet-Zeile, widget: string }
+
+  - name: media_slots
+    label: Bilder
+    files:
+      - name: slots
+        label: Bild-Slots (austauschbar)
+        file: frontend/src/content/media-slots.json
+        fields:
+          - name: slots
+            label: Slots
+            widget: list
+            summary: "{{fields.label}} ({{fields.id}})"
+            fields:
+              - { name: id, label: Slot-ID, widget: string }
+              - { name: label, label: Bezeichnung, widget: string }
+              - { name: photoKey, label: Katalog-Key (Fallback), widget: string, required: false }
+              - { name: useMobileVariant, label: Mobile-Variante nutzen, widget: boolean, default: false }
+              - { name: image, label: Ersatzbild (Upload), widget: image, required: false }
+              - { name: alt, label: Alt-Text, widget: string }
+
+  - name: legal
+    label: Rechtstexte
+    files:
+      - name: impressum
+        label: Impressum
+        file: frontend/src/content/legal/impressum.json
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: stand, label: Stand, widget: string, required: false }
+          - name: sections
+            label: Abschnitte
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: title, label: Überschrift, widget: string }
+              - { name: anchor, label: Anker (optional), widget: string, required: false }
+              - { name: body, label: Text (Markdown), widget: markdown }
+      - name: datenschutz
+        label: Datenschutzerklärung
+        file: frontend/src/content/legal/datenschutz.json
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: stand, label: Stand, widget: string, required: false }
+          - name: sections
+            label: Abschnitte
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: title, label: Überschrift, widget: string }
+              - { name: anchor, label: Anker (optional), widget: string, required: false }
+              - { name: body, label: Text (Markdown), widget: markdown }
+      - name: agb
+        label: AGB
+        file: frontend/src/content/legal/agb.json
+        fields:
+          - { name: title, label: Titel, widget: string }
+          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: stand, label: Stand, widget: string, required: false }
+          - name: sections
+            label: Abschnitte
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID, widget: string }
+              - { name: title, label: Überschrift, widget: string }
+              - { name: anchor, label: Anker (optional), widget: string, required: false }
+              - { name: body, label: Text (Markdown), widget: markdown }
+      - name: terms
+        label: AGB-Parameter
+        file: frontend/src/content/legal/terms.json
+        fields:
+          - { name: paymentDays, label: Zahlungsziel (Tage), widget: number, value_type: int }
+          - { name: noticePeriod, label: Kündigungsfrist, widget: string }
+          - { name: cancellationLeadDays, label: Absage-Frist (Werktage), widget: number, value_type: int }
+          - { name: estimateDeviationPercent, label: Kostenvoranschlag-Abweichung (%), widget: number, value_type: int }
+
+  - name: media_meta
+    label: Bildtexte Leistungen
+    files:
+      - name: service_images
+        label: Leistungsbilder (Alt-Texte / Keys)
+        file: frontend/src/content/service-images.json
+        fields:
+          - name: items
+            label: Zuordnungen
+            widget: list
+            summary: "{{fields.id}} → {{fields.name}}"
+            fields:
+              - { name: id, label: Service-ID, widget: string }
+              - { name: name, label: Foto-Key, widget: string }
+              - { name: alt, label: Alt-Text, widget: string }

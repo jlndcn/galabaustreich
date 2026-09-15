@@ -59,9 +59,8 @@ export function Seo({ title, description, path = "/", jsonLd = null, noIndex = f
     if (description) metaName("description", description);
 
     const host = typeof window !== "undefined" ? window.location.hostname : "";
-    const indexable =
-      !noIndex &&
-      (host === PRODUCTION_HOST || host === "www." + PRODUCTION_HOST);
+    // Nur die produktive www-Domain indexieren (pages.dev, Apex ohne www, Previews → noindex).
+    const indexable = !noIndex && host === PRODUCTION_HOST;
     metaName("robots", indexable ? "index,follow" : "noindex,nofollow");
 
     linkRel("canonical", url);

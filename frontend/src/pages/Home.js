@@ -11,6 +11,8 @@ import { SeasonHint } from "@/components/SeasonHint";
 import { seoPages, buildLocalBusinessJsonLd } from "@/data/seo";
 import { services, keyServices } from "@/data/services";
 import { site, contactPrompt, googleLink } from "@/data/site";
+import { homeContent } from "@/data/home";
+import { getMediaSlot } from "@/data/media";
 
 export default function Home() {
   const location = useLocation();
@@ -19,6 +21,10 @@ export default function Home() {
     const service = services.find((item) => item.id === id);
     return service ? `Anfrage zu: ${service.title}\n\n` : "";
   }, [location.search]);
+
+  const detail = getMediaSlot("home-detail");
+  const region = getMediaSlot("home-region");
+  const copy = homeContent;
 
   return (
     <>
@@ -30,12 +36,8 @@ export default function Home() {
           data-testid="home-key-services-section"
         >
           <Reveal>
-            <h2>Unsere wichtigsten Leistungen</h2>
-            <p className="section-intro">
-              Von der regelmäßigen Pflege bis zur Neugestaltung: Wir begleiten
-              Gärten, Grünflächen und Grundstücke in Lübeck und Ostholstein
-              durch das ganze Gartenjahr.
-            </p>
+            <h2>{copy.keyServices.title}</h2>
+            <p className="section-intro">{copy.keyServices.intro}</p>
           </Reveal>
           <div className="key-service-list">
             {keyServices.map((service) => (
@@ -48,13 +50,8 @@ export default function Home() {
         <section className="home-mid-cta" data-testid="home-mid-cta">
           <Reveal className="section-shell home-mid-cta-inner">
             <div>
-              <p className="text-xl font-semibold">
-                Nicht sicher, was Ihr Garten gerade braucht?
-              </p>
-              <p className="mt-2 text-white/80">
-                Wir schauen uns Ihre Fläche an und beraten Sie persönlich –
-                unverbindlich.
-              </p>
+              <p className="text-xl font-semibold">{copy.midCta.title}</p>
+              <p className="mt-2 text-white/80">{copy.midCta.text}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -62,7 +59,7 @@ export default function Home() {
                 className="hero-primary"
                 data-testid="home-mid-cta-form"
               >
-                Anfrage senden{" "}
+                {copy.midCta.formCta}{" "}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <a
@@ -71,7 +68,7 @@ export default function Home() {
                 data-testid="home-mid-cta-call"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
-                Anrufen
+                {copy.midCta.callCta}
               </a>
             </div>
           </Reveal>
@@ -79,15 +76,14 @@ export default function Home() {
 
         <section className="section-shell more-home-services">
           <Reveal>
-            <h2>
-              Gartenpflege und Grundstückspflege in Lübeck und Ostholstein
-            </h2>
+            <h2>{copy.moreServices.title}</h2>
           </Reveal>
           <div className="home-services-split aligned-split">
             <Reveal className="aligned-media">
               <Photo
-                name="rosenpflege-detail-streich"
-                alt="Hände mit Gartenschere bei der Pflege eines Rosenstrauchs"
+                name={detail.photoKey}
+                src={detail.src}
+                alt={detail.alt}
                 className="home-detail-photo"
                 sizes="(max-width: 767px) 100vw, 33vw"
               />
@@ -105,26 +101,22 @@ export default function Home() {
         <section className="section-shell home-region">
           <div className="region-split aligned-split">
             <Reveal className="aligned-copy">
-              <h2>Mit Wurzeln in der Region</h2>
-              <p className="section-intro">
-                Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck
-                und Ostholstein für Sie im Einsatz – persönlich, zuverlässig und
-                mit einem Blick für das Schöne. Von der ersten Pflanze bis zum
-                gewachsenen Garten.
-              </p>
+              <h2>{copy.region.title}</h2>
+              <p className="section-intro">{copy.region.intro}</p>
               <Link
                 to="/ueber-uns"
                 data-testid="home-about-link"
                 className="text-link mt-6"
               >
-                Mehr über Streich{" "}
+                {copy.region.linkLabel}{" "}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Reveal>
             <Reveal className="aligned-media">
               <Photo
-                name="gartenbrunnen-streich"
-                alt="Wasserspiel in einem begrünten Garten"
+                name={region.photoKey}
+                src={region.src}
+                alt={region.alt}
                 className="home-region-photo"
               />
             </Reveal>
@@ -138,10 +130,9 @@ export default function Home() {
           className="home-contact"
         >
           <div className="section-shell">
-            <h2 id="home-contact-title">Kontakt – so erreichen Sie uns</h2>
+            <h2 id="home-contact-title">{copy.contact.title}</h2>
             <p className="section-intro">
-              {contactPrompt} Wählen Sie den Weg, der Ihnen am liebsten ist –
-              wir melden uns persönlich bei Ihnen.
+              {contactPrompt} {copy.contact.introSuffix}
             </p>
             <div className="contact-grid">
               <div className="contact-information">
@@ -160,7 +151,7 @@ export default function Home() {
                       {site.legalName} · {site.address.street},{" "}
                       {site.address.zip} {site.address.city}
                       <br />
-                      Im Einsatz in Lübeck, Scharbeutz und ganz Ostholstein
+                      {copy.contact.areaLine}
                     </span>
                   </a>
                 </address>

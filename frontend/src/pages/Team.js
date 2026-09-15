@@ -7,9 +7,12 @@ import { ContactCTA } from "@/components/ContactCTA";
 import { CrayonTulips } from "@/components/CrayonTulips";
 import { seoPages } from "@/data/seo";
 import { teamContent } from "@/data/pages";
+import { getMediaSlot } from "@/data/media";
 
 export default function Team() {
   const { hero, background } = teamContent;
+  const heroMedia = getMediaSlot("team-hero");
+  const backgroundMedia = getMediaSlot("team-background");
 
   return (
     <div data-testid="team-page">
@@ -24,8 +27,9 @@ export default function Team() {
           Unser Team
         </h1>
         <Photo
-          name="team-streich"
-          alt="Das Team von Streich gemeinsam im Garten mit Gartengeräten"
+          name={heroMedia.photoKey}
+          src={heroMedia.src}
+          alt={heroMedia.alt}
           className="team-hero-photo"
           sizes="100vw"
           priority
@@ -61,8 +65,9 @@ export default function Team() {
           </Reveal>
           <Reveal className="aligned-media">
             <Photo
-              name={background.photo.name}
-              alt={background.photo.alt}
+              name={backgroundMedia.photoKey}
+              src={backgroundMedia.src}
+              alt={backgroundMedia.alt}
               sizes="(max-width: 767px) 100vw, 45vw"
             />
           </Reveal>

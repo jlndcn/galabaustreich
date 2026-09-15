@@ -1,0 +1,13 @@
+# Cloudflare Pages – Projektwurzel ist `frontend/` (Root Directory in Pages).
+# Build: yarn build → Output: build
+#
+# Secrets ausschließlich in Cloudflare Pages → Settings → Environment variables:
+#   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, CONTACT_TO
+#   CMS_EMAIL, CMS_PASSWORD, CMS_JWT_SECRET, GITHUB_TOKEN, GITHUB_REPO
+#
+# CMS: Redaktion loggt mit E-Mail/Passwort ein (kein GitHub-Konto).
+# Commits laufen serverseitig über Git Gateway + GITHUB_TOKEN.
+
+name = "galabaustreich"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "build"

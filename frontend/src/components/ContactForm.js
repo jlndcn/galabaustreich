@@ -8,8 +8,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/components/ui/sonner";
 import { site } from "@/data/site";
 
-// Same-origin "/api" by default (Netlify Function via redirect); an explicit backend URL
-// (preview environment) is used when REACT_APP_BACKEND_URL is set. Never talks SMTP itself.
+// Same-origin "/api" by default (Cloudflare Pages Function).
+// Optional REACT_APP_BACKEND_URL for preview backends. Never talks SMTP itself.
 const backendBase = (process.env.REACT_APP_BACKEND_URL || "").replace(
   /\/$/,
   "",

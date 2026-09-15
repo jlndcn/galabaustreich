@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": "garten-gruenflaechenpflege",
+      "name": "gartenpflege",
+      "alt": "Gartenarbeiter mit Rechen an einer Staudenrabatte neben einer Rasenfläche"
+    },
+    {
+      "id": "hecken-gehoelzpflege",
+      "name": "heckenpflege",
+      "alt": "Mitarbeiter mit Schutzausrüstung beim Schneiden einer Hecke"
+    },
+    {
+      "id": "baumfaellungen",
+      "name": "baumfaellungen",
+      "alt": "Forstarbeiter mit Schutzausrüstung und Motorsäge beim Fällschnitt am Baumstamm"
+    },
+    {
+      "id": "rasenpflege",
+      "name": "rasenpflege",
+      "alt": "Gartenarbeiter mit Rasenmäher auf einer von Beeten eingefassten Rasenfläche"
+    },
+    {
+      "id": "beet-staudenpflege",
+      "name": "beetpflege",
+      "alt": "Hände mit Gartenschere bei der Pflege blühender Stauden"
+    },
+    {
+      "id": "neupflanzungen",
+      "name": "neupflanzungen",
+      "alt": "Ein Strauch mit Wurzelballen wird in ein vorbereitetes Pflanzloch gesetzt"
+    },
+    {
+      "id": "gartenumgestaltung",
+      "name": "gartenumgestaltung",
+      "alt": "Gartenfläche mit neu angelegter Beetkante, Schubkarre und Pflanzgefäßen"
+    },
+    {
+      "id": "saisonale-gartenarbeiten",
+      "name": "saisonale-gartenarbeiten",
+      "alt": "Gartenarbeiter beim Zusammenrechen von Herbstlaub"
+    },
+    {
+      "id": "objekt-grundstueckspflege",
+      "name": "grundstueckspflege",
+      "alt": "Pflege eines Weges in der Grünanlage vor einem Backsteingebäude"
+    },
+    {
+      "id": "winterdienst",
+      "name": "winterdienst",
+      "alt": "Ein verschneiter Gehweg wird mit einer Schneeschaufel geräumt"
+    }
+  ]
+}

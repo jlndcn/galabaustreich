@@ -2,25 +2,43 @@ import photos from "@/data/photos.json";
 import { useState } from "react";
 
 // Variants are prepared offline; only the required size is downloaded.
+// `src` allows CMS-uploaded single images (Decap media) without the photo catalog.
 export function Photo({
   name,
+  src = null,
   alt = "",
   className = "",
   sizes = "(max-width: 700px) 100vw, 50vw",
   priority = false,
   mobile = false,
 }) {
-  const photo = photos[name];
-  const mobilePhoto = mobile ? photos[`${name}-mobil`] : null;
+  const photo = name ? photos[name] : null;
+  const mobilePhoto = name && mobile ? photos[`${name}-mobil`] : null;
   const [failed, setFailed] = useState(false);
+  const uploaded = (src || "").trim();
 
-  if (!photo || failed) {
+  if (failed || (!photo && !uploaded)) {
     return (
       <div
         className={`photo photo-fallback ${className}`}
         role="img"
         aria-label={alt || "Bildplatzhalter"}
       />
+    );
+  }
+
+  if (uploaded) {
+    return (
+      <picture className={`photo ${className}`}>
+        <img
+          src={uploaded}
+          alt={alt}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding={priority ? "sync" : "async"}
+          onError={() => setFailed(true)}
+        />
+      </picture>
     );
   }
 
@@ -49,7 +67,7 @@ export function Photo({
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
-        decoding="async"
+        decoding={priority ? "sync" : "async"}
         onError={() => setFailed(true)}
       />
     </picture>

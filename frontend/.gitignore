@@ -11,6 +11,12 @@
 # production
 /build
 
+# Cloudflare Pages / Wrangler local state
+.wrangler/
+.dev.vars
+.dev.vars.*
+
+
 # misc
 .DS_Store
 .env.local

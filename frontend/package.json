@@ -10,14 +10,15 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "lucide-react": "0.516.0",
-    "nodemailer": "^10.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-markdown": "9.0.3",
     "react-router-dom": "7.15.0",
     "react-scripts": "5.0.1",
     "sonner": "2.0.3",
     "tailwind-merge": "3.2.0",
-    "tailwindcss-animate": "1.0.7"
+    "tailwindcss-animate": "1.0.7",
+    "worker-mailer": "1.2.1"
   },
   "scripts": {
     "start": "craco start",

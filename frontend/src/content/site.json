@@ -1,0 +1,40 @@
+{
+  "displayName": "Garten- und Landschaftspflege Streich",
+  "legalName": "Garten-und Landschaftspflege B.Streich",
+  "brand": "Streich",
+  "owner": "Bianca Streich",
+  "legalForm": "Einzelunternehmen",
+  "industry": "Garten- & Landschaftspflege",
+  "vatId": "DE415720615",
+  "brandMessage": "Garten- und Landschaftspflege in und um Lübeck",
+  "address": {
+    "street": "Dorfstraße 12",
+    "zip": "23684",
+    "city": "Scharbeutz",
+    "country": "Deutschland",
+    "countryCode": "DE"
+  },
+  "phone": {
+    "display": "0177 3216077",
+    "href": "tel:01773216077",
+    "intl": "+491773216077"
+  },
+  "email": "info@garten-streich.de",
+  "whatsapp": "https://wa.me/491773216077",
+  "google": {
+    "profileUrl": "https://www.google.com/search?q=Garten-und+Landschaftspflege+B.Streich&stick=H4sIAAAAAAAA_-NgU1I1qDAxTzIyNzY1TEpKMTO2NDO1MqiwNEhMS0w2SzFOTTIxM0hKXsSq5p5YVJKap1ual6Lgk5iXUpyckZhWUlyQlpOanqrgpBdcUpSamZwBAFc9O-lSAAAA&hl=de&mat=CSolaoINfiISElYBa0lj_zsf8XbgU8aUIdYWT7QOKirBVd9II722658dIVku9qXJQZHN4GDbyZR5wUyujz2nKgD9xFxGD0_ih245Ea8b1QdfXjoONVYqXROmS7m3txRCEg",
+    "mapsUrl": "",
+    "rating": 5,
+    "reviewCount": 6,
+    "ratingUpdated": "September 2026"
+  },
+  "madeBy": {
+    "label": "diaconuit.de",
+    "url": "https://diaconuit.de"
+  },
+  "areaServed": ["Lübeck", "Ostholstein"],
+  "domain": "https://www.garten-streich.de",
+  "contactPrompt": "Sie möchten Unterstützung bei der Pflege Ihres Gartens oder Grundstücks?",
+  "contactCtaBody": "Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail – oder nutzen Sie unser kurzes Anfrageformular. Wir melden uns persönlich bei Ihnen.",
+  "contactCtaAsideTitle": "Direkt erreichbar"
+}

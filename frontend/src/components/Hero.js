@@ -5,6 +5,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { Photo } from "@/components/Photo";
 import { GoogleRating } from "@/components/GoogleRating";
 import { site } from "@/data/site";
+import { homeContent } from "@/data/home";
+import { getMediaSlot } from "@/data/media";
 import { useEffect, useRef } from "react";
 
 export function Hero({ initialMessage = "" }) {
@@ -15,9 +17,10 @@ export function Hero({ initialMessage = "" }) {
   const navigate = useNavigate();
   const formOpen = ["#kontakt", "#anfrage"].includes(location.hash);
   const wasOpen = useRef(false);
+  const copy = homeContent.hero;
+  const media = getMediaSlot("home-hero");
 
   useEffect(() => {
-    // Keep both views mounted so drafts, validation and submission state survive.
     const frame = requestAnimationFrame(() => {
       if (formOpen) formTitle.current?.focus({ preventScroll: true });
       else if (wasOpen.current) trigger.current?.focus({ preventScroll: true });
@@ -28,6 +31,7 @@ export function Hero({ initialMessage = "" }) {
 
   const closeForm = () =>
     navigate({ pathname: "/", search: location.search }, { replace: true });
+
   useEffect(() => {
     const hero = ref.current;
     if (!hero) return;
@@ -72,6 +76,7 @@ export function Hero({ initialMessage = "" }) {
       preference.removeEventListener("change", schedule);
     };
   }, []);
+
   return (
     <section
       ref={ref}
@@ -83,12 +88,13 @@ export function Hero({ initialMessage = "" }) {
       }}
     >
       <Photo
-        name="gartenpflege-team-streich"
-        alt="Das Team bei der gemeinsamen Gartenpflege"
+        name={media.photoKey}
+        src={media.src}
+        alt={media.alt}
         className="hero-photo"
         sizes="100vw"
         priority
-        mobile
+        mobile={media.useMobileVariant}
       />
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-content mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -97,15 +103,8 @@ export function Hero({ initialMessage = "" }) {
           inert={formOpen}
           aria-hidden={formOpen || undefined}
         >
-          <h1 id="home-title">
-            Garten- und Landschaftspflege in und um Lübeck
-          </h1>
-          <p className="hero-intro">
-            Von der ersten Pflanze bis zum gewachsenen Garten. Von der
-            regelmäßigen Pflege bis zur Neugestaltung. Streich steht für Garten-
-            und Landschaftspflege mit Wurzeln in der Region – persönlich,
-            zuverlässig und mit einem Blick für das Schöne.
-          </p>
+          <h1 id="home-title">{copy.title}</h1>
+          <p className="hero-intro">{copy.intro}</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               ref={trigger}
@@ -115,7 +114,7 @@ export function Hero({ initialMessage = "" }) {
               aria-controls="anfrage"
               aria-expanded={formOpen}
             >
-              Anfrage senden{" "}
+              {copy.primaryCta}{" "}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <a
@@ -143,14 +142,12 @@ export function Hero({ initialMessage = "" }) {
             onClick={closeForm}
             data-testid="hero-form-back"
           >
-            <ArrowLeft size={16} aria-hidden="true" /> Zurück
+            <ArrowLeft size={16} aria-hidden="true" /> {copy.backLabel}
           </button>
           <h2 id="hero-form-title" ref={formTitle} tabIndex={-1}>
-            Anfrage senden
+            {copy.formTitle}
           </h2>
-          <p className="hero-form-intro">
-            Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.
-          </p>
+          <p className="hero-form-intro">{copy.formIntro}</p>
           <ContactForm
             prefix="home-contact-form"
             initialMessage={initialMessage}

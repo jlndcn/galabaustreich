@@ -19,9 +19,48 @@
             type="font/woff2"
             crossorigin
         />
-        <link rel="stylesheet" href="%PUBLIC_URL%/fonts.css" />
+        <!-- LCP: Hero-Foto vor React-Hydration anfordern (Startseite). -->
+        <link
+            rel="preload"
+            as="image"
+            type="image/webp"
+            media="(max-width: 767px)"
+            href="%PUBLIC_URL%/images/gartenpflege-team-streich-mobil-76e4997b-640.webp"
+            imagesrcset="%PUBLIC_URL%/images/gartenpflege-team-streich-mobil-76e4997b-480.webp 480w, %PUBLIC_URL%/images/gartenpflege-team-streich-mobil-76e4997b-640.webp 640w"
+            imagesizes="100vw"
+            fetchpriority="high"
+        />
+        <link
+            rel="preload"
+            as="image"
+            type="image/webp"
+            media="(min-width: 768px)"
+            href="%PUBLIC_URL%/images/gartenpflege-team-streich-d9ba21ca-1200.webp"
+            imagesrcset="%PUBLIC_URL%/images/gartenpflege-team-streich-d9ba21ca-480.webp 480w, %PUBLIC_URL%/images/gartenpflege-team-streich-d9ba21ca-800.webp 800w, %PUBLIC_URL%/images/gartenpflege-team-streich-d9ba21ca-1200.webp 1200w, %PUBLIC_URL%/images/gartenpflege-team-streich-d9ba21ca-1536.webp 1536w"
+            imagesizes="100vw"
+            fetchpriority="high"
+        />
+        <!-- Fonts inline: spart einen render-blocking Roundtrip (font-display: swap). -->
+        <style>
+            @font-face {
+                font-family: "Figtree";
+                font-style: normal;
+                font-weight: 300 900;
+                font-display: swap;
+                src: url("%PUBLIC_URL%/fonts/figtree-variable.woff2") format("woff2");
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            @font-face {
+                font-family: "Figtree";
+                font-style: normal;
+                font-weight: 300 900;
+                font-display: swap;
+                src: url("%PUBLIC_URL%/fonts/figtree-variable-latin-ext.woff2") format("woff2");
+                unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+        </style>
         <title>Garten- &amp; Landschaftspflege Lübeck | Streich</title>
-        <!-- Tracking-frei: keine Analyse-, Tracking- oder Marketing-Skripte. -->
+        <!-- Tracking-frei: keine Analyse-/Marketing-Skripte. -->
     </head>
     <body>
         <noscript>Bitte aktivieren Sie JavaScript, um diese Website vollständig zu nutzen.</noscript>

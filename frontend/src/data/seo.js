@@ -1,50 +1,8 @@
-// Per-page SEO metadata, centrally defined.
+// Per-page SEO metadata – editable via Decap CMS (src/content/seo.json).
+import seoContent from "@/content/seo.json";
 import { site, googleLink } from "@/data/site";
 
-export const seoPages = {
-  home: {
-    title: "Garten- & Landschaftspflege Lübeck | Streich",
-    description:
-      "Garten- und Landschaftspflege Streich für Lübeck und Ostholstein: Gartenpflege, Heckenpflege, Rasenpflege, Baumfällungen und weitere Arbeiten rund um Garten und Grundstück. Jetzt anfragen.",
-    path: "/",
-  },
-  leistungen: {
-    title: "Gartenpflege, Baumfällung & Heckenpflege | Streich",
-    description:
-      "Unsere Leistungen rund um Garten und Grünflächen in Lübeck und Ostholstein: Garten- & Grünflächenpflege, Hecken- & Gehölzpflege, Baumfällungen, Rasenpflege, Winterdienst und mehr.",
-    path: "/leistungen",
-  },
-  ueberUns: {
-    title: "Garten- und Landschaftspflege Streich | Über uns",
-    description:
-      "Streich – regionales Einzelunternehmen für Garten- und Landschaftspflege aus Scharbeutz, tätig in Lübeck und Ostholstein. Persönlich, zuverlässig und mit einem Blick für das Schöne.",
-    path: "/ueber-uns",
-  },
-  team: {
-    title: "Unser Team | Garten- und Landschaftspflege Streich",
-    description:
-      "Unser Team steht für familiäre, sorgfältige Garten- und Landschaftspflege in und um Lübeck – mit fundiertem gärtnerischem und forstlichem Hintergrund.",
-    path: "/team",
-  },
-  impressum: {
-    title: "Impressum | Garten- und Landschaftspflege Streich",
-    description:
-      "Impressum der Garten-und Landschaftspflege B.Streich, Scharbeutz.",
-    path: "/impressum",
-  },
-  datenschutz: {
-    title: "Datenschutzerklärung | Garten- und Landschaftspflege Streich",
-    description:
-      "Datenschutzerklärung der Garten-und Landschaftspflege B.Streich: Informationen zur Verarbeitung personenbezogener Daten auf dieser Website.",
-    path: "/datenschutz",
-  },
-  agb: {
-    title: "AGB | Garten- und Landschaftspflege Streich",
-    description:
-      "Allgemeine Geschäftsbedingungen der Garten-und Landschaftspflege B.Streich für Garten- und Landschaftspflegeleistungen.",
-    path: "/agb",
-  },
-};
+export const seoPages = seoContent;
 
 // JSON-LD LocalBusiness structured data (no opening hours, ratings, socials, prices – none invented).
 export function buildLocalBusinessJsonLd() {
@@ -96,7 +54,6 @@ export function buildLocalBusinessJsonLd() {
       areaServed: "DE",
     },
   };
-  // Only reference the Google Business Profile once its real URL is configured.
   if (site.google.profileUrl) {
     data.sameAs = [site.google.profileUrl];
   }

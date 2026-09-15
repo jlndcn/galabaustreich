@@ -1,11 +1,14 @@
-// Netlify Function: serverseitiger Kontaktformular-Versand ueber den STRATO-SMTP-Server.
-// Erreichbar unter /api/contact (Redirect in netlify.toml) bzw. /.netlify/functions/contact.
-//
-// Konfiguration ausschliesslich ueber Environment Variables (in Netlify hinterlegt):
-//   SMTP_HOST, SMTP_PORT (465 = SSL/TLS), SMTP_USER, SMTP_PASSWORD, CONTACT_TO
-// Es werden keine Secrets im Code gespeichert und keine internen Details an den Browser gegeben.
+/**
+ * Cloudflare Pages Function: POST /api/contact
+ * Path: frontend/functions/api/contact.js → /api/contact
+ *
+ * SMTP über worker-mailer (cloudflare:sockets). Nodemailer ist in der
+ * Workers-/Pages-Runtime nicht zuverlässig (Node net/tls).
+ *
+ * Env (context.env): SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, CONTACT_TO
+ */
 
-import nodemailer from "nodemailer";
+import { WorkerMailer } from "worker-mailer";
 
 const LIMITS = {
   name: 120,
@@ -21,13 +24,17 @@ const COMPANY_LEGAL = "Garten-und Landschaftspflege B.Streich";
 const COMPANY_PHONE = "0177 3216077";
 const COMPANY_ADDRESS = "Dorfstraße 12, 23684 Scharbeutz";
 
-const json = (status, body) =>
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const PHONE_RE = /^[+0-9][0-9\s()/.-]{4,}$/;
+
+const json = (status, body, extraHeaders = {}) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
       "X-Content-Type-Options": "nosniff",
+      ...extraHeaders,
     },
   });
 
@@ -37,11 +44,7 @@ const clean = (value, max) => {
   return s.length > max ? s.slice(0, max) : s;
 };
 
-// Header-Injection verhindern: keine Zeilenumbrueche in Header-Werten.
 const headerSafe = (s) => s.replace(/[\r\n]+/g, " ").trim();
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE_RE = /^[+0-9][0-9\s()/.-]{4,}$/;
 
 const escapeHtml = (s) =>
   s
@@ -78,7 +81,10 @@ function validate(input) {
     return { error: "Bitte geben Sie eine gültige Telefonnummer an." };
   }
   if (data.message.length < 10) {
-    return { error: "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen)." };
+    return {
+      error:
+        "Bitte beschreiben Sie kurz Ihr Anliegen (mindestens 10 Zeichen).",
+    };
   }
   if (!data.consent) {
     return { error: "Bitte bestätigen Sie den Hinweis zum Datenschutz." };
@@ -86,27 +92,14 @@ function validate(input) {
   return { data };
 }
 
-function smtpConfig() {
-  const host = (process.env.SMTP_HOST || "").trim();
-  const port = Number.parseInt(process.env.SMTP_PORT || "465", 10) || 465;
-  const user = (process.env.SMTP_USER || "").trim();
-  const pass = process.env.SMTP_PASSWORD || "";
-  const to = (process.env.CONTACT_TO || user).trim();
+function smtpConfig(env) {
+  const host = String(env.SMTP_HOST || "").trim();
+  const port = Number.parseInt(String(env.SMTP_PORT || "465"), 10) || 465;
+  const user = String(env.SMTP_USER || "").trim();
+  const pass = String(env.SMTP_PASSWORD || "");
+  const to = String(env.CONTACT_TO || user).trim();
   const configured = Boolean(host && user && pass && to);
   return { host, port, user, pass, to, configured };
-}
-
-function createTransport(cfg) {
-  return nodemailer.createTransport({
-    host: cfg.host,
-    port: cfg.port,
-    secure: cfg.port === 465, // SSL/TLS ab Verbindungsaufbau (STRATO: 465)
-    requireTLS: cfg.port !== 465, // sonst STARTTLS erzwingen
-    auth: { user: cfg.user, pass: cfg.pass },
-    connectionTimeout: 15000,
-    greetingTimeout: 15000,
-    socketTimeout: 20000,
-  });
 }
 
 const fmt = (v) => (v ? v : "–");
@@ -141,19 +134,21 @@ function notificationMail(cfg, d, receivedAt) {
 <p style="white-space:pre-wrap;margin:0">${escapeHtml(d.message)}</p>
 <hr style="border:0;border-top:1px solid #d8d3c6;margin:20px 0">
 <p style="color:#3a463f;font-size:13px;margin:0">Diese E-Mail wurde automatisch von der Website erzeugt.${
-    d.email ? " Antworten Sie einfach auf diese E-Mail, um den Absender zu erreichen." : ""
+    d.email
+      ? " Antworten Sie einfach auf diese E-Mail, um den Absender zu erreichen."
+      : ""
   }</p>
 </body></html>`;
 
   const mail = {
-    from: { name: COMPANY, address: cfg.user },
-    to: cfg.to,
+    from: { name: COMPANY, email: cfg.user },
+    to: { email: cfg.to },
     subject: "Neue Anfrage über garten-streich.de",
     text,
     html,
   };
   if (d.email) {
-    mail.replyTo = { name: headerSafe(d.name), address: d.email };
+    mail.reply = { name: headerSafe(d.name), email: d.email };
   }
   return mail;
 }
@@ -182,23 +177,50 @@ function confirmationMail(cfg, d) {
   ].join("\n");
 
   return {
-    from: { name: COMPANY, address: cfg.user },
-    to: d.email,
-    replyTo: cfg.to,
+    from: { name: COMPANY, email: cfg.user },
+    to: { email: d.email },
+    reply: { email: cfg.to },
     subject: `Ihre Anfrage bei ${COMPANY_LEGAL}`,
     text,
   };
 }
 
-export default async (request) => {
+async function sendMail(cfg, message) {
+  // Port 465 = implicit TLS; Port 587 = STARTTLS. Port 25 ist auf Cloudflare gesperrt.
+  const secure = cfg.port === 465;
+  await WorkerMailer.send(
+    {
+      host: cfg.host,
+      port: cfg.port,
+      secure,
+      startTls: !secure,
+      credentials: {
+        username: cfg.user,
+        password: cfg.pass,
+      },
+      authType: ["login", "plain"],
+      socketTimeoutMs: 20000,
+      responseTimeoutMs: 20000,
+    },
+    message,
+  );
+}
+
+export async function onRequest(context) {
+  const { request, env } = context;
+
   if (request.method !== "POST") {
-    return new Response(JSON.stringify({ detail: "Methode nicht erlaubt." }), {
-      status: 405,
-      headers: { Allow: "POST", "Content-Type": "application/json; charset=utf-8" },
-    });
+    return json(
+      405,
+      { detail: "Methode nicht erlaubt." },
+      { Allow: "POST" },
+    );
   }
 
-  const contentLength = Number.parseInt(request.headers.get("content-length") || "0", 10);
+  const contentLength = Number.parseInt(
+    request.headers.get("content-length") || "0",
+    10,
+  );
   if (Number.isFinite(contentLength) && contentLength > 50_000) {
     return json(413, { detail: "Die Anfrage ist zu groß." });
   }
@@ -220,43 +242,54 @@ export default async (request) => {
 
   // Honeypot ausgefüllt -> nicht versenden, aber unauffällig "ok" antworten.
   if (data.honeypot) {
-    return json(200, { received: true, message: "Vielen Dank für Ihre Anfrage." });
+    return json(200, {
+      received: true,
+      message: "Vielen Dank für Ihre Anfrage.",
+    });
   }
 
-  const cfg = smtpConfig();
+  const cfg = smtpConfig(env || {});
   if (!cfg.configured) {
-    console.error("contact: SMTP ist nicht konfiguriert (SMTP_HOST/SMTP_USER/SMTP_PASSWORD/CONTACT_TO).");
+    console.error(
+      "contact: SMTP ist nicht konfiguriert (SMTP_HOST/SMTP_USER/SMTP_PASSWORD/CONTACT_TO).",
+    );
     return json(503, {
       detail:
         "Der Versand ist derzeit nicht möglich. Bitte rufen Sie uns an oder schreiben Sie uns per E-Mail.",
     });
   }
 
-  const receivedAt = new Date().toLocaleString("de-DE", { timeZone: "Europe/Berlin" });
-  const transport = createTransport(cfg);
+  const receivedAt = new Date().toLocaleString("de-DE", {
+    timeZone: "Europe/Berlin",
+  });
 
   try {
-    await transport.sendMail(notificationMail(cfg, data, receivedAt));
+    await sendMail(cfg, notificationMail(cfg, data, receivedAt));
   } catch (err) {
-    // Keine internen Details / Zugangsdaten an den Browser.
-    console.error("contact: Versand der Benachrichtigung fehlgeschlagen:", err && err.code ? err.code : "error");
+    console.error(
+      "contact: Versand der Benachrichtigung fehlgeschlagen:",
+      err && err.message ? String(err.message).slice(0, 120) : "error",
+    );
     return json(502, {
       detail:
         "Ihre Anfrage konnte gerade nicht gesendet werden. Bitte versuchen Sie es später erneut oder rufen Sie uns an.",
     });
   }
 
-  // Eingangsbestätigung an den Kunden (nur wenn E-Mail-Adresse angegeben); Fehler hier sind nicht kritisch.
   if (data.email) {
     try {
-      await transport.sendMail(confirmationMail(cfg, data));
+      await sendMail(cfg, confirmationMail(cfg, data));
     } catch (err) {
-      console.error("contact: Eingangsbestätigung konnte nicht gesendet werden:", err && err.code ? err.code : "error");
+      console.error(
+        "contact: Eingangsbestätigung konnte nicht gesendet werden:",
+        err && err.message ? String(err.message).slice(0, 120) : "error",
+      );
     }
   }
 
   return json(200, {
     received: true,
-    message: "Vielen Dank für Ihre Anfrage. Wir melden uns persönlich bei Ihnen.",
+    message:
+      "Vielen Dank für Ihre Anfrage. Wir melden uns persönlich bei Ihnen.",
   });
-};
+}

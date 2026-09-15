@@ -1,0 +1,68 @@
+{
+  "slots": [
+    {
+      "id": "home-hero",
+      "label": "Startseite – Hero",
+      "photoKey": "gartenpflege-team-streich",
+      "useMobileVariant": true,
+      "image": "",
+      "alt": "Das Team bei der gemeinsamen Gartenpflege"
+    },
+    {
+      "id": "home-detail",
+      "label": "Startseite – Detailfoto",
+      "photoKey": "rosenpflege-detail-streich",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Hände mit Gartenschere bei der Pflege eines Rosenstrauchs"
+    },
+    {
+      "id": "home-region",
+      "label": "Startseite – Region",
+      "photoKey": "gartenbrunnen-streich",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Wasserspiel in einem begrünten Garten"
+    },
+    {
+      "id": "about-portrait",
+      "label": "Über uns – Portrait",
+      "photoKey": "streich-im-rosengarten",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Eine Mitarbeiterin von Streich zwischen blühenden Rosen"
+    },
+    {
+      "id": "team-hero",
+      "label": "Team – Hero",
+      "photoKey": "team-streich",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Das Team von Streich gemeinsam im Garten mit Gartengeräten"
+    },
+    {
+      "id": "team-background",
+      "label": "Team – Hintergrundfoto",
+      "photoKey": "rose-in-haenden-streich",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Hände halten eine rote Rosenblüte vor einer Backsteinwand"
+    },
+    {
+      "id": "about-impression-1",
+      "label": "Über uns – Impression 1",
+      "photoKey": "garten-streich-arbeitskleidung",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Mitarbeiterin in grüner Arbeitskleidung mit dem Firmennamen Streich"
+    },
+    {
+      "id": "about-impression-2",
+      "label": "Über uns – Impression 2",
+      "photoKey": "gartenarbeit-streich",
+      "useMobileVariant": false,
+      "image": "",
+      "alt": "Ein Mitarbeiter mit Helm, Gehörschutz und Motorsense im Garten"
+    }
+  ]
+}

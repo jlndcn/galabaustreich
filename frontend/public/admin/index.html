@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Inhalte bearbeiten | Streich</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f4ec;
+        --ink: #141c17;
+        --muted: #3a463f;
+        --brand: #143b32;
+        --line: #d8d3c6;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      #cms-login {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+      }
+      #cms-login[hidden] { display: none; }
+      .card {
+        width: min(100%, 420px);
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 1.75rem;
+      }
+      h1 {
+        font-size: 1.35rem;
+        margin: 0 0 0.35rem;
+        color: var(--brand);
+      }
+      p {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.45;
+      }
+      label {
+        display: block;
+        font-size: 0.85rem;
+        margin: 0 0 0.35rem;
+      }
+      input {
+        width: 100%;
+        padding: 0.7rem 0.75rem;
+        margin-bottom: 0.9rem;
+        border: 1px solid var(--line);
+        background: #fff;
+        font: inherit;
+      }
+      button {
+        width: 100%;
+        border: 0;
+        background: var(--brand);
+        color: #fff;
+        padding: 0.8rem 1rem;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:disabled { opacity: 0.6; cursor: wait; }
+      .err {
+        color: #8a1f1f;
+        margin: 0 0 0.9rem;
+        font-size: 0.9rem;
+        min-height: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cms-login">
+      <form class="card" id="cms-login-form">
+        <h1>Inhalte bearbeiten</h1>
+        <p>Anmeldung mit E-Mail und Passwort. Ein GitHub-Konto ist nicht nötig.</p>
+        <div class="err" id="cms-login-error" aria-live="polite"></div>
+        <label for="cms-email">E-Mail</label>
+        <input id="cms-email" name="email" type="email" autocomplete="username" required />
+        <label for="cms-password">Passwort</label>
+        <input id="cms-password" name="password" type="password" autocomplete="current-password" required />
+        <button type="submit" id="cms-login-submit">Anmelden</button>
+      </form>
+    </div>
+
+    <script>
+      (function () {
+        var STORAGE_KEY = "garten_cms_jwt";
+        var user = null;
+        var listeners = {};
+
+        function emit(event, data) {
+          (listeners[event] || []).forEach(function (cb) {
+            try { cb(data); } catch (e) {}
+          });
+        }
+
+        function setUserFromToken(token, profile) {
+          user = {
+            id: profile && profile.id,
+            email: profile && profile.email,
+            user_metadata: (profile && profile.user_metadata) || {},
+            token: { access_token: token, expires_at: Date.now() + 12 * 60 * 60 * 1000 },
+          };
+          localStorage.setItem(STORAGE_KEY, token);
+        }
+
+        function clearUser() {
+          user = null;
+          localStorage.removeItem(STORAGE_KEY);
+        }
+
+        window.netlifyIdentity = {
+          on: function (event, cb) {
+            (listeners[event] = listeners[event] || []).push(cb);
+            if (event === "init") {
+              setTimeout(function () { cb(user); }, 0);
+            }
+          },
+          open: function () {
+            document.getElementById("cms-login").hidden = false;
+          },
+          close: function () {
+            document.getElementById("cms-login").hidden = true;
+          },
+          currentUser: function () { return user; },
+          logout: function () {
+            clearUser();
+            emit("logout");
+            window.location.reload();
+          },
+        };
+
+        function showError(msg) {
+          document.getElementById("cms-login-error").textContent = msg || "";
+        }
+
+        function loadCms() {
+          document.getElementById("cms-login").hidden = true;
+          if (window.__cmsLoaded) return;
+          window.__cmsLoaded = true;
+          var s = document.createElement("script");
+          s.src = "https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js";
+          document.body.appendChild(s);
+        }
+
+        async function restoreSession() {
+          var token = localStorage.getItem(STORAGE_KEY);
+          if (!token) return false;
+          try {
+            var res = await fetch("/api/cms/identity/user", {
+              headers: { Authorization: "Bearer " + token },
+            });
+            if (!res.ok) {
+              clearUser();
+              return false;
+            }
+            var profile = await res.json();
+            setUserFromToken(token, profile);
+            return true;
+          } catch (e) {
+            clearUser();
+            return false;
+          }
+        }
+
+        document.getElementById("cms-login-form").addEventListener("submit", async function (event) {
+          event.preventDefault();
+          showError("");
+          var submit = document.getElementById("cms-login-submit");
+          submit.disabled = true;
+          try {
+            var email = document.getElementById("cms-email").value.trim();
+            var password = document.getElementById("cms-password").value;
+            var body = new URLSearchParams();
+            body.set("grant_type", "password");
+            body.set("username", email);
+            body.set("password", password);
+            var res = await fetch("/api/cms/identity/token", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: body.toString(),
+            });
+            var data = await res.json().catch(function () { return {}; });
+            if (!res.ok || !data.access_token) {
+              showError(data.error_description || "Anmeldung fehlgeschlagen.");
+              return;
+            }
+            setUserFromToken(data.access_token, data.user || { email: email });
+            emit("login", user);
+            loadCms();
+          } catch (e) {
+            showError("Netzwerkfehler. Bitte erneut versuchen.");
+          } finally {
+            submit.disabled = false;
+          }
+        });
+
+        restoreSession().then(function (ok) {
+          if (ok) {
+            emit("login", user);
+            loadCms();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

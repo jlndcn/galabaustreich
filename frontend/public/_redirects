@@ -1,0 +1,4 @@
+# SPA fallback for React Router.
+# Pages Functions (z. B. /api/*, Google-Verifikation) haben Vorrang vor Redirects.
+/admin   /admin/   301
+/*    /index.html   200

@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "Garten- und Landschaftspflege in und um Lübeck",
+    "intro": "Von der ersten Pflanze bis zum gewachsenen Garten. Von der regelmäßigen Pflege bis zur Neugestaltung. Streich steht für Garten- und Landschaftspflege mit Wurzeln in der Region – persönlich, zuverlässig und mit einem Blick für das Schöne.",
+    "primaryCta": "Anfrage senden",
+    "formTitle": "Anfrage senden",
+    "formIntro": "Kurz beschreiben, worum es geht – wir kümmern uns um den Rest.",
+    "backLabel": "Zurück"
+  },
+  "keyServices": {
+    "title": "Unsere wichtigsten Leistungen",
+    "intro": "Von der regelmäßigen Pflege bis zur Neugestaltung: Wir begleiten Gärten, Grünflächen und Grundstücke in Lübeck und Ostholstein durch das ganze Gartenjahr."
+  },
+  "midCta": {
+    "title": "Nicht sicher, was Ihr Garten gerade braucht?",
+    "text": "Wir schauen uns Ihre Fläche an und beraten Sie persönlich – unverbindlich.",
+    "formCta": "Anfrage senden",
+    "callCta": "Anrufen"
+  },
+  "moreServices": {
+    "title": "Gartenpflege und Grundstückspflege in Lübeck und Ostholstein"
+  },
+  "region": {
+    "title": "Mit Wurzeln in der Region",
+    "intro": "Streich ist ein Einzelunternehmen aus Scharbeutz und in Lübeck und Ostholstein für Sie im Einsatz – persönlich, zuverlässig und mit einem Blick für das Schöne. Von der ersten Pflanze bis zum gewachsenen Garten.",
+    "linkLabel": "Mehr über Streich"
+  },
+  "contact": {
+    "title": "Kontakt – so erreichen Sie uns",
+    "introSuffix": "Wählen Sie den Weg, der Ihnen am liebsten ist – wir melden uns persönlich bei Ihnen.",
+    "areaLine": "Im Einsatz in Lübeck, Scharbeutz und ganz Ostholstein"
+  }
+}

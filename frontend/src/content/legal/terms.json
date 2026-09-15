@@ -1,0 +1,6 @@
+{
+  "paymentDays": 14,
+  "noticePeriod": "vier Wochen zum Monatsende",
+  "cancellationLeadDays": 2,
+  "estimateDeviationPercent": 15
+}

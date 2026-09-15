@@ -27,9 +27,7 @@ export const ContactCTA = ({ prefix = "contact-cta" }) => {
               {contactPrompt}
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
-              Rufen Sie uns an, schreiben Sie uns per WhatsApp oder E-Mail –
-              oder nutzen Sie unser kurzes Anfrageformular. Wir melden uns
-              persönlich bei Ihnen.
+              {site.contactCtaBody}
             </p>
             <div className="mt-8">
               <ContactActions prefix={prefix} tone="onDark" />
@@ -37,7 +35,7 @@ export const ContactCTA = ({ prefix = "contact-cta" }) => {
           </div>
 
           <div className="lg:col-span-5 lg:border-l lg:border-white/15 lg:pl-12">
-            <h3 className="text-lg text-white">Direkt erreichbar</h3>
+            <h3 className="text-lg text-white">{site.contactCtaAsideTitle}</h3>
             <ul className="mt-4 space-y-3">
               <li>
                 <a href={site.phone.href} data-testid={`${prefix}-phone-link`} className={rowLink}>

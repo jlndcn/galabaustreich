@@ -1,0 +1,42 @@
+{
+  "title": "Impressum",
+  "lead": "",
+  "stand": "",
+  "sections": [
+    {
+      "id": "ddg",
+      "title": "Angaben gemäß § 5 DDG",
+      "body": "**{{legalName}}**  \\nInhaberin: {{owner}}  \\n{{street}}  \\n{{zip}} {{city}}  \\n{{country}}\\n\\nRechtsform: {{legalForm}}"
+    },
+    {
+      "id": "kontakt",
+      "title": "Kontakt",
+      "body": "Telefon: [{{phone}}]({{phoneHref}})  \\nE-Mail: [{{email}}](mailto:{{email}})\\n\\n[Unser Unternehmen auf Google]({{googleLink}})"
+    },
+    {
+      "id": "ust",
+      "title": "Umsatzsteuer-Identifikationsnummer",
+      "body": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:  \\n{{vatId}}"
+    },
+    {
+      "id": "mstv",
+      "title": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+      "body": "{{owner}}  \\nAnschrift wie oben."
+    },
+    {
+      "id": "eu",
+      "title": "EU-Streitschlichtung",
+      "body": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: [https://ec.europa.eu/consumers/odr/](https://ec.europa.eu/consumers/odr/). Unsere E-Mail-Adresse finden Sie oben im Impressum."
+    },
+    {
+      "id": "vsb",
+      "title": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
+      "body": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+    },
+    {
+      "id": "haftung",
+      "title": "Haftung für Inhalte und Links",
+      "body": "Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Unsere Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich."
+    }
+  ]
+}
