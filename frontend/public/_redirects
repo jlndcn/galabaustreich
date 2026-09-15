@@ -5,6 +5,3 @@
 https://garten-streich.de/*  https://www.garten-streich.de/:splat  301
 http://garten-streich.de/*   https://www.garten-streich.de/:splat  301
 http://www.garten-streich.de/* https://www.garten-streich.de/:splat  301
-
-# SPA fallback – direkte Reloads von Client-Routen (z. B. /leistungen/gartenpflege)
-/*    /index.html   200

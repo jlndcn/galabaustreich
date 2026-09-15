@@ -56,7 +56,6 @@
   aspect-ratio: 4/5;
 }
 .home-hero {
-  --hero-progress: 0;
   position: relative;
   isolation: isolate;
   display: flex;
@@ -70,6 +69,9 @@
   inset: 0;
   z-index: -2;
   border-radius: 0;
+  /* Eigene Compositor-Layer – verhindert Farbschlieren beim schnellen Scrollen */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .hero-photo img {
   object-position: 60% 40%;
@@ -81,25 +83,32 @@
 }
 .hero-shade {
   position: absolute;
-  inset: 0 auto 0 -100%;
-  width: 200%;
+  inset: 0;
   z-index: -1;
-  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  pointer-events: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   background:
     linear-gradient(
       90deg,
-      transparent 0%,
-      rgba(20, 59, 50, 0.88) 25%,
-      rgba(20, 59, 50, 0.96) 45%,
-      rgba(20, 59, 50, 0.9) 50%,
-      rgba(20, 59, 50, 0.77) 67.5%,
-      rgba(20, 59, 50, 0.34) 83.5%,
+      rgba(20, 59, 50, 0.92) 0%,
+      rgba(20, 59, 50, 0.88) 28%,
+      rgba(20, 59, 50, 0.55) 52%,
+      rgba(20, 59, 50, 0.22) 72%,
       transparent 100%
     ),
-    linear-gradient(0deg, rgba(20, 59, 50, 0.42), transparent 70%);
+    linear-gradient(0deg, rgba(20, 59, 50, 0.45), transparent 68%);
 }
 .is-form-open .hero-shade {
-  transform: translate3d(50%, 0, 0);
+  /* Formular-Modus: stärkere Abdeckung über dem Bild */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 59, 50, 0.94) 0%,
+      rgba(20, 59, 50, 0.9) 55%,
+      rgba(20, 59, 50, 0.72) 100%
+    ),
+    linear-gradient(0deg, rgba(20, 59, 50, 0.5), transparent 70%);
 }
 .hero-content {
   display: grid;
@@ -211,8 +220,6 @@
   line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.025em;
-  transform: translate3d(0, calc(var(--hero-progress) * -42px), 0);
-  opacity: calc(1 - var(--hero-progress) * 0.48);
 }
 .hero-intro {
   margin-top: 24px;
