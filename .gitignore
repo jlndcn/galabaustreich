@@ -86,7 +86,7 @@ memory/test_credentials.md
 
 # Mobile development
 android-sdk/
-# Environment files with secrets/preview URLs - never commit (set variables in Netlify UI instead)
+# Environment files with secrets – never commit (set variables in Cloudflare Pages)
 .env
 .env.local
 backend/.env
