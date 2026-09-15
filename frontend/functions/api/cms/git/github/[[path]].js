@@ -6,16 +6,15 @@
  * Env: GITHUB_TOKEN, GITHUB_REPO
  */
 
-import { bearerToken, verifyCmsJwt } from "../../../../_utils/cmsAuth.js";
+import { cmsAuthFromRequest } from "../../../../_utils/cmsAuth.js";
 
 const ALLOWED =
   /^\/api\/cms\/git\/github\/((git|contents|pulls|branches|merges|statuses|compare|commits)(\/|$)|(issues\/\d+\/labels))/;
 
 export async function onRequest(context) {
   const { request, env } = context;
-  const token = bearerToken(request);
-  const user = await verifyCmsJwt(env, token);
-  if (!user) {
+  const auth = await cmsAuthFromRequest(env, request);
+  if (!auth) {
     return new Response(JSON.stringify({ error: "unauthorized" }), {
       status: 401,
       headers: {

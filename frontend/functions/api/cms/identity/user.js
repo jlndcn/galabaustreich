@@ -1,25 +1,29 @@
 /**
- * GET /api/cms/identity/user
+ * GET /api/cms/identity/user – Session prüfen (Cookie bevorzugt).
  */
 
 import {
-  bearerToken,
+  clearSessionCookieHeader,
+  cmsAuthFromRequest,
   identityUser,
-  verifyCmsJwt,
 } from "../../../_utils/cmsAuth.js";
 
-const json = (status, body) =>
+const json = (status, body, extraHeaders = {}) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
+      ...extraHeaders,
     },
   });
 
 export async function onRequestGet(context) {
-  const token = bearerToken(context.request);
-  const user = await verifyCmsJwt(context.env, token);
-  if (!user) return json(401, { msg: "unauthorized" });
-  return json(200, identityUser(user.email));
+  const auth = await cmsAuthFromRequest(context.env, context.request);
+  if (!auth) {
+    return json(401, { msg: "unauthorized" }, {
+      "Set-Cookie": clearSessionCookieHeader(context.request),
+    });
+  }
+  return json(200, identityUser(auth.user.email));
 }

@@ -92,29 +92,35 @@
 
     <script>
       (function () {
-        var STORAGE_KEY = "garten_cms_jwt";
         var user = null;
+        var memoryToken = null;
         var listeners = {};
+
+        // Alte localStorage-Sessions entfernen (Migration).
+        try { localStorage.removeItem("garten_cms_jwt"); } catch (e) {}
 
         function emit(event, data) {
           (listeners[event] || []).forEach(function (cb) {
-            try { cb(data); } catch (e) {}
+            try { cb(data); } catch (err) {}
           });
         }
 
-        function setUserFromToken(token, profile) {
+        function setUser(profile, token) {
+          memoryToken = token || "cookie";
           user = {
             id: profile && profile.id,
             email: profile && profile.email,
             user_metadata: (profile && profile.user_metadata) || {},
-            token: { access_token: token, expires_at: Date.now() + 12 * 60 * 60 * 1000 },
+            token: {
+              access_token: memoryToken,
+              expires_at: Date.now() + 4 * 60 * 60 * 1000,
+            },
           };
-          localStorage.setItem(STORAGE_KEY, token);
         }
 
         function clearUser() {
           user = null;
-          localStorage.removeItem(STORAGE_KEY);
+          memoryToken = null;
         }
 
         window.netlifyIdentity = {
@@ -132,9 +138,14 @@
           },
           currentUser: function () { return user; },
           logout: function () {
-            clearUser();
-            emit("logout");
-            window.location.reload();
+            fetch("/api/cms/identity/logout", {
+              method: "POST",
+              credentials: "same-origin",
+            }).finally(function () {
+              clearUser();
+              emit("logout");
+              window.location.reload();
+            });
           },
         };
 
@@ -147,23 +158,25 @@
           if (window.__cmsLoaded) return;
           window.__cmsLoaded = true;
           var s = document.createElement("script");
-          s.src = "https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js";
+          s.src = "/admin/decap-cms.js";
+          s.onerror = function () {
+            showError("CMS-Bibliothek konnte nicht geladen werden.");
+            document.getElementById("cms-login").hidden = false;
+          };
           document.body.appendChild(s);
         }
 
         async function restoreSession() {
-          var token = localStorage.getItem(STORAGE_KEY);
-          if (!token) return false;
           try {
             var res = await fetch("/api/cms/identity/user", {
-              headers: { Authorization: "Bearer " + token },
+              credentials: "same-origin",
             });
             if (!res.ok) {
               clearUser();
               return false;
             }
             var profile = await res.json();
-            setUserFromToken(token, profile);
+            setUser(profile, "cookie");
             return true;
           } catch (e) {
             clearUser();
@@ -185,15 +198,20 @@
             body.set("password", password);
             var res = await fetch("/api/cms/identity/token", {
               method: "POST",
+              credentials: "same-origin",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body: body.toString(),
             });
             var data = await res.json().catch(function () { return {}; });
+            if (res.status === 429) {
+              showError(data.error_description || "Zu viele Fehlversuche. Bitte später erneut versuchen.");
+              return;
+            }
             if (!res.ok || !data.access_token) {
               showError(data.error_description || "Anmeldung fehlgeschlagen.");
               return;
             }
-            setUserFromToken(data.access_token, data.user || { email: email });
+            setUser(data.user || { email: email }, data.access_token);
             emit("login", user);
             loadCms();
           } catch (e) {

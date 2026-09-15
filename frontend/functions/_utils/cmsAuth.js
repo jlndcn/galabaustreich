@@ -6,6 +6,11 @@
 
 const textEncoder = new TextEncoder();
 
+/** Session lifetime (HttpOnly cookie). */
+export const CMS_SESSION_TTL_SEC = 60 * 60 * 4; // 4 Stunden
+
+export const CMS_COOKIE_NAME = "cms_session";
+
 function b64url(bytes) {
   let bin = "";
   const arr = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
@@ -82,7 +87,11 @@ export function authenticateUser(env, email, password) {
   return null;
 }
 
-export async function signCmsJwt(env, email, ttlSeconds = 60 * 60 * 12) {
+export async function signCmsJwt(
+  env,
+  email,
+  ttlSeconds = CMS_SESSION_TTL_SEC,
+) {
   const secret = String(env.CMS_JWT_SECRET || "").trim();
   if (!secret) throw new Error("CMS_JWT_SECRET missing");
   const header = b64urlJson({ alg: "HS256", typ: "JWT" });
@@ -141,6 +150,73 @@ export function bearerToken(request) {
   return m ? m[1].trim() : "";
 }
 
+export function cookieToken(request) {
+  const raw = request.headers.get("Cookie") || "";
+  const parts = raw.split(/;\s*/);
+  for (const part of parts) {
+    const eq = part.indexOf("=");
+    if (eq === -1) continue;
+    if (part.slice(0, eq) === CMS_COOKIE_NAME) {
+      try {
+        return decodeURIComponent(part.slice(eq + 1));
+      } catch {
+        return part.slice(eq + 1);
+      }
+    }
+  }
+  return "";
+}
+
+/** Prefer HttpOnly cookie; Bearer only as fallback (in-memory Decap session). */
+export async function cmsAuthFromRequest(env, request) {
+  const fromCookie = cookieToken(request);
+  if (fromCookie) {
+    const user = await verifyCmsJwt(env, fromCookie);
+    if (user) return { user, via: "cookie" };
+  }
+  const fromBearer = bearerToken(request);
+  if (fromBearer && fromBearer !== "cookie") {
+    const user = await verifyCmsJwt(env, fromBearer);
+    if (user) return { user, via: "bearer" };
+  }
+  return null;
+}
+
+export function isSecureRequest(request) {
+  const url = new URL(request.url);
+  if (url.protocol === "https:") return true;
+  const proto = (request.headers.get("X-Forwarded-Proto") || "").toLowerCase();
+  return proto === "https";
+}
+
+export function sessionCookieHeader(token, request) {
+  const secure = isSecureRequest(request);
+  return [
+    `${CMS_COOKIE_NAME}=${encodeURIComponent(token)}`,
+    "Path=/",
+    "HttpOnly",
+    "SameSite=Strict",
+    `Max-Age=${CMS_SESSION_TTL_SEC}`,
+    secure ? "Secure" : "",
+  ]
+    .filter(Boolean)
+    .join("; ");
+}
+
+export function clearSessionCookieHeader(request) {
+  const secure = isSecureRequest(request);
+  return [
+    `${CMS_COOKIE_NAME}=`,
+    "Path=/",
+    "HttpOnly",
+    "SameSite=Strict",
+    "Max-Age=0",
+    secure ? "Secure" : "",
+  ]
+    .filter(Boolean)
+    .join("; ");
+}
+
 export function identityUser(email) {
   return {
     id: "cms-" + b64url(textEncoder.encode(email)).slice(0, 22),
@@ -148,4 +224,12 @@ export function identityUser(email) {
     user_metadata: { full_name: email },
     app_metadata: { provider: "email" },
   };
+}
+
+export function clientIp(request) {
+  return (
+    request.headers.get("CF-Connecting-IP") ||
+    request.headers.get("True-Client-IP") ||
+    "unknown"
+  );
 }

@@ -57,12 +57,13 @@ Bestehende SMTP-Variablen bleiben unverändert.
 ### 3. Admin öffnen
 `https://www.garten-streich.de/admin/` → E-Mail/Passwort → Inhalte speichern.
 
-## Technik
-- Backend: `git-gateway` (Decap) mit `gateway_url: /api/cms/git/github`
-- Login: `POST /api/cms/identity/token` (Passwort → JWT)
-- Session: `GET /api/cms/identity/user`
+## Technik / Sicherheit
+- Backend: `git-gateway` mit `gateway_url: /api/cms/git/github`
+- Login: `POST /api/cms/identity/token` (Passwort → HttpOnly-Cookie + kurzes JWT)
+- Session: `GET /api/cms/identity/user` (Cookie), Logout: `POST /api/cms/identity/logout`
+- Brute-Force: nach 8 Fehlversuchen / IP ca. 15 Min Sperre (429)
+- Decap CMS: selbst gehostet unter `/admin/decap-cms.js` (kein unpkg)
 - Speichern: `/api/cms/git/github/*` → GitHub API mit `GITHUB_TOKEN`
-- Die Redaktion braucht **kein** GitHub-Konto
 
 ## Lokal (optional)
 ```bash

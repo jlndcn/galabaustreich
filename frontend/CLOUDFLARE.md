@@ -36,8 +36,9 @@ Keine Secrets im Repository. `REACT_APP_BACKEND_URL` leer lassen.
 | Pfad | Zweck |
 |------|--------|
 | `POST /api/contact` | Kontaktformular |
-| `POST /api/cms/identity/token` | CMS-Login (E-Mail/Passwort) |
-| `GET /api/cms/identity/user` | CMS-Session |
+| `POST /api/cms/identity/token` | CMS-Login (E-Mail/Passwort, Rate-Limit) |
+| `GET /api/cms/identity/user` | CMS-Session (HttpOnly-Cookie) |
+| `POST /api/cms/identity/logout` | CMS-Logout |
 | `GET /api/cms/git/settings` | Gateway-Status |
 | `* /api/cms/git/github/*` | Git Gateway → GitHub API |
 

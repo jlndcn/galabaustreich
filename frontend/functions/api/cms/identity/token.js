@@ -1,22 +1,32 @@
 /**
  * POST /api/cms/identity/token – Passwort-Login für Decap (GoTrue-ähnlich).
+ * Session: HttpOnly Cookie + kurze Antwort. Brute-Force: IP-Rate-Limit.
  */
 
 import {
   authenticateUser,
-  bearerToken,
+  clientIp,
   cmsAuthConfigured,
+  cmsAuthFromRequest,
+  CMS_SESSION_TTL_SEC,
+  clearSessionCookieHeader,
   identityUser,
+  sessionCookieHeader,
   signCmsJwt,
-  verifyCmsJwt,
 } from "../../../_utils/cmsAuth.js";
+import {
+  assertLoginAllowed,
+  clearLoginFailures,
+  recordLoginFailure,
+} from "../../../_utils/cmsRateLimit.js";
 
-const json = (status, body) =>
+const json = (status, body, extraHeaders = {}) =>
   new Response(JSON.stringify(body), {
     status,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "no-store",
+      ...extraHeaders,
     },
   });
 
@@ -37,6 +47,20 @@ export async function onRequestPost(context) {
       error: "configuration_error",
       error_description: "CMS-Login ist nicht konfiguriert.",
     });
+  }
+
+  const ip = clientIp(request);
+  const gate = await assertLoginAllowed(ip);
+  if (!gate.ok) {
+    return json(
+      429,
+      {
+        error: "too_many_attempts",
+        error_description:
+          "Zu viele Fehlversuche. Bitte später erneut versuchen.",
+      },
+      { "Retry-After": String(gate.retryAfter || 900) },
+    );
   }
 
   let body;
@@ -62,25 +86,51 @@ export async function onRequestPost(context) {
     body.password || "",
   );
   if (!user) {
+    const fail = await recordLoginFailure(ip);
+    if (fail.blocked) {
+      return json(
+        429,
+        {
+          error: "too_many_attempts",
+          error_description:
+            "Zu viele Fehlversuche. Bitte später erneut versuchen.",
+        },
+        { "Retry-After": String(fail.retryAfter || 900) },
+      );
+    }
     return json(400, {
       error: "invalid_grant",
       error_description: "E-Mail oder Passwort ist falsch.",
     });
   }
 
+  await clearLoginFailures(ip);
   const access_token = await signCmsJwt(env, user.email);
-  return json(200, {
-    access_token,
-    token_type: "bearer",
-    expires_in: 60 * 60 * 12,
-    refresh_token: access_token,
-    user: identityUser(user.email),
-  });
+  const headers = {
+    "Set-Cookie": sessionCookieHeader(access_token, request),
+  };
+
+  // access_token nur für Decap-Kompatibilität (Browser behält ihn nur im RAM).
+  // Persistenz läuft über HttpOnly-Cookie.
+  return json(
+    200,
+    {
+      access_token,
+      token_type: "bearer",
+      expires_in: CMS_SESSION_TTL_SEC,
+      refresh_token: access_token,
+      user: identityUser(user.email),
+    },
+    headers,
+  );
 }
 
 export async function onRequestGet(context) {
-  const token = bearerToken(context.request);
-  const user = await verifyCmsJwt(context.env, token);
-  if (!user) return json(401, { error: "unauthorized" });
-  return json(200, identityUser(user.email));
+  const auth = await cmsAuthFromRequest(context.env, context.request);
+  if (!auth) {
+    return json(401, { error: "unauthorized" }, {
+      "Set-Cookie": clearSessionCookieHeader(context.request),
+    });
+  }
+  return json(200, identityUser(auth.user.email));
 }
