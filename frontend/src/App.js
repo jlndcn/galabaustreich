@@ -3,9 +3,11 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import Home from "@/pages/Home";
+import Leistungen from "@/pages/Leistungen";
 
 // Secondary routes: code-split so the home LCP bundle stays lean.
-const Leistungen = lazy(() => import("@/pages/Leistungen"));
+// Leistungen stays eager so scroll restoration on browser Back works reliably.
+const LeistungDetail = lazy(() => import("@/pages/LeistungDetail"));
 const UeberUns = lazy(() => import("@/pages/UeberUns"));
 const Team = lazy(() => import("@/pages/Team"));
 const Impressum = lazy(() => import("@/pages/Impressum"));
@@ -37,8 +39,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/leistungen" element={<Leistungen />} />
           <Route element={<LazyPages />}>
-            <Route path="/leistungen" element={<Leistungen />} />
+            <Route path="/leistungen/:slug" element={<LeistungDetail />} />
             <Route path="/ueber-uns" element={<UeberUns />} />
             <Route path="/team" element={<Team />} />
             <Route path="/impressum" element={<Impressum />} />

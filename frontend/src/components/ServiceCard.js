@@ -1,11 +1,14 @@
 ﻿import { Link } from "react-router-dom";
 import { getServiceIcon } from "@/components/serviceIcons";
+import { getDetailPathForServiceId } from "@/data/serviceDetails";
 
 export const ServiceCard = ({ service, variant = "teaser" }) => {
   const Icon = getServiceIcon(service.id);
+  const detailPath = getDetailPathForServiceId(service.id);
+  const to = detailPath || `/leistungen#${service.id}`;
   return (
     <Link
-      to={`/leistungen#${service.id}`}
+      to={to}
       data-testid="service-card"
       className={`service-summary service-summary-${variant}`}
     >

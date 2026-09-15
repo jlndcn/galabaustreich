@@ -485,24 +485,47 @@
   border-radius: 16px;
   padding: 28px;
 }
+
+/* Umlaufende Blüten: einmal rundherum einblenden, Endposition halten;
+   Maus weg → rückwärts ausblenden. Kleinere Blüten, kräftigere Deckkraft. */
+@property --floral-reveal {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 .card-plant {
   position: absolute;
-  inset: -22px;
-  border: 40px solid transparent;
-  border-image: url("./assets/decorations/bluetenrahmen.webp") 180 / 40px / 0
+  inset: -14px;
+  border: 26px solid transparent;
+  border-image: url("./assets/decorations/bluetenrahmen.webp") 180 / 26px / 0
     stretch;
   opacity: 0;
   pointer-events: none;
   z-index: -1;
-  transform: scale(0.94);
+  transform: scale(0.97);
+  --floral-reveal: 0%;
+  -webkit-mask-image: conic-gradient(
+    from -90deg,
+    #000 0 var(--floral-reveal),
+    transparent 0
+  );
+  mask-image: conic-gradient(
+    from -90deg,
+    #000 0 var(--floral-reveal),
+    transparent 0
+  );
   transition:
-    transform 0.7s ease,
-    opacity 0.5s ease;
+    --floral-reveal 0.9s ease,
+    opacity 0.85s ease,
+    transform 0.7s ease;
 }
+
 @media (hover: hover) and (pointer: fine) {
   .value-box:hover .card-plant,
   .value-box:focus-within .card-plant {
-    opacity: 0.38;
+    --floral-reveal: 100%;
+    opacity: 0.72;
     transform: scale(1);
   }
 }
@@ -1232,6 +1255,9 @@ a.underline {
 @media (prefers-reduced-motion: reduce) {
   .card-plant {
     transform: none !important;
+    transition: opacity 0.2s ease !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   *,
   *::before,

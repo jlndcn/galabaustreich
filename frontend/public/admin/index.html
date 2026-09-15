@@ -29,7 +29,7 @@
       }
       #cms-login[hidden] { display: none; }
       .card {
-        width: min(100%, 420px);
+        width: min(100%, 440px);
         background: #fff;
         border: 1px solid var(--line);
         padding: 1.75rem;
@@ -45,6 +45,14 @@
         font-size: 0.95rem;
         line-height: 1.45;
       }
+      .steps {
+        margin: 0 0 1.25rem;
+        padding-left: 1.15rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+      .steps li { margin-bottom: 0.35rem; }
       label {
         display: block;
         font-size: 0.85rem;
@@ -74,13 +82,24 @@
         font-size: 0.9rem;
         min-height: 1.2em;
       }
+      /* Decap UI slightly clearer for editors */
+      .css-1fzwwn5-CollectionTopContainer,
+      [class*="CollectionLabel"] {
+        font-size: 1rem !important;
+      }
     </style>
   </head>
   <body>
     <div id="cms-login">
       <form class="card" id="cms-login-form">
         <h1>Inhalte bearbeiten</h1>
-        <p>Anmeldung mit E-Mail und Passwort. Ein GitHub-Konto ist nicht nötig.</p>
+        <p>Anmeldung mit E-Mail und Passwort – kein GitHub-Konto nötig.</p>
+        <ol class="steps">
+          <li>Bereich in der linken Liste wählen (nummeriert 1–10)</li>
+          <li>Texte oder Bilder anpassen</li>
+          <li>Einmal <strong>Speichern</strong> – die Website aktualisiert sich danach von selbst</li>
+        </ol>
+        <p style="font-size:0.85rem;margin-top:-0.5rem">Felder mit Hinweis „bitte nicht ändern“ unverändert lassen.</p>
         <div class="err" id="cms-login-error" aria-live="polite"></div>
         <label for="cms-email">E-Mail</label>
         <input id="cms-email" name="email" type="email" autocomplete="username" required />

@@ -1,15 +1,13 @@
 // Per-page SEO metadata – editable via Decap CMS (src/content/seo.json).
 import seoContent from "@/content/seo.json";
 import { site, googleLink } from "@/data/site";
+import { canonicalOrigin } from "@/lib/seoUrl";
 
 export const seoPages = seoContent;
 
 // JSON-LD LocalBusiness structured data (no opening hours, ratings, socials, prices – none invented).
 export function buildLocalBusinessJsonLd() {
-  const rawBase = (site.domain || "").replace(/\/$/, "");
-  const base = rawBase.includes("://www.")
-    ? rawBase
-    : rawBase.replace("://garten-streich.de", "://www.garten-streich.de");
+  const base = canonicalOrigin();
   const data = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",

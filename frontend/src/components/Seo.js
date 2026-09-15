@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { site, PRODUCTION_HOST } from "@/data/site";
+import { site } from "@/data/site";
+import { canonicalOrigin, canonicalUrl, isProductionHost } from "@/lib/seoUrl";
 
 function upsert(selector, create, attrs) {
   let el = document.head.querySelector(selector);
@@ -19,7 +20,7 @@ function metaName(name, content) {
       m.setAttribute("name", name);
       return m;
     },
-    { content }
+    { content },
   );
 }
 
@@ -31,7 +32,7 @@ function metaProp(property, content) {
       m.setAttribute("property", property);
       return m;
     },
-    { content }
+    { content },
   );
 }
 
@@ -43,28 +44,29 @@ function linkRel(rel, href) {
       l.setAttribute("rel", rel);
       return l;
     },
-    { href }
+    { href },
   );
 }
 
 // SEO head manager – works reliably with React 19 by imperatively syncing <head>.
-// Also protects staging/preview environments from indexing (only the final domain is indexable).
-export function Seo({ title, description, path = "/", jsonLd = null, noIndex = false }) {
+// Only the production host (www.garten-streich.de) is indexable.
+export function Seo({
+  title,
+  description,
+  path = "/",
+  jsonLd = null,
+  noIndex = false,
+}) {
   useEffect(() => {
-    const rawBase = (site.domain || "").replace(/\/$/, "");
-    // Kanonische Basis immer www – auch wenn CMS-Inhalt abweichend gesetzt wäre.
-    const base = rawBase.includes("://www.")
-      ? rawBase
-      : rawBase.replace("://garten-streich.de", "://www.garten-streich.de");
-    const url = base + path;
-    const ogImage = base + "/og-image.jpg";
+    const origin = canonicalOrigin();
+    const url = canonicalUrl(path);
+    const ogImage = `${origin}/og-image.jpg`;
 
     if (title) document.title = title;
     if (description) metaName("description", description);
 
     const host = typeof window !== "undefined" ? window.location.hostname : "";
-    // Nur die produktive www-Domain indexieren (pages.dev, Apex ohne www, Previews → noindex).
-    const indexable = !noIndex && host === PRODUCTION_HOST;
+    const indexable = !noIndex && isProductionHost(host);
     metaName("robots", indexable ? "index,follow" : "noindex,nofollow");
 
     linkRel("canonical", url);

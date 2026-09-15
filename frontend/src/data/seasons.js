@@ -21,7 +21,7 @@ export const monthNames = [
 
 export const seasonByMonth = Object.fromEntries(
   (seasonsData.months || []).map((entry) => [
-    entry.month,
+    Number(entry.month),
     { ids: entry.ids || [], note: entry.note || "" },
   ]),
 );

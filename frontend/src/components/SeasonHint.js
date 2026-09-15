@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CalendarDays } from "lucide-react";
 import { getSeason } from "@/data/seasons";
 import { services } from "@/data/services";
+import { getDetailPathForServiceId } from "@/data/serviceDetails";
 
 // Subtle hint in the contact area: which works are typically in season this month.
 export const SeasonHint = ({ date, className = "" }) => {
@@ -58,7 +59,7 @@ export const SeasonHint = ({ date, className = "" }) => {
         {items.map((s) => (
           <li key={s.id}>
             <Link
-              to={`/leistungen#${s.id}`}
+              to={getDetailPathForServiceId(s.id) || `/leistungen#${s.id}`}
               data-testid="season-hint-link"
               className="text-link text-base"
             >

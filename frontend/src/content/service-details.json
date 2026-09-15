@@ -1,0 +1,235 @@
+{
+  "pages": [
+    {
+      "slug": "gartenpflege",
+      "serviceId": "garten-gruenflaechenpflege",
+      "navTitle": "Gartenpflege",
+      "h1": "Gartenpflege in Lübeck und Ostholstein",
+      "claim": "Damit aus Grün ein Garten wird.",
+      "intro": "Ein gepflegter Garten entsteht nicht an einem Tag – er braucht regelmäßige Aufmerksamkeit, den richtigen Schnitt zur richtigen Zeit und einen Blick für das, was gerade wächst. Wir übernehmen die Gartenpflege für Privatgärten in Lübeck, Ostholstein und der Umgebung von Scharbeutz: zuverlässig, nachvollziehbar und abgestimmt auf Ihre Fläche.",
+      "sections": [
+        {
+          "heading": "Was wir unter Gartenpflege verstehen",
+          "paragraphs": [
+            "Zur Gartenpflege gehören die laufenden Arbeiten, die Ihren Garten über das Jahr hinweg in Form halten: Beete und Pflanzflächen pflegen, Unkraut im Zaum halten, Gehölze und Stauden schneiden, wo nötig, und den Gesamteindruck im Blick behalten.",
+            "Wir arbeiten nicht nach Schema F, sondern nach dem Zustand Ihres Gartens. Kleine Flächen betreuen wir ebenso sorgfältig wie größere Privatgärten – immer mit dem Ziel, dass Pflege sichtbar wird, ohne den Charakter des Gartens zu überformen."
+          ]
+        },
+        {
+          "heading": "Nutzen für Sie",
+          "paragraphs": [
+            "Sie gewinnen Zeit und einen Garten, der gepflegt aussieht, ohne dass Sie jede Woche selbst nacharbeiten müssen. Gerade in der Hochsaison und im Herbst entlastet eine verlässliche Betreuung spürbar.",
+            "Als regionales Unternehmen aus Scharbeutz kennen wir die Bedingungen vor Ort: windige Lagen an der Küste, sandigere Böden und die typischen Jahreszeiten in Lübeck und Ostholstein."
+          ]
+        },
+        {
+          "heading": "Für wen sich regelmäßige Gartenpflege eignet",
+          "paragraphs": [
+            "Für alle, die ihren Garten genießen statt ständig zu pflegen – ob berufstätig, viel unterwegs oder einfach froh um eine feste Ansprechpartnerin vor Ort. Auch bei längerem Urlaub oder saisonalen Arbeitsspitzen springen wir ein."
+          ]
+        }
+      ],
+      "scope": [
+        "Regelmäßige Pflege von Beeten und Pflanzflächen",
+        "Unkrautkontrolle und Sauberhalten von Beeten",
+        "Schnitt und Pflege von Stauden und kleineren Gehölzen",
+        "Abstimmung der Arbeiten auf Jahreszeit und Garten",
+        "Einsatz in Lübeck, Ostholstein und Umgebung"
+      ],
+      "related": [
+        "gruenflaechenpflege",
+        "heckenpflege",
+        "rasenpflege"
+      ],
+      "seo": {
+        "title": "Gartenpflege in Lübeck & Ostholstein | Streich",
+        "description": "Gartenpflege in Lübeck und Ostholstein: regelmäßige Betreuung von Privatgärten – Beete, Pflanzflächen und saisonale Arbeiten. Persönlich und zuverlässig bei Streich anfragen.",
+        "path": "/leistungen/gartenpflege"
+      }
+    },
+    {
+      "slug": "heckenpflege",
+      "serviceId": "hecken-gehoelzpflege",
+      "navTitle": "Heckenpflege",
+      "h1": "Heckenpflege in Lübeck und Ostholstein",
+      "claim": "In Form gebracht. Natürlich erhalten.",
+      "intro": "Hecken prägen Grundstücksgrenzen, schaffen Sichtschutz und geben dem Garten Struktur. Damit sie dicht, gesund und formschön bleiben, braucht es den richtigen Schnitt zur passenden Jahreszeit. Wir pflegen Hecken und Gehölze in Lübeck, Ostholstein und Umgebung – vom Formschnitt bis zum behutsamen Rückschnitt.",
+      "sections": [
+        {
+          "heading": "Formschnitt und Gehölzpflege",
+          "paragraphs": [
+            "Ob Liguster, Hainbuche, Kirschlorbeer oder gewachsene Mischhecken: Wir schneiden mit Blick auf Wuchs, Lichtdurchlässigkeit und die gewünschte Form. Dabei achten wir darauf, dass die Hecke nicht nur „kurz“, sondern dauerhaft vital bleibt.",
+            "Zum Leistungsumfang gehören Formschnitt, Auslichten und Rückschnitt von Sträuchern und Heckengehölzen – abgestimmt auf Art, Alter und Standort."
+          ]
+        },
+        {
+          "heading": "Warum der Zeitpunkt zählt",
+          "paragraphs": [
+            "Viele Gehölze vertragen starke Eingriffe nur in bestimmten Phasen gut. Zu spätes oder zu häufiges Schneiden kann Blütenansatz oder Dichte beeinträchtigen. Wir planen die Pflege so, dass Form und Gesundheit zusammenpassen – auch mit Blick auf örtliche Gegebenheiten in windigen oder schattigen Lagen."
+          ]
+        },
+        {
+          "heading": "Sichtschutz, der gepflegt wirkt",
+          "paragraphs": [
+            "Eine gut geschnittene Hecke wirkt einladend und hält Nachbarschaft und Straße in angemessenem Abstand. Für Eigentümerinnen und Eigentümer in Lübeck und Ostholstein bedeutet das: weniger Nacharbeit und ein klarer, gepflegter Grundstücksrand."
+          ]
+        }
+      ],
+      "scope": [
+        "Formschnitt von Hecken",
+        "Rückschnitt und Auslichten von Gehölzen",
+        "Pflege von Sichtschutzhecken",
+        "Abstimmung auf Pflanzenart und Jahreszeit",
+        "Arbeit an privaten Grundstücken in der Region"
+      ],
+      "related": [
+        "gartenpflege",
+        "baumfaellung",
+        "gruenflaechenpflege"
+      ],
+      "seo": {
+        "title": "Heckenpflege in Lübeck & Ostholstein | Streich",
+        "description": "Heckenpflege und Gehölzschnitt in Lübeck und Ostholstein: Formschnitt, Rückschnitt und sichtschutzgerechte Pflege. Jetzt bei Garten Streich anfragen.",
+        "path": "/leistungen/heckenpflege"
+      }
+    },
+    {
+      "slug": "rasenpflege",
+      "serviceId": "rasenpflege",
+      "navTitle": "Rasenpflege",
+      "h1": "Rasenpflege in Lübeck und Ostholstein",
+      "claim": "Grün, das sich sehen lassen kann.",
+      "intro": "Ein dichter, gleichmäßiger Rasen entsteht durch regelmäßiges Mähen, saubere Kanten und Pflege, die zur Nutzung passt – Spielwiese, Zierrasen oder repräsentative Fläche vor dem Haus. Wir übernehmen die Rasenpflege in Lübeck, Ostholstein und der Umgebung und stimmen die Maßnahmen auf Boden, Lage und Jahreszeit ab.",
+      "sections": [
+        {
+          "heading": "Mähen, Kanten, Pflege",
+          "paragraphs": [
+            "Zum Kern gehören regelmäßiges Mähen in sinnvoller Schnitthöhe, das Sauberhalten der Rasenkanten und – wo sinnvoll – ergänzende Schritte wie Düngung oder das Entfernen von Laub und Schnittgut.",
+            "Wir achten darauf, dass der Rasen nicht nur kurz, sondern belastbar und gesund bleibt. Zu tiefer Schnitt oder unregelmäßige Intervalle schwächen die Grasnarbe; deshalb planen wir die Pflege praxisnah."
+          ]
+        },
+        {
+          "heading": "Abgestimmt auf Ihre Fläche",
+          "paragraphs": [
+            "Schattige Gärten, sonnige Hanglagen oder stark genutzte Spielbereiche brauchen unterschiedliche Aufmerksamkeit. Vor Ort klären wir, was Ihre Fläche wirklich braucht – ohne übertriebene Versprechen und ohne unnötige Zusätze."
+          ]
+        },
+        {
+          "heading": "Rasenpflege als Teil des Ganzen",
+          "paragraphs": [
+            "Oft hängt der Eindruck des Rasens eng mit Beeten, Wegen und Hecken zusammen. Deshalb lässt sich Rasenpflege gut mit regelmäßiger Garten- oder Grünflächenpflege kombinieren – ein Ansprechpartner, ein klarer Ablauf."
+          ]
+        }
+      ],
+      "scope": [
+        "Regelmäßiges Rasenmähen",
+        "Kantenpflege entlang von Beeten und Wegen",
+        "Entfernen von Schnittgut und Laub auf der Fläche",
+        "Pflege abgestimmt auf Nutzung und Jahreszeit",
+        "Einsätze in Lübeck und Ostholstein"
+      ],
+      "related": [
+        "gartenpflege",
+        "gruenflaechenpflege",
+        "heckenpflege"
+      ],
+      "seo": {
+        "title": "Rasenpflege in Lübeck & Ostholstein | Streich",
+        "description": "Rasenpflege in Lübeck und Ostholstein: Mähen, Kantenpflege und abgestimmte Maßnahmen für gepflegte Rasenflächen. Unverbindlich bei Streich anfragen.",
+        "path": "/leistungen/rasenpflege"
+      }
+    },
+    {
+      "slug": "baumfaellung",
+      "serviceId": "baumfaellungen",
+      "navTitle": "Baumfällung",
+      "h1": "Baumfällung in Lübeck und Ostholstein",
+      "claim": "Manchmal braucht Neues wieder Raum.",
+      "intro": "Bäume prägen Gärten und Grundstücke – und manchmal müssen sie weichen: aus Sicherheitsgründen, wegen Krankheit, Bauvorhaben oder weil der Standort nicht mehr passt. Wir übernehmen Baumfällungen in Lübeck, Ostholstein und Umgebung zuverlässig und mit Rücksicht auf Gebäude, Leitungen und benachbarte Flächen.",
+      "sections": [
+        {
+          "heading": "Fachgerecht und vor Ort geplant",
+          "paragraphs": [
+            "Jede Fällung beginnt mit einem Blick auf die Situation: Kronenausrichtung, Neigung, umliegende Bebauung und Zugänglichkeit. Daraus ergibt sich, wie der Baum abgetragen oder gefällt werden kann – so, dass Risiko und Aufwand im Verhältnis bleiben.",
+            "Wir arbeiten mit der nötigen Sorgfalt und kommunizieren klar, was vor, während und nach dem Einsatz zu erwarten ist."
+          ]
+        },
+        {
+          "heading": "Wann eine Fällung sinnvoll ist",
+          "paragraphs": [
+            "Häufig geht es um abgestorbene oder geschädigte Bäume, um Sturmschäden, um Platz für Neubauten oder um Konflikte mit Leitungen und Nachbargrundstücken. Wir bewerten die Lage vor Ort und besprechen realistische Optionen – ohne Druck und ohne erfundene Zusagen."
+          ]
+        },
+        {
+          "heading": "Danach: Raum für Neues",
+          "paragraphs": [
+            "Nach der Fällung bleibt oft der Wunsch nach einer neuen Pflanzung oder einer geänderten Nutzung der Fläche. Auf Wunsch unterstützen wir bei den anschließenden Arbeiten oder verweisen auf passende Pflege- und Gestaltungsschritte in unserem Angebot."
+          ]
+        }
+      ],
+      "scope": [
+        "Baumfällungen unter Berücksichtigung der Örtlichkeit",
+        "Abstimmung auf Gebäude, Wege und Nachbarflächen",
+        "Arbeiten an privaten und vergleichbaren Grundstücken",
+        "Klare Absprache zum Ablauf vor Ort",
+        "Tätigkeit in Lübeck, Ostholstein und Umgebung"
+      ],
+      "related": [
+        "heckenpflege",
+        "gartenpflege",
+        "gruenflaechenpflege"
+      ],
+      "seo": {
+        "title": "Baumfällung in Lübeck & Ostholstein | Streich",
+        "description": "Baumfällung in Lübeck und Ostholstein: zuverlässige Fällarbeiten mit Rücksicht auf Grundstück und Umgebung. Situationsbezogen bei Streich anfragen.",
+        "path": "/leistungen/baumfaellung"
+      }
+    },
+    {
+      "slug": "gruenflaechenpflege",
+      "serviceId": "objekt-grundstueckspflege",
+      "navTitle": "Grünflächenpflege",
+      "h1": "Grünflächenpflege in Lübeck und Ostholstein",
+      "claim": "Gepflegt. Verlässlich. Über das Jahr hinweg.",
+      "intro": "Neben dem klassischen Privatgarten betreuen wir auch größere und repräsentative Grünflächen: Anlagen an Wohngebäuden, gewerbliche Außenbereiche und Grundstücksflächen, die regelmäßig in Schuss bleiben sollen. Die Grünflächenpflege in Lübeck und Ostholstein stimmen wir auf Nutzung, Größe und gewünschten Pflegeaufwand ab.",
+      "sections": [
+        {
+          "heading": "Mehr als nur Rasenmähen",
+          "paragraphs": [
+            "Grünflächenpflege umfasst das Sauberhalten und Pflegen von Rasen- und Pflanzflächen, das Freihalten von Wegen und das Beachten von Übergängen zu Gebäuden und Parkflächen. Ziel ist ein ruhiges, gepflegtes Erscheinungsbild – ohne Show, aber mit Kontinuität.",
+            "Ob Wohnanlage, Gewerbeobjekt oder großzügiges Privatgrundstück: Wir vereinbaren einen Rahmen, der zu Ihrem Objekt passt, und halten ihn ein."
+          ]
+        },
+        {
+          "heading": "Verlässlichkeit für Eigentümer und Verwaltungen",
+          "paragraphs": [
+            "Wer Flächen dauerhaft betreuen lässt, braucht vor allem Verlässlichkeit und klare Absprachen. Als regionales Unternehmen aus Scharbeutz sind wir in Lübeck und Ostholstein vor Ort erreichbar und kennen die typischen Anforderungen an Außenanlagen in der Region."
+          ]
+        },
+        {
+          "heading": "Kombinierbar mit weiteren Leistungen",
+          "paragraphs": [
+            "Häufig ergänzen Hecken- und Rasenpflege oder saisonale Arbeiten die laufende Grünflächenpflege. So bleibt die Betreuung aus einer Hand – mit kurzen Wegen und weniger Koordinationsaufwand für Sie."
+          ]
+        }
+      ],
+      "scope": [
+        "Regelmäßige Pflege von Grün- und Außenflächen",
+        "Abstimmung auf Privat-, Wohn- und Gewerbeflächen",
+        "Sauberhalten und Pflegen von Anlagenbereichen",
+        "Planbare Intervalle nach Bedarf",
+        "Einsatzgebiet Lübeck, Ostholstein und Umgebung"
+      ],
+      "related": [
+        "gartenpflege",
+        "rasenpflege",
+        "heckenpflege"
+      ],
+      "seo": {
+        "title": "Grünflächenpflege in Lübeck & Ostholstein | Streich",
+        "description": "Grünflächenpflege in Lübeck und Ostholstein für Privatgrundstücke, Wohnanlagen und Gewerbeaußenflächen. Verlässlich und klar abgestimmt – bei Streich anfragen.",
+        "path": "/leistungen/gruenflaechenpflege"
+      }
+    }
+  ]
+}

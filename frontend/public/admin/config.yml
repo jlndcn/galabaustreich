@@ -1,14 +1,10 @@
-# Decap CMS (Headless, git-basiert) – Inhalte liegen als JSON im Repo.
-# Admin: https://www.garten-streich.de/admin/
-# Auth: E-Mail/Passwort (kein GitHub-Konto für die Redaktion).
-# Speichern: ein Klick „Speichern“ = ein Git-Commit = ein Cloudflare-Deploy.
-# Bitte Änderungen an einem Eintrag sammeln und erst dann speichern
-# (nicht nach jedem einzelnen Feld speichern).
+# Inhalte bearbeiten: https://www.garten-streich.de/admin/
+# Tipp: Texte erst fertig schreiben, dann einmal „Speichern“ klicken.
+# Danach erscheint die Änderung nach dem Website-Update online.
 
 backend:
   name: git-gateway
   branch: main
-  # Eigenes Gateway (Passwort-Auth); Pfade unter /api/cms/…
   gateway_url: /api/cms/git/github
   commit_messages:
     create: "cms: {{collection}} „{{slug}}“ angelegt"
@@ -17,7 +13,6 @@ backend:
     uploadMedia: "cms: Medium „{{path}}“ hochgeladen"
     deleteMedia: "cms: Medium „{{path}}“ gelöscht"
 
-# Lokal testen: `npx decap-server` und local_backend aktivieren.
 # local_backend: true
 
 media_folder: frontend/public/images
@@ -26,109 +21,335 @@ public_folder: /images
 locale: de
 
 collections:
-  - name: site
-    label: Firmendaten
+  - name: contact
+    label: "1 · Kontakt & Firma"
+    description: "Telefon, E-Mail, Adresse und Kontakttexte – hier starten die meisten Änderungen."
     files:
       - name: site
-        label: Firma & Kontakt
+        label: Kontakt & Firmendaten
         file: frontend/src/content/site.json
         fields:
-          - { name: displayName, label: Anzeigename, widget: string }
-          - { name: legalName, label: Rechtlicher Name, widget: string }
-          - { name: brand, label: Markenname, widget: string }
-          - { name: owner, label: Inhaberin, widget: string }
-          - { name: legalForm, label: Rechtsform, widget: string }
-          - { name: industry, label: Branche, widget: string }
-          - { name: vatId, label: USt-IdNr., widget: string }
-          - { name: brandMessage, label: Markenbotschaft, widget: string }
-          - name: address
-            label: Anschrift
-            widget: object
-            fields:
-              - { name: street, label: Straße, widget: string }
-              - { name: zip, label: PLZ, widget: string }
-              - { name: city, label: Ort, widget: string }
-              - { name: country, label: Land, widget: string }
-              - { name: countryCode, label: Ländercode, widget: string }
+          - name: email
+            label: E-Mail-Adresse
+            widget: string
+            hint: "Wird auf der Website und im Kontaktbereich angezeigt."
           - name: phone
             label: Telefon
             widget: object
             fields:
-              - { name: display, label: Anzeige, widget: string }
-              - { name: href, label: tel-Link, widget: string }
-              - { name: intl, label: International, widget: string }
-          - { name: email, label: E-Mail, widget: string }
-          - { name: whatsapp, label: WhatsApp-Link, widget: string }
-          - name: google
-            label: Google
+              - name: display
+                label: Telefonnummer
+                widget: string
+                hint: "So sehen Besucher die Nummer, z. B. 0177 3216077"
+              - name: href
+                label: Anruf-Link (meist automatisch)
+                widget: string
+                required: false
+                hint: "Kann leer bleiben – wird aus der Nummer ergänzt. Sonst z. B. tel:01773216077"
+              - name: intl
+                label: Internationale Nummer (meist automatisch)
+                widget: string
+                required: false
+                hint: "Kann leer bleiben. Sonst z. B. +491773216077"
+          - name: whatsapp
+            label: WhatsApp-Link
+            widget: string
+            hint: "z. B. https://wa.me/491773216077"
+          - name: address
+            label: Anschrift
             widget: object
             fields:
-              - { name: profileUrl, label: Profil-URL, widget: string, required: false }
-              - { name: mapsUrl, label: Maps-URL (optional), widget: string, required: false }
-              - { name: rating, label: Bewertung, widget: number, value_type: float, required: false }
-              - { name: reviewCount, label: Anzahl Bewertungen, widget: number, value_type: int, required: false }
-              - { name: ratingUpdated, label: Stand, widget: string, required: false }
-          - name: madeBy
-            label: Made by
-            widget: object
-            fields:
-              - { name: label, label: Label, widget: string }
-              - { name: url, label: URL, widget: string }
+              - { name: street, label: Straße und Hausnummer, widget: string }
+              - { name: zip, label: Postleitzahl, widget: string }
+              - { name: city, label: Ort, widget: string }
+              - { name: country, label: Land, widget: string }
+              - name: countryCode
+                label: Ländercode
+                widget: string
+                hint: "Bitte DE lassen, sofern nichts anderes gilt."
+          - name: contactPrompt
+            label: Kontakt-Überschrift
+            widget: text
+            hint: "Große Frage im Kontaktbereich, z. B. „Sie möchten Unterstützung …?“"
+          - name: contactCtaBody
+            label: Kontakt-Text darunter
+            widget: text
+            required: false
+          - name: contactCtaAsideTitle
+            label: Kleine Seitenüberschrift
+            widget: string
+            required: false
+            hint: "z. B. „Direkt erreichbar“"
+          - name: displayName
+            label: Firmenname (Anzeige)
+            widget: string
+          - name: brandMessage
+            label: Kurzbeschreibung
+            widget: string
+            hint: "Ein Satz zur Marke, z. B. Gartenpflege in und um Lübeck."
           - name: areaServed
-            label: Einsatzgebiet
+            label: Einsatzgebiete
             widget: list
             allow_add: true
-          - { name: domain, label: Canonical-Domain, widget: string }
-          - { name: contactPrompt, label: Kontakt-Hinweistext, widget: text }
-          - { name: contactCtaBody, label: Kontakt-CTA Fließtext, widget: text, required: false }
-          - { name: contactCtaAsideTitle, label: Kontakt-CTA Seitenüberschrift, widget: string, required: false }
+            hint: "Ein Eintrag pro Gebiet, z. B. Lübeck"
+          - name: google
+            label: Google-Bewertung (optional)
+            widget: object
+            collapsed: true
+            fields:
+              - { name: profileUrl, label: Link zum Google-Profil, widget: string, required: false }
+              - { name: mapsUrl, label: Google-Maps-Link, widget: string, required: false }
+              - { name: rating, label: Sterne (Zahl), widget: number, value_type: float, required: false }
+              - { name: reviewCount, label: Anzahl Bewertungen, widget: number, value_type: int, required: false }
+              - { name: ratingUpdated, label: Stand (Freitext), widget: string, required: false }
+          - name: legalName
+            label: Offizieller Firmenname
+            widget: string
+            hint: "Für Impressum und rechtliche Angaben."
+          - name: brand
+            label: Kurzname / Marke
+            widget: string
+          - name: owner
+            label: Inhaberin / Inhaber
+            widget: string
+          - name: legalForm
+            label: Rechtsform
+            widget: string
+          - name: industry
+            label: Branche
+            widget: string
+          - name: vatId
+            label: USt-IdNr.
+            widget: string
+          - name: domain
+            label: Website-Adresse
+            widget: string
+            hint: "Bitte nur nach Absprache ändern. Aktuell https://www.garten-streich.de"
+          - name: madeBy
+            label: Hinweis „Made by“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: label, label: Text, widget: string }
+              - { name: url, label: Link, widget: string }
+
+  - name: home
+    label: "2 · Startseite"
+    description: "Texte und Buttons auf der Startseite."
+    files:
+      - name: home
+        label: Startseiten-Texte
+        file: frontend/src/content/home.json
+        fields:
+          - name: hero
+            label: Oberer Bereich
+            widget: object
+            fields:
+              - { name: title, label: Große Überschrift, widget: string }
+              - { name: intro, label: Einleitungstext, widget: text }
+              - { name: primaryCta, label: Haupt-Button, widget: string }
+              - { name: formTitle, label: Formular-Überschrift, widget: string }
+              - { name: formIntro, label: Formular-Einleitung, widget: text }
+              - { name: backLabel, label: Text „Zurück“, widget: string }
+          - name: keyServices
+            label: Wichtige Leistungen
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+              - { name: intro, label: Intro-Text, widget: text }
+          - name: midCta
+            label: Mittelteil / Aufruf
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: formCta, label: Button „Anfrage“, widget: string }
+              - { name: callCta, label: Button „Anrufen“, widget: string }
+          - name: moreServices
+            label: Weitere Leistungen
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+          - name: region
+            label: Region / Teaser
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+              - { name: intro, label: Text, widget: text }
+              - { name: linkLabel, label: Link-Text, widget: string }
+          - name: contact
+            label: Kontaktbereich
+            widget: object
+            fields:
+              - { name: title, label: Überschrift, widget: string }
+              - { name: introSuffix, label: Zusatztext, widget: text }
+              - { name: areaLine, label: Einsatzgebiet-Zeile, widget: string }
 
   - name: services
-    label: Leistungen
+    label: "3 · Leistungen (Übersicht)"
+    description: "Die Übersicht unter /leistungen – Namen, Kurztexte und Aufzählungen."
     files:
       - name: services
-        label: Leistungskatalog
+        label: Alle Leistungen
         file: frontend/src/content/services.json
         fields:
-          - name: furtherServices
-            label: Weitere Leistungen (Namen)
-            widget: list
-            allow_add: true
           - name: services
             label: Leistungen
             widget: list
             summary: "{{fields.title}}"
+            label_singular: Leistung
             fields:
-              - { name: id, label: ID (URL-Anker), widget: string }
-              - { name: title, label: Titel, widget: string }
-              - { name: claim, label: Claim, widget: string }
-              - { name: teaser, label: Teaser, widget: text }
+              - name: title
+                label: Name der Leistung
+                widget: string
+              - name: claim
+                label: Kurzer Spruch
+                widget: string
+              - name: teaser
+                label: Kurztext für Karten
+                widget: text
+                hint: "Erscheint auf der Startseite und in kurzen Übersichten."
               - name: description
                 label: Beschreibung (Absätze)
                 widget: list
                 allow_add: true
+                hint: "Jeder Eintrag ist ein Absatz auf der Übersichtsseite."
               - name: list
                 label: Aufzählung (optional)
                 widget: list
                 required: false
                 allow_add: true
-              - { name: key, label: Key-Leistung (Startseite), widget: boolean, default: false }
-              - { name: highlight, label: Highlight, widget: boolean, default: false }
-              - { name: intent, label: Intent (optional), widget: string, required: false }
+                hint: "Stichpunkte. Leer lassen, wenn nicht nötig."
+              - name: key
+                label: Auf der Startseite zeigen?
+                widget: boolean
+                default: false
+              - name: highlight
+                label: Optisch hervorheben?
+                widget: boolean
+                default: false
+              - name: intent
+                label: Kundenwunsch (optional)
+                widget: string
+                required: false
+                hint: "Nur zur Orientierung, z. B. „Hecke schneiden lassen“."
+              - name: id
+                label: Technische Kennung
+                widget: string
+                hint: "Bitte nicht ändern – verbindet Texte, Bilder und Links."
+          - name: furtherServices
+            label: Weitere Leistungen (nur Namen)
+            widget: list
+            allow_add: true
+            hint: "Kurze Zusatzliste am Ende, z. B. Hausmeisterdienste."
+
+  - name: service_details
+    label: "4 · Leistungsseiten (Detail)"
+    description: "Eigene Seiten wie /leistungen/gartenpflege – ausführliche Texte und Google-Titel."
+    files:
+      - name: service_details
+        label: Detailseiten
+        file: frontend/src/content/service-details.json
+        fields:
+          - name: pages
+            label: Detailseiten
+            widget: list
+            summary: "{{fields.navTitle}}"
+            label_singular: Detailseite
+            fields:
+              - name: navTitle
+                label: Kurzname
+                widget: string
+                hint: "z. B. Gartenpflege"
+              - name: h1
+                label: Hauptüberschrift
+                widget: string
+                hint: "Die große Überschrift oben auf der Seite."
+              - name: claim
+                label: Kurzer Spruch
+                widget: string
+              - name: intro
+                label: Einleitung
+                widget: text
+              - name: sections
+                label: Textabschnitte
+                widget: list
+                summary: "{{fields.heading}}"
+                label_singular: Abschnitt
+                fields:
+                  - { name: heading, label: Zwischenüberschrift, widget: string }
+                  - name: paragraphs
+                    label: Absätze
+                    widget: list
+                    allow_add: true
+                    hint: "Jeder Eintrag = ein Absatz."
+              - name: scope
+                label: Typische Arbeiten
+                widget: list
+                allow_add: true
+                hint: "Stichpunkte zum Leistungsumfang."
+              - name: related
+                label: Verwandte Leistungen
+                widget: select
+                multiple: true
+                options:
+                  - { label: Gartenpflege, value: gartenpflege }
+                  - { label: Heckenpflege, value: heckenpflege }
+                  - { label: Rasenpflege, value: rasenpflege }
+                  - { label: Baumfällung, value: baumfaellung }
+                  - { label: Grünflächenpflege, value: gruenflaechenpflege }
+                hint: "Andere Detailseiten, auf die verlinkt wird."
+              - name: seo
+                label: Google-Anzeige
+                widget: object
+                collapsed: true
+                fields:
+                  - name: title
+                    label: Seitentitel
+                    widget: string
+                    hint: "z. B. Gartenpflege in Lübeck & Ostholstein | Streich"
+                  - name: description
+                    label: Kurzbeschreibung
+                    widget: text
+                    hint: "1–2 natürliche Sätze für Google."
+                  - name: path
+                    label: Seitenadresse
+                    widget: string
+                    hint: "Bitte nicht ändern, z. B. /leistungen/gartenpflege"
+              - name: slug
+                label: Adress-Kürzel
+                widget: string
+                hint: "Teil der URL – bitte nicht ändern."
+              - name: serviceId
+                label: Verknüpfung zur Übersicht
+                widget: select
+                options:
+                  - { label: Garten- & Grünflächenpflege, value: garten-gruenflaechenpflege }
+                  - { label: Hecken- & Gehölzpflege, value: hecken-gehoelzpflege }
+                  - { label: Baumfällungen, value: baumfaellungen }
+                  - { label: Rasenpflege, value: rasenpflege }
+                  - { label: Beet- & Staudenpflege, value: beet-staudenpflege }
+                  - { label: Neupflanzungen, value: neupflanzungen }
+                  - { label: Gartenumgestaltung, value: gartenumgestaltung }
+                  - { label: Saisonale Gartenarbeiten, value: saisonale-gartenarbeiten }
+                  - { label: Objekt- & Grundstückspflege, value: objekt-grundstueckspflege }
+                  - { label: Winterdienst, value: winterdienst }
+                hint: "Bitte nicht ändern – verbindet Detailseite und Übersicht."
 
   - name: pages
-    label: Seiten
+    label: "5 · Über uns & Team"
+    description: "Texte der Seiten Über uns und Team."
     files:
       - name: about
         label: Über uns
         file: frontend/src/content/about.json
         fields:
-          - { name: title, label: Titel, widget: string }
+          - { name: title, label: Seitentitel, widget: string }
           - name: intro
             label: Einleitung (Absätze)
             widget: list
             allow_add: true
-          - { name: valuesHeading, label: Werte-Überschrift, widget: string }
+          - { name: valuesHeading, label: Überschrift für Werte, widget: string }
           - name: values
             label: Werte
             widget: list
@@ -140,20 +361,21 @@ collections:
         label: Team
         file: frontend/src/content/team.json
         fields:
-          - { name: hero, label: Hero-Text, widget: text }
+          - { name: hero, label: Einleitungstext oben, widget: text }
           - name: background
             label: Fachlicher Hintergrund
             widget: object
             fields:
-              - { name: title, label: Titel, widget: string }
+              - { name: title, label: Überschrift, widget: string }
               - { name: text, label: Text, widget: text }
               - { name: caption, label: Bildunterschrift, widget: string }
 
   - name: seasons
-    label: Saisonhinweise
+    label: "6 · Saisonhinweise"
+    description: "Monatliche Hinweise im Kontaktbereich – welche Arbeiten gerade typisch sind."
     files:
       - name: seasons
-        label: Monatliche Hinweise
+        label: Hinweise nach Monat
         file: frontend/src/content/seasons.json
         fields:
           - name: months
@@ -161,212 +383,224 @@ collections:
             widget: list
             summary: "Monat {{fields.month}}: {{fields.note}}"
             fields:
-              - { name: month, label: Monat (1–12), widget: number, value_type: int, min: 1, max: 12 }
+              - name: month
+                label: Monat
+                widget: select
+                options:
+                  - { label: Januar, value: 1 }
+                  - { label: Februar, value: 2 }
+                  - { label: März, value: 3 }
+                  - { label: April, value: 4 }
+                  - { label: Mai, value: 5 }
+                  - { label: Juni, value: 6 }
+                  - { label: Juli, value: 7 }
+                  - { label: August, value: 8 }
+                  - { label: September, value: 9 }
+                  - { label: Oktober, value: 10 }
+                  - { label: November, value: 11 }
+                  - { label: Dezember, value: 12 }
+              - name: note
+                label: Hinweistext
+                widget: text
               - name: ids
-                label: Service-IDs (Reihenfolge = Relevanz)
-                widget: list
-                allow_add: true
-              - { name: note, label: Hinweis, widget: text }
+                label: Passende Leistungen
+                widget: select
+                multiple: true
+                options:
+                  - { label: Garten- & Grünflächenpflege, value: garten-gruenflaechenpflege }
+                  - { label: Hecken- & Gehölzpflege, value: hecken-gehoelzpflege }
+                  - { label: Baumfällungen, value: baumfaellungen }
+                  - { label: Rasenpflege, value: rasenpflege }
+                  - { label: Beet- & Staudenpflege, value: beet-staudenpflege }
+                  - { label: Neupflanzungen, value: neupflanzungen }
+                  - { label: Gartenumgestaltung, value: gartenumgestaltung }
+                  - { label: Saisonale Gartenarbeiten, value: saisonale-gartenarbeiten }
+                  - { label: Objekt- & Grundstückspflege, value: objekt-grundstueckspflege }
+                  - { label: Winterdienst, value: winterdienst }
+                hint: "Zuerst die wichtigste Leistung auswählen."
 
   - name: seo
-    label: SEO
+    label: "7 · Google-Texte"
+    description: "Titel und Kurztexte für die Google-Suche (Hauptseiten)."
     files:
       - name: seo
-        label: Seitentitel & Meta
+        label: Seitentitel & Beschreibungen
         file: frontend/src/content/seo.json
         fields:
           - name: home
             label: Startseite
             widget: object
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/" }
           - name: leistungen
             label: Leistungen
             widget: object
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/leistungen" }
           - name: ueberUns
             label: Über uns
             widget: object
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/ueber-uns" }
           - name: team
             label: Team
             widget: object
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/team" }
           - name: impressum
             label: Impressum
             widget: object
+            collapsed: true
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/impressum" }
           - name: datenschutz
             label: Datenschutz
             widget: object
+            collapsed: true
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/datenschutz" }
           - name: agb
             label: AGB
             widget: object
+            collapsed: true
             fields:
-              - { name: title, label: Title, widget: string }
-              - { name: description, label: Description, widget: text }
-              - { name: path, label: Pfad, widget: string }
-
-  - name: home
-    label: Startseite
-    files:
-      - name: home
-        label: Startseiten-Texte
-        file: frontend/src/content/home.json
-        fields:
-          - name: hero
-            label: Hero
-            widget: object
-            fields:
-              - { name: title, label: Überschrift, widget: string }
-              - { name: intro, label: Einleitung, widget: text }
-              - { name: primaryCta, label: Primärer Button, widget: string }
-              - { name: formTitle, label: Formular-Titel, widget: string }
-              - { name: formIntro, label: Formular-Intro, widget: text }
-              - { name: backLabel, label: Zurück-Label, widget: string }
-          - name: keyServices
-            label: Wichtige Leistungen
-            widget: object
-            fields:
-              - { name: title, label: Titel, widget: string }
-              - { name: intro, label: Intro, widget: text }
-          - name: midCta
-            label: Mittel-CTA
-            widget: object
-            fields:
-              - { name: title, label: Titel, widget: string }
-              - { name: text, label: Text, widget: text }
-              - { name: formCta, label: Formular-Button, widget: string }
-              - { name: callCta, label: Anruf-Button, widget: string }
-          - name: moreServices
-            label: Weitere Leistungen
-            widget: object
-            fields:
-              - { name: title, label: Titel, widget: string }
-          - name: region
-            label: Region
-            widget: object
-            fields:
-              - { name: title, label: Titel, widget: string }
-              - { name: intro, label: Intro, widget: text }
-              - { name: linkLabel, label: Link-Text, widget: string }
-          - name: contact
-            label: Kontaktbereich
-            widget: object
-            fields:
-              - { name: title, label: Titel, widget: string }
-              - { name: introSuffix, label: Intro (nach Kontaktprompt), widget: text }
-              - { name: areaLine, label: Einsatzgebiet-Zeile, widget: string }
+              - { name: title, label: Titel in Google, widget: string }
+              - { name: description, label: Kurztext in Google, widget: text }
+              - { name: path, label: Pfad, widget: hidden, default: "/agb" }
 
   - name: media_slots
-    label: Bilder
+    label: "8 · Bilder austauschen"
+    description: "Vorhandene Bildplätze durch eigene Fotos ersetzen."
     files:
       - name: slots
-        label: Bild-Slots (austauschbar)
+        label: Bildplätze
         file: frontend/src/content/media-slots.json
         fields:
           - name: slots
-            label: Slots
+            label: Bildplätze
             widget: list
-            summary: "{{fields.label}} ({{fields.id}})"
+            summary: "{{fields.label}}"
             fields:
-              - { name: id, label: Slot-ID, widget: string }
-              - { name: label, label: Bezeichnung, widget: string }
-              - { name: photoKey, label: Katalog-Key (Fallback), widget: string, required: false }
-              - { name: useMobileVariant, label: Mobile-Variante nutzen, widget: boolean, default: false }
-              - { name: image, label: Ersatzbild (Upload), widget: image, required: false }
-              - { name: alt, label: Alt-Text, widget: string }
+              - name: label
+                label: Wo erscheint das Bild?
+                widget: string
+              - name: image
+                label: Neues Bild hochladen
+                widget: image
+                required: false
+                hint: "Leer lassen = Standardbild bleibt."
+              - name: alt
+                label: Bildbeschreibung
+                widget: string
+                hint: "Kurz beschreiben, was zu sehen ist."
+              - name: useMobileVariant
+                label: Eigenes Mobilbild nutzen?
+                widget: boolean
+                default: false
+              - name: id
+                label: Platz-Kennung
+                widget: string
+                hint: "Bitte nicht ändern."
+              - name: photoKey
+                label: Standardbild-Name
+                widget: string
+                required: false
+                hint: "Bitte nicht ändern."
+
+  - name: media_meta
+    label: "9 · Bildtexte Leistungen"
+    description: "Beschreibungen der Leistungsfotos."
+    files:
+      - name: service_images
+        label: Leistungsbilder
+        file: frontend/src/content/service-images.json
+        fields:
+          - name: items
+            label: Leistungsbilder
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - name: alt
+                label: Bildbeschreibung
+                widget: string
+              - name: id
+                label: Leistung (Kennung)
+                widget: string
+                hint: "Bitte nicht ändern."
+              - name: name
+                label: Foto-Name
+                widget: string
+                hint: "Bitte nicht ändern."
 
   - name: legal
-    label: Rechtstexte
+    label: "10 · Rechtstexte"
+    description: "Impressum, Datenschutz und AGB – nur bei Bedarf anpassen."
     files:
       - name: impressum
         label: Impressum
         file: frontend/src/content/legal/impressum.json
         fields:
           - { name: title, label: Titel, widget: string }
-          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: lead, label: Einleitung, widget: text, required: false }
           - { name: stand, label: Stand, widget: string, required: false }
           - name: sections
             label: Abschnitte
             widget: list
             summary: "{{fields.title}}"
             fields:
-              - { name: id, label: ID, widget: string }
               - { name: title, label: Überschrift, widget: string }
-              - { name: anchor, label: Anker (optional), widget: string, required: false }
-              - { name: body, label: Text (Markdown), widget: markdown }
+              - { name: body, label: Text, widget: markdown }
+              - { name: id, label: Kennung, widget: string, hint: "Bitte nicht ändern." }
+              - { name: anchor, label: Sprungmarke, widget: string, required: false }
       - name: datenschutz
         label: Datenschutzerklärung
         file: frontend/src/content/legal/datenschutz.json
         fields:
           - { name: title, label: Titel, widget: string }
-          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: lead, label: Einleitung, widget: text, required: false }
           - { name: stand, label: Stand, widget: string, required: false }
           - name: sections
             label: Abschnitte
             widget: list
             summary: "{{fields.title}}"
             fields:
-              - { name: id, label: ID, widget: string }
               - { name: title, label: Überschrift, widget: string }
-              - { name: anchor, label: Anker (optional), widget: string, required: false }
-              - { name: body, label: Text (Markdown), widget: markdown }
+              - { name: body, label: Text, widget: markdown }
+              - { name: id, label: Kennung, widget: string, hint: "Bitte nicht ändern." }
+              - { name: anchor, label: Sprungmarke, widget: string, required: false }
       - name: agb
         label: AGB
         file: frontend/src/content/legal/agb.json
         fields:
           - { name: title, label: Titel, widget: string }
-          - { name: lead, label: Lead, widget: text, required: false }
+          - { name: lead, label: Einleitung, widget: text, required: false }
           - { name: stand, label: Stand, widget: string, required: false }
           - name: sections
             label: Abschnitte
             widget: list
             summary: "{{fields.title}}"
             fields:
-              - { name: id, label: ID, widget: string }
               - { name: title, label: Überschrift, widget: string }
-              - { name: anchor, label: Anker (optional), widget: string, required: false }
-              - { name: body, label: Text (Markdown), widget: markdown }
+              - { name: body, label: Text, widget: markdown }
+              - { name: id, label: Kennung, widget: string, hint: "Bitte nicht ändern." }
+              - { name: anchor, label: Sprungmarke, widget: string, required: false }
       - name: terms
-        label: AGB-Parameter
+        label: AGB-Zahlen
         file: frontend/src/content/legal/terms.json
         fields:
           - { name: paymentDays, label: Zahlungsziel (Tage), widget: number, value_type: int }
           - { name: noticePeriod, label: Kündigungsfrist, widget: string }
           - { name: cancellationLeadDays, label: Absage-Frist (Werktage), widget: number, value_type: int }
           - { name: estimateDeviationPercent, label: Kostenvoranschlag-Abweichung (%), widget: number, value_type: int }
-
-  - name: media_meta
-    label: Bildtexte Leistungen
-    files:
-      - name: service_images
-        label: Leistungsbilder (Alt-Texte / Keys)
-        file: frontend/src/content/service-images.json
-        fields:
-          - name: items
-            label: Zuordnungen
-            widget: list
-            summary: "{{fields.id}} → {{fields.name}}"
-            fields:
-              - { name: id, label: Service-ID, widget: string }
-              - { name: name, label: Foto-Key, widget: string }
-              - { name: alt, label: Alt-Text, widget: string }

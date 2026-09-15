@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { ScrollManager } from "@/components/ScrollManager";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Toaster } from "@/components/ui/sonner";
 import { useMagneticButtons } from "@/hooks/useMagneticButtons";
@@ -10,7 +10,7 @@ export const Layout = () => {
   useMagneticButtons();
   return (
     <div className="App">
-      <ScrollToTop />
+      <ScrollManager />
       <a href="#main-content" className="skip-link">
         Zum Inhalt springen
       </a>
