@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import Home from "@/pages/Home";
 import Leistungen from "@/pages/Leistungen";
+import LeistungDetail from "@/pages/LeistungDetail";
 
 // Secondary routes: code-split so the home LCP bundle stays lean.
-// Leistungen stays eager so scroll restoration on browser Back works reliably.
-const LeistungDetail = lazy(() => import("@/pages/LeistungDetail"));
+// Leistungen + LeistungDetail stay eager: Suspense fallback (50vh empty)
+// caused large CLS and delayed LCP on /leistungen/:slug.
 const UeberUns = lazy(() => import("@/pages/UeberUns"));
 const Team = lazy(() => import("@/pages/Team"));
 const Impressum = lazy(() => import("@/pages/Impressum"));
@@ -40,8 +41,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/leistungen" element={<Leistungen />} />
+          <Route path="/leistungen/:slug" element={<LeistungDetail />} />
           <Route element={<LazyPages />}>
-            <Route path="/leistungen/:slug" element={<LeistungDetail />} />
             <Route path="/ueber-uns" element={<UeberUns />} />
             <Route path="/team" element={<Team />} />
             <Route path="/impressum" element={<Impressum />} />

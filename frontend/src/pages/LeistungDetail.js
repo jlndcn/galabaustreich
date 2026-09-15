@@ -63,19 +63,16 @@ export default function LeistungDetail() {
         jsonLd={buildServiceJsonLd(detail)}
       />
 
+      {/* Above-the-fold without Reveal: opacity:0 delays LCP and risks CLS. */}
       <section className="section-shell services-intro">
-        <Reveal>
-          <p className="service-claim" style={{ marginTop: 0 }}>
-            {detail.claim}
-          </p>
-          <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.2rem]">
-            {detail.h1}
-          </h1>
-        </Reveal>
-        <Reveal delay={80}>
-          <p className="section-intro mt-6 max-w-3xl">{detail.intro}</p>
-        </Reveal>
-        <Reveal delay={120} className="mt-6">
+        <p className="service-claim" style={{ marginTop: 0 }}>
+          {detail.claim}
+        </p>
+        <h1 className="text-4xl leading-[1.08] sm:text-5xl lg:text-[3.2rem]">
+          {detail.h1}
+        </h1>
+        <p className="section-intro mt-6 max-w-3xl">{detail.intro}</p>
+        <div className="mt-6">
           <Link
             to="/leistungen"
             className="inline-flex items-center gap-2 text-[color:var(--brand-forest)] underline-offset-4 hover:underline"
@@ -84,11 +81,11 @@ export default function LeistungDetail() {
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             Alle Leistungen
           </Link>
-        </Reveal>
+        </div>
       </section>
 
       <div className="section-shell">
-        <Reveal className="service-figure" as="figure">
+        <figure className="service-figure">
           <Photo
             name={image.name}
             alt={image.alt || detail.navTitle}
@@ -96,7 +93,7 @@ export default function LeistungDetail() {
             sizes="(max-width: 1023px) 100vw, 960px"
             priority
           />
-        </Reveal>
+        </figure>
 
         {detail.sections.map((section) => (
           <section key={section.heading} className="service-detail">

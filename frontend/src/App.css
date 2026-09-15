@@ -747,7 +747,15 @@
   margin-top: 24px;
 }
 .service-photo {
-  aspect-ratio: 3/2;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  /* Soft placeholder while the WebP paints – avoids empty flash without shift */
+  background: #e2e8de;
+}
+.service-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .service-figure figcaption {
   position: absolute;
