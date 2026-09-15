@@ -1,4 +1,5 @@
-# SPA fallback for React Router.
-# Pages Functions (z. B. /api/*, Google-Verifikation) haben Vorrang vor Redirects.
+# Nur Admin-Trailing-Slash. Kein /* → /index.html:
+# Diese Catch-all-Regel überschreibt auf Cloudflare Pages IMMER statische Dateien
+# (auch googled*.html) und bricht die Search-Console-Verifikation.
+# SPA-Routing übernimmt Pages automatisch, solange kein top-level 404.html existiert.
 /admin   /admin/   301
-/*    /index.html   200
