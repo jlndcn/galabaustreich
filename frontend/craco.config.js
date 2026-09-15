@@ -1,10 +1,5 @@
 // craco.config.js
 const path = require("path");
-require("dotenv").config();
-
-const config = {
-  enableHealthCheck: process.env.ENABLE_HEALTH_CHECK === "true",
-};
 
 function makeDevServerV5Compatible(devServerConfig) {
   const {
@@ -53,17 +48,7 @@ function makeDevServerV5Compatible(devServerConfig) {
   return compatibleConfig;
 }
 
-let WebpackHealthPlugin;
-let setupHealthEndpoints;
-let healthPluginInstance;
-
-if (config.enableHealthCheck) {
-  WebpackHealthPlugin = require("./plugins/health-check/webpack-health-plugin");
-  setupHealthEndpoints = require("./plugins/health-check/health-endpoints");
-  healthPluginInstance = new WebpackHealthPlugin();
-}
-
-const webpackConfig = {
+module.exports = {
   eslint: {
     configure: {
       extends: ["plugin:react-hooks/recommended"],
@@ -89,29 +74,8 @@ const webpackConfig = {
           "**/public/**",
         ],
       };
-
-      if (config.enableHealthCheck && healthPluginInstance) {
-        webpackConfig.plugins.push(healthPluginInstance);
-      }
       return webpackConfig;
     },
   },
+  devServer: (devServerConfig) => makeDevServerV5Compatible(devServerConfig),
 };
-
-webpackConfig.devServer = (devServerConfig) => {
-  if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
-    const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
-
-    devServerConfig.setupMiddlewares = (middlewares, devServer) => {
-      if (originalSetupMiddlewares) {
-        middlewares = originalSetupMiddlewares(middlewares, devServer);
-      }
-      setupHealthEndpoints(devServer, healthPluginInstance);
-      return middlewares;
-    };
-  }
-
-  return makeDevServerV5Compatible(devServerConfig);
-};
-
-module.exports = webpackConfig;
