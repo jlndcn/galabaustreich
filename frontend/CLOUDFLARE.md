@@ -47,5 +47,12 @@ Keine Secrets im Repository. `REACT_APP_BACKEND_URL` leer lassen.
 - Functions unter `/api/*` und `/.netlify/*` haben Vorrang
 - Headers: `public/_headers`
 
+## Canonical-Domain
+Produktive Adresse: **https://www.garten-streich.de**
+
+- `site.domain` / Canonicals / OG / JSON-LD / Sitemap / robots zeigen auf `www`
+- Apex `garten-streich.de` → dauerhaft **301** auf `www` (`functions/_middleware.js` + `_redirects`)
+- In Cloudflare sollten **beide** Hostnames am Pages-Projekt hängen; HTTPS immer aktiv
+
 ## Docs
 - CMS: `CMS.md`

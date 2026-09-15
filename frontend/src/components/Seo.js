@@ -51,7 +51,11 @@ function linkRel(rel, href) {
 // Also protects staging/preview environments from indexing (only the final domain is indexable).
 export function Seo({ title, description, path = "/", jsonLd = null, noIndex = false }) {
   useEffect(() => {
-    const base = site.domain.replace(/\/$/, "");
+    const rawBase = (site.domain || "").replace(/\/$/, "");
+    // Kanonische Basis immer www – auch wenn CMS-Inhalt abweichend gesetzt wäre.
+    const base = rawBase.includes("://www.")
+      ? rawBase
+      : rawBase.replace("://garten-streich.de", "://www.garten-streich.de");
     const url = base + path;
     const ogImage = base + "/og-image.jpg";
 

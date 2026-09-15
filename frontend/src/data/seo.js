@@ -6,7 +6,10 @@ export const seoPages = seoContent;
 
 // JSON-LD LocalBusiness structured data (no opening hours, ratings, socials, prices – none invented).
 export function buildLocalBusinessJsonLd() {
-  const base = site.domain.replace(/\/$/, "");
+  const rawBase = (site.domain || "").replace(/\/$/, "");
+  const base = rawBase.includes("://www.")
+    ? rawBase
+    : rawBase.replace("://garten-streich.de", "://www.garten-streich.de");
   const data = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",

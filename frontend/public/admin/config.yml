@@ -1,7 +1,9 @@
 # Decap CMS (Headless, git-basiert) – Inhalte liegen als JSON im Repo.
 # Admin: https://www.garten-streich.de/admin/
 # Auth: E-Mail/Passwort (kein GitHub-Konto für die Redaktion).
-# Speichern: serverseitig über Git Gateway + Agentur-GitHub-Token.
+# Speichern: ein Klick „Speichern“ = ein Git-Commit = ein Cloudflare-Deploy.
+# Bitte Änderungen an einem Eintrag sammeln und erst dann speichern
+# (nicht nach jedem einzelnen Feld speichern).
 
 backend:
   name: git-gateway

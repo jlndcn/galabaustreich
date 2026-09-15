@@ -57,6 +57,8 @@ Bestehende SMTP-Variablen bleiben unverändert.
 ### 3. Admin öffnen
 `https://www.garten-streich.de/admin/` → E-Mail/Passwort → Inhalte speichern.
 
+**Speichern / Deploy:** Ein Klick auf „Speichern“ erzeugt **einen** Git-Commit und damit **einen** Cloudflare-Deploy. Änderungen an einem Eintrag bitte sammeln und erst dann speichern – nicht nach jedem Feld. Ein neuer Bild-Upload kann zusätzlich einen eigenen Media-Commit erzeugen (Decap-Standard).
+
 ## Technik / Sicherheit
 - Backend: `git-gateway` mit `gateway_url: /api/cms/git/github`
 - Login: `POST /api/cms/identity/token` (Passwort → HttpOnly-Cookie + kurzes JWT)

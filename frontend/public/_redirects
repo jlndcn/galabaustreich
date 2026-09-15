@@ -1,3 +1,7 @@
-# Admin trailing slash. SPA-Fallback liefert Cloudflare Pages automatisch,
-# solange kein top-level 404.html existiert (kein /* → /index.html nötig).
+# Admin trailing slash.
 /admin   /admin/   301
+
+# Apex → www (zusätzlich zur Host-Middleware in functions/_middleware.js)
+https://garten-streich.de/*  https://www.garten-streich.de/:splat  301
+http://garten-streich.de/*   https://www.garten-streich.de/:splat  301
+http://www.garten-streich.de/* https://www.garten-streich.de/:splat  301
