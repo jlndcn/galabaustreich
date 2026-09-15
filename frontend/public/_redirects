@@ -1,5 +1,3 @@
-# Nur Admin-Trailing-Slash. Kein /* → /index.html:
-# Diese Catch-all-Regel überschreibt auf Cloudflare Pages IMMER statische Dateien
-# (auch googled*.html) und bricht die Search-Console-Verifikation.
-# SPA-Routing übernimmt Pages automatisch, solange kein top-level 404.html existiert.
+# Admin trailing slash. SPA-Fallback liefert Cloudflare Pages automatisch,
+# solange kein top-level 404.html existiert (kein /* → /index.html nötig).
 /admin   /admin/   301
