@@ -21,7 +21,7 @@ function ServiceSection({ service }) {
     <section
       id={service.id}
       data-testid="service-section"
-      className="service-detail"
+      className="service-detail service-panel"
     >
       <Reveal>
         <h2>
@@ -61,7 +61,7 @@ function ServiceSection({ service }) {
         </ul>
       )}
       {(detailPath || extraDetail) && (
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+        <div className="service-panel-actions">
           {detailPath && (
             <Link
               to={detailPath}
@@ -103,14 +103,14 @@ export default function Leistungen() {
         <aside className="services-sidebar">
           <ServicesOverview />
         </aside>
-        <div>
+        <div className="services-stack">
           {services.map((service) => (
             <ServiceSection key={service.id} service={service} />
           ))}
           <section
             id="weitere-leistungen"
             data-testid="further-services-section"
-            className="service-detail"
+            className="service-detail service-panel"
           >
             <h2>Weitere Leistungen</h2>
             <p className="section-intro">

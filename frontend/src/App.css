@@ -706,6 +706,34 @@
 .service-detail:last-child {
   padding-bottom: 0;
 }
+.services-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.service-panel {
+  background: #fff;
+  border: 1px solid #e4e0d4;
+  border-radius: 16px;
+  padding: 28px;
+  padding-bottom: 28px;
+}
+.service-panel:last-child {
+  padding-bottom: 28px;
+}
+.service-panel .service-figure {
+  margin-top: 20px;
+}
+.service-panel .service-copy,
+.service-panel .service-details-list,
+.service-panel .service-panel-actions {
+  margin-top: 20px;
+}
+.service-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
 .service-detail h2 {
   font-size: clamp(28px, 3vw, 36px);
 }
@@ -1050,6 +1078,13 @@ a.underline {
   }
   .service-detail {
     scroll-margin-top: 185px;
+  }
+  .service-panel {
+    padding: 22px;
+    border-radius: 14px;
+  }
+  .services-stack {
+    gap: 20px;
   }
   .home-services-split {
     grid-template-columns: 0.7fr 1.3fr;
